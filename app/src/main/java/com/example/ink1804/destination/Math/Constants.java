@@ -6,11 +6,12 @@ package com.example.ink1804.destination.Math;
 public class Constants {
     //Годы по китайскому гороскопу Y_
 
+    public static final String[] YEAR_NAMES = {"Обезьяна","Петух","Собака","Кабан","Крыса","Бык","Тигр","Кот","Дракон","Змея","Лошадь","Коза"};
     public static final String Y_SNAKE = "Змея";
     public static final String Y_HORSE = "Лошадь";
     public static final String Y_GOAT = "Коза";
-    public static final String Y_MONKEY = "Обезьяна";
-    public static final String Y_COCK = "Петух";
+    public static final String Y_MONKEY = "Обезьяна";//id = 0
+    public static final String Y_COCK = "Петух";// id = 1
     public static final String Y_DOG = "Собака";
     public static final String Y_BOAR = "Кабан";
     public static final String Y_RAT = "Крыса";
@@ -21,7 +22,8 @@ public class Constants {
 
     //Знаки зодиака Z_
 
-    public static final String Z_CAPRICORN = "Козерог";
+    public static final String[] ZODIAK_NAMES ={"Козерог","Водолей","Рыбы","Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец"};
+    public static final String Z_CAPRICORN = "Козерог";//id = 0
     public static final String Z_AQUARIUS = "Водолей";
     public static final String Z_FISH = "Рыбы";
     public static final String Z_ARIES = "Овен";

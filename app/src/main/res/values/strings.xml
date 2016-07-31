@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Destination</string>
 
+
     <string name="knight_about">d</string>
     <string name="leader_about">d</string>
     <string name="king_about">d</string>
