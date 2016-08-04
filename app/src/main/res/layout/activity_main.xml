@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.example.ink1804.destination.MainActivity">
 
@@ -12,6 +13,14 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"/>
 
+    <android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.ink1804.smol_gazeta.MainActivity"
+        tools:openDrawer="start">
     <fragment
         android:id="@+id/structure_fr"
         android:layout_width="match_parent"
@@ -19,4 +28,12 @@
         android:name="com.example.ink1804.destination.Fragments.StructureHor_fragment"
         tools:layout="@layout/structurehor_layout_fragment" />
 
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/nav_menu"
+            android:fitsSystemWindows="true" />
+    </android.support.v4.widget.DrawerLayout>
 </LinearLayout>
