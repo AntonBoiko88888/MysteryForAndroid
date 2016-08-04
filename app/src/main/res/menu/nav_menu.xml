@@ -3,10 +3,23 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_society"
-            android:title="Главная"/>
+            android:id="@+id/tab1"
+            android:title="Аккаунт"/>
         <item
-            android:id="@+id/nav_habitat"
-            android:title="Соционика"/>
+            android:id="@+id/tab2"
+            android:icon="@drawable/aries"
+            android:title="Знаки зодиака"/>
+        <item
+            android:id="@+id/tab3"
+            android:title="Знаки рождения"/>
+        <item
+            android:id="@+id/tab4"
+            android:title="Виртуальные знаки"/>
+        <item
+            android:id="@+id/tab5"
+            android:title="Взаимоотношения"/>
+        <item
+            android:id="@+id/tab6"
+            android:title="Настройки"/>
     </group>
 </menu>
