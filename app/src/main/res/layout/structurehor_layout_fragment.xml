@@ -10,7 +10,7 @@
         android:id="@+id/et_date"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:hint="18.04.1995"
+        android:hint="dd.mm.yyyy"
         android:inputType="date"
         />
     <Button

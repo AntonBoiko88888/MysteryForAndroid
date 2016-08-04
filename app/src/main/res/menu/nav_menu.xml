@@ -4,6 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/tab1"
+            android:icon="@drawable/account"
             android:title="Аккаунт"/>
         <item
             android:id="@+id/tab2"
@@ -11,15 +12,19 @@
             android:title="Знаки зодиака"/>
         <item
             android:id="@+id/tab3"
+            android:icon="@drawable/monkey"
             android:title="Знаки рождения"/>
         <item
             android:id="@+id/tab4"
+            android:icon="@drawable/herous"
             android:title="Виртуальные знаки"/>
         <item
             android:id="@+id/tab5"
+            android:icon="@drawable/relations"
             android:title="Взаимоотношения"/>
         <item
             android:id="@+id/tab6"
+            android:icon="@drawable/settings"
             android:title="Настройки"/>
     </group>
 </menu>
