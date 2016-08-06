@@ -21,13 +21,14 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
 
     private DatePicker datePicker;
     private Button btn_result;
-    private int day,month,year;
+    private int day,month,year,currentYear;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView  = inflater.inflate(R.layout.datepicker_layout_fragment,container,false);
         btn_result = (Button)rootView.findViewById(R.id.btn_getResult);
         datePicker = (DatePicker)rootView.findViewById(R.id.datePicker);
         btn_result.setOnClickListener(this);
+        currentYear = datePicker.getYear();
         datePicker.init(2000, 0, 1, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
@@ -40,14 +41,14 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     }
 
     public interface pushDateListener{
-        void onDatePushed(int day, int month, int year);
+        void onDatePushed(int day, int month, int year,int currentYear);
     }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_getResult:
                 pushDateListener listener = (pushDateListener)getActivity();
-                listener.onDatePushed(day,month,year);
+                listener.onDatePushed(day,month,year,currentYear);
                 Toast.makeText(getActivity(), day+"."+month+"."+year, Toast.LENGTH_SHORT).show();
         }
     }

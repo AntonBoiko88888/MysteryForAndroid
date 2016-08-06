@@ -39,12 +39,12 @@ public class Structure_databases {
         }
 
 
-        public String getNumberYear(String year, int month, int day){ // Возвращает число года
+        public String getNumberYear(int year, int month, int day){ // Возвращает число года
                 int numberYear = 0;
-                numberYear = Integer.parseInt(year)+month+day;
+                numberYear = year+month+day;
                 numberYear = SummChislo(numberYear);
                 return String.valueOf(numberYear);
-        }
+        }//done
 
         public String getYearPeriod(String year, int month, int day){ // Возвращает какой год: Преодоление...
                 int yearPeriod = 0;
@@ -59,8 +59,7 @@ public class Structure_databases {
                 else if(year==1||year==6||year==8) EnergyName = C.ENERGI_STRUCTURE_NAMES[2];
                 else if(year==0||year==2||year==7) EnergyName = C.ENERGI_STRUCTURE_NAMES[3];
                 return EnergyName;
-        }
-
+        }//done
         public String getSymbolFate(int year){ //вычисление Знака судьбы
                 String SymbolFate="";
                 if(year==1||year==3||year==11) SymbolFate = C.SYMBOL_FATE_NAMES[0];
@@ -68,8 +67,7 @@ public class Structure_databases {
                 else if(year==5||year==7||year==9) SymbolFate = C.SYMBOL_FATE_NAMES[2];
                 else if(year==0||year==8||year==10) SymbolFate = C.SYMBOL_FATE_NAMES[3];
                 return SymbolFate;
-        }
-
+        }//done
         public String getZodiakName(int day,int month){
                 String zodiakName = "";
                 switch (month){
@@ -100,7 +98,7 @@ public class Structure_databases {
                         default: break;
                 }
                 return zodiakName;
-        }
+        }//done
         public int getDateId(int day,int month){
                 int res = -1;
                 switch (month) {
@@ -167,8 +165,8 @@ public class Structure_databases {
                         default:break;
                 }
                 return res;
-        }
+        }//done
         public String getStructureType(int i,int j){
                 return StructureHor[i][j];
-        }
+        }//done
 }
