@@ -28,7 +28,25 @@ public class Structure_databases {
                 return yearName;
         }
 
-        public String getEnergyStructName(int year){ //вычисление энергетической структуры(сангвиник, холерик...)
+        public int SummChislo(int Chislo) { // Суммирует каждую цифру числа
+                int res = 0;
+                        for (int i = 0; i < 4; i++) {
+                                res += Chislo % 10;
+                                Chislo = Chislo / 10;
+                        }
+                if(res>9) res = SummChislo(res);
+                return res;
+        }
+
+
+        public String getNumberYear(String year, int month, int day){ // Возвращает число года
+                int yearperiod = 0;
+                yearperiod = Integer.parseInt(year)+month+day;
+                yearperiod = SummChislo(yearperiod);
+                return String.valueOf(yearperiod);
+        }
+
+        public String getTemperamentName(int year){ //вычисление энергетической структуры(сангвиник, холерик...)
                 String EnergyName="";
                 if(year==3||year==5||year==10) EnergyName = C.ENERGI_STRUCTURE_NAMES[0];
                 else if(year==4||year==9||year==11) EnergyName = C.ENERGI_STRUCTURE_NAMES[1];
