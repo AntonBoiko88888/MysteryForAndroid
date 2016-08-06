@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.example.ink1804.destination"
+        applicationId "keen.eye.ink1804.destination"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1

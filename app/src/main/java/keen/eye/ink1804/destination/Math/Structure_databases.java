@@ -1,6 +1,4 @@
-package com.example.ink1804.destination.Math;
-
-import java.util.Date;
+package keen.eye.ink1804.destination.Math;
 
 /**
  * Created by Ink1804 on 29.07.16.
@@ -29,6 +27,16 @@ public class Structure_databases {
                 yearName = C.YEAR_NAMES[Integer.parseInt(year)%12];
                 return yearName;
         }
+
+        public String getEnergyStructName(int year){ //вычисление энергетической структуры(сангвиник, холерик...)
+                String EnergyName="";
+                if(year==3||year==5||year==10) EnergyName = C.ENERGI_STRUCTURE_NAMES[0];
+                else if(year==4||year==9||year==11) EnergyName = C.ENERGI_STRUCTURE_NAMES[1];
+                else if(year==1||year==6||year==8) EnergyName = C.ENERGI_STRUCTURE_NAMES[2];
+                else if(year==0||year==2||year==7) EnergyName = C.ENERGI_STRUCTURE_NAMES[3];
+                return EnergyName;
+        }
+
         public String getZodiakName(int day,int month){
                 String zodiakName = "";
                 switch (month){

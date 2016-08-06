@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.example.ink1804.destination.MainActivity">
+    tools:context="keen.eye.ink1804.destination.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -19,13 +19,13 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.ink1804.smol_gazeta.MainActivity"
+        tools:context="com.eye.ink1804.smol_gazeta.MainActivity"
         tools:openDrawer="start">
     <fragment
         android:id="@+id/structure_fr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.ink1804.destination.Fragments.StructureHor_fragment"
+        android:name="keen.eye.ink1804.destination.Fragments.StructureHor_fragment"
         tools:layout="@layout/structurehor_layout_fragment" />
 
         <android.support.design.widget.NavigationView

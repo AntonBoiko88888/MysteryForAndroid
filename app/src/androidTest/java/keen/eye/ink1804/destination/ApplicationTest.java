@@ -1,4 +1,4 @@
-package com.example.ink1804.destination;
+package keen.eye.ink1804.destination;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,10 +1,12 @@
-package com.example.ink1804.destination.Math;
+package keen.eye.ink1804.destination.Math;
 
 /**
  * Created by Ink1804 on 29.07.16.
  */
 public class Constants {
-    //Годы по китайскому гороскопу Y_
+    //Годы по китайскому гороскопу
+
+    public static final String[] ENERGI_STRUCTURE_NAMES = {"Природный оптимист (Сангвиник)","Драматический темперамент (Холерик)","Космический оптимист (Флегматик)","Скептик (Меланхолик)"};
 
     public static final String[] YEAR_NAMES = {"Обезьяна","Петух","Собака","Кабан","Крыса","Бык","Тигр","Кот","Дракон","Змея","Лошадь","Коза"};
     public static final String Y_SNAKE = "Змея";
