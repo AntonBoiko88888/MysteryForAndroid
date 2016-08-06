@@ -1,7 +1,6 @@
 package keen.eye.ink1804.destination.Fragments;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
+
+import java.util.Date;
 
 import keen.eye.ink1804.destination.R;
 
@@ -23,7 +24,10 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     private int day,month,year;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.datepicker_layout_fragment,container,false);
+        View rootView  = inflater.inflate(R.layout.datepicker_layout_fragment,container,false);
+        btn_result = (Button)rootView.findViewById(R.id.btn_getResult);
+        datePicker = (DatePicker)rootView.findViewById(R.id.datePicker);
+        btn_result.setOnClickListener(this);
         datePicker.init(2000, 0, 1, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {

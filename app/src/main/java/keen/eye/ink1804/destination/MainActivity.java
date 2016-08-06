@@ -1,6 +1,7 @@
 package keen.eye.ink1804.destination;
 
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.util.Date;
 
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.StructureHor_fragment;
@@ -22,6 +25,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //adding a start fragment
+        DatePicker_fragment fragment = new DatePicker_fragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.structure_fr,fragment,"infoFragment");
+        transaction.commit();
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -64,10 +73,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putInt("year",year);
         infoFragment.setArguments(args);
 
-//        transaction.replace(R.id.structure_fr,infoFragment,"infoFragment");
-//        transaction.addToBackStack("infoFragment");
-//        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
-//        transaction.commit();
-        Toast.makeText(getApplicationContext(), dd+"."+mm+"."+yy, Toast.LENGTH_SHORT).show();
+        transaction.replace(R.id.structure_fr,infoFragment,"infoFragment");
+        transaction.addToBackStack("infoFragment");
+        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
+        transaction.commit();
+//        Toast.makeText(getApplicationContext(), dd+"."+mm+"."+yy, Toast.LENGTH_SHORT).show();
     }
 }

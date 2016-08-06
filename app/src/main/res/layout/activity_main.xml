@@ -19,14 +19,13 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.eye.ink1804.smol_gazeta.MainActivity"
+        tools:context="keen.eye.ink1804.destination.MainActivity"
         tools:openDrawer="start">
-    <fragment
+    <FrameLayout
         android:id="@+id/structure_fr"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="keen.eye.ink1804.destination.Fragments.StructureHor_fragment"
-        tools:layout="@layout/structurehor_layout_fragment" />
+        />
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
