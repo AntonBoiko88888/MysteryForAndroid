@@ -1,6 +1,7 @@
 package keen.eye.ink1804.destination;
 
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -8,8 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
+import keen.eye.ink1804.destination.Fragments.StructureHor_fragment;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+,DatePicker_fragment.pushDateListener{
 
     private DrawerLayout drawer;
     @Override
@@ -44,5 +50,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onDatePushed(int day, int month, int year) {
+        int dd = day,mm=month,yy=year;
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        StructureHor_fragment infoFragment = new StructureHor_fragment();
+
+        Bundle args = new Bundle();
+        args.putInt("day",day);
+        args.putInt("month",month);
+        args.putInt("year",year);
+        infoFragment.setArguments(args);
+
+//        transaction.replace(R.id.structure_fr,infoFragment,"infoFragment");
+//        transaction.addToBackStack("infoFragment");
+//        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
+//        transaction.commit();
+        Toast.makeText(getApplicationContext(), dd+"."+mm+"."+yy, Toast.LENGTH_SHORT).show();
     }
 }
