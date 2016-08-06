@@ -3,7 +3,6 @@ package keen.eye.ink1804.destination.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +29,8 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
             ,tv_type_marriage, tv_struct_element;
     private EditText et_date;
     private View rootView;
+
+    private int mYear;
 
     private String D_virtualStruct, D_yearName, D_zodiakName, D_numberYears, D_yearPeriod, D_symbolFate, D_temperament, D_communicate, D_psychology, D_typeThinking, D_vectorHost, D_vectorServant, D_typeMarriage, D_structElement;
 
@@ -61,22 +62,24 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         Structure_databases struct_data = new Structure_databases();
         int i,j;
         try {
-            String yearNow;
-            Date cal = Calendar.getInstance().getTime();
-            yearNow = cal.toString();
+            final Calendar c = Calendar.getInstance();
+            mYear = c.get(Calendar.YEAR);
+
             String[] date = et_date.getText().toString().split("\\.");
             i = struct_data.getYearId(date[2]);
             j = struct_data.getDateId(Integer.parseInt(date[0]), Integer.parseInt(date[1]));
             D_virtualStruct = struct_data.getStructureType(i, j);
             D_yearName = struct_data.getYearName(date[2]);
             D_zodiakName = struct_data.getZodiakName(Integer.parseInt(date[0]), Integer.parseInt(date[1]));
-            D_numberYears = struct_data.getNumberYear(yearNow, Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+            D_numberYears = struct_data.getNumberYear(""+mYear, Integer.parseInt(date[1]), Integer.parseInt(date[0]));
             D_temperament = struct_data.getTemperamentName(i);
+            D_symbolFate = struct_data.getSymbolFate(i);
             tv_struct.setText("Тип: "+ D_virtualStruct);
             tv_year.setText("Год: " + D_yearName);
             tv_zodiak.setText("Знак зодиака: " + D_zodiakName);
             tv_number_year.setText("Число года: " + D_numberYears);
             tv_temperament.setText("Темперамент: " + D_temperament);
+            tv_symbol_fate.setText("По судьбе: " + D_symbolFate);
 
         }catch (Exception e){
             Toast.makeText(getActivity(), "Неверно введена дата", Toast.LENGTH_SHORT).show();

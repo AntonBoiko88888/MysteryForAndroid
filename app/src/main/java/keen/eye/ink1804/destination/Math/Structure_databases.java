@@ -40,19 +40,34 @@ public class Structure_databases {
 
 
         public String getNumberYear(String year, int month, int day){ // Возвращает число года
-                int yearperiod = 0;
-                yearperiod = Integer.parseInt(year)+month+day;
-                yearperiod = SummChislo(yearperiod);
-                return String.valueOf(yearperiod);
+                int numberYear = 0;
+                numberYear = Integer.parseInt(year)+month+day;
+                numberYear = SummChislo(numberYear);
+                return String.valueOf(numberYear);
         }
 
-        public String getTemperamentName(int year){ //вычисление энергетической структуры(сангвиник, холерик...)
+        public String getYearPeriod(String year, int month, int day){ // Возвращает какой год: Преодоление...
+                int yearPeriod = 0;
+
+                return String.valueOf(yearPeriod);
+        }
+
+        public String getTemperamentName(int year){ //вычисление темперамента(сангвиник, холерик...)
                 String EnergyName="";
                 if(year==3||year==5||year==10) EnergyName = C.ENERGI_STRUCTURE_NAMES[0];
                 else if(year==4||year==9||year==11) EnergyName = C.ENERGI_STRUCTURE_NAMES[1];
                 else if(year==1||year==6||year==8) EnergyName = C.ENERGI_STRUCTURE_NAMES[2];
                 else if(year==0||year==2||year==7) EnergyName = C.ENERGI_STRUCTURE_NAMES[3];
                 return EnergyName;
+        }
+
+        public String getSymbolFate(int year){ //вычисление Знака судьбы
+                String SymbolFate="";
+                if(year==1||year==3||year==11) SymbolFate = C.SYMBOL_FATE_NAMES[0];
+                else if(year==2||year==4||year==6) SymbolFate = C.SYMBOL_FATE_NAMES[1];
+                else if(year==5||year==7||year==9) SymbolFate = C.SYMBOL_FATE_NAMES[2];
+                else if(year==0||year==8||year==10) SymbolFate = C.SYMBOL_FATE_NAMES[3];
+                return SymbolFate;
         }
 
         public String getZodiakName(int day,int month){
