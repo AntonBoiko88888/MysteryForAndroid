@@ -6,6 +6,7 @@ package keen.eye.ink1804.destination.Math;
 public class Constants {
     //Годы по китайскому гороскопу
 
+    public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};
     public static final String[] SYMBOL_FATE_NAMES = {"Пионер","Фаталист","Везунчик","Самодельщик"};
     public static final String[] ENERGI_STRUCTURE_NAMES = {"Природный оптимист (Сангвиник)","Драматический темперамент (Холерик)","Космический оптимист (Флегматик)","Скептик (Меланхолик)"};
 

@@ -19,14 +19,19 @@ public class Structure_databases {
                 {C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.VECTOR,C.VECTOR,C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT},//лошадь
                 {C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT},//коза
         };
-        public int getYearId(String year){
-                return Integer.parseInt(year)%12;
-        }
-        public String getYearName(String year){
+
+
+        public int getYearId(int year){
+                return year%12;
+        }//done
+
+
+        public String getYearName(int year){
                 String yearName="";
-                yearName = C.YEAR_NAMES[Integer.parseInt(year)%12];
+                yearName = C.YEAR_NAMES[year%12];
                 return yearName;
-        }
+        }//done
+
 
         public int SummChislo(int Chislo) { // Суммирует каждую цифру числа
                 int res = 0;
@@ -36,21 +41,45 @@ public class Structure_databases {
                         }
                 if(res>9) res = SummChislo(res);
                 return res;
-        }
+        }//done
 
 
-        public String getNumberYear(int year, int month, int day){ // Возвращает число года
+        public String getNumberYear(int yearNow, int month, int day){ // Возвращает число года
                 int numberYear = 0;
-                numberYear = year+month+day;
+                numberYear = yearNow+month+day;
                 numberYear = SummChislo(numberYear);
                 return String.valueOf(numberYear);
         }//done
+
+
+        public String getTypeThinkingId(boolean man, int month, int day){ // Возвращает id мышления
+                int numberYear = 0;
+                return String.valueOf(numberYear);
+        }//done
+
+        public String getTypeThinkingNames(boolean man, int year){ // Возвращает тип мышления
+                String typeThinking="";
+                if(man) {
+                        if(year==1||year==5||year==9) typeThinking = C.TYPE_THINKING_NAMES[0];
+                        else if(year==2||year==6||year==10) typeThinking = C.TYPE_THINKING_NAMES[1];
+                        else if(year==3||year==7||year==11) typeThinking = C.TYPE_THINKING_NAMES[2];
+                        else if(year==0||year==4||year==8) typeThinking = C.TYPE_THINKING_NAMES[3];
+                } else {
+                        if(year==2||year==6||year==10) typeThinking = C.TYPE_THINKING_NAMES[0];
+                        else if(year==1||year==5||year==9) typeThinking = C.TYPE_THINKING_NAMES[1];
+                        else if(year==0||year==4||year==8) typeThinking = C.TYPE_THINKING_NAMES[2];
+                        else if(year==3||year==7||year==11) typeThinking = C.TYPE_THINKING_NAMES[3];
+                }
+                return typeThinking;
+        }//done
+
 
         public String getYearPeriod(String year, int month, int day){ // Возвращает какой год: Преодоление...
                 int yearPeriod = 0;
 
                 return String.valueOf(yearPeriod);
         }
+
 
         public String getTemperamentName(int year){ //вычисление темперамента(сангвиник, холерик...)
                 String EnergyName="";
@@ -60,6 +89,8 @@ public class Structure_databases {
                 else if(year==0||year==2||year==7) EnergyName = C.ENERGI_STRUCTURE_NAMES[3];
                 return EnergyName;
         }//done
+
+
         public String getSymbolFate(int year){ //вычисление Знака судьбы
                 String SymbolFate="";
                 if(year==1||year==3||year==11) SymbolFate = C.SYMBOL_FATE_NAMES[0];
@@ -68,6 +99,8 @@ public class Structure_databases {
                 else if(year==0||year==8||year==10) SymbolFate = C.SYMBOL_FATE_NAMES[3];
                 return SymbolFate;
         }//done
+
+
         public String getZodiakName(int day,int month){
                 String zodiakName = "";
                 switch (month){
@@ -99,6 +132,8 @@ public class Structure_databases {
                 }
                 return zodiakName;
         }//done
+
+
         public int getDateId(int day,int month){
                 int res = -1;
                 switch (month) {
@@ -166,6 +201,8 @@ public class Structure_databases {
                 }
                 return res;
         }//done
+
+
         public String getStructureType(int i,int j){
                 return StructureHor[i][j];
         }//done
