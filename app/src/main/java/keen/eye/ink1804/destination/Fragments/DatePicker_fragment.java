@@ -21,7 +21,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
 
     private DatePicker datePicker;
     private Button btn_result;
-    private int day,month,year,currentYear;
+    private int day = 1,month = 1,year = 2000,currentYear = 2016;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView  = inflater.inflate(R.layout.datepicker_layout_fragment,container,false);

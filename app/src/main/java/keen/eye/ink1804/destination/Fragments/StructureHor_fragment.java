@@ -19,7 +19,7 @@ public class StructureHor_fragment extends Fragment {
 
     private TextView tv_year,tv_zodiak,tv_struct, tv_number_year, tv_year_period, tv_symbol_fate
             ,tv_temperament, tv_communicate, tv_psychology, tv_type_thinking, tv_vector_host, tv_vector_servant
-            ,tv_type_marriage, tv_struct_element;
+            ,tv_type_marriage, tv_struct_element,tv_date;
     private View rootView;
 
     private int yearNow, year, month, day;
@@ -48,6 +48,7 @@ public class StructureHor_fragment extends Fragment {
         D_temperament = struct_data.getTemperamentName(i);
         D_symbolFate = struct_data.getSymbolFate(i);
         D_typeThinking = struct_data.getTypeThinkingNames(true, i);
+        tv_date.setText(day+"."+month+"."+year);
         tv_struct.setText("Тип: "+ D_virtualStruct);
         tv_year.setText("Год: " + D_yearName);
         tv_zodiak.setText("Знак зодиака: " + D_zodiakName);
@@ -67,6 +68,7 @@ public class StructureHor_fragment extends Fragment {
     }
 
     private void InitializeTView() {
+        tv_date = (TextView) rootView.findViewById(R.id.tv_date);
         tv_year = (TextView) rootView.findViewById(R.id.tv_year_result);
         tv_struct = (TextView) rootView.findViewById(R.id.tv_struct_result);
         tv_zodiak = (TextView) rootView.findViewById(R.id.tv_zodiak_result);
