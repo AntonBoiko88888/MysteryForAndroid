@@ -65,9 +65,9 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         tv_vector_host.setText("Векторный хозяин: " + D_vectorHost);
         tv_vector_host.setText("Векторный слуга: " + D_vectorServant);
         tv_equal_marriage.setText("Равный брак: " + D_equalMarriage);
-        tv_equal_marriage.setText("Романтический брак: " + D_romanticMarriage);
-        tv_equal_marriage.setText("Духовный брак: " + D_spiritualMarriage);
-        tv_equal_marriage.setText("Патриархальный брак: " + D_patriarchalMarriage);
+        tv_romantic_marriage.setText("Романтический брак: " + D_romanticMarriage);
+        tv_spiritual_marriage.setText("Духовный брак: " + D_spiritualMarriage);
+        tv_patriarchal_marriage.setText("Патриархальный брак: " + D_patriarchalMarriage);
 
 //        try {
 //        }catch (Exception e){
