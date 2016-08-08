@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onDatePushed(int day, int month, int year,int currentYear) {
+    public void onDatePushed(int day, int month, int year,int currentYear,boolean sex) {
         int dd = day,mm=month,yy=year;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         StructureHor_fragment infoFragment = new StructureHor_fragment();
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putInt("month",month);
         args.putInt("year",year);
         args.putInt("currentYear",currentYear);
+        args.putBoolean("sex",sex);
         infoFragment.setArguments(args);
 
         transaction.replace(R.id.structure_fr,infoFragment,"infoFragment");

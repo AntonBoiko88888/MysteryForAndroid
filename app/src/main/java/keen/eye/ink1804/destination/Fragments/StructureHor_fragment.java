@@ -22,6 +22,7 @@ public class StructureHor_fragment extends Fragment {
             ,tv_type_marriage, tv_struct_element,tv_date;
     private View rootView;
 
+    private boolean sex;
     private int yearNow, year, month, day;
     private String D_virtualStruct, D_yearName, D_zodiakName, D_numberYears, D_yearPeriod, D_symbolFate, D_temperament, D_communicate, D_psychology, D_typeThinking, D_vectorHost, D_vectorServant, D_typeMarriage, D_structElement;
 
@@ -33,8 +34,10 @@ public class StructureHor_fragment extends Fragment {
         year = args.getInt("year");
         month = args.getInt("month");
         day = args.getInt("day");
+        sex = args.getBoolean("sex");
+        Toast.makeText(getActivity(), ""+sex, Toast.LENGTH_SHORT).show();
 
-        InitializeTView();
+        initializeTView();
 
         Structure_databases struct_data = new Structure_databases();
         int i,j;
@@ -67,7 +70,7 @@ public class StructureHor_fragment extends Fragment {
         return rootView;
     }
 
-    private void InitializeTView() {
+    private void initializeTView() {
         tv_date = (TextView) rootView.findViewById(R.id.tv_date);
         tv_year = (TextView) rootView.findViewById(R.id.tv_year_result);
         tv_struct = (TextView) rootView.findViewById(R.id.tv_struct_result);
