@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
 
@@ -45,17 +46,18 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
         return rootView;
     }
 
-    public interface pushDateListener{
-        void onDatePushed(int day, int month, int year,int currentYear,boolean sex);
-    }
+//    public interface pushDateListener{
+//        void onDatePushed(int day, int month, int year,int currentYear,boolean sex);
+//        void onDescriptionClicked();
+//    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_getResult:
-                pushDateListener listener = (pushDateListener)getActivity();
                 sex = rb_male.isChecked();
+                pushDateListener listener = (pushDateListener)getActivity();
                 listener.onDatePushed(day,month,year,currentYear,sex);
-                Toast.makeText(getActivity(), day+"."+month+"."+year, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity(), day+"."+month+"."+year, Toast.LENGTH_SHORT).show();
         }
     }
     private void initializeTView() {

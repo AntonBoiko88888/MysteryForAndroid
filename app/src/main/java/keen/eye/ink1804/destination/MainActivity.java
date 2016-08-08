@@ -15,10 +15,13 @@ import android.widget.Toast;
 import java.util.Date;
 
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
+import keen.eye.ink1804.destination.Fragments.Description_fragment;
 import keen.eye.ink1804.destination.Fragments.StructureHor_fragment;
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-,DatePicker_fragment.pushDateListener{
+,pushDateListener {
+
 
     private DrawerLayout drawer;
     @Override
@@ -80,5 +83,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
         transaction.commit();
 //        Toast.makeText(getApplicationContext(), dd+"."+mm+"."+yy, Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onDescriptionClicked(String key) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Description_fragment descrFragment = new Description_fragment();
+
+        Bundle args = new Bundle();
+        args.putString("key",key);
+        descrFragment.setArguments(args);
+
+        transaction.replace(R.id.structure_fr,descrFragment,"descFragment");
+        transaction.addToBackStack("descFragment");
+        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
+        transaction.commit();
     }
 }

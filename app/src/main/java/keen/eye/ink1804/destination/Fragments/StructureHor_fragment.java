@@ -9,13 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Structure_databases;
 import keen.eye.ink1804.destination.R;
 
 /**
  * Created by Ink1804 on 29.07.16.
  */
-public class StructureHor_fragment extends Fragment {
+public class StructureHor_fragment extends Fragment implements View.OnClickListener{
 
     private TextView tv_year,tv_zodiak,tv_struct, tv_number_year, tv_year_period, tv_symbol_fate
             , tv_energetics, tv_communicate, tv_psychology, tv_type_thinking, tv_vector_host
@@ -23,7 +24,7 @@ public class StructureHor_fragment extends Fragment {
             , tv_patriarchal_marriage, tv_struct_element,tv_date;
     private View rootView;
 
-    private boolean sex;
+    private boolean sex;//true - male, false - female
     private int yearNow, year, month, day;
     private String D_virtualStruct, D_yearName, D_zodiakName, D_numberYears, D_yearPeriod, D_symbolFate
             , D_energetics, D_communicate, D_psychology, D_typeThinking, D_vectorHost, D_vectorServant
@@ -32,13 +33,6 @@ public class StructureHor_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView  = inflater.inflate(keen.eye.ink1804.destination.R.layout.structurehor_layout_fragment,container,false);
-        Bundle args = getArguments();
-        yearNow = args.getInt("currentYear");
-        year = args.getInt("year");
-        month = args.getInt("month");
-        day = args.getInt("day");
-        sex = args.getBoolean("sex");
-        Toast.makeText(getActivity(), ""+sex, Toast.LENGTH_SHORT).show();
 
         initializeTView();
 
@@ -86,7 +80,14 @@ public class StructureHor_fragment extends Fragment {
     }
 
     private void initializeTView() {
+        Bundle args = getArguments();
+        yearNow = args.getInt("currentYear");
+        year = args.getInt("year");
+        month = args.getInt("month");
+        day = args.getInt("day");
+        sex = args.getBoolean("sex");
         tv_date = (TextView) rootView.findViewById(R.id.tv_date);
+        tv_date.setOnClickListener(this);
         tv_year = (TextView) rootView.findViewById(R.id.tv_year_result);
         tv_struct = (TextView) rootView.findViewById(R.id.tv_struct_result);
         tv_zodiak = (TextView) rootView.findViewById(R.id.tv_zodiak_result);
@@ -104,5 +105,17 @@ public class StructureHor_fragment extends Fragment {
         tv_spiritual_marriage = (TextView) rootView.findViewById(R.id.tv_spiritual_marriage);
         tv_patriarchal_marriage = (TextView) rootView.findViewById(R.id.tv_patriarchal_marriage);
         tv_struct_element = (TextView) rootView.findViewById(R.id.tv_struct_element);
+    }
+
+    @Override
+    public void onClick(View view) {
+        String key;
+        switch (view.getId()){
+            case R.id.tv_date:
+                key = D_virtualStruct;
+                pushDateListener listener = (pushDateListener)getActivity();
+                listener.onDescriptionClicked(key);
+        }
+
     }
 }
