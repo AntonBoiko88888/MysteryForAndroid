@@ -8,9 +8,11 @@ public class Constants {
 
     public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};
     public static final String[] SYMBOL_FATE_NAMES = {"Пионер","Фаталист","Везунчик","Самодельщик"};
-    public static final String[] ENERGI_STRUCTURE_NAMES = {"Природный оптимист (Сангвиник)","Драматический темперамент (Холерик)","Космический оптимист (Флегматик)","Скептик (Меланхолик)"};
+    public static final String[] ENERGI_STRUCTURE_NAMES = {"Природный оптимист","Драматическая натура","Космический оптимист","Скептик"};
 
-    public static final String[] YEAR_NAMES = {"Обезьяна","Петух","Собака","Кабан","Крыса","Бык","Тигр","Кот","Дракон","Змея","Лошадь","Коза"};
+    public static final String[] YEAR_NAMES =         {"Обезьяна","Петух", "Собака","Кабан",  "Крыса",   "Бык",   "Тигр","Кот",   "Дракон","Змея",    "Лошадь","Коза"};
+    public static final String[] YEAR_HOST_NAMES =    {"Змея",    "Кот",   "Петух", "Лошадь", "Обезьяна","Собака","Бык", "Дракон","Кабан", "Коза",    "Крыса", "Тигр"};
+    public static final String[] YEAR_SERVANT_NAMES = {"Крыса",   "Собака","Бык",   "Дракон", "Лошадь",  "Тигр",  "Коза","Петух", "Кот",   "Обезьяна","Кабан", "Змея"};
     public static final String Y_SNAKE = "Змея";
     public static final String Y_HORSE = "Лошадь";
     public static final String Y_GOAT = "Коза";

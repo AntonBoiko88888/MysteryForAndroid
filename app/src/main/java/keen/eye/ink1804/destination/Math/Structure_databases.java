@@ -52,10 +52,99 @@ public class Structure_databases {
         }//done
 
 
+        public String getEqualMarriageName(int year) {
+                String res = "";
+                switch (year) {
+                        case 0:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 1:res = C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 2:res = C.YEAR_NAMES[9]; break;
+                        case 3:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]; break;
+                        case 4:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 5:res = C.YEAR_NAMES[10]; break;
+                        case 6:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[9]; break;
+                        case 7:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]; break;
+                        case 8:res = C.YEAR_NAMES[11]; break;
+                        case 9:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 10:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 11:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                }
+                return res;
+        }//done
+
+        public String getRomanticMarriageName(int year) {
+                String res = "";
+                switch (year) {
+                        case 0:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 1:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[11]; break;
+                        case 2:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 3:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 4:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]; break;
+                        case 5:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 6:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 7:res = C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 8:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 9:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]; break;
+                        case 10:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[8]; break;
+                        case 11:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]; break;
+                }
+                return res;
+        }//done
+
+        public String getSpiritualMarriageName(int year) {
+                String res = "";
+                switch (year) {
+                        case 0:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]; break;
+                        case 1:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 2:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 3:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]; break;
+                        case 4:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 5:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 6:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]; break;
+                        case 7:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 8:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 9:res = C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 10:res = C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 11:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[10]; break;
+                }
+                return res;
+        }//done
+
+        public String getPatriarchalMarriageName(int year) {
+                String res = "";
+                switch (year) {
+                        case 0:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[8]; break;
+                        case 1:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 2:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 3:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 4:res = C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 5:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 6:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 7:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 8:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 9:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
+                        case 10:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
+                        case 11:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                }
+                return res;
+        }//done
+
+
+        public String getHostName(int year) {
+                String res;
+                res = C.YEAR_HOST_NAMES[year];
+                return res;
+        }//done
+
+        public String getServantName(int year) {
+                String res;
+                res = C.YEAR_SERVANT_NAMES[year];
+                return res;
+        }//done
+
         public String getTypeThinkingId(boolean man, int month, int day){ // Возвращает id мышления
                 int numberYear = 0;
                 return String.valueOf(numberYear);
-        }//done
+        }
 
         public String getTypeThinkingNames(boolean man, int year){ // Возвращает тип мышления
                 String typeThinking="";
