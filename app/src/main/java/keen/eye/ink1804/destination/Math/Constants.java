@@ -7,8 +7,11 @@ public class Constants {
     //Годы по китайскому гороскопу
 
     public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};
-    public static final String[] SYMBOL_FATE_NAMES = {"Пионер","Фаталист","Везунчик","Самодельщик"};
-    public static final String[] ENERGI_STRUCTURE_NAMES = {"Природный оптимист","Драматическая натура","Космический оптимист","Скептик"};
+    public static final String[] SYMBOL_FATE_NAMES = {"Пионерский знак","Фатальный знак","Знак Везения","Самодеятельный знак"};
+    public static final String[] ENERGI_STRUCTURE_NAMES = {"Природный оптимист","Драмматизатор","Космический оптимист","Скептик"};
+    public static final String[] MEANS_COMMUNICATE_NAMES = {"Открытый знак","Закрытый знак","Ортодокс"};
+    public static final String[] PSYCHOLOGY_NAMES = {"Приземленный знак","Знак Возмужания","Взлетный знак", "Чувствительный знак"};
+    public static final String[] ELEMENT_NAMES = {"Революционер(Огонь)","Консерватор(Вода)","Небожитель(Воздух)", "Созидатель(Земля)"};
 
     public static final String[] YEAR_NAMES =         {"Обезьяна","Петух", "Собака","Кабан",  "Крыса",   "Бык",   "Тигр","Кот",   "Дракон","Змея",    "Лошадь","Коза"};
     public static final String[] YEAR_HOST_NAMES =    {"Змея",    "Кот",   "Петух", "Лошадь", "Обезьяна","Собака","Бык", "Дракон","Кабан", "Коза",    "Крыса", "Тигр"};

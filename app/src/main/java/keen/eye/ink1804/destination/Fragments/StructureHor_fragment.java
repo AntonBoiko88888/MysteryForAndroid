@@ -54,6 +54,9 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         D_romanticMarriage = struct_data.getRomanticMarriageName(i);
         D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);
         D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);
+        D_communicate = struct_data.getMeansCommunicateName(i);
+        D_psychology = struct_data.getPsychologyName(i);
+        D_structElement = struct_data.getElementName(day, month);
         tv_date.setText(day+"."+month+"."+year);
         tv_struct.setText("Тип: "+ D_virtualStruct);
         tv_year.setText("Год: " + D_yearName);
@@ -68,6 +71,8 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         tv_romantic_marriage.setText("Романтический брак: " + D_romanticMarriage);
         tv_spiritual_marriage.setText("Духовный брак: " + D_spiritualMarriage);
         tv_patriarchal_marriage.setText("Патриархальный брак: " + D_patriarchalMarriage);
+        tv_communicate.setText("Способы общения: " + D_communicate);
+        tv_psychology.setText("Психология человека: " + D_psychology);
 
 //        try {
 //        }catch (Exception e){

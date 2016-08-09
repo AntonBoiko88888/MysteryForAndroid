@@ -129,6 +129,57 @@ public class Structure_databases {
         }//done
 
 
+        public String getMeansCommunicateName(int year) {
+                String res = "";
+                if(year==1||year==4||year==7||year==10) res = C.MEANS_COMMUNICATE_NAMES[0];
+                else if(year==0||year==3||year==6||year==9) res = C.MEANS_COMMUNICATE_NAMES[1];
+                else if(year==2||year==5||year==8||year==11) res = C.MEANS_COMMUNICATE_NAMES[2];
+                return res;
+        }
+
+        public String getPsychologyName(int year) {
+                String res = "";
+                if(year==0||year==1||year==2) res = C.PSYCHOLOGY_NAMES[0];
+                else if(year==3||year==4||year==5) res = C.PSYCHOLOGY_NAMES[1];
+                else if(year==6||year==7||year==8) res = C.PSYCHOLOGY_NAMES[2];
+                else if(year==9||year==10||year==11) res = C.PSYCHOLOGY_NAMES[3];
+                return res;
+        }
+
+        public String getElementName(int month, int day) {
+                String elementName = "";
+                switch (month){
+                        case 1:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[3]; else elementName = C.ELEMENT_NAMES[1]; break;
+                        case 2:
+                                if(day>=21) elementName = C.ELEMENT_NAMES[0]; else elementName = C.ELEMENT_NAMES[3]; break;
+                        case 3:
+                                if(day>=23) elementName = C.ELEMENT_NAMES[2]; else elementName = C.ELEMENT_NAMES[0]; break;
+                        case 4:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[1]; else elementName = C.ELEMENT_NAMES[2]; break;
+                        case 5:
+                                if(day>=23) elementName = C.ELEMENT_NAMES[3]; else elementName = C.ELEMENT_NAMES[1]; break;
+                        case 6:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[0]; else elementName = C.ELEMENT_NAMES[3]; break;
+                        case 7:
+                                if(day>=23) elementName = C.ELEMENT_NAMES[2]; else elementName = C.ELEMENT_NAMES[0]; break;
+                        case 8:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[1]; else elementName = C.ELEMENT_NAMES[2]; break;
+                        case 9:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[3]; else elementName = C.ELEMENT_NAMES[1]; break;
+                        case 10:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[0]; else elementName = C.ELEMENT_NAMES[3]; break;
+                        case 11:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[2]; else elementName = C.ELEMENT_NAMES[0]; break;
+                        case 12:
+                                if(day>=22) elementName = C.ELEMENT_NAMES[1]; else elementName = C.ELEMENT_NAMES[2]; break;
+                        default: break;
+                }
+                return elementName;
+        }
+
+
+
         public String getHostName(int year) {
                 String res;
                 res = C.YEAR_HOST_NAMES[year];
@@ -141,10 +192,25 @@ public class Structure_databases {
                 return res;
         }//done
 
-        public String getTypeThinkingId(boolean man, int month, int day){ // Возвращает id мышления
+        public int getYearNowId(int yearNow) {
+                return yearNow%12;
+        }//done
+
+        public int getTypeThinkingId(boolean man, int year){ // Возвращает id мышления
                 int numberYear = 0;
-                return String.valueOf(numberYear);
-        }
+                if(man) {
+                        if(year==1||year==5||year==9) numberYear = 0;
+                        else if(year==2||year==6||year==10) numberYear = 1;
+                        else if(year==3||year==7||year==11) numberYear = 2;
+                        else if(year==0||year==4||year==8) numberYear = 3;
+                } else {
+                        if(year==2||year==6||year==10) numberYear = 0;
+                        else if(year==1||year==5||year==9) numberYear = 1;
+                        else if(year==0||year==4||year==8) numberYear = 2;
+                        else if(year==3||year==7||year==11) numberYear = 3;
+                }
+                return numberYear;
+        }//done
 
         public String getTypeThinkingNames(boolean man, int year){ // Возвращает тип мышления
                 String typeThinking="";
