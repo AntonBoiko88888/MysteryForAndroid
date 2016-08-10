@@ -1,11 +1,14 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -32,18 +35,8 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView  = inflater.inflate(keen.eye.ink1804.destination.R.layout.structurehor_layout_fragment,container,false);
-
         initializeTView();
-
         fillInfo();
-
-//        try {
-//        }catch (Exception e){
-//            Toast.makeText(getActivity(), "Неверно введена дата", Toast.LENGTH_SHORT).show();
-//            Snackbar.make(getView(),"Неверно введена дата",Snackbar.LENGTH_SHORT).show();
-//            tv_struct.setText(""); tv_year.setText(""); tv_zodiak.setText("");//clearing the textViews
-//        }
-//
         return rootView;
     }
 
@@ -74,7 +67,6 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         tv_patriarchal_marriage = (TextView) rootView.findViewById(R.id.tv_patriarchal_marriage);
         tv_struct_element = (TextView) rootView.findViewById(R.id.tv_struct_element);
     }
-
     private void fillInfo() {
         Structure_databases struct_data = new Structure_databases();
         int i,j;
@@ -115,9 +107,22 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         tv_romantic_marriage.setText("Романтический брак: " + D_romanticMarriage);
         tv_spiritual_marriage.setText("Духовный брак: " + D_spiritualMarriage);
         tv_patriarchal_marriage.setText("Патриархальный брак: " + D_patriarchalMarriage);
-        tv_struct_element.setText("Структура стихии: " + D_structElement);
+        tv_struct_element.setText(Html.fromHtml(setTextSettings("Структура стихии:",false,true,true)+ D_structElement));
     }
-
+    public String setTextSettings(String _text,boolean bold,boolean underline, boolean itatic){
+        String text = _text;
+//        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/minion_bold_cond_disp.otf");
+//        textView.setTypeface(font);//шрифт
+//        textView.setText(Html.fromHtml(text).toString());//парс из html в текст
+        if(bold)
+            text = String.format("<b>%s</b>",text);
+        if(itatic)
+            text = String.format("<i>%s</i>",text);
+        if(underline)
+            text = String.format("<u>%s</u>",text);
+        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+        return text+" ";
+    }
     @Override
     public void onClick(View view) {
         String key;
