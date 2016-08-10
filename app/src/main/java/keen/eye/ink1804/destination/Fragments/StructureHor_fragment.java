@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -36,43 +35,7 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
 
         initializeTView();
 
-        Structure_databases struct_data = new Structure_databases();
-        int i,j;
-
-        i = struct_data.getYearId(year);
-        j = struct_data.getDateId(day, month);
-        D_virtualStruct = struct_data.getStructureType(i, j);
-        D_yearName = struct_data.getYearName(year);
-        D_zodiakName = struct_data.getZodiakName(day, month);
-        D_numberYears = struct_data.getNumberYear(yearNow, month, day);
-        D_energetics = struct_data.getTemperamentName(i);
-        D_symbolFate = struct_data.getSymbolFate(i);
-        D_typeThinking = struct_data.getTypeThinkingNames(sex, i);
-        D_vectorHost = struct_data.getHostName(i);
-        D_vectorServant = struct_data.getServantName(i);
-        D_equalMarriage = struct_data.getEqualMarriageName(i);
-        D_romanticMarriage = struct_data.getRomanticMarriageName(i);
-        D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);
-        D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);
-        D_communicate = struct_data.getMeansCommunicateName(i);
-        D_psychology = struct_data.getPsychologyName(i);
-        D_structElement = struct_data.getElementName(day, month);
-        tv_date.setText(day+"."+month+"."+year);
-        tv_struct.setText("Тип: "+ D_virtualStruct);
-        tv_year.setText("Год: " + D_yearName);
-        tv_zodiak.setText("Знак зодиака: " + D_zodiakName);
-        tv_number_year.setText("Число года: " + D_numberYears);
-        tv_energetics.setText("Энергетика: " + D_energetics);
-        tv_symbol_fate.setText("По судьбе: "+ D_symbolFate);
-        tv_type_thinking.setText("Тип мышления: " + D_typeThinking);
-        tv_vector_host.setText("Векторный хозяин: " + D_vectorHost);
-        tv_vector_host.setText("Векторный слуга: " + D_vectorServant);
-        tv_equal_marriage.setText("Равный брак: " + D_equalMarriage);
-        tv_romantic_marriage.setText("Романтический брак: " + D_romanticMarriage);
-        tv_spiritual_marriage.setText("Духовный брак: " + D_spiritualMarriage);
-        tv_patriarchal_marriage.setText("Патриархальный брак: " + D_patriarchalMarriage);
-        tv_communicate.setText("Способы общения: " + D_communicate);
-        tv_psychology.setText("Психология человека: " + D_psychology);
+        tv_SetText();
 
 //        try {
 //        }catch (Exception e){
@@ -110,6 +73,49 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         tv_spiritual_marriage = (TextView) rootView.findViewById(R.id.tv_spiritual_marriage);
         tv_patriarchal_marriage = (TextView) rootView.findViewById(R.id.tv_patriarchal_marriage);
         tv_struct_element = (TextView) rootView.findViewById(R.id.tv_struct_element);
+    }
+
+    private void tv_SetText() {
+        Structure_databases struct_data = new Structure_databases();
+        int i,j;
+
+        i = struct_data.getYearId(year);
+        j = struct_data.getDateId(day, month);
+        D_virtualStruct = struct_data.getStructureType(i, j);
+        D_yearName = struct_data.getYearName(year);
+        D_zodiakName = struct_data.getZodiakName(day, month);
+        D_numberYears = struct_data.getNumberYear(yearNow, month, day);
+        D_yearPeriod = struct_data.getYearPeriod(struct_data.getYearIdTable(yearNow),struct_data.getTypeThinkingId(sex,i));
+        D_symbolFate = struct_data.getSymbolFate(i);
+        D_energetics = struct_data.getEnergyName(i);
+        D_communicate = struct_data.getMeansCommunicateName(i);
+        D_psychology = struct_data.getPsychologyName(i);
+        D_typeThinking = struct_data.getTypeThinkingNames(sex, i);
+        D_vectorHost = struct_data.getHostName(i);
+        D_vectorServant = struct_data.getServantName(i);
+        D_equalMarriage = struct_data.getEqualMarriageName(i);
+        D_romanticMarriage = struct_data.getRomanticMarriageName(i);
+        D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);
+        D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);
+        D_structElement = struct_data.getElementName(day, month);
+        tv_date.setText(day+"."+month+"."+year);
+        tv_struct.setText("Тип: "+ D_virtualStruct);
+        tv_year.setText("Год: " + D_yearName);
+        tv_zodiak.setText("Знак зодиака: " + D_zodiakName);
+        tv_number_year.setText("Число года: " + D_numberYears);
+        tv_year_period.setText("Годовой цикл: " + D_yearPeriod);
+        tv_symbol_fate.setText("По судьбе: "+ D_symbolFate);
+        tv_energetics.setText("Энергетика: " + D_energetics);
+        tv_communicate.setText("Способы общения: " + D_communicate);
+        tv_psychology.setText("Психология человека: " + D_psychology);
+        tv_type_thinking.setText("Тип мышления: " + D_typeThinking);
+        tv_vector_host.setText("Векторный хозяин: " + D_vectorHost);
+        tv_vector_servant.setText("Векторный слуга: " + D_vectorServant);
+        tv_equal_marriage.setText("Равный брак: " + D_equalMarriage);
+        tv_romantic_marriage.setText("Романтический брак: " + D_romanticMarriage);
+        tv_spiritual_marriage.setText("Духовный брак: " + D_spiritualMarriage);
+        tv_patriarchal_marriage.setText("Патриархальный брак: " + D_patriarchalMarriage);
+        tv_struct_element.setText("Структура стихии: " + D_structElement);
     }
 
     @Override

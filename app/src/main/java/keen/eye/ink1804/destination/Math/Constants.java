@@ -8,7 +8,7 @@ public class Constants {
 
     public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};
     public static final String[] SYMBOL_FATE_NAMES = {"Пионерский знак","Фатальный знак","Знак Везения","Самодеятельный знак"};
-    public static final String[] ENERGI_STRUCTURE_NAMES = {"Природный оптимист","Драмматизатор","Космический оптимист","Скептик"};
+    public static final String[] ENERGY_STRUCTURE_NAMES = {"Природный оптимист","Драмматизатор","Космический оптимист","Скептик"};
     public static final String[] MEANS_COMMUNICATE_NAMES = {"Открытый знак","Закрытый знак","Ортодокс"};
     public static final String[] PSYCHOLOGY_NAMES = {"Приземленный знак","Знак Возмужания","Взлетный знак", "Чувствительный знак"};
     public static final String[] ELEMENT_NAMES = {"Революционер(Огонь)","Консерватор(Вода)","Небожитель(Воздух)", "Созидатель(Земля)"};
@@ -28,6 +28,13 @@ public class Constants {
     public static final String Y_TIGER = "Тигр";
     public static final String Y_CAT = "Кот";
     public static final String Y_DRAGON = "Дракон";
+
+    //Годовой период P_
+
+    public static final String P_OVERCOMING= "Преодоление";
+    public static final String P_DISCUISE = "Маскировка";
+    public static final String P_EASE = "Легкость";
+    public static final String P_PRESENTATION = "Презентация";
 
     //Знаки зодиака Z_
 

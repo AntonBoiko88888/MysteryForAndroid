@@ -20,6 +20,80 @@ public class Structure_databases {
                 {C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT},//коза
         };
 
+        public static final String[][] YearPeriod = {
+                {C.P_PRESENTATION, C.P_OVERCOMING,   C.P_DISCUISE,     C.P_EASE},//Логики
+                {C.P_EASE,         C.P_PRESENTATION, C.P_OVERCOMING,   C.P_DISCUISE},//Волевики
+                {C.P_DISCUISE,     C.P_EASE,         C.P_PRESENTATION, C.P_OVERCOMING},//Реалисты
+                {C.P_OVERCOMING,   C.P_DISCUISE,     C.P_EASE,         C.P_PRESENTATION},//Мистики
+        };
+
+        public int getDateId(int day,int month){
+                int res = -1;
+                switch (month) {
+                        case 1:
+                                if (day<=16)res = 0;
+                                else if (day>=17&&day<=27) res = 1;
+                                else if (day>=28&&day<=31) res = 2;
+                                break;
+                        case 2:
+                                if (day<=15)res = 2;
+                                else if (day>=16&&day<=26) res = 3;
+                                else if (day>=27&&day<=29) res = 4;
+                                break;
+                        case 3:
+                                if (day<=17)res = 4;
+                                else if (day>=18&&day<=28) res = 5;
+                                else if (day>=29&&day<=31) res = 6;
+                                break;
+                        case 4:
+                                if (day<=16)res = 6;
+                                else if (day>=17&&day<=27) res = 7;
+                                else if (day>=28&&day<=30) res = 8;
+                                break;
+                        case 5:
+                                if (day<=17)res = 8;
+                                else if (day>=18&&day<=28) res = 9;
+                                else if (day>=29&&day<=31) res = 10;
+                                break;
+                        case 6:
+                                if (day<=16)res = 10;
+                                else if (day>=17&&day<=27) res = 11;
+                                else if (day>=28&&day<=30) res = 12;
+                                break;
+                        case 7:
+                                if (day<=17)res = 12;
+                                else if (day>=18&&day<=28) res = 13;
+                                else if (day>=29&&day<=31) res = 14;
+                                break;
+                        case 8:
+                                if (day<=16)res = 14;
+                                else if (day>=17&&day<=27) res = 15;
+                                else if (day>=28&&day<=31) res = 16;
+                                break;
+                        case 9:
+                                if (day<=16)res = 16;
+                                else if (day>=17&&day<=27) res = 17;
+                                else if (day>=28&&day<=30) res = 18;
+                                break;
+                        case 10:
+                                if (day<=16)res = 18;
+                                else if (day>=17&&day<=27) res = 19;
+                                else if (day>=28&&day<=31) res = 20;
+                                break;
+                        case 11:
+                                if (day<=16)res = 20;
+                                else if (day>=17&&day<=27) res = 21;
+                                else if (day>=28&&day<=30)res = 22;
+                                break;
+                        case 12:
+                                if (day<=16)res = 22;
+                                else if (day>=17&&day<=26) res = 23;
+                                else if (day>=27&&day<=31) res = 0;
+                                break;
+                        default:break;
+                }
+                return res;
+        }//done
 
         public int getYearId(int year){
                 return year%12;
@@ -32,6 +106,12 @@ public class Structure_databases {
                 return yearName;
         }//done
 
+        public String getNumberYear(int yearNow, int month, int day){ // Возвращает число года
+                int numberYear = 0;
+                numberYear = yearNow+month+day;
+                numberYear = SummChislo(numberYear);
+                return String.valueOf(numberYear);
+        }//done
 
         public int SummChislo(int Chislo) { // Суммирует каждую цифру числа
                 int res = 0;
@@ -44,12 +124,6 @@ public class Structure_databases {
         }//done
 
 
-        public String getNumberYear(int yearNow, int month, int day){ // Возвращает число года
-                int numberYear = 0;
-                numberYear = yearNow+month+day;
-                numberYear = SummChislo(numberYear);
-                return String.valueOf(numberYear);
-        }//done
 
 
         public String getEqualMarriageName(int year) {
@@ -178,8 +252,6 @@ public class Structure_databases {
                 return elementName;
         }
 
-
-
         public String getHostName(int year) {
                 String res;
                 res = C.YEAR_HOST_NAMES[year];
@@ -192,25 +264,45 @@ public class Structure_databases {
                 return res;
         }//done
 
-        public int getYearNowId(int yearNow) {
-                return yearNow%12;
+        public int getYearIdTable(int yearNow) {
+                int res = yearNow%12;
+                switch (res) {
+                        case 0:res = 3; break;
+                        case 1:res = 0; break;
+                        case 2:res = 1; break;
+                        case 3:res = 2; break;
+                        case 4:res = 3; break;
+                        case 5:res = 0; break;
+                        case 6:res = 1; break;
+                        case 7:res = 2; break;
+                        case 8:res = 3; break;
+                        case 9:res = 0; break;
+                        case 10:res = 1; break;
+                        case 11:res = 2; break;
+                }
+                return res;
         }//done
 
-        public int getTypeThinkingId(boolean man, int year){ // Возвращает id мышления
+        public int getTypeThinkingId(boolean man, int yearId){ // Возвращает id мышления
                 int numberYear = 0;
                 if(man) {
-                        if(year==1||year==5||year==9) numberYear = 0;
-                        else if(year==2||year==6||year==10) numberYear = 1;
-                        else if(year==3||year==7||year==11) numberYear = 2;
-                        else if(year==0||year==4||year==8) numberYear = 3;
+                        if(yearId==1||yearId==5||yearId==9) numberYear = 0;
+                        else if(yearId==2||yearId==6||yearId==10) numberYear = 1;
+                        else if(yearId==3||yearId==7||yearId==11) numberYear = 2;
+                        else if(yearId==0||yearId==4||yearId==8) numberYear = 3;
                 } else {
-                        if(year==2||year==6||year==10) numberYear = 0;
-                        else if(year==1||year==5||year==9) numberYear = 1;
-                        else if(year==0||year==4||year==8) numberYear = 2;
-                        else if(year==3||year==7||year==11) numberYear = 3;
+                        if(yearId==2||yearId==6||yearId==10) numberYear = 0;
+                        else if(yearId==1||yearId==5||yearId==9) numberYear = 1;
+                        else if(yearId==0||yearId==4||yearId==8) numberYear = 2;
+                        else if(yearId==3||yearId==7||yearId==11) numberYear = 3;
                 }
                 return numberYear;
         }//done
+
+        public String getYearPeriod(int yearIdTable, int typeThinking){ // Возвращает какой год: Преодоление...
+                return YearPeriod[typeThinking][yearIdTable];
+        }
+
 
         public String getTypeThinkingNames(boolean man, int year){ // Возвращает тип мышления
                 String typeThinking="";
@@ -229,19 +321,12 @@ public class Structure_databases {
         }//done
 
 
-        public String getYearPeriod(String year, int month, int day){ // Возвращает какой год: Преодоление...
-                int yearPeriod = 0;
-
-                return String.valueOf(yearPeriod);
-        }
-
-
-        public String getTemperamentName(int year){ //вычисление темперамента(сангвиник, холерик...)
+        public String getEnergyName(int year){ //вычисление темперамента(сангвиник, холерик...)
                 String EnergyName="";
-                if(year==3||year==5||year==10) EnergyName = C.ENERGI_STRUCTURE_NAMES[0];
-                else if(year==4||year==9||year==11) EnergyName = C.ENERGI_STRUCTURE_NAMES[1];
-                else if(year==1||year==6||year==8) EnergyName = C.ENERGI_STRUCTURE_NAMES[2];
-                else if(year==0||year==2||year==7) EnergyName = C.ENERGI_STRUCTURE_NAMES[3];
+                if(year==3||year==5||year==10) EnergyName = C.ENERGY_STRUCTURE_NAMES[0];
+                else if(year==4||year==9||year==11) EnergyName = C.ENERGY_STRUCTURE_NAMES[1];
+                else if(year==1||year==6||year==8) EnergyName = C.ENERGY_STRUCTURE_NAMES[2];
+                else if(year==0||year==2||year==7) EnergyName = C.ENERGY_STRUCTURE_NAMES[3];
                 return EnergyName;
         }//done
 
@@ -286,75 +371,6 @@ public class Structure_databases {
                         default: break;
                 }
                 return zodiakName;
-        }//done
-
-
-        public int getDateId(int day,int month){
-                int res = -1;
-                switch (month) {
-                        case 1:
-                                if (day<=16)res = 0;
-                                else if (day>=17&&day<=27) res = 1;
-                                else if (day>=28&&day<=31) res = 2;
-                                break;
-                        case 2:
-                                if (day<=15)res = 2;
-                                else if (day>=16&&day<=26) res = 3;
-                                else if (day>=27&&day<=29) res = 4;
-                                break;
-                        case 3:
-                                if (day<=17)res = 4;
-                                else if (day>=18&&day<=28) res = 5;
-                                else if (day>=29&&day<=31) res = 6;
-                                break;
-                        case 4:
-                                if (day<=16)res = 6;
-                                else if (day>=17&&day<=27) res = 7;
-                                else if (day>=28&&day<=30) res = 8;
-                                break;
-                        case 5:
-                                if (day<=17)res = 8;
-                                else if (day>=18&&day<=28) res = 9;
-                                else if (day>=29&&day<=31) res = 10;
-                                break;
-                        case 6:
-                                if (day<=16)res = 10;
-                                else if (day>=17&&day<=27) res = 11;
-                                else if (day>=28&&day<=30) res = 12;
-                                break;
-                        case 7:
-                                if (day<=17)res = 12;
-                                else if (day>=18&&day<=28) res = 13;
-                                else if (day>=29&&day<=31) res = 14;
-                                break;
-                        case 8:
-                                if (day<=16)res = 14;
-                                else if (day>=17&&day<=27) res = 15;
-                                else if (day>=28&&day<=31) res = 16;
-                                break;
-                        case 9:
-                                if (day<=16)res = 16;
-                                else if (day>=17&&day<=27) res = 17;
-                                else if (day>=28&&day<=30) res = 18;
-                                break;
-                        case 10:
-                                if (day<=16)res = 18;
-                                else if (day>=17&&day<=27) res = 19;
-                                else if (day>=28&&day<=31) res = 20;
-                                break;
-                        case 11:
-                                if (day<=16)res = 20;
-                                else if (day>=17&&day<=27) res = 21;
-                                else if (day>=28&&day<=30)res = 22;
-                                break;
-                        case 12:
-                                if (day<=16)res = 22;
-                                else if (day>=17&&day<=26) res = 23;
-                                else if (day>=27&&day<=31) res = 0;
-                                break;
-                        default:break;
-                }
-                return res;
         }//done
 
 
