@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,37 +92,33 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);
         D_structElement = struct_data.getElementName(day, month);
         tv_date.setText(day+"."+month+"."+year);
-        tv_struct.setText("Тип: "+ D_virtualStruct);
-        tv_year.setText("Год: " + D_yearName);
-        tv_zodiak.setText("Знак зодиака: " + D_zodiakName);
-        tv_number_year.setText("Число года: " + D_numberYears);
-        tv_year_period.setText("Годовой цикл: " + D_yearPeriod);
-        tv_symbol_fate.setText("По судьбе: "+ D_symbolFate);
-        tv_energetics.setText("Энергетика: " + D_energetics);
-        tv_communicate.setText("Способы общения: " + D_communicate);
-        tv_psychology.setText("Психология человека: " + D_psychology);
-        tv_type_thinking.setText("Тип мышления: " + D_typeThinking);
-        tv_vector_host.setText("Векторный хозяин: " + D_vectorHost);
-        tv_vector_servant.setText("Векторный слуга: " + D_vectorServant);
-        tv_equal_marriage.setText("Равный брак: " + D_equalMarriage);
-        tv_romantic_marriage.setText("Романтический брак: " + D_romanticMarriage);
-        tv_spiritual_marriage.setText("Духовный брак: " + D_spiritualMarriage);
-        tv_patriarchal_marriage.setText("Патриархальный брак: " + D_patriarchalMarriage);
-        tv_struct_element.setText(Html.fromHtml(setTextSettings("Структура стихии:",false,true,true)+ D_structElement));
+        tv_struct.setText(              setTextSettings("Тип:", D_virtualStruct));
+        tv_year.setText(                setTextSettings("Год:", D_yearName));
+        tv_zodiak.setText(              setTextSettings("Знак зодиака:", D_zodiakName));
+        tv_number_year.setText(         setTextSettings("Число года:", D_numberYears));
+        tv_year_period.setText(         setTextSettings("Годовой цикл:", D_yearPeriod));
+        tv_symbol_fate.setText(         setTextSettings("По судьбе:", D_symbolFate));
+        tv_energetics.setText(          setTextSettings("Энергетика:", D_energetics));
+        tv_communicate.setText(         setTextSettings("Способы общения:", D_communicate));
+        tv_psychology.setText(          setTextSettings("Психология человека:", D_psychology));
+        tv_type_thinking.setText(       setTextSettings("Тип мышления:", D_typeThinking));
+        tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
+        tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
+        tv_equal_marriage.setText(      setTextSettings("Равный брак:", D_equalMarriage));
+        tv_romantic_marriage.setText(   setTextSettings("Романтический брак:", D_romanticMarriage));
+        tv_spiritual_marriage.setText(  setTextSettings("Духовный брак:", D_spiritualMarriage));
+        tv_patriarchal_marriage.setText(setTextSettings("Патриархальный брак:", D_patriarchalMarriage));
+        tv_struct_element.setText(      setTextSettings("Структура стихии:",D_structElement));
     }
-    public String setTextSettings(String _text,boolean bold,boolean underline, boolean itatic){
+    public Spanned setTextSettings(String _text, String _value){
         String text = _text;
+        String value = _value;
 //        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/minion_bold_cond_disp.otf");
 //        textView.setTypeface(font);//шрифт
 //        textView.setText(Html.fromHtml(text).toString());//парс из html в текст
-        if(bold)
-            text = String.format("<b>%s</b>",text);
-        if(itatic)
-            text = String.format("<i>%s</i>",text);
-        if(underline)
-            text = String.format("<u>%s</u>",text);
-        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
-        return text+" ";
+        text = String.format("<u><i>%s</i></u>",text);
+        value = String.format("<b>%s</b>",value);
+        return Html.fromHtml(text+" "+value);
     }
     @Override
     public void onClick(View view) {
