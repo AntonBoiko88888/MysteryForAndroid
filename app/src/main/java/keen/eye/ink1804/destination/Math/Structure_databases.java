@@ -220,7 +220,7 @@ public class Structure_databases {
                 return res;
         }
 
-        public String getElementName(int month, int day) {
+        public String getElementName(int day, int month) {
                 String elementName = "";
                 switch (month){
                         case 1:

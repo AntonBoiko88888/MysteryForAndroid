@@ -35,7 +35,7 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
 
         initializeTView();
 
-        tv_SetText();
+        fillInfo();
 
 //        try {
 //        }catch (Exception e){
@@ -75,7 +75,7 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
         tv_struct_element = (TextView) rootView.findViewById(R.id.tv_struct_element);
     }
 
-    private void tv_SetText() {
+    private void fillInfo() {
         Structure_databases struct_data = new Structure_databases();
         int i,j;
 
