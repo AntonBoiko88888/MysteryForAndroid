@@ -1,18 +1,19 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Date;
+import com.bruce.pickerview.popwindow.DatePickerPopWin;
+
+import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
@@ -23,9 +24,9 @@ import keen.eye.ink1804.destination.R;
  */
 public class DatePicker_fragment extends Fragment implements View.OnClickListener {
 
-    private DatePicker datePicker;
     private Button btn_result;
     private View rootView;
+    private TextView tv_date;
     private RadioButton rb_male,rb_female;
     private boolean sex;
 
@@ -33,23 +34,19 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView  = inflater.inflate(R.layout.datepicker_layout_fragment,container,false);
+
+//        Bundle args = getArguments();
+//        if(args!=null){
+//            day = args.getInt("day");
+//            month = args.getInt("month");
+//            year = args.getInt("year");
+//            tv_date.setText(day+"."+month+"."+year);
+//        }
         initializeTView();
-        currentYear = datePicker.getYear();
-        datePicker.init(2000, 0, 1, new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
-                day = datePicker.getDayOfMonth();
-                month = datePicker.getMonth()+1;
-                year = datePicker.getYear();
-            }
-        });
+        createDatePicker();
         return rootView;
     }
 
-//    public interface pushDateListener{
-//        void onDatePushed(int day, int month, int year,int currentYear,boolean sex);
-//        void onDescriptionClicked();
-//    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -57,14 +54,54 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
                 sex = rb_male.isChecked();
                 pushDateListener listener = (pushDateListener)getActivity();
                 listener.onDatePushed(day,month,year,currentYear,sex);
-               // Toast.makeText(getActivity(), day+"."+month+"."+year, Toast.LENGTH_SHORT).show();
         }
     }
     private void initializeTView() {
+        tv_date = (TextView)rootView.findViewById(R.id.tv_date);
         btn_result = (Button)rootView.findViewById(R.id.btn_getResult);
-        datePicker = (DatePicker)rootView.findViewById(R.id.datePicker);
         btn_result.setOnClickListener(this);
         rb_male = (RadioButton)rootView.findViewById(R.id.rb_male);
         rb_female = (RadioButton)rootView.findViewById(R.id.rb_female);
+    }
+    private void createDatePicker(){
+        Calendar calendar = Calendar.getInstance();
+        currentYear = calendar.get(Calendar.YEAR);
+        rootView.findViewById(R.id.pick).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
+                    @Override
+                    public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
+                        tv_date.setText(dd+"."+mm+"."+yyyy);
+                        Toast.makeText(getActivity(), dd+"."+mm+"."+yyyy, Toast.LENGTH_SHORT).show();
+                        day = dd;
+                        month = mm;
+                        year = yyyy;
+                    }
+                }).textConfirm("Подтвердить") //text of confirm button
+                        .textCancel("Назад") //text of cancel button
+                        .btnTextSize(16) // button text size
+                        .viewTextSize(25) // pick view text size
+                        .colorCancel(Color.parseColor("#999999")) //color of cancel button
+                        .colorConfirm(Color.parseColor("#009900"))//color of confirm button
+                        .minYear(1920) //min year in loop
+                        .maxYear(2080) // max year in loop
+                        .dateChose("2000-1-1") // date chose when init popwindow
+                        .build();
+                pickerPopWin.showPopWin(getActivity());
+            }
+        });
+
+
+
+//        datePicker = (DatePicker)rootView.findViewById(R.id.datePicker);
+//        datePicker.init(2000, 0, 1, new DatePicker.OnDateChangedListener() {
+//            @Override
+//            public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
+//                day = datePicker.getDayOfMonth();
+//                month = datePicker.getMonth()+1;
+//                year = datePicker.getYear();
+//            }
+//        });
     }
 }
