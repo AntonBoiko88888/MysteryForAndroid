@@ -27,6 +27,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     private Button btn_result;
     private View rootView;
     private TextView tv_date;
+    private DatePickerPopWin pickerPopWin;
     private RadioButton rb_male,rb_female;
     private boolean sex;
 
@@ -66,28 +67,30 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     private void createDatePicker(){
         Calendar calendar = Calendar.getInstance();
         currentYear = calendar.get(Calendar.YEAR);
+        pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
+            @Override
+            public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
+                tv_date.setText(dd+"."+mm+"."+yyyy);
+                Toast.makeText(getActivity(), dd+"."+mm+"."+yyyy, Toast.LENGTH_SHORT).show();
+                day = dd;
+                month = mm;
+                year = yyyy;
+            }
+        }).textConfirm("CANCEL11") //text of confirm button
+                .textCancel("CONFIRM11") //text of cancel button
+                .btnTextSize(16) // button text size
+                .viewTextSize(25) // pick view text size
+                .colorCancel(Color.parseColor("#0000FF")) //color of cancel button
+                .colorConfirm(Color.parseColor("#FF00FF"))//color of confirm button
+                .minYear(1920) //min year in loop
+                .maxYear(2080) // max year in loop
+                .dateChose(year+"-"+month+"-"+day) // date chose when init popwindow
+                .build();
         rootView.findViewById(R.id.pick).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final DatePickerPopWin pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
-                    @Override
-                    public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
-                        tv_date.setText(dd+"."+mm+"."+yyyy);
-                        Toast.makeText(getActivity(), dd+"."+mm+"."+yyyy, Toast.LENGTH_SHORT).show();
-                        day = dd;
-                        month = mm;
-                        year = yyyy;
-                    }
-                }).textConfirm("Подтвердить") //text of confirm button
-                        .textCancel("Назад") //text of cancel button
-                        .btnTextSize(16) // button text size
-                        .viewTextSize(25) // pick view text size
-                        .colorCancel(Color.parseColor("#999999")) //color of cancel button
-                        .colorConfirm(Color.parseColor("#009900"))//color of confirm button
-                        .minYear(1920) //min year in loop
-                        .maxYear(2080) // max year in loop
-                        .dateChose("2000-1-1") // date chose when init popwindow
-                        .build();
+
+
                 pickerPopWin.showPopWin(getActivity());
             }
         });
@@ -103,5 +106,11 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
 //                year = datePicker.getYear();
 //            }
 //        });
+    }
+
+    @Override
+    public void onResume() {
+        tv_date.setText(day+"."+month+"."+year);
+        super.onResume();
     }
 }
