@@ -4,8 +4,17 @@ package keen.eye.ink1804.destination.Math;
  * Created by Ink1804 on 29.07.16.
  */
 public class Constants {
-    //Годы по китайскому гороскопу
 
+    //настройки аккаунта
+    public static final String APP_PREF_NAME = "name"; // имя
+    public static final String APP_PREF_DAY = "day"; // дата рождения
+    public static final String APP_PREF_MONTH = "month"; // дата рождения
+    public static final String APP_PREF_YEAR = "year"; // дата рождения
+    public static final String APP_PREF_SEX = "sex"; // пол
+    public static final String APP_PREF_STATUS = "status"; // статус пользователя
+    public static final String APP_PREF_ISREGISTER = "isregister"; // наличие аккаунта
+
+    //Годы по китайскому гороскопу
     public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};
     public static final String[] SYMBOL_FATE_NAMES = {"Пионерский знак","Фатальный знак","Знак Везения","Самодеятельный знак"};
     public static final String[] ENERGY_STRUCTURE_NAMES = {"Природный оптимист","Драмматизатор","Космический оптимист","Скептик"};

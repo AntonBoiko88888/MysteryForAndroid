@@ -33,6 +33,7 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
             , D_energetics, D_communicate, D_psychology, D_typeThinking, D_vectorHost, D_vectorServant
             , D_equalMarriage, D_romanticMarriage, D_spiritualMarriage, D_patriarchalMarriage, D_structElement;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView  = inflater.inflate(keen.eye.ink1804.destination.R.layout.structurehor_layout_fragment,container,false);

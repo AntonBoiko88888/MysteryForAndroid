@@ -3,28 +3,38 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/tab1"
+            android:id="@+id/tab_account"
             android:icon="@drawable/account"
             android:title="Аккаунт"/>
         <item
-            android:id="@+id/tab2"
+            android:id="@+id/tab_hor_online"
+            android:icon="@drawable/account"
+            android:title="Гороскоп онлайн"/>
+        <item
+            android:id="@+id/tab_zodiaс_sign"
             android:icon="@drawable/aries"
             android:title="Знаки зодиака"/>
         <item
-            android:id="@+id/tab3"
+            android:id="@+id/tab_birth_sign"
             android:icon="@drawable/monkey"
             android:title="Знаки рождения"/>
         <item
-            android:id="@+id/tab4"
+            android:id="@+id/tab_virtual_sign"
             android:icon="@drawable/herous"
             android:title="Виртуальные знаки"/>
         <item
-            android:id="@+id/tab5"
+            android:id="@+id/tab_relations"
             android:icon="@drawable/relations"
             android:title="Взаимоотношения"/>
         <item
-            android:id="@+id/tab6"
+            android:id="@+id/tab_interesting"
+            android:icon="@drawable/relations"
+            android:title="Интересное"/>
+
+        <item
+            android:id="@+id/tab_settings"
             android:icon="@drawable/settings"
             android:title="Настройки"/>
     </group>
+
 </menu>

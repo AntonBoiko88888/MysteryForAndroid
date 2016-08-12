@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="@drawable/back1">
+
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Выберите дату своего рождения"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp"/>
+
             <Button
                 android:id="@+id/pick"
                 android:layout_width="wrap_content"
@@ -56,5 +57,7 @@
         android:id="@+id/btn_getResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="узнать"/>
+        android:text="далее"/>
+
+
 </LinearLayout>

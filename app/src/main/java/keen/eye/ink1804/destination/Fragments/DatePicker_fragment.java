@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,7 @@ import com.bruce.pickerview.popwindow.DatePickerPopWin;
 import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
 
@@ -28,7 +31,9 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     private View rootView;
     private TextView tv_date;
     private DatePickerPopWin pickerPopWin;
-    private RadioButton rb_male,rb_female;
+    private RadioButton rb_male;
+    private String action = "default";
+    SharedPreferences mSettings;
     private boolean sex;
 
     private int day = 1,month = 1,year = 2000,currentYear;
@@ -36,25 +41,31 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView  = inflater.inflate(R.layout.datepicker_layout_fragment,container,false);
 
-//        Bundle args = getArguments();
-//        if(args!=null){
-//            day = args.getInt("day");
-//            month = args.getInt("month");
-//            year = args.getInt("year");
-//            tv_date.setText(day+"."+month+"."+year);
-//        }
         initializeTView();
         createDatePicker();
         return rootView;
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view) {//кнопка "Далее"
         switch (view.getId()){
             case R.id.btn_getResult:
-                sex = rb_male.isChecked();
                 pushDateListener listener = (pushDateListener)getActivity();
-                listener.onDatePushed(day,month,year,currentYear,sex);
+                sex = rb_male.isChecked();
+                if(action.equals("default")){
+                    listener.onDatePushed(day,month,year,currentYear,sex);}
+                else{
+                    listener.onRegistrating(day,month,year,sex);
+                    mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mSettings.edit();
+                    editor.putBoolean(Constants.APP_PREF_ISREGISTER,true);
+                    editor.putInt(Constants.APP_PREF_DAY,day);
+                    editor.putInt(Constants.APP_PREF_MONTH,month);
+                    editor.putInt(Constants.APP_PREF_YEAR,year);
+                    editor.putBoolean(Constants.APP_PREF_SEX,sex);
+                    editor.putString(Constants.APP_PREF_STATUS,"Начинающий");
+                    editor.apply();
+                }
         }
     }
     private void initializeTView() {
@@ -62,7 +73,10 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
         btn_result = (Button)rootView.findViewById(R.id.btn_getResult);
         btn_result.setOnClickListener(this);
         rb_male = (RadioButton)rootView.findViewById(R.id.rb_male);
-        rb_female = (RadioButton)rootView.findViewById(R.id.rb_female);
+        if(getArguments()!=null) {
+            Bundle args = getArguments();
+            action = args.getString("action");
+        }
     }
     private void createDatePicker(){
         Calendar calendar = Calendar.getInstance();
@@ -89,8 +103,6 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
         rootView.findViewById(R.id.pick).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 pickerPopWin.showPopWin(getActivity());
             }
         });
