@@ -103,11 +103,11 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_type_thinking.setText(       setTextSettings("Тип мышления:", D_typeThinking));
         tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
         tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
+        tv_struct_element.setText(      setTextSettings("Структура стихии:",D_structElement));
         tv_equal_marriage.setText(      setTextSettings("Равный брак:", D_equalMarriage));
         tv_romantic_marriage.setText(   setTextSettings("Романтический брак:", D_romanticMarriage));
         tv_spiritual_marriage.setText(  setTextSettings("Духовный брак:", D_spiritualMarriage));
         tv_patriarchal_marriage.setText(setTextSettings("Патриархальный брак:", D_patriarchalMarriage));
-        tv_struct_element.setText(      setTextSettings("Структура стихии:",D_structElement));
     }
     public Spanned setTextSettings(String _text, String _value){
         String text = _text;

@@ -8,7 +8,7 @@
             android:title="Аккаунт"/>
         <item
             android:id="@+id/tab_hor_online"
-            android:icon="@drawable/account"
+            android:icon="@drawable/star"
             android:title="Гороскоп онлайн"/>
         <item
             android:id="@+id/tab_zodiaс_sign"
@@ -28,7 +28,7 @@
             android:title="Взаимоотношения"/>
         <item
             android:id="@+id/tab_interesting"
-            android:icon="@drawable/relations"
+            android:icon="@drawable/interesting"
             android:title="Интересное"/>
 
         <item
