@@ -5,6 +5,6 @@ package keen.eye.ink1804.destination.Interfaces;
  */
 public interface pushDateListener {
     void onDatePushed(int day, int month, int year,int currentYear,boolean sex);
-    void onRegistrating(int day, int month, int year, boolean sex);
+    void onRegistration(int day, int month, int year, boolean sex);
     void onDescriptionClicked(String key);
 }

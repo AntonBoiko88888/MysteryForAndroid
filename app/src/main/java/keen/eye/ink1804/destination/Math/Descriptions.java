@@ -5,17 +5,8 @@ package keen.eye.ink1804.destination.Math;
  */
 public class Descriptions {
 
-    public static class virtual{
-        public String NAME;
+    public static final String[] VIRTUAL_NAMES = {"Вектор","Профессор","Рыцарь","Вождь","Шут","Король","Аристкрат"};
+    public static final String[] VIRTUAL_DESCR = {};
 
-        public virtual() {
-        }
 
-        public String DECCRIPTION;
-
-        public virtual(String NAME, String DECCRIPTION) {
-            this.NAME = NAME;
-            this.DECCRIPTION = DECCRIPTION;
-        }
-    }
 }

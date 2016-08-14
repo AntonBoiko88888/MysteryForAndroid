@@ -1,6 +1,5 @@
 package keen.eye.ink1804.destination.Fragments;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -9,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -19,7 +17,7 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 29.07.16.
  */
-public class StructureHor_fragment extends Fragment implements View.OnClickListener{
+public class ProfileDescription_fragment extends Fragment implements View.OnClickListener{
 
     private TextView tv_year,tv_zodiak,tv_struct, tv_number_year, tv_year_period, tv_symbol_fate
             , tv_energetics, tv_communicate, tv_psychology, tv_type_thinking, tv_vector_host
@@ -36,7 +34,7 @@ public class StructureHor_fragment extends Fragment implements View.OnClickListe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView  = inflater.inflate(keen.eye.ink1804.destination.R.layout.structurehor_layout_fragment,container,false);
+        rootView  = inflater.inflate(keen.eye.ink1804.destination.R.layout.profile_description_layout_fragment,container,false);
         initializeTView();
         fillInfo();
         return rootView;

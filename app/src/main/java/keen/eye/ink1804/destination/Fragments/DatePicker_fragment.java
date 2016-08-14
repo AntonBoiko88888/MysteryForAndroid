@@ -55,7 +55,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
                 if(action.equals("default")){
                     listener.onDatePushed(day,month,year,currentYear,sex);}
                 else{
-                    listener.onRegistrating(day,month,year,sex);
+                    listener.onRegistration(day,month,year,sex);
                     mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = mSettings.edit();
                     editor.putBoolean(Constants.APP_PREF_ISREGISTER,true);

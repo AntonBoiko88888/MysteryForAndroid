@@ -61,7 +61,7 @@ public class Constants {
     public static final String Z_SCORPION = "Скорпион";
     public static final String Z_SAGITTARIUS = "Стрелец";
 
-    public static final String[] VIRTUAL_NAMES = {"Рыцарь","Вождь","Король","Шут","Аристкрат","Профессор"," Вектор"};
+    private static final String[] VIRTUAL_NAMES = {"Рыцарь","Вождь","Король","Шут","Аристкрат","Профессор"," Вектор"};
     public static final String KNIGHT = "Рыцарь";
     public static final String LEADER = "Вождь";
     public static final String KING = "Король";
@@ -70,6 +70,5 @@ public class Constants {
     public static final String PROFESSOR = "Профессор";
     public static final String VECTOR = "Вектор";
 
-    public static final String[] VIRTUAL_DESCR = {"Рыцарь клевый","Вождь так се","Король ужас","Шут збс","что то","тралалал","уллулул"};
 
 }
