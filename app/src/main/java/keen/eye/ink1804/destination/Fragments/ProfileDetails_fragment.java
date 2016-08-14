@@ -22,8 +22,8 @@ public class ProfileDetails_fragment extends Fragment implements View.OnClickLis
         Bundle args = getArguments();
         key = args.getString("key");
 
-        Button btn = (Button)rootView.findViewById(R.id.asd);
-        btn.setOnClickListener(this);
+     //   Button btn = (Button)rootView.findViewById(R.id.asd);
+     //   btn.setOnClickListener(this);
 
         return rootView;
     }

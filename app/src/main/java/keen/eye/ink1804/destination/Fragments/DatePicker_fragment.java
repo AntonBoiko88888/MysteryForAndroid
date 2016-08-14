@@ -84,7 +84,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
         pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
             @Override
             public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
-                tv_date.setText(dd+"."+mm+"."+yyyy);
+                tv_date.setText("Выбранная дата: "+dd+"."+mm+"."+yyyy);
                 Toast.makeText(getActivity(), dd+"."+mm+"."+yyyy, Toast.LENGTH_SHORT).show();
                 day = dd;
                 month = mm;
@@ -122,7 +122,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onResume() {
-        tv_date.setText(day+"."+month+"."+year);
+        tv_date.setText("Выбранная дата: "+day+"."+month+"."+year);
         super.onResume();
     }
 }

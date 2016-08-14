@@ -25,17 +25,17 @@ public class Description_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.description_layout_fragment,container,false);
-        tabLayout = (TabLayout)rootView.findViewById(R.id.tablayout);
+    //    tabLayout = (TabLayout)rootView.findViewById(R.id.tablayout);
         viewPager = (ViewPager)rootView.findViewById(R.id.desc_viewPager);
         Bundle args = getArguments();
         page1 = args.getString("page1");//*
         page2 = args.getString("page2");//*
         mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
-                "Description is here","Lets go and purchase this page");//*
+                "Рыцарь и так далее. А почему ты выбрал именно переход по настройкам? Там же совсем другое будет :)","This page is available for advanced users");//*
         viewPager.setAdapter(mPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setText(page1);
-        tabLayout.getTabAt(1).setText(page2);
+    //    tabLayout.setupWithViewPager(viewPager);
+    //    tabLayout.getTabAt(0).setText(page1);
+    //    tabLayout.getTabAt(1).setText(page2);
         return rootView;
     }
 }

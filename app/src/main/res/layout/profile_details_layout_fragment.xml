@@ -9,10 +9,9 @@
     <TextView
         android:id="@+id/asdf"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/asd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Здесь будет подробное описание"
+        android:textSize="30dp"
+        android:gravity="center"/>
 <!--</ScrollView>-->
 </LinearLayout>

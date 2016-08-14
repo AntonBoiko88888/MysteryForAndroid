@@ -8,11 +8,11 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="150dp">
+        android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/acc_lin"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
 
         android:padding="15dp">
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="Имя: coming soon"/>
+            android:text="Имя: Шишергей Бойкон"/>
         <TextView
             android:id="@+id/acc_tv_date"
             android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
         <ImageView
             android:id="@+id/acc_image_icon"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/account"
             />
