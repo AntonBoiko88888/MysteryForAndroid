@@ -21,8 +21,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
 
     private TextView tv_year,tv_zodiak,tv_struct, tv_number_year, tv_year_period, tv_symbol_fate
             , tv_energetics, tv_communicate, tv_psychology, tv_type_thinking, tv_vector_host
-            , tv_vector_servant, tv_equal_marriage, tv_romantic_marriage, tv_spiritual_marriage
-            , tv_patriarchal_marriage, tv_struct_element,tv_date;
+            , tv_vector_servant, tv_struct_element,tv_date;
     private View rootView;
 
     private boolean sex;//true - male, false - female
@@ -61,10 +60,6 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_type_thinking = (TextView) rootView.findViewById(R.id.tv_type_thinking);
         tv_vector_host = (TextView) rootView.findViewById(R.id.tv_vector_host);
         tv_vector_servant = (TextView) rootView.findViewById(R.id.tv_vector_servant);
-        tv_equal_marriage = (TextView) rootView.findViewById(R.id.tv_equal_marriage);
-        tv_romantic_marriage = (TextView) rootView.findViewById(R.id.tv_romantic_marriage);
-        tv_spiritual_marriage = (TextView) rootView.findViewById(R.id.tv_spiritual_marriage);
-        tv_patriarchal_marriage = (TextView) rootView.findViewById(R.id.tv_patriarchal_marriage);
         tv_struct_element = (TextView) rootView.findViewById(R.id.tv_struct_element);
     }
     private void fillInfo() {
@@ -90,7 +85,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);
         D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);
         D_structElement = struct_data.getElementName(day, month);
-        tv_date.setText(day+"."+month+"."+year);
+        tv_date.setText("Дата: "+day+"."+month+"."+year);
         tv_struct.setText(              setTextSettings("Тип:", D_virtualStruct));
         tv_year.setText(                setTextSettings("Год:", D_yearName));
         tv_zodiak.setText(              setTextSettings("Знак зодиака:", D_zodiakName));
@@ -104,10 +99,6 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
         tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
         tv_struct_element.setText(      setTextSettings("Структура стихии:",D_structElement));
-        tv_equal_marriage.setText(      setTextSettings("Равный брак:", D_equalMarriage));
-        tv_romantic_marriage.setText(   setTextSettings("Романтический брак:", D_romanticMarriage));
-        tv_spiritual_marriage.setText(  setTextSettings("Духовный брак:", D_spiritualMarriage));
-        tv_patriarchal_marriage.setText(setTextSettings("Патриархальный брак:", D_patriarchalMarriage));
     }
     public Spanned setTextSettings(String _text, String _value){
         String text = _text;
