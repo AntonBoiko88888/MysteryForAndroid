@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -49,63 +51,64 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        String FRAGMENT_TAG = "";
+        Fragment fragment = null;
+        Bundle args = new Bundle();
         switch (item.getItemId()){
             case R.id.tab_account:
-                Account_fragment accFragment = new Account_fragment();
-                transaction.replace(R.id.fragment_container,accFragment,"accFragment");
-                transaction.addToBackStack("accFragment");
-                transaction.commit();
+                fragment = new Account_fragment();
+                FRAGMENT_TAG = "accFragment";
                 break;
             case R.id.tab_hor_online:
+                fragment = new Account_fragment();//*
+                FRAGMENT_TAG = "f3";//*
                 break;
             case R.id.tab_zodiaс_sign:
-                Description_fragment zodiacFragment = new Description_fragment();
-                Bundle argszodiac = new Bundle();
-                argszodiac.putString("page1","page1");
-                argszodiac.putString("page2","page2");
-                zodiacFragment.setArguments(argszodiac);
-                transaction.replace(R.id.fragment_container,zodiacFragment,"zodiacFragment");
-                transaction.addToBackStack("zodiacFragment");
-                transaction.commit();
+                fragment = new Description_fragment();
+                FRAGMENT_TAG = "zodiacFragment";
+                args.putString("page1","page1");
+                args.putString("page2","page2");
+                fragment.setArguments(args);
                 break;
             case R.id.tab_birth_sign:
-                Description_fragment birthFragment = new Description_fragment();
-                Bundle argsbirth = new Bundle();
-                argsbirth.putString("page1","page1");
-                argsbirth.putString("page2","page2");
-                birthFragment.setArguments(argsbirth);
-                transaction.replace(R.id.fragment_container,birthFragment,"birthFragment");
-                transaction.addToBackStack("birthFragment");
-                transaction.commit();
+                fragment = new Description_fragment();
+                FRAGMENT_TAG = "birthFragment";
+                args.putString("page1","page1");
+                args.putString("page2","page2");
+                fragment.setArguments(args);
                 break;
             case R.id.tab_virtual_sign:
-                Description_fragment virtualFragment = new Description_fragment();
-                Bundle argsvirtual = new Bundle();
-                argsvirtual.putString("page1","page1");
-                argsvirtual.putString("page2","page2");
-                virtualFragment.setArguments(argsvirtual);
-                transaction.replace(R.id.fragment_container,virtualFragment,"virtualFragment");
-                transaction.addToBackStack("virtualFragment");
-                transaction.commit();
+                fragment = new Description_fragment();
+                FRAGMENT_TAG = "virtualFragment";
+                args.putString("page1","page1");
+                args.putString("page2","page2");
+                fragment.setArguments(args);
                 break;
             case R.id.tab_relations:
-                Description_fragment relatFragment = new Description_fragment();
-                Bundle argsrelat = new Bundle();
-                argsrelat.putString("page1","page1");
-                argsrelat.putString("page2","page2");
-                relatFragment.setArguments(argsrelat);
-                transaction.replace(R.id.fragment_container,relatFragment,"relatFragment");
-                transaction.addToBackStack("relatFragment");
-                transaction.commit();
+                fragment = new Description_fragment();
+                FRAGMENT_TAG = "relationsFragment";
+                args.putString("page1","page1");
+                args.putString("page2","page2");
+                fragment.setArguments(args);
                 break;
             case R.id.tab_interesting:
-
+                fragment = new Account_fragment();//*
+                FRAGMENT_TAG = "f1";//*
                 break;
             case R.id.tab_settings:
+                fragment = new Account_fragment();//*
+                FRAGMENT_TAG = "f2";//*
+                break;
 
             default:break;
         }
+        transaction.replace(R.id.fragment_container, fragment, FRAGMENT_TAG);
+        if (fragmentManager.findFragmentByTag(FRAGMENT_TAG) == null) {
+            transaction.addToBackStack(FRAGMENT_TAG);
+        }
+        transaction.commit();
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -25,6 +25,14 @@ public class Description_fragment extends Fragment {
     private ViewPager_Description_adapter mPagerAdapter;
 
     @Override
+    public void onResume() {
+        mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
+                "Рыцарь ","This page is available for advanced users");//*
+        viewPager.setAdapter(mPagerAdapter);
+        super.onResume();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.description_layout_fragment,container,false);
         tabLayout = (PagerTabStrip) rootView.findViewById(R.id.pagerTabStrip);

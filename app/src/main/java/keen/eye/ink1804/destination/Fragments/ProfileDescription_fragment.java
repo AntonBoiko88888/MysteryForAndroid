@@ -117,8 +117,8 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
             case R.id.tv_date:
-                key = D_virtualStruct;
-                listener.onDescriptionClicked(key);//key is going to new bundle
+//                key = D_virtualStruct;
+//                listener.onDescriptionClicked(key);//key is going to new bundle
                 break;
             case R.id.tv_struct_result:
                 key = D_virtualStruct;
