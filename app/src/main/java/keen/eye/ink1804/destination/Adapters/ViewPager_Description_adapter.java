@@ -3,7 +3,6 @@ package keen.eye.ink1804.destination.Adapters;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import keen.eye.ink1804.destination.Fragments.ViewPager_fragment;
@@ -21,6 +20,7 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
         this.someString1 = info1;//*
         this.someString2 = info2;//*
     }
+
 
     @Override
     public Fragment getItem(int position) {//*

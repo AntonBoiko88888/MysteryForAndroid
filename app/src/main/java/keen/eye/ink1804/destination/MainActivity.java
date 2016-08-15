@@ -3,7 +3,6 @@ package keen.eye.ink1804.destination;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             DatePicker_fragment datePicker_fragment= new DatePicker_fragment();
 //            Account_fragment fragment = new Account_fragment();//в дальнейшем
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.structure_fr,datePicker_fragment,"datePicker_fragment");
+            transaction.add(R.id.fragment_container,datePicker_fragment,"datePicker_fragment");
             transaction.commit();
         }
             createActivityViews();
@@ -54,19 +53,57 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
             case R.id.tab_account:
                 Account_fragment accFragment = new Account_fragment();
-                transaction.replace(R.id.structure_fr,accFragment,"accFragment");
+                transaction.replace(R.id.fragment_container,accFragment,"accFragment");
                 transaction.addToBackStack("accFragment");
                 transaction.commit();
                 break;
-            case R.id.tab_settings:
-                Description_fragment descFragment = new Description_fragment();
-                Bundle args = new Bundle();
-                args.putString("page1","page1");
-                args.putString("page2","page2");
-                descFragment.setArguments(args);
-                transaction.replace(R.id.structure_fr,descFragment,"descFragment");
-                transaction.addToBackStack("descFragment");
+            case R.id.tab_hor_online:
+                break;
+            case R.id.tab_zodiaс_sign:
+                Description_fragment zodiacFragment = new Description_fragment();
+                Bundle argszodiac = new Bundle();
+                argszodiac.putString("page1","page1");
+                argszodiac.putString("page2","page2");
+                zodiacFragment.setArguments(argszodiac);
+                transaction.replace(R.id.fragment_container,zodiacFragment,"zodiacFragment");
+                transaction.addToBackStack("zodiacFragment");
                 transaction.commit();
+                break;
+            case R.id.tab_birth_sign:
+                Description_fragment birthFragment = new Description_fragment();
+                Bundle argsbirth = new Bundle();
+                argsbirth.putString("page1","page1");
+                argsbirth.putString("page2","page2");
+                birthFragment.setArguments(argsbirth);
+                transaction.replace(R.id.fragment_container,birthFragment,"birthFragment");
+                transaction.addToBackStack("birthFragment");
+                transaction.commit();
+                break;
+            case R.id.tab_virtual_sign:
+                Description_fragment virtualFragment = new Description_fragment();
+                Bundle argsvirtual = new Bundle();
+                argsvirtual.putString("page1","page1");
+                argsvirtual.putString("page2","page2");
+                virtualFragment.setArguments(argsvirtual);
+                transaction.replace(R.id.fragment_container,virtualFragment,"virtualFragment");
+                transaction.addToBackStack("virtualFragment");
+                transaction.commit();
+                break;
+            case R.id.tab_relations:
+                Description_fragment relatFragment = new Description_fragment();
+                Bundle argsrelat = new Bundle();
+                argsrelat.putString("page1","page1");
+                argsrelat.putString("page2","page2");
+                relatFragment.setArguments(argsrelat);
+                transaction.replace(R.id.fragment_container,relatFragment,"relatFragment");
+                transaction.addToBackStack("relatFragment");
+                transaction.commit();
+                break;
+            case R.id.tab_interesting:
+
+                break;
+            case R.id.tab_settings:
+
             default:break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -102,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 Bundle args = new Bundle();
                                 args.putString("action","registration");
                                 infoFragment.setArguments(args);
-                                transaction.replace(R.id.structure_fr,infoFragment,"infoFragment");
+                                transaction.replace(R.id.fragment_container,infoFragment,"infoFragment");
                                 transaction.commit();
                             }
                         });
@@ -130,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putBoolean("sex",sex);
         profDescFragment.setArguments(args);
 
-        transaction.replace(R.id.structure_fr,profDescFragment,"profDescFragment");
+        transaction.replace(R.id.fragment_container,profDescFragment,"profDescFragment");
         transaction.addToBackStack("profDescFragment");
         transaction.commit();
     }
@@ -143,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putString("key",key);
         profDetFragment.setArguments(args);
 
-        transaction.replace(R.id.structure_fr,profDetFragment,"profDetFragment");
+        transaction.replace(R.id.fragment_container,profDetFragment,"profDetFragment");
         transaction.addToBackStack("profDetFragment");
         transaction.commit();
     }
@@ -152,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Account_fragment accFragment = new Account_fragment();
 
-        transaction.replace(R.id.structure_fr,accFragment,"accFragment");
+        transaction.replace(R.id.fragment_container,accFragment,"accFragment");
         transaction.commit();
     }
 
