@@ -50,6 +50,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_date.setOnClickListener(this);
         tv_year = (TextView) rootView.findViewById(R.id.tv_year_result);
         tv_struct = (TextView) rootView.findViewById(R.id.tv_struct_result);
+        tv_struct.setOnClickListener(this);
         tv_zodiak = (TextView) rootView.findViewById(R.id.tv_zodiak_result);
         tv_number_year = (TextView) rootView.findViewById(R.id.tv_number_year);
         tv_energetics = (TextView) rootView.findViewById(R.id.tv_temperament);
@@ -85,7 +86,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);
         D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);
         D_structElement = struct_data.getElementName(day, month);
-        tv_date.setText("Дата: "+day+"."+month+"."+year);
+        tv_date.setText(                "Дата: "+day+"."+month+"."+year);
         tv_struct.setText(              setTextSettings("Тип:", D_virtualStruct));
         tv_year.setText(                setTextSettings("Год:", D_yearName));
         tv_zodiak.setText(              setTextSettings("Знак зодиака:", D_zodiakName));
@@ -113,11 +114,15 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     @Override
     public void onClick(View view) {
         String key;
+        pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
             case R.id.tv_date:
                 key = D_virtualStruct;
-                pushDateListener listener = (pushDateListener)getActivity();
-                listener.onDescriptionClicked(key);
+                listener.onDescriptionClicked(key);//key is going to new bundle
+                break;
+            case R.id.tv_struct_result:
+                key = D_virtualStruct;
+                listener.onDescriptionClicked(key);//key is going to new bundle
         }
 
     }

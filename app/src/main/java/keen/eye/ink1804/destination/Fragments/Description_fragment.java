@@ -31,7 +31,7 @@ public class Description_fragment extends Fragment {
         page1 = args.getString("page1");//*
         page2 = args.getString("page2");//*
         mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
-                "Рыцарь и так далее. А почему ты выбрал именно переход по настройкам? Там же совсем другое будет :)","This page is available for advanced users");//*
+                "Рыцарь ","This page is available for advanced users");//*
         viewPager.setAdapter(mPagerAdapter);
     //    tabLayout.setupWithViewPager(viewPager);
     //    tabLayout.getTabAt(0).setText(page1);

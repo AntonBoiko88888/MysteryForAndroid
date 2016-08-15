@@ -3,6 +3,7 @@ package keen.eye.ink1804.destination;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -22,9 +23,9 @@ import keen.eye.ink1804.destination.Fragments.ProfileDescription_fragment;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 ,pushDateListener {
-
 
     private DrawerLayout drawer;
     private SharedPreferences mSettings;
@@ -33,12 +34,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+
         if(!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
             createAlert();
         }
         else{
             DatePicker_fragment datePicker_fragment= new DatePicker_fragment();
-//            Account_fragment fragment = new Account_fragment();
+//            Account_fragment fragment = new Account_fragment();//в дальнейшем
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.structure_fr,datePicker_fragment,"datePicker_fragment");
             transaction.commit();

@@ -13,6 +13,7 @@ public class Constants {
     public static final String APP_PREF_SEX = "sex"; // пол
     public static final String APP_PREF_STATUS = "status"; // статус пользователя
     public static final String APP_PREF_ISREGISTER = "isregister"; // наличие аккаунта
+    public static final String APP_FIRST_LAUNCH = "first";
 
     //Годы по китайскому гороскопу
     public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};

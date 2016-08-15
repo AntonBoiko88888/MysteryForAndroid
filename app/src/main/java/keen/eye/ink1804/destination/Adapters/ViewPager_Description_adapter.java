@@ -37,7 +37,7 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0)
-        return "Описание";
+            return "Описание";
         else
             return "Совместимость";
     }
