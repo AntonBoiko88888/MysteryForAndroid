@@ -42,7 +42,7 @@ public class Structure_databases {
                 {C.P_OVERCOMING,   C.P_DISCUISE,     C.P_EASE,         C.P_PRESENTATION},//Мистики
         };
 
-        public int getDateId(int day,int month){
+        public int getDateIdAdmin(int day,int month){
                 int res = -1;
                 switch (month) {
                         case 1:
@@ -110,10 +110,65 @@ public class Structure_databases {
                 return res;
         }//done
 
+        public int getDateId(int day,int month){
+                int res = -1;
+                switch (month) {
+                        case 1:
+                                if (day<=21)res = 0;
+                                else res = 1;
+                                break;
+                        case 2:
+                                if (day<=20)res = 1;
+                                else res = 2;
+                                break;
+                        case 3:
+                                if (day<=22)res = 2;
+                                else res = 3;
+                                break;
+                        case 4:
+                                if (day<=21)res = 3;
+                                else res = 4;
+                                break;
+                        case 5:
+                                if (day<=22)res = 4;
+                                else res = 5;
+                                break;
+                        case 6:
+                                if (day<=21)res = 5;
+                                else res = 6;
+                                break;
+                        case 7:
+                                if (day<=22)res = 6;
+                                else res = 7;
+                                break;
+                        case 8:
+                                if (day<=21)res = 7;
+                                else res = 8;
+                                break;
+                        case 9:
+                                if (day<=21)res = 8;
+                                else res = 9;
+                                break;
+                        case 10:
+                                if (day<=21)res = 9;
+                                else res = 10;
+                                break;
+                        case 11:
+                                if (day<=21)res = 10;
+                                else res = 11;
+                                break;
+                        case 12:
+                                if (day<=21)res = 11;
+                                else res = 0;
+                                break;
+                        default:break;
+                }
+                return res;
+        }//done
+
         public int getYearId(int year){
                 return year%12;
         }//done
-
 
         public String getYearName(int year){
                 String yearName="";
@@ -137,9 +192,6 @@ public class Structure_databases {
                 if(res>9) res = SummChislo(res);
                 return res;
         }//done
-
-
-
 
         public String getEqualMarriageName(int year) {
                 String res = "";
@@ -216,7 +268,6 @@ public class Structure_databases {
                 }
                 return res;
         }//done
-
 
         public String getMeansCommunicateName(int year) {
                 String res = "";
@@ -318,7 +369,6 @@ public class Structure_databases {
                 return YearPeriod[typeThinking][yearIdTable];
         }
 
-
         public String getTypeThinkingNames(boolean man, int year){ // Возвращает тип мышления
                 String typeThinking="";
                 if(man) {
@@ -335,7 +385,6 @@ public class Structure_databases {
                 return typeThinking;
         }//done
 
-
         public String getEnergyName(int year){ //вычисление темперамента(сангвиник, холерик...)
                 String EnergyName="";
                 if(year==3||year==5||year==10) EnergyName = C.ENERGY_STRUCTURE_NAMES[0];
@@ -345,7 +394,6 @@ public class Structure_databases {
                 return EnergyName;
         }//done
 
-
         public String getSymbolFate(int year){ //вычисление Знака судьбы
                 String SymbolFate="";
                 if(year==1||year==3||year==11) SymbolFate = C.SYMBOL_FATE_NAMES[0];
@@ -354,7 +402,6 @@ public class Structure_databases {
                 else if(year==0||year==8||year==10) SymbolFate = C.SYMBOL_FATE_NAMES[3];
                 return SymbolFate;
         }//done
-
 
         public String getZodiakName(int day,int month){
                 String zodiakName = "";
@@ -388,8 +435,11 @@ public class Structure_databases {
                 return zodiakName;
         }//done
 
-
         public String getStructureType(int i,int j){
                 return StructureHor[i][j];
+        }//done
+
+        public String getStructureTypeAdmin(int i,int j){
+                return StructureHorADMIN[i][j];
         }//done
 }
