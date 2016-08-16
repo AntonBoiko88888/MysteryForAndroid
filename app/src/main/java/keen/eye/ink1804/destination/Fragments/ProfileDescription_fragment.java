@@ -19,16 +19,16 @@ import keen.eye.ink1804.destination.R;
  */
 public class ProfileDescription_fragment extends Fragment implements View.OnClickListener{
 
-    private TextView tv_year,tv_zodiak,tv_struct, tv_number_year, tv_year_period, tv_symbol_fate
-            , tv_energetics, tv_communicate, tv_psychology, tv_type_thinking, tv_vector_host
-            , tv_vector_servant, tv_struct_element,tv_date;
+    private TextView tv_year, tv_zodiac, tv_virtual_type, tv_year_number, tv_year_period, tv_fate_symbol
+            , tv_energy, tv_communicate, tv_psychology, tv_type_of_thinking, tv_vector_host
+            , tv_vector_servant, tv_element_structure,tv_date;
     private View rootView;
 
     private boolean sex;//true - male, false - female
     private int yearNow, year, month, day;
-    private String D_virtualStruct, D_yearName, D_zodiakName, D_numberYears, D_yearPeriod, D_symbolFate
-            , D_energetics, D_communicate, D_psychology, D_typeThinking, D_vectorHost, D_vectorServant
-            , D_equalMarriage, D_romanticMarriage, D_spiritualMarriage, D_patriarchalMarriage, D_structElement;
+    private String D_virtualType, D_year, D_zodiak, D_year_number, D_yearPeriod, D_fateSymbol
+            , D_energy, D_communicate, D_psychology, D_typeOfThinking, D_vectorHost, D_vectorServant
+            , D_equalMarriage, D_romanticMarriage, D_spiritualMarriage, D_patriarchalMarriage, D_elementStructure;
 
 
     @Override
@@ -47,21 +47,33 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         day = args.getInt("day");
         sex = args.getBoolean("sex");
         tv_date = (TextView) rootView.findViewById(R.id.tv_date);
-        tv_date.setOnClickListener(this);
-        tv_year = (TextView) rootView.findViewById(R.id.tv_year_result);
-        tv_struct = (TextView) rootView.findViewById(R.id.tv_struct_result);
-        tv_struct.setOnClickListener(this);
-        tv_zodiak = (TextView) rootView.findViewById(R.id.tv_zodiak_result);
-        tv_number_year = (TextView) rootView.findViewById(R.id.tv_number_year);
-        tv_energetics = (TextView) rootView.findViewById(R.id.tv_temperament);
-        tv_year_period = (TextView) rootView.findViewById(R.id.tv_year_period);
-        tv_symbol_fate = (TextView) rootView.findViewById(R.id.tv_symbol_fate);
-        tv_communicate = (TextView) rootView.findViewById(R.id.tv_communicate);
-        tv_psychology = (TextView) rootView.findViewById(R.id.tv_psychology);
-        tv_type_thinking = (TextView) rootView.findViewById(R.id.tv_type_thinking);
-        tv_vector_host = (TextView) rootView.findViewById(R.id.tv_vector_host);
-        tv_vector_servant = (TextView) rootView.findViewById(R.id.tv_vector_servant);
-        tv_struct_element = (TextView) rootView.findViewById(R.id.tv_struct_element);
+//        tv_date.setOnClickListener(this);
+        tv_year = (TextView) rootView.findViewById(R.id.prof_tv_year);
+        tv_year.setOnClickListener(this);
+        tv_virtual_type = (TextView) rootView.findViewById(R.id.prof_tv_virtual_type);
+        tv_virtual_type.setOnClickListener(this);
+        tv_zodiac = (TextView) rootView.findViewById(R.id.prof_tv_zodiak);
+        tv_zodiac.setOnClickListener(this);
+        tv_year_number = (TextView) rootView.findViewById(R.id.prof_tv_year_number);
+//        tv_year_number.setOnClickListener(this);
+        tv_energy = (TextView) rootView.findViewById(R.id.prof_tv_energy);
+//        tv_energy.setOnClickListener(this);
+        tv_year_period = (TextView) rootView.findViewById(R.id.prof_tv_year_period);
+//        tv_year_period.setOnClickListener(this);
+        tv_fate_symbol = (TextView) rootView.findViewById(R.id.prof_tv_fate_symbol);
+//        tv_fate_symbol.setOnClickListener(this);
+        tv_communicate = (TextView) rootView.findViewById(R.id.prof_tv_communicate);
+//        tv_communicate.setOnClickListener(this);
+        tv_psychology = (TextView) rootView.findViewById(R.id.prof_tv_psychology);
+//        tv_psychology.setOnClickListener(this);
+        tv_type_of_thinking = (TextView) rootView.findViewById(R.id.prof_tv_type_of_thinking);
+//        tv_type_of_thinking.setOnClickListener(this);
+        tv_vector_host = (TextView) rootView.findViewById(R.id.prof_tv_vector_host);
+//        tv_vector_host.setOnClickListener(this);
+        tv_vector_servant = (TextView) rootView.findViewById(R.id.prof_tv_vector_servant);
+//        tv_vector_servant.setOnClickListener(this);
+        tv_element_structure = (TextView) rootView.findViewById(R.id.prof_tv_element_structure);
+//        tv_element_structure.setOnClickListener(this);
     }
     private void fillInfo() {
         Structure_databases struct_data = new Structure_databases();
@@ -69,37 +81,37 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
 
         i = struct_data.getYearId(year);
         j = struct_data.getDateId(day, month);
-        D_virtualStruct = struct_data.getStructureType(i, j);
-        D_yearName = struct_data.getYearName(year);
-        D_zodiakName = struct_data.getZodiakName(day, month);
-        D_numberYears = struct_data.getNumberYear(yearNow, month, day);
+        D_virtualType = struct_data.getStructureType(i, j);
+        D_year = struct_data.getYearName(year);
+        D_zodiak = struct_data.getZodiakName(day, month);
+        D_year_number = struct_data.getNumberYear(yearNow, month, day);
         D_yearPeriod = struct_data.getYearPeriod(struct_data.getYearIdTable(yearNow),struct_data.getTypeThinkingId(sex,i));
-        D_symbolFate = struct_data.getSymbolFate(i);
-        D_energetics = struct_data.getEnergyName(i);
+        D_fateSymbol = struct_data.getSymbolFate(i);
+        D_energy = struct_data.getEnergyName(i);
         D_communicate = struct_data.getMeansCommunicateName(i);
         D_psychology = struct_data.getPsychologyName(i);
-        D_typeThinking = struct_data.getTypeThinkingNames(sex, i);
+        D_typeOfThinking = struct_data.getTypeThinkingNames(sex, i);
         D_vectorHost = struct_data.getHostName(i);
         D_vectorServant = struct_data.getServantName(i);
-        D_equalMarriage = struct_data.getEqualMarriageName(i);
-        D_romanticMarriage = struct_data.getRomanticMarriageName(i);
-        D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);
-        D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);
-        D_structElement = struct_data.getElementName(day, month);
+        D_equalMarriage = struct_data.getEqualMarriageName(i);//
+        D_romanticMarriage = struct_data.getRomanticMarriageName(i);//
+        D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);//
+        D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);//
+        D_elementStructure = struct_data.getElementName(day, month);
         tv_date.setText(                "Дата: "+day+"."+month+"."+year);
-        tv_struct.setText(              setTextSettings("Тип:", D_virtualStruct));
-        tv_year.setText(                setTextSettings("Год:", D_yearName));
-        tv_zodiak.setText(              setTextSettings("Знак зодиака:", D_zodiakName));
-        tv_number_year.setText(         setTextSettings("Число года:", D_numberYears));
+        tv_virtual_type.setText(              setTextSettings("Тип:", D_virtualType));
+        tv_year.setText(                setTextSettings("Год:", D_year));
+        tv_zodiac.setText(              setTextSettings("Знак зодиака:", D_zodiak));
+        tv_year_number.setText(         setTextSettings("Число года:", D_year_number));
         tv_year_period.setText(         setTextSettings("Годовой цикл:", D_yearPeriod));
-        tv_symbol_fate.setText(         setTextSettings("По судьбе:", D_symbolFate));
-        tv_energetics.setText(          setTextSettings("Энергетика:", D_energetics));
+        tv_fate_symbol.setText(         setTextSettings("По судьбе:", D_fateSymbol));
+        tv_energy.setText(          setTextSettings("Энергетика:", D_energy));
         tv_communicate.setText(         setTextSettings("Способы общения:", D_communicate));
         tv_psychology.setText(          setTextSettings("Психология человека:", D_psychology));
-        tv_type_thinking.setText(       setTextSettings("Тип мышления:", D_typeThinking));
+        tv_type_of_thinking.setText(       setTextSettings("Тип мышления:", D_typeOfThinking));
         tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
         tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
-        tv_struct_element.setText(      setTextSettings("Структура стихии:",D_structElement));
+        tv_element_structure.setText(      setTextSettings("Структура стихии:", D_elementStructure));
     }
     public Spanned setTextSettings(String _text, String _value){
         String text = _text;
@@ -113,17 +125,51 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     }
     @Override
     public void onClick(View view) {
-        String key;
+         String key="";
         pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
-            case R.id.tv_date:
-//                key = D_virtualStruct;
-//                listener.onDescriptionClicked(key);//key is going to new bundle
+            case R.id.tv_date: break;
+            case R.id.prof_tv_virtual_type:
+                key = D_virtualType;
                 break;
-            case R.id.tv_struct_result:
-                key = D_virtualStruct;
-                listener.onDescriptionClicked(key);//key is going to new bundle
+            case R.id.prof_tv_year:
+                key = D_year;
+                break;
+            case R.id.prof_tv_zodiak:
+                key = D_zodiak;
+                break;
+            case R.id.prof_tv_year_number:
+                key = D_year_number;
+                break;
+            case R.id.prof_tv_year_period:
+                key = D_yearPeriod;
+                break;
+            case R.id.prof_tv_fate_symbol:
+                key = D_fateSymbol;
+                break;
+            case R.id.prof_tv_energy:
+                key = D_energy;
+                break;
+            case R.id.prof_tv_communicate:
+                key = D_communicate;
+                break;
+            case R.id.prof_tv_psychology:
+                key = D_psychology;
+                break;
+            case R.id.prof_tv_type_of_thinking:
+                key = D_typeOfThinking;
+                break;
+            case R.id.prof_tv_vector_host:
+                key = D_vectorHost;
+                break;
+            case R.id.prof_tv_vector_servant:
+                key = D_vectorServant;
+                break;
+            case R.id.prof_tv_element_structure:
+                key = D_elementStructure;
+                break;
+            default:break;
         }
-
+        listener.onDescriptionClicked(key);//key is going to new bundle
     }
 }

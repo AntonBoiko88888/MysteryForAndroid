@@ -9,8 +9,34 @@
         <item>Шут</item>
         <item>Король</item>
         <item>Аристократ</item><!--6-->
-        <!---->
+        <!--zodiac-->
+        <item>Крыса</item><!--7-->
+        <item>Бык</item>
+        <item>Тигр</item>
+        <item>Кот</item>
+        <item>Дракон</item>
+        <item>Змея</item>
+        <item>Лошадь</item>
+        <item>Коза</item>
+        <item>Обезьяна</item>
+        <item>Петух</item>
+        <item>Собака</item>
+        <item>Кабан</item><!--18-->
+        <!--birth_year-->
+        <item>Овен</item><!--19-->
+        <item>Телец</item>
+        <item>Близнецы</item>
+        <item>Рак</item>
+        <item>Лев</item>
+        <item>Дева</item>
+        <item>Весы</item>
+        <item>Скорпион</item>
+        <item>Стрелец</item>
+        <item>Козерог</item>
+        <item>Водолей</item>
+        <item>Рыбы</item><!--30-->
 
+        <!---->
     </string-array>
     <string-array name="db_details">
         <!--virtual-->
@@ -264,28 +290,7 @@
             ]]>
         </item><!--6 аристократ -->
         <!---->
-
-    </string-array>
-
-    <string-array name="db_names_2">
-        <!--birth-->
-        <item>Крыса</item><!--0-->
-        <item>Бык</item>
-        <item>Тигр</item>
-        <item>Кот</item>
-        <item>Дракон</item>
-        <item>Змея</item>
-        <item>Лошадь</item>
-        <item>Коза</item>
-        <item>Обезьяна</item>
-        <item>Петух</item>
-        <item>Собака</item>
-        <item>Кабан</item><!--11-->
-        <!---->
-
-    </string-array>
-    <string-array name="db_details_2">
-        <!--birth-->
+        <!--birth_year-->
         <item>
             <![CDATA[
             <html>
@@ -303,7 +308,7 @@
             </body>
             </html>
             ]]>
-        </item><!--0 крыса -->
+        </item><!--7 крыса -->
         <item>
             <![CDATA[
             <html>
@@ -461,29 +466,7 @@
             </body>
             </html>
             ]]>
-        </item><!--11 кабан -->
-        <!---->
-
-    </string-array>
-
-    <string-array name="db_names_3">
-        <!--zodiac-->
-        <item>Овен</item><!--0-->
-        <item>Телец</item>
-        <item>Близнецы</item>
-        <item>Рак</item>
-        <item>Лев</item>
-        <item>Дева</item>
-        <item>Весы</item>
-        <item>Скорпион</item>
-        <item>Стрелец</item>
-        <item>Козерог</item>
-        <item>Водолей</item>
-        <item>Рыбы</item><!--11-->
-        <!---->
-
-    </string-array>
-    <string-array name="db_details_3">
+        </item><!--18 кабан -->
         <!--zodiac-->
         <item>
             <![CDATA[
@@ -499,7 +482,7 @@
             </body>
             </html>
             ]]>
-        </item><!--0 овен -->
+        </item><!--19 овен -->
         <item>
             <![CDATA[
             <html>
@@ -627,9 +610,8 @@
             </body>
             </html>
             ]]>
-        </item><!--11 рыбы -->
+        </item><!--30 рыбы -->
         <!---->
-
     </string-array>
 
 

@@ -22,79 +22,79 @@
             android:textColor="@color/blue"
             android:textSize="33sp" />
         <TextView
-            android:id="@+id/tv_struct_result"
+            android:id="@+id/prof_tv_virtual_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_year_result"
+            android:id="@+id/prof_tv_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_zodiak_result"
+            android:id="@+id/prof_tv_zodiak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_number_year"
+            android:id="@+id/prof_tv_year_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_year_period"
+            android:id="@+id/prof_tv_year_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_symbol_fate"
+            android:id="@+id/prof_tv_fate_symbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_temperament"
+            android:id="@+id/prof_tv_energy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_communicate"
+            android:id="@+id/prof_tv_communicate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_psychology"
+            android:id="@+id/prof_tv_psychology"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_type_thinking"
+            android:id="@+id/prof_tv_type_of_thinking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_vector_host"
+            android:id="@+id/prof_tv_vector_host"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_vector_servant"
+            android:id="@+id/prof_tv_vector_servant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profilemarginTop"/>
         <TextView
-            android:id="@+id/tv_struct_element"
+            android:id="@+id/prof_tv_element_structure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/profileTextSize"

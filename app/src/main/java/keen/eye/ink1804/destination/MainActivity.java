@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new Account_fragment();//*
                 FRAGMENT_TAG = "f2";//*
                 break;
-
             default:break;
         }
         transaction.replace(R.id.fragment_container, fragment, FRAGMENT_TAG);
