@@ -14,7 +14,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
@@ -31,13 +33,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawer;
     private SharedPreferences mSettings;
+    private ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createActivityViews();
         mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
 
         if(!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
+            toggle.setDrawerIndicatorEnabled(false);
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             createAlert();
         }
         else{
@@ -47,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.fragment_container,datePicker_fragment,"datePicker_fragment");
             transaction.commit();
         }
-            createActivityViews();
     }
 
     @Override
@@ -119,13 +124,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Постижение тайны");
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.clown_about);
-
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.clown_about);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
     private void createAlert(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -188,6 +193,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void onRegistration(int day, int month, int year, boolean sex) {
+        toggle.setDrawerIndicatorEnabled(true);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Account_fragment accFragment = new Account_fragment();
 

@@ -16,6 +16,7 @@
     <EditText
         android:id="@+id/reg_et_name"
         android:layout_width="150dp"
+        android:inputType="text"
         android:hint="Имя"
         android:layout_height="wrap_content" />
     <TextView
