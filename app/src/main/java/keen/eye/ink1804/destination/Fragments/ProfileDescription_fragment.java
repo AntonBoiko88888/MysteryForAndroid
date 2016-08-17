@@ -26,7 +26,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
 
     private boolean sex;//true - male, false - female
     private int yearNow, year, month, day;
-    private String D_virtualType, D_year, D_zodiak, D_year_number, D_yearPeriod, D_fateSymbol
+    private String D_virtualType, D_year, D_zodiac, D_year_number, D_yearPeriod, D_fateSymbol
             , D_energy, D_communicate, D_psychology, D_typeOfThinking, D_vectorHost, D_vectorServant
             , D_equalMarriage, D_romanticMarriage, D_spiritualMarriage, D_patriarchalMarriage, D_elementStructure;
 
@@ -56,12 +56,12 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_zodiac.setOnClickListener(this);
         tv_year_number = (TextView) rootView.findViewById(R.id.prof_tv_year_number);
         tv_year_number.setOnClickListener(this);
+        tv_year_period = (TextView) rootView.findViewById(R.id.prof_tv_year_period);
+        tv_year_period.setOnClickListener(this);
+        tv_fate_symbol = (TextView) rootView.findViewById(R.id.prof_tv_fate_symbol);
+        tv_fate_symbol.setOnClickListener(this);
         tv_energy = (TextView) rootView.findViewById(R.id.prof_tv_energy);
 //        tv_energy.setOnClickListener(this);
-        tv_year_period = (TextView) rootView.findViewById(R.id.prof_tv_year_period);
-//        tv_year_period.setOnClickListener(this);
-        tv_fate_symbol = (TextView) rootView.findViewById(R.id.prof_tv_fate_symbol);
-//        tv_fate_symbol.setOnClickListener(this);
         tv_communicate = (TextView) rootView.findViewById(R.id.prof_tv_communicate);
 //        tv_communicate.setOnClickListener(this);
         tv_psychology = (TextView) rootView.findViewById(R.id.prof_tv_psychology);
@@ -83,7 +83,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         j = struct_data.getDateId(day, month);
         D_virtualType = struct_data.getStructureType(i, j);
         D_year = struct_data.getYearName(year);
-        D_zodiak = struct_data.getZodiakName(day, month);
+        D_zodiac = struct_data.getZodiakName(day, month);
         D_year_number = struct_data.getNumberYear(yearNow, month, day);
         D_yearPeriod = struct_data.getYearPeriod(struct_data.getYearIdTable(yearNow),struct_data.getTypeThinkingId(sex,i));
         D_fateSymbol = struct_data.getSymbolFate(i);
@@ -101,7 +101,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_date.setText(                "Дата: "+day+"."+month+"."+year);
         tv_virtual_type.setText(              setTextSettings("Тип:", D_virtualType));
         tv_year.setText(                setTextSettings("Год:", D_year));
-        tv_zodiac.setText(              setTextSettings("Знак зодиака:", D_zodiak));
+        tv_zodiac.setText(              setTextSettings("Знак зодиака:", D_zodiac));
         tv_year_number.setText(         setTextSettings("Число года:", D_year_number));
         tv_year_period.setText(         setTextSettings("Годовой цикл:", D_yearPeriod));
         tv_fate_symbol.setText(         setTextSettings("По судьбе:", D_fateSymbol));
@@ -136,7 +136,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
                 key = D_year;
                 break;
             case R.id.prof_tv_zodiak:
-                key = D_zodiak;
+                key = D_zodiac;
                 break;
             case R.id.prof_tv_year_number:
                 key = D_year_number;
