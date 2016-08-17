@@ -55,7 +55,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_zodiac = (TextView) rootView.findViewById(R.id.prof_tv_zodiak);
         tv_zodiac.setOnClickListener(this);
         tv_year_number = (TextView) rootView.findViewById(R.id.prof_tv_year_number);
-//        tv_year_number.setOnClickListener(this);
+        tv_year_number.setOnClickListener(this);
         tv_energy = (TextView) rootView.findViewById(R.id.prof_tv_energy);
 //        tv_energy.setOnClickListener(this);
         tv_year_period = (TextView) rootView.findViewById(R.id.prof_tv_year_period);
