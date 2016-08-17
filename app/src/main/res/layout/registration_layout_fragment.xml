@@ -7,7 +7,18 @@
     android:background="@drawable/back1">
 
     <TextView
-        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Укажите ваше имя"
+        android:textColor="@color/blue"
+        android:textSize="25sp"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/reg_et_name"
+        android:layout_width="150dp"
+        android:hint="Имя"
+        android:layout_height="wrap_content" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
@@ -15,17 +26,17 @@
         android:textSize="25sp"
         android:gravity="center"/>
 
-            <Button
-                android:id="@+id/picker_btn_pick_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Выбрать дату"/>
-            <TextView
-                android:id="@+id/picker_tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <Button
+        android:id="@+id/reg_pick_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выбрать дату"/>
+    <TextView
+        android:id="@+id/reg_tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,13 +53,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
-                android:id="@+id/picker_rb_male"
+                android:id="@+id/reg_rb_male"
                 android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:text="Мужской"/>
             <RadioButton
+                android:id="@+id/reg_rb_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
@@ -57,7 +69,7 @@
         </RadioGroup>
     </LinearLayout>
     <Button
-        android:id="@+id/picker_btn_next"
+        android:id="@+id/reg_btn_registrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="далее"/>

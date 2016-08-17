@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,38 +19,41 @@ import com.bruce.pickerview.popwindow.DatePickerPopWin;
 import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
-
 /**
- * Created by Ink1804 on 06.08.16.
+ * Created by Ink1804 on 17.08.16.
  */
-public class DatePicker_fragment extends Fragment implements View.OnClickListener {
-
-    private Button btn_next,btn_showDatePicker;
-    private View rootView;
+public class Registration_fragment extends Fragment implements View.OnClickListener {
+    private Button btn_registrate,btn_showDatePicker;
     private TextView tv_date;
+    private EditText et_name;
     private DatePickerPopWin pickerPopWin;
     private RadioButton rb_male;
+    private SharedPreferences mSettings;
     private boolean sex;
-
     private int day = 1,month = 1,year = 2000,currentYear;
+    private String name;
+    private View rootView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView  = inflater.inflate(R.layout.datepicker_layout_fragment,container,false);
-        initializeTView();
+        rootView = inflater.inflate(R.layout.registration_layout_fragment,container,false);
         createDatePicker();
+        initializeTView();
+
         return rootView;
     }
 
 
     private void initializeTView() {
-        tv_date = (TextView)rootView.findViewById(R.id.picker_tv_date);
-        btn_next = (Button)rootView.findViewById(R.id.picker_btn_next);
-        btn_next.setOnClickListener(this);
-        btn_showDatePicker = (Button)rootView.findViewById(R.id.picker_btn_pick_date);
+        tv_date = (TextView)rootView.findViewById(R.id.reg_tv_date);
+        et_name = (EditText)rootView.findViewById(R.id.reg_et_name);
+        btn_registrate = (Button)rootView.findViewById(R.id.reg_btn_registrate);
+        btn_registrate.setOnClickListener(this);
+        btn_showDatePicker = (Button)rootView.findViewById(R.id.reg_pick_date);
         btn_showDatePicker.setOnClickListener(this);
-        rb_male = (RadioButton)rootView.findViewById(R.id.picker_rb_male);
+        rb_male = (RadioButton)rootView.findViewById(R.id.reg_rb_male);
     }
     private void createDatePicker(){
         Calendar calendar = Calendar.getInstance();
@@ -74,18 +80,32 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     }
 
     @Override
-    public void onClick(View view) {//кнопка "Далее"
+    public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.picker_btn_next:
-                pushDateListener listener = (pushDateListener) getActivity();
-                sex = rb_male.isChecked();
-                listener.onDatePushed(day, month, year, currentYear, sex);
+            case R.id.reg_btn_registrate:
+            pushDateListener listener = (pushDateListener) getActivity();
+            sex = rb_male.isChecked();
+            if (!et_name.getText().toString().equals("")) {
+                name = et_name.getText().toString();
+                listener.onRegistration(day, month, year, sex);
+                mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = mSettings.edit();
+                editor.putBoolean(Constants.APP_PREF_ISREGISTER, true);
+                editor.putString(Constants.APP_PREF_NAME, name);
+                editor.putInt(Constants.APP_PREF_DAY, day);
+                editor.putInt(Constants.APP_PREF_MONTH, month);
+                editor.putInt(Constants.APP_PREF_YEAR, year);
+                editor.putBoolean(Constants.APP_PREF_SEX, sex);
+                editor.putString(Constants.APP_PREF_STATUS, "Начинающий");
+                editor.apply();
+            } else
+                Toast.makeText(getActivity(), "Недопустимое имя", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.picker_btn_pick_date:
+
+            case R.id.reg_pick_date:
                 pickerPopWin.showPopWin(getActivity());
                 break;
-            default:
-                break;
+            default:break;
         }
     }
     @Override

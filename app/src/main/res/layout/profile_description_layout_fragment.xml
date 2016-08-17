@@ -14,7 +14,7 @@
             android:orientation="vertical"
             android:paddingTop="15dp">
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/picker_tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="italic"

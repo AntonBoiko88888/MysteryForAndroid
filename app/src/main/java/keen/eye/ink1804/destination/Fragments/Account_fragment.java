@@ -25,20 +25,18 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
     private TextView tv_name,tv_date,tv_sex,tv_status;
     private Button btn_desc;
     private boolean sex;
-    private String status;
+    private String status,name;
     private int day,month,year;
     private SharedPreferences mSettings;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.account_layout_fragment,container,false);
-
-
         initializeViews();
         return rootView;
     }
     private void initializeViews(){
         mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        //name
+        name = mSettings.getString(Constants.APP_PREF_NAME,"noName");
         day = mSettings.getInt(Constants.APP_PREF_DAY,1);
         month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
         year = mSettings.getInt(Constants.APP_PREF_YEAR,2000);
@@ -51,6 +49,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         tv_sex = (TextView)rootView.findViewById(R.id.acc_tv_sex);
         tv_status = (TextView)rootView.findViewById(R.id.acc_tv_status);
         tv_date.setText("Дата рождения:\n"+day+"."+month+"."+year);
+        tv_name.setText("Имя: "+name);
         if(sex) tv_sex.setText("Пол: муж.");
         else tv_sex.setText("Пол: жен.");
         tv_status.setText(status);

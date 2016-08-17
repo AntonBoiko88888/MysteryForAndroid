@@ -46,7 +46,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         month = args.getInt("month");
         day = args.getInt("day");
         sex = args.getBoolean("sex");
-        tv_date = (TextView) rootView.findViewById(R.id.tv_date);
+        tv_date = (TextView) rootView.findViewById(R.id.picker_tv_date);
 //        tv_date.setOnClickListener(this);
         tv_year = (TextView) rootView.findViewById(R.id.prof_tv_year);
         tv_year.setOnClickListener(this);
@@ -125,10 +125,10 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     }
     @Override
     public void onClick(View view) {
-         String key="";
+         String key="default";
         pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
-            case R.id.tv_date: break;
+//            case R.id.tv_date: break;
             case R.id.prof_tv_virtual_type:
                 key = D_virtualType;
                 break;

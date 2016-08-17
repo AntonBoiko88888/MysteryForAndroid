@@ -21,6 +21,7 @@ import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.Description_fragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDetails_fragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDescription_fragment;
+import keen.eye.ink1804.destination.Fragments.Registration_fragment;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 
@@ -137,11 +138,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                                DatePicker_fragment infoFragment = new DatePicker_fragment();
+                                Registration_fragment fragment = new Registration_fragment();
                                 Bundle args = new Bundle();
-                                args.putString("action","registration");
-                                infoFragment.setArguments(args);
-                                transaction.replace(R.id.fragment_container,infoFragment,"infoFragment");
+                                fragment.setArguments(args);
+                                transaction.replace(R.id.fragment_container,fragment,"registrationFragment");
                                 transaction.commit();
                             }
                         });
