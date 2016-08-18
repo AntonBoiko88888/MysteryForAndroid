@@ -69,9 +69,9 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_type_of_thinking = (TextView) rootView.findViewById(R.id.prof_tv_type_of_thinking);
         tv_type_of_thinking.setOnClickListener(this);
         tv_vector_host = (TextView) rootView.findViewById(R.id.prof_tv_vector_host);
-//        tv_vector_host.setOnClickListener(this);
+        tv_vector_host.setOnClickListener(this);
         tv_vector_servant = (TextView) rootView.findViewById(R.id.prof_tv_vector_servant);
-//        tv_vector_servant.setOnClickListener(this);
+        tv_vector_servant.setOnClickListener(this);
         tv_element_structure = (TextView) rootView.findViewById(R.id.prof_tv_element_structure);
         tv_element_structure.setOnClickListener(this);
     }
@@ -160,10 +160,10 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
                 key = D_typeOfThinking;
                 break;
             case R.id.prof_tv_vector_host:
-                key = D_vectorHost;
+                key = "Векторные отношения";
                 break;
             case R.id.prof_tv_vector_servant:
-                key = D_vectorServant;
+                key = "Векторные отношения";
                 break;
             case R.id.prof_tv_element_structure:
                 key = D_elementStructure;
