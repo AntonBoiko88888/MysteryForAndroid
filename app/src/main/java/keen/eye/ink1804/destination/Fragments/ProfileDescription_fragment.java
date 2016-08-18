@@ -73,7 +73,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_vector_servant = (TextView) rootView.findViewById(R.id.prof_tv_vector_servant);
 //        tv_vector_servant.setOnClickListener(this);
         tv_element_structure = (TextView) rootView.findViewById(R.id.prof_tv_element_structure);
-//        tv_element_structure.setOnClickListener(this);
+        tv_element_structure.setOnClickListener(this);
     }
     private void fillInfo() {
         Structure_databases struct_data = new Structure_databases();
