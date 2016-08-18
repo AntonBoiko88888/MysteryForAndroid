@@ -28,7 +28,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     private View rootView;
     private TextView tv_date;
     private DatePickerPopWin pickerPopWin;
-    private RadioButton rb_male;
+    private RadioButton rb_male,rb_female;
     private boolean sex;
 
     private int day = 1,month = 1,year = 2000,currentYear;
@@ -48,6 +48,8 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
         btn_showDatePicker = (Button)rootView.findViewById(R.id.picker_btn_pick_date);
         btn_showDatePicker.setOnClickListener(this);
         rb_male = (RadioButton)rootView.findViewById(R.id.picker_rb_male);
+        rb_female = (RadioButton)rootView.findViewById(R.id.picker_rb_female);
+
     }
     private void createDatePicker(){
         Calendar calendar = Calendar.getInstance();
@@ -79,6 +81,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
             case R.id.picker_btn_next:
                 pushDateListener listener = (pushDateListener) getActivity();
                 sex = rb_male.isChecked();
+//                rb_male.setChecked(sex);
                 listener.onDatePushed(day, month, year, currentYear, sex);
                 break;
             case R.id.picker_btn_pick_date:
