@@ -61,13 +61,13 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_fate_symbol = (TextView) rootView.findViewById(R.id.prof_tv_fate_symbol);
         tv_fate_symbol.setOnClickListener(this);
         tv_energy = (TextView) rootView.findViewById(R.id.prof_tv_energy);
-//        tv_energy.setOnClickListener(this);
+        tv_energy.setOnClickListener(this);
         tv_communicate = (TextView) rootView.findViewById(R.id.prof_tv_communicate);
-//        tv_communicate.setOnClickListener(this);
+        tv_communicate.setOnClickListener(this);
         tv_psychology = (TextView) rootView.findViewById(R.id.prof_tv_psychology);
-//        tv_psychology.setOnClickListener(this);
+        tv_psychology.setOnClickListener(this);
         tv_type_of_thinking = (TextView) rootView.findViewById(R.id.prof_tv_type_of_thinking);
-//        tv_type_of_thinking.setOnClickListener(this);
+        tv_type_of_thinking.setOnClickListener(this);
         tv_vector_host = (TextView) rootView.findViewById(R.id.prof_tv_vector_host);
 //        tv_vector_host.setOnClickListener(this);
         tv_vector_servant = (TextView) rootView.findViewById(R.id.prof_tv_vector_servant);
