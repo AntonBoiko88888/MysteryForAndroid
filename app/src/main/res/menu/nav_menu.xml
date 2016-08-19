@@ -2,14 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/tab_account"
-            android:icon="@drawable/account"
-            android:title="Аккаунт"/>
+        <!--<item-->
+            <!--android:id="@+id/tab_account"-->
+            <!--android:icon="@drawable/account"-->
+            <!--android:title="Аккаунт"/>-->
         <item
             android:id="@+id/tab_hor_online"
             android:icon="@drawable/star"
             android:title="Гороскоп онлайн"/>
+        <item android:title="Сферы">
+            <menu>
         <item
             android:id="@+id/tab_zodiaс_sign"
             android:icon="@drawable/aries"
@@ -26,15 +28,21 @@
             android:id="@+id/tab_relations"
             android:icon="@drawable/relations"
             android:title="Взаимоотношения"/>
+            </menu>
+        </item>
+        <item android:title="Остальное">
+        <menu>
         <item
             android:id="@+id/tab_interesting"
             android:icon="@drawable/interesting"
             android:title="Интересное"/>
-
         <item
             android:id="@+id/tab_settings"
             android:icon="@drawable/settings"
             android:title="Настройки"/>
+        </menu>
+        </item>
+
     </group>
 
 </menu>

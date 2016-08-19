@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private SharedPreferences mSettings;
     private ActionBarDrawerToggle toggle;
-    private static long back_pressed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,10 +63,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment = null;
         Bundle args = new Bundle();
         switch (item.getItemId()){
-            case R.id.tab_account:
-                fragment = new Account_fragment();
-                FRAGMENT_TAG = "accFragment";
-                break;
+//            case R.id.tab_account:
+//                fragment = new Account_fragment();
+//                FRAGMENT_TAG = "accFragment";
+//                break;
             case R.id.tab_hor_online:
                 fragment = new Account_fragment();//*
                 FRAGMENT_TAG = "f3";//*
@@ -161,17 +160,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
-
-
-        //Код, если в стеке нет окон, чтобы при нажатии назад сразу не закрывалось приложение
-//        if (back_pressed + 2000 > System.currentTimeMillis()) {
-//            super.onBackPressed();
-//        } else {
-//            Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
-//        }
-//
-//            back_pressed = System.currentTimeMillis();
-
     }
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex) {

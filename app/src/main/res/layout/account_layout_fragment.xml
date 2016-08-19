@@ -51,7 +51,7 @@
     </LinearLayout>
         <ImageView
             android:id="@+id/acc_image_icon"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="150dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/border"
@@ -62,7 +62,7 @@
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/acc_image_icon"
-            android:width="100dp"
+            android:width="120dp"
             android:layout_marginTop="5dp"
             android:textSize="10dp"
             android:text="Выбрать фото "
