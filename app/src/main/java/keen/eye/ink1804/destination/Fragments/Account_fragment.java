@@ -52,7 +52,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         tv_name.setText("Имя: "+name);
         if(sex) tv_sex.setText("Пол: муж.");
         else tv_sex.setText("Пол: жен.");
-        tv_status.setText(status);
+        tv_status.setText("Статус:\n"+status);
     }
 
     @Override

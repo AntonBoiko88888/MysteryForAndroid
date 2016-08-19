@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private SharedPreferences mSettings;
     private ActionBarDrawerToggle toggle;
+    private static long back_pressed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,6 +161,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+
+
+        //Код, если в стеке нет окон, чтобы при нажатии назад сразу не закрывалось приложение
+//        if (back_pressed + 2000 > System.currentTimeMillis()) {
+//            super.onBackPressed();
+//        } else {
+//            Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
+//        }
+//
+//            back_pressed = System.currentTimeMillis();
+
     }
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex) {

@@ -13,33 +13,40 @@
         android:id="@+id/acc_lin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-
-        android:padding="15dp">
+        android:orientation="vertical">
         <TextView
             android:id="@+id/acc_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:textColor="@color/blue"
             android:text="Имя: Шишергей Бойтон"/>
         <TextView
             android:id="@+id/acc_tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/blue"
             android:textSize="20sp"
             android:text="qwe"/>
         <TextView
             android:id="@+id/acc_tv_sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/blue"
             android:textSize="20sp"
             android:text="qwe"/>
         <TextView
             android:id="@+id/acc_tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/yellow"
             android:textSize="20sp"
             android:text="qwe"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="Повысить статус"
+            android:background="@drawable/btn_states"/>
 
     </LinearLayout>
         <ImageView
@@ -52,17 +59,29 @@
             />
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/acc_image_icon"
-            android:text="Заменить "/>
+            android:width="100dp"
+            android:layout_marginTop="5dp"
+            android:textSize="10dp"
+            android:text="Выбрать фото "
+            android:background="@drawable/btn_states"/>
     </RelativeLayout>
     <Button
         android:id="@+id/acc_btn_description"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Мое описание"
-        />
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_states"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:text="Описание других профилей"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_states"
+        android:textSize="10dp"/>
     <View
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

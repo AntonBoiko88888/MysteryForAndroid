@@ -19,7 +19,9 @@
                 android:id="@+id/picker_btn_pick_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Выбрать дату"/>
+                android:text="Выбрать дату"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_states"/>
             <TextView
                 android:id="@+id/picker_tv_date"
                 android:layout_width="wrap_content"
@@ -46,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
+                android:checked="true"
                 android:text="Мужской"/>
             <RadioButton
                 android:id="@+id/picker_rb_female"
@@ -60,7 +63,8 @@
         android:id="@+id/picker_btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="далее"/>
+        android:text="далее"
+        android:background="@drawable/btn_states"/>
 
 
 </LinearLayout>
