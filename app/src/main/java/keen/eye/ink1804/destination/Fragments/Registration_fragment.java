@@ -26,15 +26,11 @@ import keen.eye.ink1804.destination.R;
  * Created by Ink1804 on 17.08.16.
  */
 public class Registration_fragment extends Fragment implements View.OnClickListener {
-    private Button btn_registrate,btn_showDatePicker;
     private TextView tv_date;
     private EditText et_name;
     private DatePickerPopWin pickerPopWin;
     private RadioButton rb_male;
-    private SharedPreferences mSettings;
-    private boolean sex;
-    private int day = 1,month = 1,year = 2000,currentYear;
-    private String name;
+    private int day = 1,month = 1,year = 2000;
     private View rootView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,15 +45,13 @@ public class Registration_fragment extends Fragment implements View.OnClickListe
     private void initializeTView() {
         tv_date = (TextView)rootView.findViewById(R.id.reg_tv_date);
         et_name = (EditText)rootView.findViewById(R.id.reg_et_name);
-        btn_registrate = (Button)rootView.findViewById(R.id.reg_btn_registrate);
+        Button btn_registrate = (Button)rootView.findViewById(R.id.reg_btn_registrate);
         btn_registrate.setOnClickListener(this);
-        btn_showDatePicker = (Button)rootView.findViewById(R.id.reg_pick_date);
+        Button btn_showDatePicker = (Button)rootView.findViewById(R.id.reg_pick_date);
         btn_showDatePicker.setOnClickListener(this);
         rb_male = (RadioButton)rootView.findViewById(R.id.reg_rb_male);
     }
     private void createDatePicker(){
-        Calendar calendar = Calendar.getInstance();
-        currentYear = calendar.get(Calendar.YEAR);
         pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
             @Override
             public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
@@ -84,11 +78,11 @@ public class Registration_fragment extends Fragment implements View.OnClickListe
         switch (view.getId()) {
             case R.id.reg_btn_registrate:
             pushDateListener listener = (pushDateListener) getActivity();
-            sex = rb_male.isChecked();
+            boolean sex = rb_male.isChecked();
             if (!et_name.getText().toString().equals("")) {
-                name = et_name.getText().toString();
+                String name = et_name.getText().toString();
                 listener.onRegistration(day, month, year, sex);
-                mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                SharedPreferences  mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = mSettings.edit();
                 editor.putBoolean(Constants.APP_PREF_ISREGISTER, true);
                 editor.putString(Constants.APP_PREF_NAME, name);

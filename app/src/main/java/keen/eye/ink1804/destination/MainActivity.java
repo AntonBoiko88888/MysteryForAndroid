@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
@@ -29,17 +31,16 @@ import keen.eye.ink1804.destination.Math.Constants;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-,pushDateListener {
+,pushDateListener, View.OnClickListener {
 
     private DrawerLayout drawer;
-    private SharedPreferences mSettings;
     private ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createActivityViews();
-        mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
 
         if(!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
             toggle.setDrawerIndicatorEnabled(false);
@@ -47,10 +48,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             createAlert();
         }
         else{
-            DatePicker_fragment datePicker_fragment= new DatePicker_fragment();
+            DatePicker_fragment fragment = new DatePicker_fragment();
 //            Account_fragment fragment = new Account_fragment();//в дальнейшем
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.fragment_container,datePicker_fragment,"datePicker_fragment");
+            transaction.add(R.id.fragment_container,fragment,"datePicker_fragment");
             transaction.commit();
         }
     }
@@ -117,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     private void createActivityViews(){
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -130,7 +130,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        View header = navigationView.getHeaderView(0);
+        header.setOnClickListener(this);
     }
     private void createAlert(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
+
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -201,5 +203,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container,accFragment,"accFragment");
         transaction.commit();
     }
-
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.nav_header:
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                Account_fragment fragment = new Account_fragment();
+                transaction.replace(R.id.fragment_container, fragment, "accFragment");
+                if (fragmentManager.findFragmentByTag("accFragment") == null) {
+                    transaction.addToBackStack("accFragment");
+                }
+                transaction.commit();
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+        }
+    }
 }

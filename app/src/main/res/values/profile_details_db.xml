@@ -81,7 +81,6 @@
         <item>Консерватор (Вода)</item>
         <item>Небожитель (Воздух)</item>
         <item>Созидатель (Земля)</item><!--67-->
-        <!---->
     </string-array>
     <string-array name="db_details">
         <!--virtual-->
@@ -334,7 +333,6 @@
             </html>
             ]]>
         </item><!--6 аристократ -->
-        <!---->
         <!--birth_year-->
         <item>
             <![CDATA[
@@ -1072,7 +1070,6 @@
             </html>
             ]]>
         </item><!--51 Скептик-->
-        <!---->
         <!--communicate-->
         <item>
             <![CDATA[
@@ -1455,7 +1452,6 @@
             </html>
             ]]>
         </item><!--62 Созидатель (Земля)-->
-        <!---->
     </string-array>
 
 
