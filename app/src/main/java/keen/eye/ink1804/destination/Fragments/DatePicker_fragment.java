@@ -3,6 +3,7 @@ package keen.eye.ink1804.destination.Fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.bruce.pickerview.popwindow.DatePickerPopWin;
 import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.R;
 
 
@@ -93,7 +95,12 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     }
     @Override
     public void onResume() {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            fm.popBackStack();
+        }
         tv_date.setText("Выбранная дата: "+day+"."+month+"."+year);
+        MainActivity.backStackID = 0;
         super.onResume();
     }
 }

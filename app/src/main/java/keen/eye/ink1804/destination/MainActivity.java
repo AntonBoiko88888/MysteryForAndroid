@@ -14,18 +14,19 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.Description_fragment;
+import keen.eye.ink1804.destination.Fragments.HoroscopeOnline_fragment;
+import keen.eye.ink1804.destination.Fragments.Interesting_fragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDetails_fragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDescription_fragment;
 import keen.eye.ink1804.destination.Fragments.Registration_fragment;
+import keen.eye.ink1804.destination.Fragments.Settings_fragment;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 
@@ -35,7 +36,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
+    public static int backStackID = 0;
+//    0 - мы на главном фрагменте
+//    1 - backstack.count! = 0
+//    2 - backstack.count = 0 но мы не на главном фрагменте
     private static long back_pressed;//не удаляй
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,61 +67,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        String FRAGMENT_TAG = "";
         Fragment fragment = null;
         Bundle args = new Bundle();
         switch (item.getItemId()){
 //            case R.id.tab_account:
 //                fragment = new Account_fragment();
-//                FRAGMENT_TAG = "accFragment";
 //                break;
             case R.id.tab_hor_online:
-                fragment = new Account_fragment();//*
-                FRAGMENT_TAG = "f3";//*
+                fragment = new HoroscopeOnline_fragment();//*
                 break;
             case R.id.tab_zodiaс_sign:
                 fragment = new Description_fragment();
-                FRAGMENT_TAG = "zodiacFragment";
                 args.putString("page1","page1");
                 args.putString("page2","page2");
                 fragment.setArguments(args);
                 break;
             case R.id.tab_birth_sign:
                 fragment = new Description_fragment();
-                FRAGMENT_TAG = "birthFragment";
                 args.putString("page1","page1");
                 args.putString("page2","page2");
                 fragment.setArguments(args);
                 break;
             case R.id.tab_virtual_sign:
                 fragment = new Description_fragment();
-                FRAGMENT_TAG = "virtualFragment";
                 args.putString("page1","page1");
                 args.putString("page2","page2");
                 fragment.setArguments(args);
                 break;
             case R.id.tab_relations:
                 fragment = new Description_fragment();
-                FRAGMENT_TAG = "relationsFragment";
                 args.putString("page1","page1");
                 args.putString("page2","page2");
                 fragment.setArguments(args);
                 break;
             case R.id.tab_interesting:
-                fragment = new Account_fragment();//*
-                FRAGMENT_TAG = "f1";//*
+                fragment = new Interesting_fragment();//*
                 break;
             case R.id.tab_settings:
-                fragment = new Account_fragment();//*
-                FRAGMENT_TAG = "f2";//*
+                fragment = new Settings_fragment();//*
                 break;
             default:break;
         }
-        transaction.replace(R.id.fragment_container, fragment, FRAGMENT_TAG);
-        if (fragmentManager.findFragmentByTag(FRAGMENT_TAG) == null) {
-            transaction.addToBackStack(FRAGMENT_TAG);
-        }
+        transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
         transaction.commit();
+        backStackID = 2;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -161,21 +156,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            switch (backStackID){
+                case 0:
+                    if (back_pressed + 2000 > System.currentTimeMillis()) {
+                        super.onBackPressed();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
+                    }
+                    back_pressed = System.currentTimeMillis();// не удаляй
+                    break;
+                case 1:
+//                    if(getSupportFragmentManager().getBackStackEntryCount()==0)
+//                        backStackID = 2;
+//                    else
+                        super.onBackPressed();
+                    break;
+                case 2:
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction transaction = fm.beginTransaction();
+                    DatePicker_fragment accFragment = new DatePicker_fragment();
+                    transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
+                    transaction.commit();
+                    break;
+            }
+//            super.onBackPressed();
         }
 
-//        if (back_pressed + 2000 > System.currentTimeMillis()) {
-//            super.onBackPressed();
-//        } else {
-//            Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
-//        }
-//
-//        back_pressed = System.currentTimeMillis(); не удаляй
+
     }
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
         ProfileDescription_fragment profDescFragment = new ProfileDescription_fragment();
+        String tag = "profDescFragment";
 
         Bundle args = new Bundle();
         args.putInt("day",day);
@@ -185,21 +199,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putBoolean("sex",sex);
         profDescFragment.setArguments(args);
 
-        transaction.replace(R.id.fragment_container,profDescFragment,"profDescFragment");
-        transaction.addToBackStack("profDescFragment");
+
+        transaction.replace(R.id.fragment_container,profDescFragment,tag);
+        if (fm.findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+            backStackID = 1;
+        }
         transaction.commit();
     }
     @Override
     public void onDescriptionClicked(String key) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
         ProfileDetails_fragment profDetFragment = new ProfileDetails_fragment();
+        String tag = "profDetFragment";
 
         Bundle args = new Bundle();
         args.putString("key",key);
         profDetFragment.setArguments(args);
 
-        transaction.replace(R.id.fragment_container,profDetFragment,"profDetFragment");
-        transaction.addToBackStack("profDetFragment");
+        transaction.replace(R.id.fragment_container,profDetFragment,tag);
+        if (fm.findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+            backStackID = 1;
+        }
         transaction.commit();
     }
     @Override
@@ -216,12 +239,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.nav_header:
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
                 Account_fragment fragment = new Account_fragment();
-                transaction.replace(R.id.fragment_container, fragment, "accFragment");
-                if (fragmentManager.findFragmentByTag("accFragment") == null) {
-                    transaction.addToBackStack("accFragment");
+                String tag = "accFragment";
+                transaction.replace(R.id.fragment_container, fragment, tag);
+                if (fm.findFragmentByTag(tag) == null) {
+                    transaction.addToBackStack(tag);
+                    backStackID = 1;
                 }
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);

@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import keen.eye.ink1804.destination.Fragments.ViewPager_fragment;
+import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
 
 /**
  * Created by Ink1804 on 14.08.16.
@@ -24,7 +24,7 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {//*
-        ViewPager_fragment fragment = new ViewPager_fragment();
+        SphereDescription_fragment fragment = new SphereDescription_fragment();
         Bundle args = new Bundle();
         if(position==0)
             args.putString("someString1",someString1);

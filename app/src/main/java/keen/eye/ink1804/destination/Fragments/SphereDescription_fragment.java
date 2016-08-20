@@ -13,7 +13,7 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 14.08.16.
  */
-public class ViewPager_fragment extends Fragment {
+public class SphereDescription_fragment extends Fragment {
     private View rootView;
     private String some1;//*
     @Override
