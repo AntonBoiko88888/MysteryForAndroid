@@ -47,18 +47,20 @@
     </LinearLayout>
         <ImageView
             android:id="@+id/acc_image_icon"
-            android:layout_width="120dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/acc_width_img"
+            android:layout_height="@dimen/acc_height_img"
             android:layout_alignParentRight="true"
-            android:src="@drawable/border"
-            android:background="@drawable/account_img"
+            android:src="@drawable/account_img"
+            android:background="@drawable/border"
+            android:scaleType="fitXY"
             />
         <Button
+            android:id="@+id/acc_select_img"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/acc_image_icon"
-            android:width="120dp"
+            android:width="@dimen/acc_width_img"
             android:layout_marginTop="5dp"
             android:textSize="10dp"
             android:text="Выбрать фото"

@@ -44,10 +44,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createActivityViews();
         SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+
 
         if(!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
             toggle.setDrawerIndicatorEnabled(false);
@@ -166,17 +168,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     back_pressed = System.currentTimeMillis();// не удаляй
                     break;
                 case 1:
-//                    if(getSupportFragmentManager().getBackStackEntryCount()==0)
-//                        backStackID = 2;
-//                    else
+                    if(getSupportFragmentManager().getBackStackEntryCount()==0) {
+                        mainFragmentCreate();
+                    } else
                         super.onBackPressed();
                     break;
                 case 2:
-                    FragmentManager fm = getSupportFragmentManager();
-                    FragmentTransaction transaction = fm.beginTransaction();
-                    DatePicker_fragment accFragment = new DatePicker_fragment();
-                    transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
-                    transaction.commit();
+                    mainFragmentCreate();
                     break;
             }
 //            super.onBackPressed();
@@ -184,6 +182,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+    private void mainFragmentCreate() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        DatePicker_fragment accFragment = new DatePicker_fragment();
+        transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
+        transaction.commit();
+    }
+
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex) {
         FragmentManager fm = getSupportFragmentManager();
@@ -245,7 +251,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String tag = "accFragment";
                 transaction.replace(R.id.fragment_container, fragment, tag);
                 if (fm.findFragmentByTag(tag) == null) {
-                    transaction.addToBackStack(tag);
                     backStackID = 1;
                 }
                 transaction.commit();

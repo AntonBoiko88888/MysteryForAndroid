@@ -1,15 +1,24 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -23,11 +32,12 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
     private View rootView;
     private TextView tv_name,tv_date,tv_sex,tv_status;
-    private Button btn_desc;
+    private Button btn_desc, acc_select_img;
     private boolean sex;
     private String status,name;
     private int day,month,year;
     private SharedPreferences mSettings;
+    static final int GALLERY_REQUEST = 1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.account_layout_fragment,container,false);
@@ -41,6 +51,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
         year = mSettings.getInt(Constants.APP_PREF_YEAR,2000);
         sex = mSettings.getBoolean(Constants.APP_PREF_SEX,false);
+        acc_select_img= (Button)rootView.findViewById(R.id.acc_select_img);
+        acc_select_img.setOnClickListener(this);
         status = mSettings.getString(Constants.APP_PREF_STATUS,"Начинающий");
         btn_desc = (Button)rootView.findViewById(R.id.acc_btn_description);
         btn_desc.setOnClickListener(this);
@@ -57,7 +69,39 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.onDatePushed(day,month,year,Calendar.getInstance().get(Calendar.YEAR),sex);
+        switch (view.getId()) {
+            case R.id.acc_select_img:
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+                break;
+            case R.id.acc_btn_description:
+                pushDateListener listener = (pushDateListener)getActivity();
+                listener.onDatePushed(day,month,year,Calendar.getInstance().get(Calendar.YEAR),sex);
+                break;
+        }
+
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+
+        Bitmap bitmap = null;
+        ImageView imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
+
+        switch(requestCode) {
+            case GALLERY_REQUEST:
+                if(resultCode == Activity.RESULT_OK){
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    try {
+                        ContentResolver cr = rootView.getContext().getContentResolver();
+                        bitmap = MediaStore.Images.Media.getBitmap(cr, selectedImage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    imageView.setImageBitmap(bitmap);
+                }
+        }
+    }//для загрузки изображения
 }
