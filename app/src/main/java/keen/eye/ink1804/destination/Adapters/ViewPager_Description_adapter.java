@@ -1,10 +1,13 @@
 package keen.eye.ink1804.destination.Adapters;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.widget.Toast;
 
+import keen.eye.ink1804.destination.Fragments.Settings_fragment;
 import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
 
 /**
@@ -12,25 +15,27 @@ import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
  */
 public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
 
-    private String someString1;//*
-    private String someString2;//*
+    private String[] btnTextArray;
 
-    public ViewPager_Description_adapter(FragmentManager fm,String info1, String info2) {
+    public ViewPager_Description_adapter(FragmentManager fm, String[] _btnTextArray) {
         super(fm);
-        this.someString1 = info1;//*
-        this.someString2 = info2;//*
+        btnTextArray = _btnTextArray;
     }
 
 
     @Override
     public Fragment getItem(int position) {//*
-        SphereDescription_fragment fragment = new SphereDescription_fragment();
+        Fragment fragment;
         Bundle args = new Bundle();
-        if(position==0)
-            args.putString("someString1",someString1);
-        else
-            args.putString("someString1",someString2);
-        fragment.setArguments(args);
+        if(position==0) {
+            fragment = new SphereDescription_fragment();
+            args.putStringArray("btnTextArray", btnTextArray);
+        }
+        else {
+            fragment = new Settings_fragment();//*
+            args.putString("someString1", "This page is available for advanced users");
+        }
+            fragment.setArguments(args);
         return fragment;
     }
 

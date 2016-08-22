@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.Description_fragment;
@@ -75,37 +77,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            case R.id.tab_account:
 //                fragment = new Account_fragment();
 //                break;
-            case R.id.tab_hor_online:
-                fragment = new HoroscopeOnline_fragment();//*
+            case R.id.tab_hor_online://half_done
+                fragment = new HoroscopeOnline_fragment();
+                args.putStringArray("array",Constants.ZODIAK_NAMES);
+                fragment.setArguments(args);
+
                 break;
-            case R.id.tab_zodiaс_sign:
+            case R.id.tab_zodiaс_sign://half_done
                 fragment = new Description_fragment();
-                args.putString("page1","page1");
-                args.putString("page2","page2");
+                args.putStringArray("array",Constants.ZODIAK_NAMES);
                 fragment.setArguments(args);
                 break;
-            case R.id.tab_birth_sign:
+            case R.id.tab_birth_sign://half_done
                 fragment = new Description_fragment();
-                args.putString("page1","page1");
-                args.putString("page2","page2");
+                args.putStringArray("array",Constants.YEAR_NAMES);
                 fragment.setArguments(args);
                 break;
-            case R.id.tab_virtual_sign:
+            case R.id.tab_virtual_sign://half_done
                 fragment = new Description_fragment();
-                args.putString("page1","page1");
-                args.putString("page2","page2");
+                args.putStringArray("array",Constants.VIRTUAL_NAMES);
                 fragment.setArguments(args);
                 break;
-            case R.id.tab_relations:
+            case R.id.tab_relations://*
                 fragment = new Description_fragment();
-                args.putString("page1","page1");
-                args.putString("page2","page2");
+                args.putStringArray("array",new String[]{"Взаимоотношения не готовы еще"});
                 fragment.setArguments(args);
                 break;
-            case R.id.tab_interesting:
+            case R.id.tab_interesting://*
                 fragment = new Interesting_fragment();//*
                 break;
-            case R.id.tab_settings:
+            case R.id.tab_settings://*
                 fragment = new Settings_fragment();//*
                 break;
             default:break;
@@ -152,6 +153,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
+    private void mainFragmentCreate() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        DatePicker_fragment accFragment = new DatePicker_fragment();
+        transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
+        transaction.commit();
+    }
 
     @Override
     public void onBackPressed() {
@@ -182,14 +190,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
-    private void mainFragmentCreate() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        DatePicker_fragment accFragment = new DatePicker_fragment();
-        transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
-        transaction.commit();
-    }
-
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex) {
         FragmentManager fm = getSupportFragmentManager();

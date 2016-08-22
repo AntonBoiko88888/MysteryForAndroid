@@ -1,11 +1,16 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.graphics.Point;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.R;
@@ -13,16 +18,51 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 14.08.16.
  */
-public class SphereDescription_fragment extends Fragment {
+public class SphereDescription_fragment extends Fragment implements View.OnClickListener {
     private View rootView;
-    private String some1;//*
+    private String[] array;
+    private TextView tv_details;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_description_viewpager, container, false);
-        TextView tv = (TextView)rootView.findViewById(R.id.tv_pager);
-        Bundle args = getArguments();//*
-        some1 = args.getString("someString1");//*
-        tv.setText(some1);
+        rootView = inflater.inflate(R.layout.sphere_fragment_viewpager, container, false);
+        Bundle args = getArguments();
+        array = args.getStringArray("btnTextArray");
+        createButtonMassive(array);
         return rootView;
+    }
+    private void createButtonMassive(String[] array){
+        GridLayout grid = (GridLayout)rootView.findViewById(R.id.sphere_grid);
+        tv_details = (TextView)rootView.findViewById(R.id.sphere_tv_details);
+
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x-20;
+        int length = array.length;
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width/4, ViewGroup.LayoutParams.WRAP_CONTENT);
+        for(int i=0;i<length;i++){
+            Button btn = new Button(getActivity());
+            btn.setText(array[(i+3)%length]);
+            btn.setTag(array[(i+3)%length]);
+            btn.setTextSize(10);
+            btn.setLayoutParams(layoutParams);
+            btn.setOnClickListener(this);
+            grid.addView(btn);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        String key = view.getTag().toString();
+        String[] names = getResources().getStringArray(R.array.db_names);
+        String[] details = getResources().getStringArray(R.array.db_details);
+        int id=-1;
+        for(int i=0;i<names.length;i++){
+            if(names[i].equals(key)){
+                id=i;
+                break;
+            }
+        }
+        tv_details.setText(Html.fromHtml(details[id]));
     }
 }

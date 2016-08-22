@@ -62,7 +62,7 @@ public class Constants {
     public static final String Z_SCORPION = "Скорпион";
     public static final String Z_SAGITTARIUS = "Стрелец";
 
-    private static final String[] VIRTUAL_NAMES = {"Рыцарь","Вождь","Король","Шут","Аристкрат","Профессор"," Вектор"};
+    public static final String[] VIRTUAL_NAMES = {"Рыцарь","Вождь","Король","Шут","Аристократ","Профессор","Вектор"};
     public static final String KNIGHT = "Рыцарь";
     public static final String LEADER = "Вождь";
     public static final String KING = "Король";
