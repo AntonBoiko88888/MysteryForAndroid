@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="110dp"
         android:layout_height="130dp"
-        android:src="@drawable/account_img"
+        android:src="@drawable/acc_icon"
         android:id="@+id/imageView"
         android:layout_gravity="start"/>
 
@@ -27,13 +27,6 @@
         android:text="  Аккаунт"
         android:textSize="30dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="   У вас 10 mys"
-        android:textSize="20dp"
-        android:id="@+id/textView"/>
     </LinearLayout>
 
 </LinearLayout>

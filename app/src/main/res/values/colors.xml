@@ -12,4 +12,6 @@
     <color name="green">#71f74c</color>
     <color name="appColor">#3f0076</color>
     <color name="reading">#07c2d7</color>
+
+    <color name="for_btn">#a0f2f0f0</color>
 </resources>
