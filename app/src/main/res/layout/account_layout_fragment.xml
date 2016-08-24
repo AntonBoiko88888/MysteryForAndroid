@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:text=" Повысить статус "
-            android:background="@drawable/btn_states"/>
+            android:background="@drawable/btn_states" />
 
     </LinearLayout>
         <ImageView
