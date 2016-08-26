@@ -30,13 +30,26 @@ public class ProfileDetails_fragment extends Fragment {
         tv_details = (TextView)rootView.findViewById(R.id.details_tv);
         String[] names = getResources().getStringArray(R.array.db_names);
         String[] details = getResources().getStringArray(R.array.db_details);
-        int id=-1;
-        for(int i=0;i<names.length;i++){
-            if(names[i].equals(key)){
-                id=i;
-                break;
+        String[] interesting_names = getResources().getStringArray(R.array.interesting_names);
+        String[] interesting_db = getResources().getStringArray(R.array.interesting_db);
+        int id = -1;
+        if(true) {
+            for (int i = 0; i < names.length; i++) {
+                if (interesting_names[i].equals(key)) {
+                    id = i;
+                    break;
+                }
             }
+            tv_details.setText(Html.fromHtml(interesting_db[id]));
         }
-        tv_details.setText(Html.fromHtml(details[id]));
+        else {
+            for (int i = 0; i < names.length; i++) {
+                if (names[i].equals(key)) {
+                    id = i;
+                    break;
+                }
+            }
+            tv_details.setText(Html.fromHtml(details[id]));
+        }
     }
 }

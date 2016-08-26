@@ -2,8 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="profilemarginTop">8sp</dimen>
+    <dimen name="profileMarginTop">8sp</dimen>
+    <dimen name="interestingMarginTop">12sp</dimen>
     <dimen name="profileTextSize">23sp</dimen>
-    <dimen name="acc_width_img">150dp</dimen>
-    <dimen name="acc_height_img">180dp</dimen>
+    <dimen name="interestingTextSize">18sp</dimen>
+    <dimen name="acc_width_img">120dp</dimen>
+    <dimen name="acc_height_img">150dp</dimen>
 </resources>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="110dp"
     android:background="@drawable/acc_border"
     android:layout_marginRight="4dp"
+    android:layout_marginLeft="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="horizontal"
     android:gravity="start"
@@ -11,8 +12,8 @@
     android:id="@+id/nav_header">
 
     <ImageView
-        android:layout_width="110dp"
-        android:layout_height="130dp"
+        android:layout_width="90dp"
+        android:layout_height="100dp"
         android:src="@drawable/acc_icon"
         android:id="@+id/imageView"
         android:layout_gravity="start"/>
@@ -24,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  Аккаунт"
+        android:text="Аккаунт"
         android:textSize="30dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
     </LinearLayout>

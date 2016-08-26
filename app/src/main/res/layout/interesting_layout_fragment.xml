@@ -3,7 +3,53 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+        android:id="@+id/year_woman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ИНТЕРЕСНОЕ"/>
+        android:textSize="@dimen/interestingTextSize"
+        android:layout_marginTop="@dimen/interestingMarginTop"
+        android:text="Характер женщины по месяцу рождения"/>
+    <TextView
+        android:id="@+id/year_man"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/interestingTextSize"
+        android:layout_marginTop="@dimen/interestingMarginTop"
+        android:text="Характер мужчины по месяцу рождения"/>
+    <TextView
+        android:id="@+id/tactics_forgive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/interestingTextSize"
+        android:layout_marginTop="@dimen/interestingMarginTop"
+        android:text="Тактика прощения"/>
+    <TextView
+        android:id="@+id/pros_cons_signs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/interestingTextSize"
+        android:layout_marginTop="@dimen/interestingMarginTop"
+        android:text="Плюсы и минусы знаков"/>
+    <TextView
+        android:id="@+id/time_birth_numerology"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/interestingTextSize"
+        android:layout_marginTop="@dimen/interestingMarginTop"
+        android:text="Время рождения - Нумерология"/>
+    <TextView
+        android:id="@+id/zodiac_poems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/interestingTextSize"
+        android:layout_marginTop="@dimen/interestingMarginTop"
+        android:text="Знаки зодиака в стихах"/>
+    <TextView
+        android:id="@+id/distribution_tolerance_signs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/interestingTextSize"
+        android:layout_marginTop="@dimen/interestingMarginTop"
+        android:text="Раздача толерантности знакам"/>
+
 </LinearLayout>
