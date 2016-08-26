@@ -52,7 +52,8 @@ public class Interesting_fragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        String key="default";
+        String key = "default";
+        String tag = "interesting";
         pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
             case R.id.year_woman:
@@ -78,6 +79,6 @@ public class Interesting_fragment extends Fragment implements View.OnClickListen
                 break;
             default:break;
         }
-        listener.onDescriptionClicked(key);//key is going to new bundle
+        listener.onDescriptionClicked(key,tag);//key is going to new bundle
     }
 }

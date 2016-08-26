@@ -124,7 +124,8 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     }
     @Override
     public void onClick(View view) {
-         String key="default";
+        String key="default";
+        String tag = "profileDetails";
         pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
             case R.id.prof_tv_virtual_type:
@@ -168,6 +169,6 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
                 break;
             default:break;
         }
-        listener.onDescriptionClicked(key);//key is going to new bundle
+        listener.onDescriptionClicked(key,tag);//key is going to new bundle
     }
 }

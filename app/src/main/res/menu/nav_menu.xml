@@ -12,35 +12,39 @@
             android:title="Гороскоп онлайн"/>
         <item android:title="Сферы">
             <menu>
-        <item
-            android:id="@+id/tab_zodiaс_sign"
-            android:icon="@drawable/aries"
-            android:title="Знаки зодиака"/>
-        <item
-            android:id="@+id/tab_birth_sign"
-            android:icon="@drawable/monkey"
-            android:title="Знаки рождения"/>
-        <item
-            android:id="@+id/tab_virtual_sign"
-            android:icon="@drawable/herous"
-            android:title="Виртуальные знаки"/>
-        <item
-            android:id="@+id/tab_relations"
-            android:icon="@drawable/relations"
-            android:title="Взаимоотношения"/>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/tab_zodiaс_sign"
+                        android:icon="@drawable/aries"
+                        android:title="Знаки зодиака"/>
+                    <item
+                        android:id="@+id/tab_birth_sign"
+                        android:icon="@drawable/monkey"
+                        android:title="Знаки рождения"/>
+                    <item
+                        android:id="@+id/tab_virtual_sign"
+                        android:icon="@drawable/herous"
+                        android:title="Виртуальные знаки"/>
+                    <item
+                        android:id="@+id/tab_relations"
+                        android:icon="@drawable/relations"
+                        android:title="Взаимоотношения"/>
+                </group>
             </menu>
         </item>
         <item android:title="Остальное">
-        <menu>
-        <item
-            android:id="@+id/tab_interesting"
-            android:icon="@drawable/interesting"
-            android:title="Интересное"/>
-        <item
-            android:id="@+id/tab_settings"
-            android:icon="@drawable/settings"
-            android:title="Настройки"/>
-        </menu>
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/tab_interesting"
+                        android:icon="@drawable/interesting"
+                        android:title="Интересное"/>
+                    <item
+                        android:id="@+id/tab_settings"
+                        android:icon="@drawable/settings"
+                        android:title="Настройки"/>
+                </group>
+            </menu>
         </item>
 
     </group>

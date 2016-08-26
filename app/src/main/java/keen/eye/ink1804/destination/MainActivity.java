@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 ,pushDateListener, View.OnClickListener {
 
     private DrawerLayout drawer;
+    private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     public static int backStackID = 0;
 //    0 - мы на главном фрагменте
@@ -127,10 +128,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
         header.setOnClickListener(this);
+    }
+    private void drawerTabInit(){
+//        new NaDrawer()
+//                .withActivity(this)
+//                .withToolbar(toolbar)
+//                .withActionBarDrawerToggle(true)
+//                .withHeader(R.layout.drawer_header)
+//                .addDrawerItems(
+//                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home).withBadge("99").withIdentifier(1),
+//                        new PrimaryDrawerItem().withName(R.string.drawer_item_free_play).withIcon(FontAwesome.Icon.faw_gamepad),
+//                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye).withBadge("6").withIdentifier(2),
+//                        new SectionDrawerItem().withName(R.string.drawer_item_settings),
+//                        new SecondaryDrawerItem().withName(R.string.drawer_item_help).withIcon(FontAwesome.Icon.faw_cog),
+//                        new SecondaryDrawerItem().withName(R.string.drawer_item_open_source).withIcon(FontAwesome.Icon.faw_question).setEnabled(false),
+//                        new DividerDrawerItem(),
+//                        new SecondaryDrawerItem().withName(R.string.drawer_item_contact).withIcon(FontAwesome.Icon.faw_github).withBadge("12+").withIdentifier(1)
+//                )
+//                .build();
     }
     private void createAlert(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -185,9 +204,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mainFragmentCreate();
                     break;
             }
-//            super.onBackPressed();
         }
-
 
     }
     @Override
@@ -214,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
     @Override
-    public void onDescriptionClicked(String key) {
+    public void onDescriptionClicked(String key, String layoutTag ) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         ProfileDetails_fragment profDetFragment = new ProfileDetails_fragment();
@@ -222,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Bundle args = new Bundle();
         args.putString("key",key);
+        args.putString("tag",layoutTag);
         profDetFragment.setArguments(args);
 
         transaction.replace(R.id.fragment_container,profDetFragment,tag);
