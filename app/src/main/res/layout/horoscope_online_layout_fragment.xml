@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/back1">
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:text="ГОРОСКОП ОНЛАЙН"/>-->
     <GridLayout
         android:id="@+id/sphere_grid"
-        android:layout_margin="5dp"
-        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stretchMode="columnWidth"
         android:numColumns="auto_fit"
@@ -18,6 +19,67 @@
         android:layout_gravity="center"
         android:columnCount="4"
         >
+        <ImageView
+            android:id="@+id/oven"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/oven" />
+        <ImageView
+            android:id="@+id/telec"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/telec"/>
+        <ImageView
+            android:id="@+id/blizneci"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/blizneci"/>
+        <ImageView
+            android:id="@+id/rak"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/rak"/>
+        <ImageView
+            android:id="@+id/lev"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/lev"/>
+        <ImageView
+            android:id="@+id/deva"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/deva"/>
+        <ImageView
+            android:id="@+id/vesi"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/vesi"/>
+        <ImageView
+            android:id="@+id/skorpion"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/skorpion"/>
+        <ImageView
+            android:id="@+id/strelec"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/strelec"/>
+        <ImageView
+            android:id="@+id/kozerog"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/kozerog"/>
+        <ImageView
+            android:id="@+id/vodoley"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/vodoley"/>
+        <ImageView
+            android:id="@+id/ribi"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:background="@drawable/ribi"/>
+
     </GridLayout>
     <TextView
         android:id="@+id/sphere_tv_details"

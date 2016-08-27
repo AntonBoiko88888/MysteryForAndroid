@@ -1,52 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/back1">
     <TextView
         android:id="@+id/year_woman"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/interestingTextSize"
+        android:gravity="center"
         android:layout_marginTop="@dimen/interestingMarginTop"
+        android:background="@drawable/txt_states"
         android:text="Характер женщины по месяцу рождения"/>
     <TextView
         android:id="@+id/year_man"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:textSize="@dimen/interestingTextSize"
+        android:background="@drawable/txt_states"
         android:layout_marginTop="@dimen/interestingMarginTop"
         android:text="Характер мужчины по месяцу рождения"/>
     <TextView
         android:id="@+id/tactics_forgive"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
+        android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
         android:text="Тактика прощения"/>
     <TextView
         android:id="@+id/pros_cons_signs"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
+        android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
         android:text="Плюсы и минусы знаков"/>
     <TextView
         android:id="@+id/time_birth_numerology"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
         android:text="Время рождения - Нумерология"/>
     <TextView
         android:id="@+id/zodiac_poems"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
         android:text="Знаки зодиака в стихах"/>
     <TextView
         android:id="@+id/distribution_tolerance_signs"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/txt_states"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"

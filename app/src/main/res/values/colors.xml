@@ -5,8 +5,11 @@
     <color name="colorAccent">#11a600</color>
 
     <color name="white">#fff</color>
+    <color name="pro_zra_white">#d0ffffff</color>
+    <color name="pro_white">#b0ffffff</color>
     <color name="black">#000000</color>
     <color name="blue">#0283d9</color>
+    <color name="pro_zra_blue">#5c013d64</color>
     <color name="yellow">#ffdd00</color>
     <color name="orange">#f78d1d</color>
     <color name="green">#71f74c</color>
@@ -14,4 +17,6 @@
     <color name="reading">#07c2d7</color>
 
     <color name="for_btn">#a0f2f0f0</color>
+    <color name="pro_zra">#00f2f0f0</color>
+    <color name="pro_zra_status">#7adfb600</color>
 </resources>

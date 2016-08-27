@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
-    android:background="@drawable/acc_border"
+    android:layout_height="80dp"
+    android:background="@drawable/acc_states"
     android:layout_marginRight="4dp"
     android:layout_marginLeft="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
@@ -12,8 +12,8 @@
     android:id="@+id/nav_header">
 
     <ImageView
-        android:layout_width="90dp"
-        android:layout_height="100dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:src="@drawable/acc_icon"
         android:id="@+id/imageView"
         android:layout_gravity="start"/>
@@ -27,7 +27,15 @@
         android:layout_height="wrap_content"
         android:text="Аккаунт"
         android:textSize="30dp"
+        android:textColor="@color/pro_zra_white"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Начинающий"
+            android:textSize="20dp"
+            android:textColor="@color/pro_zra_status"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
     </LinearLayout>
 
 </LinearLayout>

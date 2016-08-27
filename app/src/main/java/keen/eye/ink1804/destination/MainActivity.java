@@ -80,9 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                break;
             case R.id.tab_hor_online://half_done
                 fragment = new HoroscopeOnline_fragment();
-                args.putStringArray("array",Constants.ZODIAK_NAMES);
-                fragment.setArguments(args);
-
                 break;
             case R.id.tab_zodiaс_sign://half_done
                 fragment = new Description_fragment();

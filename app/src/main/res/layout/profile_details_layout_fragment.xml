@@ -14,7 +14,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:textColor="@color/black"
-        android:text="fdshjbjbjknjbjhbjhhjbhjb hjbjh jh jhb jhbjhhbj"
         android:textSize="20dp" />
 </ScrollView>
 </LinearLayout>
