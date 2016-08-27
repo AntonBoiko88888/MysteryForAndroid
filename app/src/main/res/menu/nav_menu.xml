@@ -8,26 +8,26 @@
             <!--android:title="Аккаунт"/>-->
         <item
             android:id="@+id/tab_hor_online"
-            android:icon="@drawable/star"
+            android:icon="@drawable/nav_star"
             android:title="Гороскоп онлайн"/>
         <item android:title="Сферы">
             <menu>
                 <group android:checkableBehavior="single">
                     <item
                         android:id="@+id/tab_zodiaс_sign"
-                        android:icon="@drawable/aries"
+                        android:icon="@drawable/nav_aries"
                         android:title="Знаки зодиака"/>
                     <item
                         android:id="@+id/tab_birth_sign"
-                        android:icon="@drawable/monkey"
+                        android:icon="@drawable/nav_monkey"
                         android:title="Знаки рождения"/>
                     <item
                         android:id="@+id/tab_virtual_sign"
-                        android:icon="@drawable/herous"
+                        android:icon="@drawable/nav_herous"
                         android:title="Виртуальные знаки"/>
                     <item
                         android:id="@+id/tab_relations"
-                        android:icon="@drawable/relations"
+                        android:icon="@drawable/nav_relations"
                         android:title="Взаимоотношения"/>
                 </group>
             </menu>
@@ -37,11 +37,11 @@
                 <group android:checkableBehavior="single">
                     <item
                         android:id="@+id/tab_interesting"
-                        android:icon="@drawable/interesting"
+                        android:icon="@drawable/nav_interesting"
                         android:title="Интересное"/>
                     <item
                         android:id="@+id/tab_settings"
-                        android:icon="@drawable/settings"
+                        android:icon="@drawable/nav_settings"
                         android:title="Настройки"/>
                 </group>
             </menu>

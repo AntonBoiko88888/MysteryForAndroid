@@ -23,62 +23,62 @@
             android:id="@+id/oven"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/oven" />
+            android:background="@drawable/hor_oven" />
         <ImageView
             android:id="@+id/telec"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/telec"/>
+            android:background="@drawable/hor_telec"/>
         <ImageView
             android:id="@+id/blizneci"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/blizneci"/>
+            android:background="@drawable/hor_blizneci"/>
         <ImageView
             android:id="@+id/rak"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/rak"/>
+            android:background="@drawable/hor_rak"/>
         <ImageView
             android:id="@+id/lev"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/lev"/>
+            android:background="@drawable/hor_lev"/>
         <ImageView
             android:id="@+id/deva"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/deva"/>
+            android:background="@drawable/hor_deva"/>
         <ImageView
             android:id="@+id/vesi"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/vesi"/>
+            android:background="@drawable/hor_vesi"/>
         <ImageView
             android:id="@+id/skorpion"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/skorpion"/>
+            android:background="@drawable/hor_skorpion"/>
         <ImageView
             android:id="@+id/strelec"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/strelec"/>
+            android:background="@drawable/hor_strelec"/>
         <ImageView
             android:id="@+id/kozerog"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/kozerog"/>
+            android:background="@drawable/hor_kozerog"/>
         <ImageView
             android:id="@+id/vodoley"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/vodoley"/>
+            android:background="@drawable/hor_vodoley"/>
         <ImageView
             android:id="@+id/ribi"
             android:layout_height="80dp"
             android:layout_width="80dp"
-            android:background="@drawable/ribi"/>
+            android:background="@drawable/hor_fish"/>
 
     </GridLayout>
     <TextView

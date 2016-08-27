@@ -18,8 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.Description_fragment;
@@ -153,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.setTitle("Аккаунт")
                 .setMessage("У вас еще не создан аккаунт, перейдите к заполнению формы.")
                 .setCancelable(false)
-                .setIcon(R.drawable.icon2)
+                .setIcon(R.drawable.icon_eye2)
                 .setNegativeButton("ОК",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
