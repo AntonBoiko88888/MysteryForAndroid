@@ -24,8 +24,8 @@ public class Relationship_description_fragment extends Fragment implements View.
 
     private View rootView;
     private TextView tv_info;
-    String[] tmp = new String[4];
-    private String[] names = {"Рационал","Иррационал","Логик","Этик","Интуитив","Сенсорик","Экстраверт","Интраверт"};
+    String[] tmp = {"-1","-1","-1","-1"};
+    private String[] names = {"Рационал","Иррационал","Логик","Этик","Интуитив","Сенсорик","Экстраверт","Интроверт"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,31 +72,40 @@ public class Relationship_description_fragment extends Fragment implements View.
 //        Toast.makeText(getActivity(), "Результат"+ Constants.SOCIONICS[i][j][k][l], Toast.LENGTH_SHORT).show();
         return Constants.SOCIONICS[i][j][k][l];
     }
+    private void setTvInfoText(String key_Name){
+        String[] names = getResources().getStringArray(R.array.db_names);
+        String[] details = getResources().getStringArray(R.array.db_details);
+        int id = -1;
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equals(key_Name)) {
+                id = i;
+                break;
+            }
+        }
+        tv_info.setText(Html.fromHtml(details[id]));
+    }
     @Override
     public void onClick(View view) {
             if(view.getId() == R.id.relD_btn_showInfo) {
-                String socioType = getSocialType(tmp[0],tmp[1],tmp[2],tmp[3]);
-                String[] names = getResources().getStringArray(R.array.db_names);
-                String[] details = getResources().getStringArray(R.array.db_details);
-                int id = -1;
-                for (int i = 0; i < names.length; i++) {
-                    if (names[i].equals(socioType)) {
-                        id = i;
-                        break;
-                    }
+                if (tmp[0].equals("-1") || tmp[1].equals("-1") || tmp[2].equals("-1") || tmp[3].equals("-1"))
+                    Toast.makeText(getActivity(), "Выберите все пункты", Toast.LENGTH_SHORT).show();
+                else {
+                    String socioType = getSocialType(tmp[0], tmp[1], tmp[2], tmp[3]);
+                    setTvInfoText(socioType);
                 }
-                tv_info.setText(Html.fromHtml(details[id]));
             }
             else {
                 int btnID = view.getId();
-                rootView.findViewById(btnID).setBackgroundResource(R.drawable.btn_pressed);
-                tmp[btnID%2000/2] =  rootView.findViewById(btnID).getTag().toString();
-                if(btnID%2==1) {
+                Button pressedButton = (Button)rootView.findViewById(btnID);
+                setTvInfoText(pressedButton.getText().toString());
+                pressedButton.setBackgroundResource(R.drawable.btn_pressed);
+                tmp[btnID % 2000 / 2] = pressedButton.getTag().toString();
+
+                if (btnID % 2 == 1)
                     rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border);
-                }
-                else {
+                else
                     rootView.findViewById(btnID + 1).setBackgroundResource(R.drawable.btn_border);
-                }
+
             }
     }
 }
