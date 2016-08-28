@@ -24,6 +24,7 @@ public class Relationship_description_fragment extends Fragment implements View.
 
     private View rootView;
     private TextView tv_info;
+    String[] tmp = new String[4];
     private String[] names = {"Рационал","Иррационал","Логик","Этик","Интуитив","Сенсорик","Экстраверт","Интраверт"};
 
     @Override
@@ -73,25 +74,29 @@ public class Relationship_description_fragment extends Fragment implements View.
     }
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case 2000:
-                view.setBackgroundResource(R.drawable.btn_pressed);
-                break;
-            case R.id.relD_btn_showInfo:
-                String socioType = getSocialType("1","0","1","1");
+            if(view.getId() == R.id.relD_btn_showInfo) {
+                String socioType = getSocialType(tmp[0],tmp[1],tmp[2],tmp[3]);
                 String[] names = getResources().getStringArray(R.array.db_names);
                 String[] details = getResources().getStringArray(R.array.db_details);
-                int id=-1;
-                for(int i=0;i<names.length;i++){
-                    if(names[i].equals(socioType)){
-                        id=i;
+                int id = -1;
+                for (int i = 0; i < names.length; i++) {
+                    if (names[i].equals(socioType)) {
+                        id = i;
                         break;
                     }
                 }
                 tv_info.setText(Html.fromHtml(details[id]));
-                break;
-
-            default:break;
-        }
+            }
+            else {
+                int btnID = view.getId();
+                rootView.findViewById(btnID).setBackgroundResource(R.drawable.btn_pressed);
+                tmp[btnID%2000/2] =  rootView.findViewById(btnID).getTag().toString();
+                if(btnID%2==1) {
+                    rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border);
+                }
+                else {
+                    rootView.findViewById(btnID + 1).setBackgroundResource(R.drawable.btn_border);
+                }
+            }
     }
 }
