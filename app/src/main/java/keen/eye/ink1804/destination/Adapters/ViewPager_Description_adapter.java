@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.widget.Toast;
 
+import keen.eye.ink1804.destination.Fragments.Relationship_description_fragment;
 import keen.eye.ink1804.destination.Fragments.Settings_fragment;
 import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
 
@@ -16,20 +17,31 @@ import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
 public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
 
     private String[] btnTextArray;
+    private int type;
 
-    public ViewPager_Description_adapter(FragmentManager fm, String[] _btnTextArray) {
+    public ViewPager_Description_adapter(FragmentManager fm, String[] _btnTextArray, int _type) {
         super(fm);
         btnTextArray = _btnTextArray;
+        type = _type;
     }
 
 
     @Override
     public Fragment getItem(int position) {//*
-        Fragment fragment;
+        Fragment fragment = null;
         Bundle args = new Bundle();
+
         if(position==0) {
-            fragment = new SphereDescription_fragment();
-            args.putStringArray("btnTextArray", btnTextArray);
+            switch (type){
+                case 0:
+                    fragment = new SphereDescription_fragment();
+                    args.putStringArray("btnTextArray", btnTextArray);
+                    break;
+                case 2:
+                    fragment = new Relationship_description_fragment();
+                    break;
+            }
+
         }
         else {
             fragment = new Settings_fragment();//*

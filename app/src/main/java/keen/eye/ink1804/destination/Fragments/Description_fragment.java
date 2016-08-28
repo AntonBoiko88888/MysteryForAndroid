@@ -23,6 +23,7 @@ public class Description_fragment extends Fragment {
     private ViewPager viewPager;
     private PagerTabStrip tabLayout;
     private String[] btnTextArray;
+    private int layoutType;
     private ViewPager_Description_adapter mPagerAdapter;
 
 
@@ -30,7 +31,6 @@ public class Description_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.description_layout_fragment,container,false);
-
         initViews();
 
         return rootView;
@@ -38,7 +38,7 @@ public class Description_fragment extends Fragment {
     @Override
     public void onResume() {
         mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
-                btnTextArray);//*
+                btnTextArray, layoutType);//*
         viewPager.setAdapter(mPagerAdapter);
         super.onResume();
     }
@@ -48,9 +48,10 @@ public class Description_fragment extends Fragment {
         viewPager = (ViewPager)rootView.findViewById(R.id.desc_viewPager);
         Bundle args = getArguments();
         btnTextArray = args.getStringArray("array");
+        layoutType = args.getInt("type");
 
         mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
-                btnTextArray);//*
+                btnTextArray,layoutType);//*
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         tabLayout.setTextColor(getResources().getColor(R.color.blue));

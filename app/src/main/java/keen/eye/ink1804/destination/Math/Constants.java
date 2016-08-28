@@ -71,5 +71,9 @@ public class Constants {
     public static final String PROFESSOR = "Профессор";
     public static final String VECTOR = "Вектор";
 
+    public static final String[][][][] SOCIONICS = {{{{"Джек Лондон","Робеспьер"},{"Штирлиц","Максим Горький"}}
+                                                    ,{{"Гамлет","Достоевский"},{"Гюго","Драйзер"}}}
+                                                    ,{{{"Дон Кихот","Бальзак"},{"Жуков","Габен"}}
+                                                    ,{{"Гексли","Есенин"},{"Наполеон","Дюма"}}}};
 
 }

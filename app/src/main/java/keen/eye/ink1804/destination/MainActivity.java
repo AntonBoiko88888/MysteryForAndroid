@@ -82,25 +82,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.tab_zodiaс_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.ZODIAK_NAMES);
+                args.putInt("type",0);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_birth_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.YEAR_NAMES);
+                args.putInt("type",0);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_virtual_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.VIRTUAL_NAMES);
+                args.putInt("type",0);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_relations://*
                 fragment = new Description_fragment();
                 args.putStringArray("array",new String[]{"Взаимоотношения не готовы еще"});
+                args.putInt("type",2);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_interesting://*
                 fragment = new Interesting_fragment();//*
+                String tag = "interesting";
+                if (fragmentManager.findFragmentByTag(tag) == null) {
+                    transaction.addToBackStack(tag);
+                }
                 break;
             case R.id.tab_settings://*
                 fragment = new Settings_fragment();//*
@@ -127,24 +135,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
         header.setOnClickListener(this);
-    }
-    private void drawerTabInit(){
-//        new NaDrawer()
-//                .withActivity(this)
-//                .withToolbar(toolbar)
-//                .withActionBarDrawerToggle(true)
-//                .withHeader(R.layout.drawer_header)
-//                .addDrawerItems(
-//                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home).withBadge("99").withIdentifier(1),
-//                        new PrimaryDrawerItem().withName(R.string.drawer_item_free_play).withIcon(FontAwesome.Icon.faw_gamepad),
-//                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye).withBadge("6").withIdentifier(2),
-//                        new SectionDrawerItem().withName(R.string.drawer_item_settings),
-//                        new SecondaryDrawerItem().withName(R.string.drawer_item_help).withIcon(FontAwesome.Icon.faw_cog),
-//                        new SecondaryDrawerItem().withName(R.string.drawer_item_open_source).withIcon(FontAwesome.Icon.faw_question).setEnabled(false),
-//                        new DividerDrawerItem(),
-//                        new SecondaryDrawerItem().withName(R.string.drawer_item_contact).withIcon(FontAwesome.Icon.faw_github).withBadge("12+").withIdentifier(1)
-//                )
-//                .build();
     }
     private void createAlert(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -190,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     back_pressed = System.currentTimeMillis();// не удаляй
                     break;
                 case 1:
-                    if(getSupportFragmentManager().getBackStackEntryCount()==0) {
+                    if(getSupportFragmentManager().getBackStackEntryCount()==0){
                         mainFragmentCreate();
                     } else
                         super.onBackPressed();
@@ -200,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
             }
         }
-
     }
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex) {
@@ -221,8 +210,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container,profDescFragment,tag);
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
-            backStackID = 1;
         }
+        backStackID = 1;
         transaction.commit();
     }
     @Override
@@ -240,8 +229,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container,profDetFragment,tag);
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
-            backStackID = 1;
         }
+        backStackID = 1;
+
         transaction.commit();
     }
     @Override
@@ -264,9 +254,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String tag = "accFragment";
                 transaction.replace(R.id.fragment_container, fragment, tag);
                 if (fm.findFragmentByTag(tag) == null) {
-                    backStackID = 1;
+                    transaction.addToBackStack(tag);
                 }
-                transaction.commit();
+                    backStackID = 2;
+                    transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
         }

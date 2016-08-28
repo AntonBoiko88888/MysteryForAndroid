@@ -26,6 +26,7 @@ public class SphereDescription_fragment extends Fragment implements View.OnClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.sphere_fragment_viewpager, container, false);
         Bundle args = getArguments();
+
         array = args.getStringArray("btnTextArray");
         createButtonMassive(array);
         return rootView;
