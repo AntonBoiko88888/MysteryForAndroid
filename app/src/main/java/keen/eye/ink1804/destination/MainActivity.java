@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.setTitle("Аккаунт")
                 .setMessage("У вас еще не создан аккаунт, перейдите к заполнению формы.")
                 .setCancelable(false)
-                .setIcon(R.drawable.icon_eye2)
+                .setIcon(R.drawable.icon_eye)
                 .setNegativeButton("ОК",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
