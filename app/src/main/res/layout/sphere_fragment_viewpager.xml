@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/background1">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <GridLayout
         android:id="@+id/sphere_grid"
         android:layout_margin="5dp"
@@ -16,13 +23,13 @@
         android:columnCount="4"
         >
     </GridLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/sphere_tv_details"
         android:textSize="20dp"
+        android:layout_below="@+id/sphere_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+        </RelativeLayout>
     </ScrollView>
 </LinearLayout>

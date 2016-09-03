@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="33dp"
             android:text=" Повысить статус "
-            android:background="@drawable/btn_states" />
+            android:background="@drawable/btn_states_thin" />
 
     </LinearLayout>
         <ImageView
@@ -64,7 +64,7 @@
             android:layout_marginTop="5dp"
             android:textSize="10dp"
             android:text="Выбрать фото"
-            android:background="@drawable/btn_states"/>
+            android:background="@drawable/btn_states_thin"/>
     </RelativeLayout>
     <Button
         android:id="@+id/acc_btn_description"
@@ -72,13 +72,13 @@
         android:layout_height="33dp"
         android:text=" Мое описание "
         android:layout_marginTop="15dp"
-        android:background="@drawable/btn_states"/>
+        android:background="@drawable/btn_states_thin"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="33dp"
         android:text=" Описание других профилей "
         android:layout_marginTop="10dp"
-        android:background="@drawable/btn_states"
+        android:background="@drawable/btn_states_thin"
         android:textSize="10dp"/>
     <View
         android:layout_width="wrap_content"

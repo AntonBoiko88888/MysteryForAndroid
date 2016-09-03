@@ -55,7 +55,7 @@ public class Relationship_description_fragment extends Fragment implements View.
             btn.setTag(""+i%2);
             btn.setTextSize(14);
             btn.setId(2000+i);
-            btn.setBackgroundResource(R.drawable.btn_border);
+            btn.setBackgroundResource(R.drawable.btn_border_thin);
 
             btn.setLayoutParams(layoutParams);
             btn.setOnClickListener(this);
@@ -98,13 +98,13 @@ public class Relationship_description_fragment extends Fragment implements View.
                 int btnID = view.getId();
                 Button pressedButton = (Button)rootView.findViewById(btnID);
                 setTvInfoText(pressedButton.getText().toString());
-                pressedButton.setBackgroundResource(R.drawable.btn_pressed);
+                pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin);
                 tmp[btnID % 2000 / 2] = pressedButton.getTag().toString();
 
                 if (btnID % 2 == 1)
-                    rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border);
+                    rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border_thin);
                 else
-                    rootView.findViewById(btnID + 1).setBackgroundResource(R.drawable.btn_border);
+                    rootView.findViewById(btnID + 1).setBackgroundResource(R.drawable.btn_border_thin);
 
             }
     }

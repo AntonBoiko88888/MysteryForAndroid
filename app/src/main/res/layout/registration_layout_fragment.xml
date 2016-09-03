@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Выбрать дату"
-        android:background="@drawable/btn_states"/>
+        android:background="@drawable/btn_states_thin"/>
     <TextView
         android:id="@+id/reg_tv_date"
         android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="далее"
-        android:background="@drawable/btn_states"/>
+        android:background="@drawable/btn_states_thin"/>
 
 
 </LinearLayout>

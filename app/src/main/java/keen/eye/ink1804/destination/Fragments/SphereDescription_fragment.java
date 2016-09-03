@@ -46,6 +46,8 @@ public class SphereDescription_fragment extends Fragment implements View.OnClick
             btn.setText(array[(i+3)%length]);
             btn.setTag(array[(i+3)%length]);
             btn.setTextSize(10);
+            btn.setId(500+i);
+            btn.setBackgroundResource(R.drawable.btn_border_thin);
             btn.setLayoutParams(layoutParams);
             btn.setOnClickListener(this);
             grid.addView(btn);
@@ -54,6 +56,12 @@ public class SphereDescription_fragment extends Fragment implements View.OnClick
 
     @Override
     public void onClick(View view) {
+        int btnID = view.getId();
+        Button pressedButton = (Button)rootView.findViewById(btnID);
+        int length = array.length;
+        for(int i=0;i<length;i++)
+            rootView.findViewById(500 + i).setBackgroundResource(R.drawable.btn_border_thin);
+        pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin);
         String key = view.getTag().toString();
         String[] names = getResources().getStringArray(R.array.db_names);
         String[] details = getResources().getStringArray(R.array.db_details);

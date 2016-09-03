@@ -50,7 +50,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         ribi = (ImageView) rootView.findViewById(R.id.ribi);
         ribi.setOnClickListener(this);
         img_m = new ImageView[] {oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley,ribi};
-        backgroundNorm();
+        backgroundBlack();
     }
 
     @Override
@@ -72,13 +72,13 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
     }
 
     private void backgroundPressed(int i, ImageView[] img_m) {
-        backgroundNorm();
-        img_m[i-1].setImageDrawable(getResources().getDrawable(R.drawable.img_t));
+        backgroundBlack();
+        img_m[i-1].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
     }
 
-    private void backgroundNorm() {
+    private void backgroundBlack() {
         for (int i = 0; i<img_m.length; i++) {
-            img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
+            img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_t));
         }
     }
 }

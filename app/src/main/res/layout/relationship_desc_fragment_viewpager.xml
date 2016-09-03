@@ -3,6 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 <GridLayout
     android:id="@+id/relD_grid"
     android:layout_margin="5dp"
@@ -21,16 +29,16 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:text="  Узнать результат  "
-        android:background="@drawable/border"
+        android:background="@drawable/btn_states_fat"
         android:textColor="@color/blue"
-        android:layout_gravity="center"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_gravity="center" />
+
         <TextView
             android:id="@+id/relD_tv_info"
+            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
