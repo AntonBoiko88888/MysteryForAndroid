@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/sphere_tv_details"
-        android:textSize="20dp"
+        android:textSize="@dimen/textDescription"
         android:layout_below="@+id/sphere_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
