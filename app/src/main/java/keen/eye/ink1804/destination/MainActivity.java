@@ -2,7 +2,9 @@ package keen.eye.ink1804.destination;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +18,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.soundcloud.android.crop.Crop;
+
+import java.io.File;
 
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
@@ -34,6 +41,7 @@ import keen.eye.ink1804.destination.Math.Constants;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 ,pushDateListener, View.OnClickListener {
 
+    private ImageView iconImage;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
@@ -271,6 +279,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
+        }
+    }
+    @Override
+    public void pictureDownload(ImageView imageView) {
+        iconImage = imageView;
+        Crop.pickImage(this);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
+            Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
+            Crop.of(data.getData(), destination).asSquare().start(this);
+        } else if (requestCode == Crop.REQUEST_CROP) {
+            if (resultCode == RESULT_OK) {
+                iconImage.setImageBitmap(null);
+                iconImage.setImageURI(Crop.getOutput(data));
+            } else if (resultCode == Crop.RESULT_ERROR) {
+                Toast.makeText(this, Crop.getError(data).getMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

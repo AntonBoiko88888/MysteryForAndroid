@@ -17,7 +17,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.soundcloud.android.crop.Crop;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -34,10 +38,10 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
     private TextView tv_name,tv_date,tv_sex,tv_status;
     private Button btn_desc, acc_select_img;
     private boolean sex;
+    ImageView imageView;
     private String status,name;
     private int day,month,year;
     private SharedPreferences mSettings;
-    static final int GALLERY_REQUEST = 1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.account_layout_fragment,container,false);
@@ -45,6 +49,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         return rootView;
     }
     private void initializeViews(){
+        imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
         mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         name = mSettings.getString(Constants.APP_PREF_NAME,"noName");
         day = mSettings.getInt(Constants.APP_PREF_DAY,1);
@@ -69,39 +74,14 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()) {
             case R.id.acc_select_img:
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
+                listener.pictureDownload(imageView);
                 break;
             case R.id.acc_btn_description:
-                pushDateListener listener = (pushDateListener)getActivity();
                 listener.onDatePushed(day,month,year,Calendar.getInstance().get(Calendar.YEAR),sex, 2);
                 break;
         }
-
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-
-        Bitmap bitmap = null;
-        ImageView imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
-
-        switch(requestCode) {
-            case GALLERY_REQUEST:
-                if(resultCode == Activity.RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
-                    try {
-                        ContentResolver cr = rootView.getContext().getContentResolver();
-                        bitmap = MediaStore.Images.Media.getBitmap(cr, selectedImage);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    imageView.setImageBitmap(bitmap);
-                }
-        }
-    }//для загрузки изображения
 }
