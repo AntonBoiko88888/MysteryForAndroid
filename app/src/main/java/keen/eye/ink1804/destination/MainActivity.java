@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
-    public static int backStackID = 0;
+    public static int backStackID;
 //    0 - мы на главном фрагменте
-//    1 - backstack.count! = 0
-//    2 - backstack.count = 0 но мы не на главном фрагменте
+//    1 - один шаг от главного фрагмента
+//    2 - больше одного шага от главного фрагмента
     private static long back_pressed;//не удаляй
 
     @Override
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         createActivityViews();
         SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
 
-
+        backStackID = 0;
         if(!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
             toggle.setDrawerIndicatorEnabled(false);
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -115,9 +115,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             default:break;
         }
+        clearBackStack();
         transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
         transaction.commit();
-        backStackID = 2;
+        backStackID = 1;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -135,6 +136,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
         header.setOnClickListener(this);
+    }
+    private void clearBackStack(){
+        FragmentManager fm = getSupportFragmentManager();
+        for(int i = 0; i < fm.getBackStackEntryCount(); i++) {
+            fm.popBackStack();
+        }
     }
     private void createAlert(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -161,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         DatePicker_fragment accFragment = new DatePicker_fragment();
+        backStackID = 0;
         transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
         transaction.commit();
     }
@@ -169,7 +177,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        else {
             switch (backStackID){
                 case 0:
                     if (back_pressed + 2000 > System.currentTimeMillis()) {
@@ -180,19 +189,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     back_pressed = System.currentTimeMillis();// не удаляй
                     break;
                 case 1:
-                    if(getSupportFragmentManager().getBackStackEntryCount()==0){
-                        mainFragmentCreate();
-                    } else
-                        super.onBackPressed();
+                    clearBackStack();
+                    mainFragmentCreate();
                     break;
                 case 2:
-                    mainFragmentCreate();
+                    if(getSupportFragmentManager().getBackStackEntryCount()<=1) {
+                        clearBackStack();
+                        mainFragmentCreate();
+                    }
+                    else
+                    super.onBackPressed();
                     break;
             }
         }
     }
     @Override
-    public void onDatePushed(int day, int month, int year, int currentYear, boolean sex) {
+    public void onDatePushed(int day, int month, int year, int currentYear, boolean sex, int _backStackID) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         ProfileDescription_fragment profDescFragment = new ProfileDescription_fragment();
@@ -206,12 +218,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putBoolean("sex",sex);
         profDescFragment.setArguments(args);
 
-
         transaction.replace(R.id.fragment_container,profDescFragment,tag);
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
-        backStackID = 1;
+        backStackID = _backStackID;
         transaction.commit();
     }
     @Override
@@ -230,8 +241,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
-        backStackID = 1;
-
+        backStackID = 2;
         transaction.commit();
     }
     @Override
@@ -253,11 +263,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Account_fragment fragment = new Account_fragment();
                 String tag = "accFragment";
                 transaction.replace(R.id.fragment_container, fragment, tag);
+                clearBackStack();
                 if (fm.findFragmentByTag(tag) == null) {
                     transaction.addToBackStack(tag);
                 }
-                    backStackID = 2;
-                    transaction.commit();
+                backStackID = 1;
+                transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
         }

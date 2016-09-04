@@ -77,7 +77,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.acc_btn_description:
                 pushDateListener listener = (pushDateListener)getActivity();
-                listener.onDatePushed(day,month,year,Calendar.getInstance().get(Calendar.YEAR),sex);
+                listener.onDatePushed(day,month,year,Calendar.getInstance().get(Calendar.YEAR),sex, 2);
                 break;
         }
 

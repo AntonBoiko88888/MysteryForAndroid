@@ -10,6 +10,7 @@ import android.widget.Toast;
 import keen.eye.ink1804.destination.Fragments.Relationship_description_fragment;
 import keen.eye.ink1804.destination.Fragments.Settings_fragment;
 import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
+import keen.eye.ink1804.destination.Fragments_Advenced.Compatibility_zodiac_fragment;
 
 /**
  * Created by Ink1804 on 14.08.16.
@@ -44,7 +45,7 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
 
         }
         else {
-            fragment = new Settings_fragment();//*
+            fragment = new Compatibility_zodiac_fragment();//*
             args.putString("someString1", "This page is available for advanced users");
         }
             fragment.setArguments(args);

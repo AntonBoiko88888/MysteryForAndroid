@@ -84,7 +84,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
                 pushDateListener listener = (pushDateListener) getActivity();
                 sex = rb_male.isChecked();
                 rb_male.setChecked(sex);
-                listener.onDatePushed(day, month, year, currentYear, sex);
+                listener.onDatePushed(day, month, year, currentYear, sex, 1);
                 break;
             case R.id.picker_btn_pick_date:
                 pickerPopWin.showPopWin(getActivity());
@@ -95,12 +95,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
     }
     @Override
     public void onResume() {
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
-            fm.popBackStack();
-        }
         tv_date.setText("Выбранная дата: "+day+"."+month+"."+year);
-        MainActivity.backStackID = 0;
         super.onResume();
     }
 }
