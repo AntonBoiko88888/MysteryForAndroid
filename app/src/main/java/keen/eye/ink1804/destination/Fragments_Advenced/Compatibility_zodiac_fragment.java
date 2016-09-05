@@ -71,10 +71,10 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        String key = male + " + " + female;
+        String key = male + "+" + female;
         TextView tv_result = (TextView)rootView.findViewById(R.id.comp_zod_tv_result);
-        String[] names = getResources().getStringArray(R.array.db_names);
-        String[] details = getResources().getStringArray(R.array.db_details);
+        String[] names = getResources().getStringArray(R.array.com_names);
+        String[] details = getResources().getStringArray(R.array.com_db);
         int id = -1;
                 for (int i = 0; i < names.length; i++) {
                     if (names[i].equals(key)) {

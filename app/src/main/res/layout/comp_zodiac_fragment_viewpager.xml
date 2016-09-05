@@ -4,9 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
+    android:background="@drawable/background2"
     android:padding="10dp">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/comp_zod_linear"
         android:layout_width="wrap_content"
@@ -19,10 +25,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Знак Мужчины:"
+                android:textColor="@color/blue"/>
             <ImageView
                 android:id="@+id/comp_zod_image_male"
-                android:layout_width="115dp"
-                android:layout_height="115dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="@drawable/com_zod_oven"/>
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/comp_male_spinner"
@@ -34,17 +45,23 @@
                 app:ms_floatingLabelText="floating label"
                 app:ms_thickness="2dp"
                 app:ms_arrowSize="16dp"
-                app:ms_alignLabels="false" />
+                app:ms_alignLabels="false"
+                app:ms_baseColor="@color/blue"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Знак Женщины:"
+                android:textColor="@color/blue"/>
             <ImageView
                 android:id="@+id/comp_zod_image_female"
-                android:layout_width="115dp"
-                android:layout_height="115dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="@drawable/com_zod_oven"/>
 
             <fr.ganfra.materialspinner.MaterialSpinner
@@ -57,25 +74,24 @@
                 app:ms_floatingLabelText="floating label"
                 app:ms_thickness="2dp"
                 app:ms_arrowSize="16dp"
-                app:ms_alignLabels="false" />
+                app:ms_alignLabels="false"
+                app:ms_baseColor="@color/blue"/>
         </LinearLayout>
     </LinearLayout>
     <Button
         android:id="@+id/comp_zod_btn_result"
         android:layout_below="@id/comp_zod_linear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Результат"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/comp_zod_btn_result">
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/hearth_states"
+        android:layout_centerHorizontal="true" />
     <TextView
         android:id="@+id/comp_zod_tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
-        android:text="JGBCF:JHLYG:DS:"/>
+        android:layout_below="@id/comp_zod_btn_result"
+        android:textSize="18dp"/>
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

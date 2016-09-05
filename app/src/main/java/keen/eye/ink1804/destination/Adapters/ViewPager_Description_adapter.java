@@ -35,12 +35,15 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
         Bundle args = new Bundle();
 
         if(position==0) {
-            if(type == 0){
+            if(type == 3){
+                fragment = new Relationship_description_fragment();
+
+            }
+            else {
                 fragment = new SphereDescription_fragment();
                 args.putStringArray("btnTextArray", btnTextArray);
             }
-            else
-                fragment = new Relationship_description_fragment();
+
         }
         else {
             switch (type) {

@@ -6,8 +6,8 @@
     <dimen name="interestingMarginTop">12sp</dimen>
     <dimen name="profileTextSize">23sp</dimen>
     <dimen name="interestingTextSize">18sp</dimen>
-    <dimen name="acc_width_img">120dp</dimen>
-    <dimen name="acc_height_img">150dp</dimen>
+    <dimen name="acc_width_img">130dp</dimen>
+    <dimen name="acc_height_img">130dp</dimen>
 
 
     <dimen name="textDescription">20dp</dimen>

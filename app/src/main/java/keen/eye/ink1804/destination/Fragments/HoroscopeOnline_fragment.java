@@ -51,6 +51,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         ribi.setOnClickListener(this);
         img_m = new ImageView[] {oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley,ribi};
         backgroundBlack();
+        img_m[0].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
     }
 
     @Override
