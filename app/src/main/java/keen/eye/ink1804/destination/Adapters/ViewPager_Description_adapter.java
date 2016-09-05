@@ -10,6 +10,8 @@ import android.widget.Toast;
 import keen.eye.ink1804.destination.Fragments.Relationship_description_fragment;
 import keen.eye.ink1804.destination.Fragments.Settings_fragment;
 import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
+import keen.eye.ink1804.destination.Fragments_Advenced.Compatibility_birth_fragment;
+import keen.eye.ink1804.destination.Fragments_Advenced.Compatibility_virtual_fragment;
 import keen.eye.ink1804.destination.Fragments_Advenced.Compatibility_zodiac_fragment;
 
 /**
@@ -33,20 +35,28 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
         Bundle args = new Bundle();
 
         if(position==0) {
-            switch (type){
-                case 0:
-                    fragment = new SphereDescription_fragment();
-                    args.putStringArray("btnTextArray", btnTextArray);
-                    break;
-                case 2:
-                    fragment = new Relationship_description_fragment();
-                    break;
+            if(type == 0){
+                fragment = new SphereDescription_fragment();
+                args.putStringArray("btnTextArray", btnTextArray);
             }
-
+            else
+                fragment = new Relationship_description_fragment();
         }
         else {
-            fragment = new Compatibility_zodiac_fragment();//*
-            args.putString("someString1", "This page is available for advanced users");
+            switch (type) {
+                case 0:
+                    fragment = new Compatibility_zodiac_fragment();
+                    break;
+                case 1:
+                    fragment = new Compatibility_birth_fragment();
+                    break;
+                case 2:
+                    fragment = new Compatibility_virtual_fragment();
+                    break;
+                case 3:
+                    fragment = new Settings_fragment();
+                    break;
+            }
         }
             fragment.setArguments(args);
         return fragment;

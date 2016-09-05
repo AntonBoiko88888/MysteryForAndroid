@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
-import keen.eye.ink1804.destination.Math.Structure_databases;
+import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -75,7 +75,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_element_structure.setOnClickListener(this);
     }
     private void fillInfo() {
-        Structure_databases struct_data = new Structure_databases();
+        Data_calculation struct_data = new Data_calculation();
         int i,j;
 
         i = struct_data.getYearId(year);

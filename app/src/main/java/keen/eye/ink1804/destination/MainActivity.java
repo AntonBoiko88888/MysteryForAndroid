@@ -96,19 +96,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.tab_birth_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.YEAR_NAMES);
-                args.putInt("type",0);
+                args.putInt("type",1);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_virtual_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.VIRTUAL_NAMES);
-                args.putInt("type",0);
+                args.putInt("type",2);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_relations://*
                 fragment = new Description_fragment();
                 args.putStringArray("array",new String[]{"Взаимоотношения не готовы еще"});
-                args.putInt("type",2);
+                args.putInt("type",3);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_interesting://*
