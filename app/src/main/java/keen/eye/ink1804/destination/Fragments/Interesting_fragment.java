@@ -18,6 +18,9 @@ public class Interesting_fragment extends Fragment implements View.OnClickListen
     private View rootView;
     private TextView year_woman, year_man, tactics_forgive, pros_cons_signs, time_birth_numerology, zodiac_poems, distribution_tolerance_signs;
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.interesting_layout_fragment,container,false);
