@@ -26,6 +26,7 @@ public class ProfileDetails_fragment extends Fragment {
     }
     private void fillData(){
         Bundle args = getArguments();
+        //null may be
         key = args.getString("key");
         tag = args.getString("tag");
         tv_details = (TextView)rootView.findViewById(R.id.details_tv);

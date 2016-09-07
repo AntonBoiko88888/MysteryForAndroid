@@ -24,7 +24,9 @@ public class Relationship_description_fragment extends Fragment implements View.
 
     private View rootView;
     private TextView tv_info;
+
     String[] tmp = {"-1","-1","-1","-1"};
+
     private String[] names = {"Рационал","Иррационал","Логик","Этик","Интуитив","Сенсорик","Экстраверт","Интроверт"};
 
     @Override

@@ -32,12 +32,12 @@ public class Registration_fragment extends Fragment implements View.OnClickListe
     private RadioButton rb_male;
     private int day = 1,month = 1,year = 2000;
     private View rootView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.registration_layout_fragment,container,false);
         createDatePicker();
         initializeTView();
-
         return rootView;
     }
 
