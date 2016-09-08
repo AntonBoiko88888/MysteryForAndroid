@@ -36,7 +36,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/com_zod_oven"/>
             <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/comp_male_spinner"
+                android:id="@+id/comp_zod_male_spinner"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 app:ms_multiline="false"
@@ -65,7 +65,7 @@
                 android:background="@drawable/com_zod_oven"/>
 
             <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/comp_female_spinner"
+                android:id="@+id/comp_zod_female_spinner"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 app:ms_multiline="false"

@@ -22,12 +22,12 @@ import keen.eye.ink1804.destination.R;
 public class Compatibility_zodiac_fragment extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private MaterialSpinner maleSpinner,femaleSpinner;
     private String male,female;
+    private ImageView imv_male,imv_female;
     private int[] zodiacDrawables = {R.drawable.com_zod_oven, R.drawable.com_zod_telec, R.drawable.com_zod_blizneci,
             R.drawable.com_zod_rak, R.drawable.com_zod_lev, R.drawable.com_zod_deva, R.drawable.com_zod_vesi, R.drawable.com_zod_skorpion,
             R.drawable.com_zod_strelec, R.drawable.com_zod_kozerog, R.drawable.com_zod_vodoley, R.drawable.com_zod_ribi};
-    private String[] ZODIAK_NAMES ={"Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец","Козерог","Водолей","Рыбы"};
+    private String[] ZODIAK_NAMES = {"Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец","Козерог","Водолей","Рыбы"};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.comp_zodiac_fragment_viewpager,container,false);
@@ -38,8 +38,10 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
     private void initViews(){
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_zod_btn_result);
         btnGetResult.setOnClickListener(this);
-        maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_male_spinner);
-        femaleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_female_spinner);
+        imv_male = (ImageView)rootView.findViewById(R.id.comp_zod_image_male);
+        imv_female = (ImageView)rootView.findViewById(R.id.comp_zod_image_female);
+        MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_male_spinner);
+        MaterialSpinner femaleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_female_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
                 ZODIAK_NAMES);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -49,8 +51,7 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
         maleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ImageView imageView = (ImageView)rootView.findViewById(R.id.comp_zod_image_male);
-                imageView.setBackgroundResource(zodiacDrawables[i]);
+                imv_male.setBackgroundResource(zodiacDrawables[i]);
                 male = ZODIAK_NAMES[i];
             }
             @Override
@@ -60,8 +61,7 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
         femaleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ImageView imageView = (ImageView)rootView.findViewById(R.id.comp_zod_image_female);
-                imageView.setBackgroundResource(zodiacDrawables[i]);
+                imv_female.setBackgroundResource(zodiacDrawables[i]);
                 female = ZODIAK_NAMES[i];
             }
             @Override
