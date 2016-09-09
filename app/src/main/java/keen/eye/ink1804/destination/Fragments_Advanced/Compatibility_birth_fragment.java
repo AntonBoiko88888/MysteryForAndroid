@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -22,6 +23,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
 
     private View rootView;
     private ImageView imageView;
+    TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector;
     private String birthYear;
     private String D_EqualMarriage, D_RomanticMarriage, D_SpiritualMarriage, D_PatriarchalMarriage, D_VectorMarriage;
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
@@ -49,6 +51,18 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 imageView.setBackgroundResource(birthDrawables[i]);
                 birthYear = birthNames[i];
+                Data_calculation struct_data = new Data_calculation();
+                D_RomanticMarriage = struct_data.getRomanticMarriage(i);
+                D_PatriarchalMarriage = struct_data.getPatriarchalMarriage(i);
+                D_SpiritualMarriage = struct_data.getSpiritualMarriage(i);
+                D_EqualMarriage = struct_data.getEqualMarriage(i);
+                D_VectorMarriage = struct_data.getVectorMarriage(i);
+                tv_romantic.setText(" ");
+                tv_patriarch.setText(" ");
+                tv_soul.setText(" ");
+                tv_equal.setText(" ");
+                tv_vector.setText(" ");
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -58,15 +72,15 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
 
         Button btn_result = (Button)rootView.findViewById(R.id.comp_birth_btn_result);
         btn_result.setOnClickListener(this);
-        TextView tv_romantic = (TextView)rootView.findViewById(R.id.comp_birth_tv_romantic);
+        tv_romantic = (TextView)rootView.findViewById(R.id.comp_birth_tv_romantic);
         tv_romantic.setOnClickListener(this);
-        TextView tv_patriarch = (TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch);
+        tv_patriarch = (TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch);
         tv_patriarch.setOnClickListener(this);
-        TextView tv_soul = (TextView)rootView.findViewById(R.id.comp_birth_tv_soul);
+        tv_soul = (TextView)rootView.findViewById(R.id.comp_birth_tv_soul);
         tv_soul.setOnClickListener(this);
-        TextView tv_equal = (TextView)rootView.findViewById(R.id.comp_birth_tv_equal);
+        tv_equal = (TextView)rootView.findViewById(R.id.comp_birth_tv_equal);
         tv_equal.setOnClickListener(this);
-        TextView tv_vector = (TextView)rootView.findViewById(R.id.comp_birth_tv_vector);
+        tv_vector = (TextView)rootView.findViewById(R.id.comp_birth_tv_vector);
         tv_vector.setOnClickListener(this);
     }
 
@@ -75,27 +89,34 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
         String key = "default";
         String tag = "com_birth";
         pushDateListener listener = (pushDateListener)getActivity();
-        switch (view.getId()){
-            case R.id.comp_birth_tv_romantic:
-                key = "Романтический брак";
-                break;
-            case R.id.comp_birth_tv_patriarch:
-                key = "Патриархальный брак";
-                break;
-            case R.id.comp_birth_tv_soul:
-                key = "Духовный брак";
-                break;
-            case R.id.comp_birth_tv_equal:
-                key = "Равный брак";
-                break;
-            case R.id.comp_birth_tv_vector:
-                key = "Векторный брак";
-                break;
-            case R.id.comp_birth_btn_result:
-                //по нажатию на кнопку
-                break;
-            default: break;
+        if (view.getId() == R.id.comp_birth_btn_result) {
+            tv_romantic.setText("Романтический брак: "+D_RomanticMarriage);
+            tv_patriarch.setText("Патриархальный брак: "+D_PatriarchalMarriage);
+            tv_soul.setText("Духовный брак: "+D_SpiritualMarriage);
+            tv_equal.setText("Равный брак: "+D_EqualMarriage);
+            tv_vector.setText("Векторный брак: "+D_VectorMarriage);
+            //по нажатию на кнопку
+        } else {
+            switch (view.getId()) {
+                case R.id.comp_birth_tv_romantic:
+                    key = "Романтический брак";
+                    break;
+                case R.id.comp_birth_tv_patriarch:
+                    key = "Патриархальный брак";
+                    break;
+                case R.id.comp_birth_tv_soul:
+                    key = "Духовный брак";
+                    break;
+                case R.id.comp_birth_tv_equal:
+                    key = "Равный брак";
+                    break;
+                case R.id.comp_birth_tv_vector:
+                    key = "Векторный брак";
+                    break;
+                default:
+                    break;
+            }
+            listener.onDescriptionClicked(key, tag);//key is going to new bundle
         }
-        listener.onDescriptionClicked(key,tag);//key is going to new bundle
     }
 }

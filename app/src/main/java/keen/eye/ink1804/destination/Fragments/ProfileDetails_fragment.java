@@ -34,6 +34,8 @@ public class ProfileDetails_fragment extends Fragment {
         String[] details = getResources().getStringArray(R.array.db_details);
         String[] interesting_names = getResources().getStringArray(R.array.interesting_names);
         String[] interesting_db = getResources().getStringArray(R.array.interesting_db);
+        String[] com_names = getResources().getStringArray(R.array.com_names2);
+        String[] com_db = getResources().getStringArray(R.array.com_db2);
         int id = -1;
         switch (tag){
             case "profileDetails":
@@ -57,13 +59,13 @@ public class ProfileDetails_fragment extends Fragment {
                 break;
 
             case "com_birth":
-                for (int i = 0; i < names.length; i++) {
-                    if (names[i].equals(key)) {
+                for (int i = 0; i < com_names.length; i++) {
+                    if (com_names[i].equals(key)) {
                         id = i;
                         break;
                     }
                 }
-                tv_details.setText(Html.fromHtml(details[id]));
+                tv_details.setText(Html.fromHtml(com_db[id]));
                 break;
 
             default:break;
