@@ -26,14 +26,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Знак Мужчины:"
-                        android:textColor="@color/blue"/>
-                    <TextView
                         android:id="@+id/comp_rel_tv_male"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="100dp"
+                        android:textSize="20dp"
+                        android:textColor="@color/blue"/>
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_rel_male_spinner"
                         android:layout_width="fill_parent"
@@ -53,14 +50,11 @@
                     android:layout_marginLeft="60dp"
                     android:orientation="vertical">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Знак Женщины:"
-                        android:textColor="@color/blue"/>
-                    <TextView
                         android:id="@+id/comp_rel_tv_female"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="100dp"
+                        android:textSize="20dp"
+                        android:textColor="@color/blue"/>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_rel_female_spinner"

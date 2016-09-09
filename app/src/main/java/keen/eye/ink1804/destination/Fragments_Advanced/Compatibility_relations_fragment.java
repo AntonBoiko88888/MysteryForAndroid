@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments_Advanced;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -39,9 +40,12 @@ public class Compatibility_relations_fragment extends Fragment implements View.O
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         femaleSpinner.setAdapter(adapter);
         maleSpinner.setAdapter(adapter);
+        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
         tv_result = (TextView)rootView.findViewById(R.id.comp_rel_tv_result);
         tv_male = (TextView)rootView.findViewById(R.id.comp_rel_tv_male);
+        tv_male.setTypeface(tf);
         tv_female = (TextView)rootView.findViewById(R.id.comp_rel_tv_female);
+        tv_female.setTypeface(tf);
 
         maleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
