@@ -24,6 +24,7 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
     private View rootView;
     private MaterialSpinner maleSpinner,femaleSpinner;
     private TextView tv_result;
+    private ImageView imv_male,imv_female;
     private String male,female;
     private int[] zodiacDrawables = {R.drawable.com_zod_oven, R.drawable.com_zod_telec, R.drawable.com_zod_blizneci,
             R.drawable.com_zod_rak, R.drawable.com_zod_lev, R.drawable.com_zod_deva, R.drawable.com_zod_vesi, R.drawable.com_zod_skorpion,
@@ -49,12 +50,13 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
         maleSpinner.setAdapter(adapter);
         tv_result = (TextView)rootView.findViewById(R.id.comp_zod_tv_result);
 
+        imv_male = (ImageView)rootView.findViewById(R.id.comp_zod_image_male);
+        imv_female = (ImageView)rootView.findViewById(R.id.comp_zod_image_female);
 
         maleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ImageView imageView = (ImageView)rootView.findViewById(R.id.comp_zod_image_male);
-                imageView.setBackgroundResource(zodiacDrawables[i]);
+                imv_male.setBackgroundResource(zodiacDrawables[i]);
                 male = ZODIAK_NAMES[i];
                 tv_result.setText(" ");
             }
@@ -65,8 +67,7 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
         femaleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                ImageView imageView = (ImageView)rootView.findViewById(R.id.comp_zod_image_female);
-                imageView.setBackgroundResource(zodiacDrawables[i]);
+                imv_female.setBackgroundResource(zodiacDrawables[i]);
                 female = ZODIAK_NAMES[i];
                 tv_result.setText(" ");
             }
