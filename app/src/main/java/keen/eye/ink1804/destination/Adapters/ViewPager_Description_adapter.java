@@ -9,6 +9,7 @@ import keen.eye.ink1804.destination.Fragments.Relationship_description_fragment;
 import keen.eye.ink1804.destination.Fragments.Settings_fragment;
 import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_birth_fragment;
+import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_relations_fragment;
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_virtual_fragment;
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_zodiac_fragment;
 
@@ -52,7 +53,7 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
                     fragment = new Compatibility_virtual_fragment();
                     break;
                 case 3:
-                    fragment = new Settings_fragment();
+                    fragment = new Compatibility_relations_fragment();
                     break;
             }
         }
