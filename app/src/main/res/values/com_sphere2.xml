@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="com_names2">
+        <item>Романтический брак</item><!--0-->
+        <item>Патриархальный брак</item><!---->
+        <item>Духовный брак</item><!---->
+        <item>Равный брак</item><!---->
+        <item>Векторный брак</item><!--4-->
+
+    </string-array>
+
+    <string-array name="com_db2">
+         <item>
+        <![CDATA[
+            <html>
+            <body>
+            <center><h2></h2></center>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            </body>
+            </html>
+            ]]>
+    </item><!-- -->
+         <item>
+        <![CDATA[
+            <html>
+            <body>
+            <center><h2></h2></center>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            </body>
+            </html>
+            ]]>
+    </item><!-- -->
+         <item>
+        <![CDATA[
+            <html>
+            <body>
+            <center><h2></h2></center>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            </body>
+            </html>
+            ]]>
+    </item><!-- -->
+         <item>
+        <![CDATA[
+            <html>
+            <body>
+            <center><h2></h2></center>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            </body>
+            </html>
+            ]]>
+    </item><!-- -->
+         <item>
+        <![CDATA[
+            <html>
+            <body>
+            <center><h2></h2></center>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            </body>
+            </html>
+            ]]>
+    </item><!-- -->
+
+    </string-array>
+
+</resources>

@@ -23,6 +23,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
     private View rootView;
     private ImageView imageView;
     private String birthYear;
+    private String D_EqualMarriage, D_RomanticMarriage, D_SpiritualMarriage, D_PatriarchalMarriage, D_VectorMarriage;
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
             R.drawable.com_birth_mouse, R.drawable.com_birth_bull, R.drawable.com_birth_tiger, R.drawable.com_birth_cat,
             R.drawable.com_birth_dragon, R.drawable.com_birth_snake, R.drawable.com_birth_horse,R.drawable.com_birth_goat};
@@ -72,7 +73,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
     @Override
     public void onClick(View view) {
         String key = "default";
-        String tag = "profileDetails";
+        String tag = "com_birth";
         pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
             case R.id.comp_birth_tv_romantic:

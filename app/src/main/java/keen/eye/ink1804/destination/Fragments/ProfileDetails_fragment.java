@@ -56,6 +56,16 @@ public class ProfileDetails_fragment extends Fragment {
                 tv_details.setText(Html.fromHtml(interesting_db[id]));
                 break;
 
+            case "com_birth":
+                for (int i = 0; i < names.length; i++) {
+                    if (names[i].equals(key)) {
+                        id = i;
+                        break;
+                    }
+                }
+                tv_details.setText(Html.fromHtml(details[id]));
+                break;
+
             default:break;
         }
     }

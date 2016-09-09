@@ -28,7 +28,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     private int yearNow, year, month, day;
     private String D_virtualType, D_year, D_zodiac, D_year_number, D_yearPeriod, D_fateSymbol
             , D_energy, D_communicate, D_psychology, D_typeOfThinking, D_vectorHost, D_vectorServant
-            , D_equalMarriage, D_romanticMarriage, D_spiritualMarriage, D_patriarchalMarriage, D_elementStructure;
+            , D_elementStructure;
 
 
     @Override
@@ -92,10 +92,6 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         D_typeOfThinking = struct_data.getTypeThinkingNames(sex, i);
         D_vectorHost = struct_data.getHostName(i);
         D_vectorServant = struct_data.getServantName(i);
-        D_equalMarriage = struct_data.getEqualMarriageName(i);//
-        D_romanticMarriage = struct_data.getRomanticMarriageName(i);//
-        D_spiritualMarriage = struct_data.getSpiritualMarriageName(i);//
-        D_patriarchalMarriage = struct_data.getPatriarchalMarriageName(i);//
         D_elementStructure = struct_data.getElementName(day, month);
         tv_date.setText(                "Дата: "+day+"."+month+"."+year);
         tv_virtual_type.setText(              setTextSettings("Тип:", D_virtualType));
