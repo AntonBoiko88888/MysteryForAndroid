@@ -29,7 +29,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
             R.drawable.com_birth_mouse, R.drawable.com_birth_bull, R.drawable.com_birth_tiger, R.drawable.com_birth_cat,
             R.drawable.com_birth_dragon, R.drawable.com_birth_snake, R.drawable.com_birth_horse,R.drawable.com_birth_goat};
-    private String[] birthNames = {"Обезьяна","Петух","Собака","Кабан","Крыса","Бык",
+    private String[] birthNames = {"Обезьяна","Петух","Собака","Свинья(Кабан)","Крыса","Бык",
             "Тигр","Кролик(Кот)","Дракон","Змея","Лошадь","Овца(Коза)"};
 
 

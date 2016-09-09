@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выберите свой знак"
+            android:text="Выберите знак"
             android:textColor="@color/blue"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:orientation="vertical"
         android:layout_below="@+id/comp_birth2_layout">
 
@@ -83,7 +83,7 @@
 
         <TextView
             android:id="@+id/comp_birth_tv_romantic"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Романтический брак"
             android:background="@drawable/txt_states"
@@ -91,7 +91,7 @@
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/comp_birth_tv_patriarch"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:text="Патриархальный брак"
@@ -99,7 +99,7 @@
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/comp_birth_tv_soul"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:text="Духовный брак"
@@ -107,7 +107,7 @@
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/comp_birth_tv_equal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:text="Равный брак"
@@ -115,7 +115,7 @@
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/comp_birth_tv_vector"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:text="Векторый брак"
