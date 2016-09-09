@@ -23,12 +23,13 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
 
     private View rootView;
     private MaterialSpinner maleSpinner,femaleSpinner;
-    TextView tv_result;
+    private TextView tv_result;
     private String male,female;
     private int[] zodiacDrawables = {R.drawable.com_zod_oven, R.drawable.com_zod_telec, R.drawable.com_zod_blizneci,
             R.drawable.com_zod_rak, R.drawable.com_zod_lev, R.drawable.com_zod_deva, R.drawable.com_zod_vesi, R.drawable.com_zod_skorpion,
             R.drawable.com_zod_strelec, R.drawable.com_zod_kozerog, R.drawable.com_zod_vodoley, R.drawable.com_zod_ribi};
     private String[] ZODIAK_NAMES ={"Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец","Козерог","Водолей","Рыбы"};
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.comp_zodiac_fragment_viewpager,container,false);
