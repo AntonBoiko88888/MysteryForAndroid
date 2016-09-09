@@ -22,7 +22,7 @@
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
@@ -48,7 +48,7 @@
                         app:ms_baseColor="@color/blue"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="60dp"
                     android:orientation="vertical">

@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
+        String tag = "default";
         Bundle args = new Bundle();
         switch (item.getItemId()){
 //            case R.id.tab_account:
@@ -98,6 +99,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 args.putStringArray("array",Constants.YEAR_NAMES);
                 args.putInt("type",1);
                 fragment.setArguments(args);
+                tag = "birth_sign_vp";
+                if (fragmentManager.findFragmentByTag(tag) == null) {
+                    transaction.addToBackStack(tag);
+                }
                 break;
             case R.id.tab_virtual_sign://half_done
                 fragment = new Description_fragment();
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.tab_interesting://*
                 fragment = new Interesting_fragment();//*
-                String tag = "interesting";
+                tag = "interesting";
                 if (fragmentManager.findFragmentByTag(tag) == null) {
                     transaction.addToBackStack(tag);
                 }
@@ -234,7 +239,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
     @Override
-    public void onDescriptionClicked(String key, String layoutTag ) {
+    public void onDescriptionClicked(String key, String layoutTag) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         ProfileDetails_fragment profDetFragment = new ProfileDetails_fragment();

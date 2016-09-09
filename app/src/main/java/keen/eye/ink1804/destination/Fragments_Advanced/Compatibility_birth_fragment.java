@@ -69,7 +69,6 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
 
             }
         });
-
         Button btn_result = (Button)rootView.findViewById(R.id.comp_birth_btn_result);
         btn_result.setOnClickListener(this);
         tv_romantic = (TextView)rootView.findViewById(R.id.comp_birth_tv_romantic);
@@ -89,14 +88,6 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
         String key = "default";
         String tag = "com_birth";
         pushDateListener listener = (pushDateListener)getActivity();
-        if (view.getId() == R.id.comp_birth_btn_result) {
-            tv_romantic.setText("Романтический брак: "+D_RomanticMarriage);
-            tv_patriarch.setText("Патриархальный брак: "+D_PatriarchalMarriage);
-            tv_soul.setText("Духовный брак: "+D_SpiritualMarriage);
-            tv_equal.setText("Равный брак: "+D_EqualMarriage);
-            tv_vector.setText("Векторный брак: "+D_VectorMarriage);
-            //по нажатию на кнопку
-        } else {
             switch (view.getId()) {
                 case R.id.comp_birth_tv_romantic:
                     key = "Романтический брак";
@@ -113,10 +104,17 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
                 case R.id.comp_birth_tv_vector:
                     key = "Векторный брак";
                     break;
+                case R.id.comp_birth_btn_result:
+                    tv_romantic.setText("Романтический брак: "+D_RomanticMarriage);
+                    tv_patriarch.setText("Патриархальный брак: "+D_PatriarchalMarriage);
+                    tv_soul.setText("Духовный брак: "+D_SpiritualMarriage);
+                    tv_equal.setText("Равный брак: "+D_EqualMarriage);
+                    tv_vector.setText("Векторный брак: "+D_VectorMarriage);
+                    break;
                 default:
                     break;
             }
+        if(!key.equals("default"))
             listener.onDescriptionClicked(key, tag);//key is going to new bundle
-        }
     }
 }
