@@ -3,6 +3,7 @@ package keen.eye.ink1804.destination.Fragments_Advanced;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,16 @@ public class Compatibility_relations_fragment extends Fragment implements View.O
 
     @Override
     public void onClick(View view) {
-        //
+        String key = male + "+" + female;
+        String[] names = getResources().getStringArray(R.array.com_names4);
+        String[] details = getResources().getStringArray(R.array.com_db4);
+        int id = -1;
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equals(key)) {
+                id = i;
+                break;
+            }
+        }
+        tv_result.setText(Html.fromHtml(details[id]));
     }
 }

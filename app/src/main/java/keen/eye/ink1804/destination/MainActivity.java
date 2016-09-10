@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //    0 - мы на главном фрагменте
 //    1 - один шаг от главного фрагмента
 //    2 - больше одного шага от главного фрагмента
-    private static long back_pressed;//не удаляй
+    private static long back_pressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +82,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String tag = "default";
         Bundle args = new Bundle();
         switch (item.getItemId()){
-//            case R.id.tab_account:
-//                fragment = new Account_fragment();
-//                break;
             case R.id.tab_hor_online://half_done
                 fragment = new HoroscopeOnline_fragment();
                 break;
