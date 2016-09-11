@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments_Advanced;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
 
     private View rootView;
     private ImageView imageView;
-    TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector;
+    TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector, tv_text;
     private String birthYear;
     private String D_EqualMarriage, D_RomanticMarriage, D_SpiritualMarriage, D_PatriarchalMarriage, D_VectorMarriage;
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
@@ -69,18 +70,26 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
 
             }
         });
+        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         Button btn_result = (Button)rootView.findViewById(R.id.comp_birth_btn_result);
         btn_result.setOnClickListener(this);
+        tv_text = (TextView)rootView.findViewById(R.id.birth_text);
+        tv_text.setTypeface(tf);
         tv_romantic = (TextView)rootView.findViewById(R.id.comp_birth_tv_romantic);
         tv_romantic.setOnClickListener(this);
+        tv_romantic.setTypeface(tf);
         tv_patriarch = (TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch);
         tv_patriarch.setOnClickListener(this);
+        tv_patriarch.setTypeface(tf);
         tv_soul = (TextView)rootView.findViewById(R.id.comp_birth_tv_soul);
         tv_soul.setOnClickListener(this);
+        tv_soul.setTypeface(tf);
         tv_equal = (TextView)rootView.findViewById(R.id.comp_birth_tv_equal);
         tv_equal.setOnClickListener(this);
+        tv_equal.setTypeface(tf);
         tv_vector = (TextView)rootView.findViewById(R.id.comp_birth_tv_vector);
         tv_vector.setOnClickListener(this);
+        tv_vector.setTypeface(tf);
     }
 
     @Override
