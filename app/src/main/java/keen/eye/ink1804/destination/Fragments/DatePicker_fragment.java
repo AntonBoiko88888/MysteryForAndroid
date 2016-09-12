@@ -42,6 +42,8 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
 
 
     private void initializeTView() {
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Новый профиль");
         tv_date = (TextView)rootView.findViewById(R.id.picker_tv_date);
         btn_next = (Button)rootView.findViewById(R.id.picker_btn_next);
         btn_next.setOnClickListener(this);

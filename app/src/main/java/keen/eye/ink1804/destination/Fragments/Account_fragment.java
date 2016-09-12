@@ -37,6 +37,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         return rootView;
     }
     private void initializeViews(){
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Аккаунт");
         imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
         mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         name = mSettings.getString(Constants.APP_PREF_NAME,"noName");

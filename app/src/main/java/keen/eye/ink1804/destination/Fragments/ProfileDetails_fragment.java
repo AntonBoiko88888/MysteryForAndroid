@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -25,6 +26,8 @@ public class ProfileDetails_fragment extends Fragment {
         return rootView;
     }
     private void fillData(){
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Интерпретация");
         Bundle args = getArguments();
         //null may be
         key = args.getString("key");

@@ -86,7 +86,6 @@
             android:id="@+id/comp_birth_tv_romantic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Романтический брак"
             android:background="@drawable/txt_states"
             android:textColor="@color/blue"
             android:textSize="@dimen/profileTextSize"
@@ -97,7 +96,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:textColor="@color/blue"
-            android:text="Патриархальный брак"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
@@ -106,7 +104,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:textColor="@color/blue"
-            android:text="Духовный брак"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
@@ -115,7 +112,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:textColor="@color/blue"
-            android:text="Равный брак"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
@@ -124,7 +120,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/txt_states"
             android:textColor="@color/blue"
-            android:text="Векторый брак"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
     </LinearLayout>

@@ -41,6 +41,8 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
         return rootView;
     }
     private void initViews(){
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Знаки рождения");
         imageView = (ImageView)rootView.findViewById(R.id.comp_birth_image);
         MaterialSpinner spinner = (MaterialSpinner) rootView.findViewById(R.id.comp_birth_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
@@ -59,10 +61,15 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
                 D_EqualMarriage = struct_data.getEqualMarriage(i);
                 D_VectorMarriage = struct_data.getVectorMarriage(i);
                 tv_romantic.setText(" ");
+                tv_romantic.setEnabled(false);
                 tv_patriarch.setText(" ");
+                tv_patriarch.setEnabled(false);
                 tv_soul.setText(" ");
+                tv_soul.setEnabled(false);
                 tv_equal.setText(" ");
+                tv_equal.setEnabled(false);
                 tv_vector.setText(" ");
+                tv_vector.setEnabled(false);
 
             }
             @Override
@@ -119,6 +126,11 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
                     tv_soul.setText("Духовный брак: "+D_SpiritualMarriage);
                     tv_equal.setText("Равный брак: "+D_EqualMarriage);
                     tv_vector.setText("Векторный брак: "+D_VectorMarriage);
+                    tv_romantic.setEnabled(true);
+                    tv_patriarch.setEnabled(true);
+                    tv_soul.setEnabled(true);
+                    tv_equal.setEnabled(true);
+                    tv_vector.setEnabled(true);
                     break;
                 default:
                     break;

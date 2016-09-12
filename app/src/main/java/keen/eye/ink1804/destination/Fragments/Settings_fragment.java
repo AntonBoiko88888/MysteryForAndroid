@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -17,6 +18,12 @@ public class Settings_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.settings_layout_fragment,container,false);
+        initializeTView();
         return rootView;
+    }
+
+    private void initializeTView() {
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Настройки");
     }
 }

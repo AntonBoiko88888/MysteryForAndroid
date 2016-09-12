@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
@@ -40,6 +39,8 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     }
 
     private void initializeTView() {
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Характеристика профиля");
         Bundle args = getArguments();
         yearNow = args.getInt("currentYear");
         year = args.getInt("year");

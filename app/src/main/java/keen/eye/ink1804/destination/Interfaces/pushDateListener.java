@@ -10,5 +10,6 @@ public interface pushDateListener {
     void onRegistration(int day, int month, int year, boolean sex);
     void onDescriptionClicked(String key, String layoutTag);
     void pictureDownload(ImageView imageView);
+    void toolbarSetTitle(String title);
 
 }

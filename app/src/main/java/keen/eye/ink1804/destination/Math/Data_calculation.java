@@ -460,4 +460,46 @@ public class Data_calculation {
                 }
                 return res;
         }
+
+        public String getVirtualPointsName(String vir1, String vir2) {
+                String res = "";
+                String five = "5 (хорошо)", four = "4 (нормально)", three = "3 (плохо)";
+                if(vir1.equals(C.KING)) {
+                    if(vir2.equals(C.KING) || vir2.equals(C.CLOWN)) res = five;
+                    else if(vir2.equals(C.LEADER) || vir2.equals(C.VECTOR)) res = three;
+                        else res = four;
+                }
+                else if(vir1.equals(C.ARISTOCRAT)) {
+                        if(vir2.equals(C.KNIGHT) || vir2.equals(C.CLOWN)) res = five;
+                        else if(vir2.equals(C.PROFESSOR) || vir2.equals(C.VECTOR)) res = three;
+                        else res = four;
+                }
+                else if(vir1.equals(C.KNIGHT)) {
+                        if(vir2.equals(C.ARISTOCRAT) || vir2.equals(C.VECTOR)) res = five;
+                        else if(vir2.equals(C.KNIGHT) || vir2.equals(C.PROFESSOR)) res = three;
+                        else res = four;
+                }
+                else if(vir1.equals(C.PROFESSOR)) {
+                        if(vir2.equals(C.PROFESSOR) || vir2.equals(C.LEADER)) res = five;
+                        else if(vir2.equals(C.ARISTOCRAT) || vir2.equals(C.KNIGHT)) res = three;
+                        else res = four;
+                }
+                else if(vir1.equals(C.CLOWN)) {
+                        if(vir2.equals(C.KING) || vir2.equals(C.ARISTOCRAT)) res = five;
+                        else if(vir2.equals(C.CLOWN) || vir2.equals(C.LEADER)) res = three;
+                        else res = four;
+                }
+                else if(vir1.equals(C.LEADER)) {
+                        if(vir2.equals(C.PROFESSOR) || vir2.equals(C.VECTOR)) res = five;
+                        else if(vir2.equals(C.KING) || vir2.equals(C.CLOWN)) res = three;
+                        else res = four;
+                }
+                else {
+                        if(vir2.equals(C.KNIGHT) || vir2.equals(C.LEADER)) res = five;
+                        else if(vir2.equals(C.KING) || vir2.equals(C.ARISTOCRAT)) res = three;
+                        else res = four;
+                }
+
+                return res;
+        }
 }

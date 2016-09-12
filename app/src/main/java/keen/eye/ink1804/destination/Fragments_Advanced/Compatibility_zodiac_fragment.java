@@ -2,6 +2,7 @@ package keen.eye.ink1804.destination.Fragments_Advanced;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 
 import fr.ganfra.materialspinner.MaterialSpinner;
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -39,6 +41,8 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
     }
 
     private void initViews(){
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Знаки зодиака");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_zod_btn_result);
         btnGetResult.setOnClickListener(this);
         maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_male_spinner);

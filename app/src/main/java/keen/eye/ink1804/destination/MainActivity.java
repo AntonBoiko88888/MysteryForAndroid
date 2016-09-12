@@ -41,6 +41,7 @@ import keen.eye.ink1804.destination.Math.Constants;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 ,pushDateListener, View.OnClickListener {
 
+    private Toolbar toolbar;
     private ImageView iconImage;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -133,14 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
     private void createActivityViews(){
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Постижение тайны");
-
-        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.clown_about);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        toolbarSetTitle("Постижение тайны");
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -288,6 +282,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iconImage = imageView;
         Crop.pickImage(this);
     }
+
+    @Override
+    public void toolbarSetTitle(String title) {
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(title);
+
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.clown_about);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -25,6 +26,8 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
     }
 
     private void initViews(){
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Гороскоп онлайн");
         oven = (ImageView) rootView.findViewById(R.id.oven);
         oven.setOnClickListener(this);
         telec = (ImageView) rootView.findViewById(R.id.telec);

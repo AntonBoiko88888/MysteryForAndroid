@@ -3,6 +3,7 @@ package keen.eye.ink1804.destination.Fragments_Advanced;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
+import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -30,6 +33,8 @@ public class Compatibility_virtual_fragment extends Fragment implements View.OnC
         return rootView;
     }
     private void initViews(){
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Виртуальные знаки");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_vir_btn_result);
         btnGetResult.setOnClickListener(this);
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_vir_male_spinner);
@@ -72,6 +77,7 @@ public class Compatibility_virtual_fragment extends Fragment implements View.OnC
 
     @Override
     public void onClick(View view) {
-        tv_result.setText("Оценка взаимоотношений = метода еще нет ");
+        Data_calculation struct_data = new Data_calculation();
+        tv_result.setText("Оценка взаимоотношений = " + struct_data.getVirtualPointsName(male,female));
     }
 }

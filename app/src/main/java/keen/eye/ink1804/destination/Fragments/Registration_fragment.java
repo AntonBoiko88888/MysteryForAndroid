@@ -41,6 +41,8 @@ public class Registration_fragment extends Fragment implements View.OnClickListe
 
 
     private void initializeTView() {
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Регистрация аккаунта");
         tv_date = (TextView)rootView.findViewById(R.id.reg_tv_date);
         et_name = (EditText)rootView.findViewById(R.id.reg_et_name);
         Button btn_registrate = (Button)rootView.findViewById(R.id.reg_btn_registrate);

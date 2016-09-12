@@ -29,6 +29,8 @@ public class Interesting_fragment extends Fragment implements View.OnClickListen
     }
 
     private void initializeTView() {
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Интересное");
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
         year_woman = (TextView) rootView.findViewById(R.id.year_woman);
         year_woman.setTypeface(tf);

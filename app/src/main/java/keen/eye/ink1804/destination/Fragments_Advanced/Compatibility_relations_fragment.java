@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
@@ -32,6 +32,8 @@ public class Compatibility_relations_fragment extends Fragment implements View.O
         return rootView;
     }
     private void initViews(){
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle("Взаимоотношения");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_rel_btn_result);
         btnGetResult.setOnClickListener(this);
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_rel_male_spinner);
