@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import keen.eye.ink1804.destination.Adapters.ViewPager_Description_adapter;
+import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -41,11 +42,16 @@ public class Description_fragment extends Fragment {
     }
 
     private void initViews(){
+
         tabLayout = (PagerTabStrip) rootView.findViewById(R.id.pagerTabStrip);
         viewPager = (ViewPager)rootView.findViewById(R.id.desc_viewPager);
         Bundle args = getArguments();
+        String toolbarText = args.getString("toolbar");
         btnTextArray = args.getStringArray("array");
         layoutType = args.getInt("type");
+
+        pushDateListener listener = (pushDateListener)getActivity();
+        listener.toolbarSetTitle(toolbarText);
 
         mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
                 btnTextArray,layoutType);//*

@@ -2,6 +2,7 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.LayoutInflater;

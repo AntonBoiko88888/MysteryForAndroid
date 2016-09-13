@@ -89,12 +89,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.tab_zodiaс_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.ZODIAK_NAMES);
+                args.putString("toolbar","Знаки зодиака");
                 args.putInt("type",0);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_birth_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.YEAR_NAMES);
+                args.putString("toolbar","Знаки рождения");
                 args.putInt("type",1);
                 fragment.setArguments(args);
                 tag = "birth_sign_vp";
@@ -105,12 +107,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.tab_virtual_sign://half_done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.VIRTUAL_NAMES);
+                args.putString("toolbar","Виртуальные знаки");
                 args.putInt("type",2);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_relations://*
                 fragment = new Description_fragment();
-                args.putStringArray("array",new String[]{"Взаимоотношения не готовы еще"});
+                args.putString("toolbar","Взаимоотношения");
                 args.putInt("type",3);
                 fragment.setArguments(args);
                 break;
@@ -287,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void toolbarSetTitle(String title) {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(title);
 
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.clown_about);

@@ -2,6 +2,7 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,6 @@ public class ProfileDetails_fragment extends Fragment {
                 }
                 tv_details.setText(Html.fromHtml(details[id]));
                 break;
-
             case "interesting":
                 for (int i = 0; i < interesting_names.length; i++) {
                     if (interesting_names[i].equals(key)) {
@@ -60,7 +60,6 @@ public class ProfileDetails_fragment extends Fragment {
                 }
                 tv_details.setText(Html.fromHtml(interesting_db[id]));
                 break;
-
             case "com_birth":
                 for (int i = 0; i < com_names.length; i++) {
                     if (com_names[i].equals(key)) {
