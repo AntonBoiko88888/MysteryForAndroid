@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="15dp">
+            android:paddingTop="@dimen/profile_layout_paddingTop">
         <TextView
             android:id="@+id/picker_tv_date"
             android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
             android:textStyle="italic"
             android:gravity="center"
             android:textColor="@color/blue"
-            android:textSize="33sp" />
+            android:textSize="@dimen/profileDataTextSize" />
         <TextView
             android:id="@+id/prof_tv_virtual_type"
             android:layout_width="wrap_content"

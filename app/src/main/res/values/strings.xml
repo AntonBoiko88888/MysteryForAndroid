@@ -2,11 +2,12 @@
     <string name="app_name">Mystery</string>
 
 
-    <string name="knight_about">d</string>
-    <string name="leader_about">d</string>
-    <string name="king_about">d</string>
-    <string name="clown_about">d</string>
-    <string name="vector_about">d</string>
-    <string name="aristocrat_about">d</string>
-    <string name="professor_about">dsad</string>
+    <!--Interesting_fragment -->
+    <string name="interesting_character_woman">Характер женщины по месяцу рождения</string>
+    <string name="interesting_character_man">Характер мужчины по месяцу рождения</string>
+    <string name="interesting_tactics_pardon">Тактика прощения</string>
+    <string name="interesting_pros_cons_signs">Плюсы и минусы знаков</string>
+    <string name="interesting_time_birth_numerology">Время рождения - Нумерология</string>
+    <string name="interesting_zodiac_poems">Знаки зодиака в стихах</string>
+    <string name="interesting_distribution_tolerance_signs">Раздача толерантности знакам</string>
 </resources>

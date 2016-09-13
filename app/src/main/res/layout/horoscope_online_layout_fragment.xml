@@ -17,63 +17,63 @@
         >
         <ImageView
             android:id="@+id/oven"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_oven" />
         <ImageView
             android:id="@+id/telec"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_telec"/>
         <ImageView
             android:id="@+id/blizneci"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_blizneci"/>
         <ImageView
             android:id="@+id/rak"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_rak"/>
         <ImageView
             android:id="@+id/lev"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_lev"/>
         <ImageView
             android:id="@+id/deva"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_deva"/>
         <ImageView
             android:id="@+id/vesi"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_vesi"/>
         <ImageView
             android:id="@+id/skorpion"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_skorpion"/>
         <ImageView
             android:id="@+id/strelec"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_strelec"/>
         <ImageView
             android:id="@+id/kozerog"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_kozerog"/>
         <ImageView
             android:id="@+id/vodoley"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_vodoley"/>
         <ImageView
             android:id="@+id/ribi"
-            android:layout_height="80dp"
-            android:layout_width="80dp"
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_fish"/>
 
     </GridLayout>
@@ -84,7 +84,7 @@
         android:text="Овен"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:textSize="30dp"/>
+        android:textSize="@dimen/horoscope_online_textSignZodiac_textSize"/>
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textSize="20dp"
+        android:textSize="@dimen/textDescription"
         android:text="Подключение к интернету отсутствует"/>
     </ScrollView>
 </LinearLayout>

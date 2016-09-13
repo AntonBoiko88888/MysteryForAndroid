@@ -11,7 +11,7 @@
         android:gravity="center"
         android:layout_marginTop="@dimen/interestingMarginTop"
         android:background="@drawable/txt_states"
-        android:text="Характер женщины по месяцу рождения"/>
+        android:text="@string/interesting_character_woman"/>
     <TextView
         android:id="@+id/year_man"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:textSize="@dimen/interestingTextSize"
         android:background="@drawable/txt_states"
         android:layout_marginTop="@dimen/interestingMarginTop"
-        android:text="Характер мужчины по месяцу рождения"/>
+        android:text="@string/interesting_character_man"/>
     <TextView
         android:id="@+id/tactics_forgive"
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
-        android:text="Тактика прощения"/>
+        android:text="@string/interesting_tactics_pardon"/>
     <TextView
         android:id="@+id/pros_cons_signs"
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
         android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
-        android:text="Плюсы и минусы знаков"/>
+        android:text="@string/interesting_pros_cons_signs"/>
     <TextView
         android:id="@+id/time_birth_numerology"
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
-        android:text="Время рождения - Нумерология"/>
+        android:text="@string/interesting_time_birth_numerology"/>
     <TextView
         android:id="@+id/zodiac_poems"
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
         android:background="@drawable/txt_states"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
-        android:text="Знаки зодиака в стихах"/>
+        android:text="@string/interesting_zodiac_poems"/>
     <TextView
         android:id="@+id/distribution_tolerance_signs"
         android:layout_width="match_parent"
@@ -65,6 +65,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/interestingTextSize"
         android:layout_marginTop="@dimen/interestingMarginTop"
-        android:text="Раздача толерантности знакам"/>
+        android:text="@string/interesting_distribution_tolerance_signs"/>
 
 </LinearLayout>

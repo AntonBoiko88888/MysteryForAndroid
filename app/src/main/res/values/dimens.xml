@@ -5,10 +5,20 @@
     <dimen name="profileMarginTop">8sp</dimen>
     <dimen name="interestingMarginTop">12sp</dimen>
     <dimen name="profileTextSize">23sp</dimen>
+    <dimen name="profileDataTextSize">33sp</dimen>
+    <dimen name="profile_layout_paddingTop">15dp</dimen>
     <dimen name="interestingTextSize">18sp</dimen>
     <dimen name="acc_width_img">130dp</dimen>
     <dimen name="acc_height_img">130dp</dimen>
 
 
-    <dimen name="textDescription">20dp</dimen>
+    <dimen name="textDescription">20sp</dimen>
+
+    <!--Horoscope_online_fragment-->
+    <dimen name="horoscope_online_img_height">80dp</dimen>
+    <dimen name="horoscope_online_img_width">80dp</dimen>
+    <dimen name="horoscope_online_textSignZodiac_textSize">30sp</dimen>
+    <dimen name="horoscope_online_i_height">80dp</dimen>
+    <dimen name="horoscope_online_im_height">80dp</dimen>
+    <dimen name="horoscope_online_imgheight">80dp</dimen>
 </resources>
