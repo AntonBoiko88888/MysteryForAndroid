@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 
 import com.soundcloud.android.crop.Crop;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
@@ -284,6 +287,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void pictureDownload(ImageView imageView) {
         iconImage = imageView;
         Crop.pickImage(this);
+        iconImage.buildDrawingCache();
+        Bitmap bitmap = iconImage.getDrawingCache();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        byte[] image = stream.toByteArray();
+        String img_str = Base64.encodeToString(image, 0);
+        SharedPreferences  mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putString(Constants.APP_PREF_IMAGE, img_str);
+        editor.apply();
     }
 
     @Override

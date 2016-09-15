@@ -2,9 +2,11 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +29,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
     private TextView tv_name,tv_date,tv_sex,tv_status;
     private Button btn_desc, acc_select_img;
     private boolean sex;
-    ImageView imageView;
-    private String status,name;
+    private ImageView imageView;
+    private String status,name,icon;
     private int day,month,year;
     private SharedPreferences mSettings;
     @Override
@@ -47,6 +49,11 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
         year = mSettings.getInt(Constants.APP_PREF_YEAR,2000);
         sex = mSettings.getBoolean(Constants.APP_PREF_SEX,false);
+
+        icon = mSettings.getString(Constants.APP_PREF_IMAGE,"");
+        byte[] imageAsBytes = Base64.decode(icon.getBytes(), Base64.DEFAULT);
+        imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes,0, imageAsBytes.length));
+
         acc_select_img= (Button)rootView.findViewById(R.id.acc_select_img);
         acc_select_img.setOnClickListener(this);
         status = mSettings.getString(Constants.APP_PREF_STATUS,"Начинающий");
