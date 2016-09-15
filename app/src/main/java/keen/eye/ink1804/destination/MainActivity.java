@@ -293,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(title);
 
-        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.clown_about);
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.com_signMan_text);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
     }

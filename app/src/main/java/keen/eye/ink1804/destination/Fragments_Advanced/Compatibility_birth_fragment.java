@@ -60,6 +60,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
                 D_SpiritualMarriage = struct_data.getSpiritualMarriage(i);
                 D_EqualMarriage = struct_data.getEqualMarriage(i);
                 D_VectorMarriage = struct_data.getVectorMarriage(i);
+                tv_text.setText(" ");
                 tv_romantic.setText(" ");
                 tv_romantic.setEnabled(false);
                 tv_patriarch.setText(" ");
@@ -121,6 +122,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
                     key = "Векторный брак";
                     break;
                 case R.id.comp_birth_btn_result:
+                    tv_text.setText("Пять типов брака:");
                     tv_romantic.setText("Романтический брак: "+D_RomanticMarriage);
                     tv_patriarch.setText("Патриархальный брак: "+D_PatriarchalMarriage);
                     tv_soul.setText("Духовный брак: "+D_SpiritualMarriage);

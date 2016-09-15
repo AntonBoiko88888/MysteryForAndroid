@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Овен"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/horoscope_online_textZodiac_marginTop"
         android:layout_gravity="center"
         android:textSize="@dimen/horoscope_online_textSignZodiac_textSize"/>
     <ScrollView
@@ -92,7 +92,7 @@
         android:id="@+id/sphere_tv_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
         android:textSize="@dimen/textDescription"
         android:text="Подключение к интернету отсутствует"/>
     </ScrollView>

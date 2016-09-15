@@ -23,7 +23,7 @@
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="@dimen/com_layoutForSpinner_width"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
@@ -31,7 +31,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:textSize="18dp"
+                        android:textSize="@dimen/com_signs_TextSize"
                         android:textColor="@color/blue"/>
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_vir_male_spinner"
@@ -48,7 +48,7 @@
                         app:ms_baseColor="@color/blue"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="@dimen/com_layoutForSpinner_width"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="60dp"
                     android:orientation="vertical">
@@ -57,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:textSize="18dp"
+                        android:textSize="@dimen/com_signs_TextSize"
                         android:textColor="@color/blue"/>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
@@ -78,8 +78,8 @@
             <Button
                 android:id="@+id/comp_vir_btn_result"
                 android:layout_below="@id/comp_vir_linear"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/com_btnImg_width"
+                android:layout_height="@dimen/com_btnImg_height"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/virtual_btn_states"
                 android:layout_centerHorizontal="true" />
@@ -90,7 +90,7 @@
                 android:textColor="@color/blue"
                 android:layout_below="@id/comp_vir_btn_result"
                 android:layout_marginTop="40dp"
-                android:textSize="18dp"/>
+                android:textSize="@dimen/com_signs_TextSize"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

@@ -28,12 +28,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Знак Мужчины:"
+                android:text="@string/com_signMan_text"
                 android:textColor="@color/blue"/>
             <ImageView
                 android:id="@+id/comp_zod_image_male"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/com_img_width"
+                android:layout_height="@dimen/com_img_height"
                 android:background="@drawable/com_zod_oven"/>
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/comp_zod_male_spinner"
@@ -57,12 +57,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Знак Женщины:"
+                android:text="@string/com_signWoman_text"
                 android:textColor="@color/blue"/>
             <ImageView
                 android:id="@+id/comp_zod_image_female"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/com_img_width"
+                android:layout_height="@dimen/com_img_height"
                 android:background="@drawable/com_zod_oven"/>
 
             <fr.ganfra.materialspinner.MaterialSpinner
@@ -83,8 +83,8 @@
     <Button
         android:id="@+id/comp_zod_btn_result"
         android:layout_below="@id/comp_zod_linear"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/com_btnImg_width"
+        android:layout_height="@dimen/com_btnImg_height"
         android:background="@drawable/hearth_states"
         android:layout_centerHorizontal="true" />
     <TextView
@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
         android:layout_below="@id/comp_zod_btn_result"
-        android:textSize="18dp"/>
+        android:textSize="@dimen/com_signs_TextSize"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

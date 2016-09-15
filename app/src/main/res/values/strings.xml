@@ -10,4 +10,24 @@
     <string name="interesting_time_birth_numerology">Время рождения - Нумерология</string>
     <string name="interesting_zodiac_poems">Знаки зодиака в стихах</string>
     <string name="interesting_distribution_tolerance_signs">Раздача толерантности знакам</string>
+
+
+    <string name="nav_header_main_acc_text">Аккаунт</string>
+
+    <!--account_fragment-->
+    <string name="account_fragment_btn_users_upgrade_text">  Повысить статус  </string>
+    <string name="account_fragment_btn_my_description">  Мое описание  </string>
+    <string name="account_fragment_btn_users_description">  Описание других профилей  </string>
+    <string name="account_fragment_btn_selectImg">Выбрать фото</string>
+
+
+    <!--com_text-->
+    <string name="com_signMan_text">Знак Мужчины:</string>
+    <string name="com_signWoman_text">Знак Женщины:</string>
+    <string name="com_selectSign_text">Выберите знак</string>
+    <string name="com_relationResult_text">  Узнать результат  </string>
+
+
+
+
 </resources>

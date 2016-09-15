@@ -18,30 +18,31 @@
             android:id="@+id/acc_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="@dimen/account_fragment_name_textSize"
             android:textColor="@color/blue" />
         <TextView
             android:id="@+id/acc_tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/blue"
-            android:textSize="20sp" />
+            android:textSize="@dimen/account_fragment_textSize" />
         <TextView
             android:id="@+id/acc_tv_sex"
             android:layout_width="wrap_content"
-            android:layout_height="33dp"
+            android:layout_height="wrap_content"
             android:textColor="@color/blue"
-            android:textSize="20sp" />
+            android:textSize="@dimen/account_fragment_textSize" />
         <TextView
             android:id="@+id/acc_tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/yellow"
-            android:textSize="20sp" />
+            android:textSize="@dimen/account_fragment_textSize" />
         <Button
+            android:id="@+id/btn_users_upgrade"
             android:layout_width="wrap_content"
-            android:layout_height="33dp"
-            android:text=" Повысить статус "
+            android:layout_height="@dimen/account_fragment_btn_height"
+            android:text="@string/account_fragment_btn_users_upgrade_text"
             android:background="@drawable/btn_states_thin" />
 
     </LinearLayout>
@@ -57,32 +58,38 @@
         <Button
             android:id="@+id/acc_select_img"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/account_fragment_btn_height"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/acc_image_icon"
             android:width="@dimen/acc_width_img"
-            android:layout_marginTop="5dp"
-            android:textSize="10dp"
-            android:text="Выбрать фото"
+            android:layout_marginTop="@dimen/account_fragment_btn_selectImg_marginTop"
+            android:textSize="@dimen/account_fragment_btn_selectImg_textSize"
+            android:text="@string/account_fragment_btn_selectImg"
             android:background="@drawable/btn_states_thin"/>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <Button
         android:id="@+id/acc_btn_description"
         android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:text=" Мое описание "
-        android:layout_marginTop="15dp"
+        android:layout_height="@dimen/account_fragment_btn_height"
+        android:layout_centerInParent="true"
+        android:text="@string/account_fragment_btn_my_description"
         android:background="@drawable/btn_states_thin"/>
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:text=" Описание других профилей "
-        android:layout_marginTop="10dp"
+        android:layout_height="@dimen/account_fragment_btn_height"
+        android:text="@string/account_fragment_btn_users_description"
+        android:layout_below="@+id/acc_btn_description"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/account_fragment_btn_marginTop"
         android:background="@drawable/btn_states_thin"
-        android:textSize="10dp"/>
+        android:textSize="@dimen/account_fragment_btn_users_description_textSize"/>
     <View
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
+    </RelativeLayout>
 
 </LinearLayout>

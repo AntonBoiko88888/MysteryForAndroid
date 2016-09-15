@@ -28,7 +28,7 @@
         android:id="@+id/relD_btn_showInfo"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:text="Узнать результат"
+        android:text="@string/com_relationResult_text"
         android:background="@drawable/btn_states_fat"
         android:textColor="@color/blue"
         android:layout_gravity="center" />
