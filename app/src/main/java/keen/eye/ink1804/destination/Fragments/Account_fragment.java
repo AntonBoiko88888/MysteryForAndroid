@@ -2,18 +2,25 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -43,16 +50,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Аккаунт");
         imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
-        mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        name = mSettings.getString(Constants.APP_PREF_NAME,"noName");
-        day = mSettings.getInt(Constants.APP_PREF_DAY,1);
-        month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
-        year = mSettings.getInt(Constants.APP_PREF_YEAR,2000);
-        sex = mSettings.getBoolean(Constants.APP_PREF_SEX,false);
-
-        icon = mSettings.getString(Constants.APP_PREF_IMAGE,"");
-        byte[] imageAsBytes = Base64.decode(icon.getBytes(), Base64.DEFAULT);
-        imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes,0, imageAsBytes.length));
+        getPreferences();
 
         acc_select_img= (Button)rootView.findViewById(R.id.acc_select_img);
         acc_select_img.setOnClickListener(this);
@@ -81,5 +79,34 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                 listener.onDatePushed(day,month,year,Calendar.getInstance().get(Calendar.YEAR),sex, 2);
                 break;
         }
+    }
+    private void getPreferences(){
+        mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+        name = mSettings.getString(Constants.APP_PREF_NAME,"noName");
+        day = mSettings.getInt(Constants.APP_PREF_DAY,1);
+        month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
+        year = mSettings.getInt(Constants.APP_PREF_YEAR,2000);
+        sex = mSettings.getBoolean(Constants.APP_PREF_SEX,false);
+
+        icon = mSettings.getString(Constants.APP_PREF_IMAGE,"");
+        Bitmap bitmap;
+        InputStream is;
+        BufferedInputStream bis;
+        try
+        {
+            URLConnection conn = new URL(icon).openConnection();
+            conn.connect();
+            is = conn.getInputStream();
+            bis = new BufferedInputStream(is, 8192);
+            bitmap = BitmapFactory.decodeStream(bis);
+            imageView.setImageBitmap(bitmap);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getActivity(), "Не удалось загрузить картинку", Toast.LENGTH_SHORT).show();
+            imageView.setImageResource(R.drawable.account_img);
+
+        }
+
     }
 }

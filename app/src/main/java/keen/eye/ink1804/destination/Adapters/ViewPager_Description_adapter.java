@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
+import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Fragments.Relationship_description_fragment;
 import keen.eye.ink1804.destination.Fragments.Settings_fragment;
@@ -12,6 +14,7 @@ import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_birth_fragm
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_relations_fragment;
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_virtual_fragment;
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_zodiac_fragment;
+import keen.eye.ink1804.destination.MainActivity;
 
 /**
  * Created by Ink1804 on 14.08.16.
@@ -29,10 +32,14 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
 
 
     @Override
+    public int getItemPosition(Object object) {
+        return super.getItemPosition(object);
+    }
+
+    @Override
     public Fragment getItem(int position) {//*
         Fragment fragment = null;
         Bundle args = new Bundle();
-
         if(position==0) {
             if(type == 3)
                 fragment = new Relationship_description_fragment();

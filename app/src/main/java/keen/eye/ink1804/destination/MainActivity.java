@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -86,17 +87,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String tag = "default";
         Bundle args = new Bundle();
         switch (item.getItemId()){
-            case R.id.tab_hor_online://half_done
+            case R.id.tab_hor_online://no
                 fragment = new HoroscopeOnline_fragment();
                 break;
-            case R.id.tab_zodiaс_sign://half_done
+            case R.id.tab_zodiaс_sign://done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.ZODIAK_NAMES);
                 args.putString("toolbar","Знаки зодиака");
                 args.putInt("type",0);
                 fragment.setArguments(args);
                 break;
-            case R.id.tab_birth_sign://half_done
+            case R.id.tab_birth_sign://done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.YEAR_NAMES);
                 args.putString("toolbar","Знаки рождения");
@@ -107,28 +108,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     transaction.addToBackStack(tag);
                 }
                 break;
-            case R.id.tab_virtual_sign://half_done
+            case R.id.tab_virtual_sign://done
                 fragment = new Description_fragment();
                 args.putStringArray("array",Constants.VIRTUAL_NAMES);
                 args.putString("toolbar","Виртуальные знаки");
                 args.putInt("type",2);
                 fragment.setArguments(args);
                 break;
-            case R.id.tab_relations://*
+            case R.id.tab_relations://done
                 fragment = new Description_fragment();
                 args.putString("toolbar","Взаимоотношения");
                 args.putInt("type",3);
                 fragment.setArguments(args);
                 break;
-            case R.id.tab_interesting://*
-                fragment = new Interesting_fragment();//*
+            case R.id.tab_interesting://done
+                fragment = new Interesting_fragment();
                 tag = "interesting";
                 if (fragmentManager.findFragmentByTag(tag) == null) {
                     transaction.addToBackStack(tag);
                 }
                 break;
-            case R.id.tab_settings://*
-                fragment = new Settings_fragment();//*
+            case R.id.tab_settings://have to delete
+                fragment = new Settings_fragment();
                 break;
             default:break;
         }
@@ -288,15 +289,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iconImage = imageView;
         Crop.pickImage(this);
         iconImage.buildDrawingCache();
-        Bitmap bitmap = iconImage.getDrawingCache();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
-        byte[] image = stream.toByteArray();
-        String img_str = Base64.encodeToString(image, 0);
-        SharedPreferences  mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = mSettings.edit();
-        editor.putString(Constants.APP_PREF_IMAGE, img_str);
-        editor.apply();
+
+//        SharedPreferences  mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = mSettings.edit();
+//        editor.putString(Constants.APP_PREF_IMAGE, temp);
+//        editor.apply();
     }
 
     @Override
@@ -316,6 +313,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
             Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
+
+            SharedPreferences mSettings = getSharedPreferences(Constants.APP_PREF,Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = mSettings.edit();
+            editor.putString(Constants.APP_PREF_IMAGE,destination.toString());
+            editor.apply();
+
             Crop.of(data.getData(), destination).asSquare().start(this);
         } else if (requestCode == Crop.REQUEST_CROP) {
             if (resultCode == RESULT_OK) {

@@ -30,7 +30,6 @@ public class Description_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.description_layout_fragment,container,false);
         initViews();
-
         return rootView;
     }
     @Override
@@ -42,7 +41,6 @@ public class Description_fragment extends Fragment {
     }
 
     private void initViews(){
-
         tabLayout = (PagerTabStrip) rootView.findViewById(R.id.pagerTabStrip);
         viewPager = (ViewPager)rootView.findViewById(R.id.desc_viewPager);
         Bundle args = getArguments();

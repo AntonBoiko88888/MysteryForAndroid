@@ -6,6 +6,7 @@ package keen.eye.ink1804.destination.Math;
 public class Constants {
 
     //настройки аккаунта
+    public static final String APP_PREF = "app_settings";
     public static final String APP_PREF_NAME = "name"; // имя
     public static final String APP_PREF_DAY = "day"; // дата рождения
     public static final String APP_PREF_MONTH = "month"; // дата рождения
