@@ -39,10 +39,10 @@
                         android:id="@+id/tab_interesting"
                         android:icon="@drawable/nav_interesting"
                         android:title="Интересное"/>
-                    <item
-                        android:id="@+id/tab_settings"
-                        android:icon="@drawable/nav_settings"
-                        android:title="Настройки"/>
+                    <!--<item-->
+                        <!--android:id="@+id/tab_settings"-->
+                        <!--android:icon="@drawable/nav_settings"-->
+                        <!--android:title="Настройки"/>-->
                 </group>
             </menu>
         </item>

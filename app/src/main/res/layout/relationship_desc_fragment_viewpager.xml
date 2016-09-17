@@ -41,10 +41,13 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:text="Сохранить в профиль"
+                android:text="  Сохранить в профиль  "
                 android:background="@drawable/btn_states_thin"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
         </LinearLayout>
     </ScrollView>
 

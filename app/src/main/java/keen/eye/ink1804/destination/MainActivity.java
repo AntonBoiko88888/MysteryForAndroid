@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,10 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,7 +23,6 @@ import android.widget.Toast;
 
 import com.soundcloud.android.crop.Crop;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
@@ -34,10 +30,9 @@ import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.Description_fragment;
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline_fragment;
 import keen.eye.ink1804.destination.Fragments.Interesting_fragment;
-import keen.eye.ink1804.destination.Fragments.ProfileDetails_fragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDescription_fragment;
+import keen.eye.ink1804.destination.Fragments.ProfileDetails_fragment;
 import keen.eye.ink1804.destination.Fragments.Registration_fragment;
-import keen.eye.ink1804.destination.Fragments.Settings_fragment;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 
@@ -127,9 +122,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (fragmentManager.findFragmentByTag(tag) == null) {
                     transaction.addToBackStack(tag);
                 }
-                break;
-            case R.id.tab_settings://have to delete
-                fragment = new Settings_fragment();
                 break;
             default:break;
         }
