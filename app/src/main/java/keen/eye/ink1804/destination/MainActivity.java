@@ -282,11 +282,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iconImage = imageView;
         Crop.pickImage(this);
         iconImage.buildDrawingCache();
-
-//        SharedPreferences  mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = mSettings.edit();
-//        editor.putString(Constants.APP_PREF_IMAGE, temp);
-//        editor.apply();
     }
 
     @Override

@@ -48,7 +48,7 @@ public class Description_fragment extends Fragment {
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle(toolbarText);
 
-        mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
+        mPagerAdapter = new ViewPager_Description_adapter(getChildFragmentManager(),
                 btnTextArray,layoutType);//*
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);

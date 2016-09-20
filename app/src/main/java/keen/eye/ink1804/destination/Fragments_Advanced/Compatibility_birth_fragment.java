@@ -3,6 +3,8 @@ package keen.eye.ink1804.destination.Fragments_Advanced;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +26,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
 
     private View rootView;
     private ImageView imageView;
-    TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector, tv_text;
+    private TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector, tv_text;
     private String D_EqualMarriage, D_RomanticMarriage, D_SpiritualMarriage, D_PatriarchalMarriage, D_VectorMarriage;
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
             R.drawable.com_birth_mouse, R.drawable.com_birth_bull, R.drawable.com_birth_tiger, R.drawable.com_birth_cat,
