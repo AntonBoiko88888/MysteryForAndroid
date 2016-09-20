@@ -27,7 +27,7 @@
             <Button
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:text="a"/>
+                android:background="@drawable/change_name_states"/>
         </LinearLayout>
         <TextView
             android:id="@+id/acc_tv_date"
