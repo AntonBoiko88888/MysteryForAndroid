@@ -25,7 +25,6 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
     private View rootView;
     private ImageView imageView;
     TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector, tv_text;
-    private String birthYear;
     private String D_EqualMarriage, D_RomanticMarriage, D_SpiritualMarriage, D_PatriarchalMarriage, D_VectorMarriage;
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
             R.drawable.com_birth_mouse, R.drawable.com_birth_bull, R.drawable.com_birth_tiger, R.drawable.com_birth_cat,
@@ -40,6 +39,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
         initViews();
         return rootView;
     }
+
     private void initViews(){
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Знаки рождения");
@@ -53,7 +53,6 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 imageView.setBackgroundResource(birthDrawables[i]);
-                birthYear = birthNames[i];
                 Data_calculation struct_data = new Data_calculation();
                 D_RomanticMarriage = struct_data.getRomanticMarriage(i);
                 D_PatriarchalMarriage = struct_data.getPatriarchalMarriage(i);
@@ -71,7 +70,6 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
                 tv_equal.setEnabled(false);
                 tv_vector.setText(" ");
                 tv_vector.setEnabled(false);
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

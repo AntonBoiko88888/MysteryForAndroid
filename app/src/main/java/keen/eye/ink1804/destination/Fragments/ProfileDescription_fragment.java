@@ -112,9 +112,6 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     public Spanned setTextSettings(String _text, String _value){
         String text = _text;
         String value = _value;
-//        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/minion_bold_cond_disp.otf");
-//        textView.setTypeface(font);//шрифт
-//        textView.setText(Html.fromHtml(text).toString());//парс из html в текст
         text = String.format("<u><i>%s</i></u>",text);
         value = String.format("<b>%s</b>",value);
         return Html.fromHtml(text+" "+value);

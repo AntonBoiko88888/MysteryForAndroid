@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = 0;
         transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
         transaction.commit();
+
     }
 
     @Override

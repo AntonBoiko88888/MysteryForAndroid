@@ -37,7 +37,7 @@
                 android:id="@+id/comp_birth_image"
                 android:layout_width="@dimen/com_img_width"
                 android:layout_height="@dimen/com_img_height"
-                android:background="@drawable/com_birth_bull"/>
+                android:background="@drawable/com_birth_monkey"/>
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/comp_birth_spinner"
                 android:layout_width="fill_parent"

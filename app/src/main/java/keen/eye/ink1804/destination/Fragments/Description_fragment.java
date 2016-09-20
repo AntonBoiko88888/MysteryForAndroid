@@ -25,18 +25,15 @@ public class Description_fragment extends Fragment {
     private ViewPager_Description_adapter mPagerAdapter;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.description_layout_fragment,container,false);
         initViews();
         return rootView;
     }
+
     @Override
     public void onResume() {
-        mPagerAdapter = new ViewPager_Description_adapter(getActivity().getSupportFragmentManager(),
-                btnTextArray, layoutType);//*
-        viewPager.setAdapter(mPagerAdapter);
         super.onResume();
     }
 
