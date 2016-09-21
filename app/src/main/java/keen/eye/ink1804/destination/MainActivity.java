@@ -283,7 +283,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Crop.pickImage(this);
         iconImage.buildDrawingCache();
     }
-
     @Override
     public void toolbarSetTitle(String title) {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -295,7 +294,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

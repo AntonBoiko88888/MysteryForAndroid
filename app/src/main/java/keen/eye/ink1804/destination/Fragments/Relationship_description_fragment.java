@@ -24,7 +24,7 @@ public class Relationship_description_fragment extends Fragment implements View.
 
     private View rootView;
     private TextView tv_info;
-    Button saveProfaile;
+    Button saveProfile;
 
     String[] tmp = {"-1","-1","-1","-1"};
 
@@ -42,8 +42,8 @@ public class Relationship_description_fragment extends Fragment implements View.
         tv_info = (TextView)rootView.findViewById(R.id.relD_tv_info);
         Button btnShowInfo = (Button)rootView.findViewById(R.id.relD_btn_showInfo);
         btnShowInfo.setOnClickListener(this);
-        saveProfaile = (Button)rootView.findViewById(R.id.save_in_profile);
-        saveProfaile.setVisibility(Button.GONE);
+        saveProfile = (Button)rootView.findViewById(R.id.btn_save_prof);
+        saveProfile.setVisibility(View.INVISIBLE);
     }
 
 
@@ -91,23 +91,22 @@ public class Relationship_description_fragment extends Fragment implements View.
     @Override
     public void onClick(View view) {
             if(view.getId() == R.id.relD_btn_showInfo) {
- //А здесь работает       saveProfaile.setVisibility(Button.VISIBLE);
+
                 if (tmp[0].equals("-1") || tmp[1].equals("-1") || tmp[2].equals("-1") || tmp[3].equals("-1"))
                     Toast.makeText(getActivity(), "Выберите все пункты", Toast.LENGTH_SHORT).show();
                 else {
                     String socioType = getSocialType(tmp[0], tmp[1], tmp[2], tmp[3]);
                     setTvInfoText(socioType);
-// Почему-то здесь не работает это:  saveProfaile.setVisibility(Button.VISIBLE);
+                    saveProfile.setVisibility(View.VISIBLE);
                 }
             }
             else {
-                saveProfaile.setVisibility(Button.GONE);
                 int btnID = view.getId();
                 Button pressedButton = (Button)rootView.findViewById(btnID);
                 setTvInfoText(pressedButton.getText().toString());
                 pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin);
                 tmp[btnID % 2000 / 2] = pressedButton.getTag().toString();
-
+                saveProfile.setVisibility(View.GONE);
                 if (btnID % 2 == 1)
                     rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border_thin);
                 else
