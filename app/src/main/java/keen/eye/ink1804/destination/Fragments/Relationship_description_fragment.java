@@ -24,6 +24,7 @@ public class Relationship_description_fragment extends Fragment implements View.
 
     private View rootView;
     private TextView tv_info;
+    Button saveProfaile;
 
     String[] tmp = {"-1","-1","-1","-1"};
 
@@ -41,6 +42,8 @@ public class Relationship_description_fragment extends Fragment implements View.
         tv_info = (TextView)rootView.findViewById(R.id.relD_tv_info);
         Button btnShowInfo = (Button)rootView.findViewById(R.id.relD_btn_showInfo);
         btnShowInfo.setOnClickListener(this);
+        saveProfaile = (Button)rootView.findViewById(R.id.save_in_profile);
+        saveProfaile.setVisibility(Button.GONE);
     }
 
 
@@ -71,12 +74,11 @@ public class Relationship_description_fragment extends Fragment implements View.
         j = Integer.parseInt(n2);
         k = Integer.parseInt(n3);
         l = Integer.parseInt(n4);
-//        Toast.makeText(getActivity(), "Результат"+ Constants.SOCIONICS[i][j][k][l], Toast.LENGTH_SHORT).show();
         return Constants.SOCIONICS[i][j][k][l];
     }
     private void setTvInfoText(String key_Name){
-        String[] names = getResources().getStringArray(R.array.db_names);
-        String[] details = getResources().getStringArray(R.array.db_details);
+        String[] names = getResources().getStringArray(R.array.relation_description_name);
+        String[] details = getResources().getStringArray(R.array.relation_description_db);
         int id = -1;
         for (int i = 0; i < names.length; i++) {
             if (names[i].equals(key_Name)) {
@@ -89,14 +91,17 @@ public class Relationship_description_fragment extends Fragment implements View.
     @Override
     public void onClick(View view) {
             if(view.getId() == R.id.relD_btn_showInfo) {
+ //А здесь работает       saveProfaile.setVisibility(Button.VISIBLE);
                 if (tmp[0].equals("-1") || tmp[1].equals("-1") || tmp[2].equals("-1") || tmp[3].equals("-1"))
                     Toast.makeText(getActivity(), "Выберите все пункты", Toast.LENGTH_SHORT).show();
                 else {
                     String socioType = getSocialType(tmp[0], tmp[1], tmp[2], tmp[3]);
                     setTvInfoText(socioType);
+// Почему-то здесь не работает это:  saveProfaile.setVisibility(Button.VISIBLE);
                 }
             }
             else {
+                saveProfaile.setVisibility(Button.GONE);
                 int btnID = view.getId();
                 Button pressedButton = (Button)rootView.findViewById(btnID);
                 setTvInfoText(pressedButton.getText().toString());
