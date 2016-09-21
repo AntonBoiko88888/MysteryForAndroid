@@ -13,10 +13,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="@dimen/profile_layout_paddingTop">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
         <TextView
             android:id="@+id/picker_tv_date"
             android:layout_width="wrap_content"
@@ -24,12 +20,6 @@
             android:textStyle="italic"
             android:textColor="@color/blue"
             android:textSize="@dimen/profileDataTextSize" />
-                <Button
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/save_states"/>
-            </LinearLayout>
         <TextView
             android:id="@+id/prof_tv_virtual_type"
             android:layout_width="wrap_content"

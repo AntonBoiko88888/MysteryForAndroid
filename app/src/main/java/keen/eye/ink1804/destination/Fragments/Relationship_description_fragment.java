@@ -61,12 +61,10 @@ public class Relationship_description_fragment extends Fragment implements View.
             btn.setTextSize(14);
             btn.setId(2000+i);
             btn.setBackgroundResource(R.drawable.btn_border_thin);
-
             btn.setLayoutParams(layoutParams);
             btn.setOnClickListener(this);
             grid.addView(btn);
         }
-
     }
     private String getSocialType(String n1,String n2, String n3,String n4){
         int i,j,k,l;
@@ -91,7 +89,6 @@ public class Relationship_description_fragment extends Fragment implements View.
     @Override
     public void onClick(View view) {
             if(view.getId() == R.id.relD_btn_showInfo) {
-
                 if (tmp[0].equals("-1") || tmp[1].equals("-1") || tmp[2].equals("-1") || tmp[3].equals("-1"))
                     Toast.makeText(getActivity(), "Выберите все пункты", Toast.LENGTH_SHORT).show();
                 else {
