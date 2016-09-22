@@ -88,15 +88,6 @@
         android:layout_centerInParent="true"
         android:text="@string/account_fragment_btn_my_description"
         android:background="@drawable/btn_states_thin"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/account_fragment_btn_height"
-        android:text="@string/account_fragment_btn_users_description"
-        android:layout_below="@+id/acc_btn_description"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/account_fragment_btn_marginTop"
-        android:background="@drawable/btn_states_thin"
-        android:textSize="@dimen/account_fragment_btn_users_description_textSize"/>
     <View
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
+import java.io.CharArrayReader;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -96,7 +97,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText et = (EditText)((AlertDialog) dialog).findViewById(R.id.alert_edit_name);
                                 String name = et.getText().toString();
-                                if (!name.equals("")) {
+                                if (!name.equals("")&&!name.equals(" ")) {
                                     tv_name.setText("Имя: " + name);
                                     SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = mSettings.edit();

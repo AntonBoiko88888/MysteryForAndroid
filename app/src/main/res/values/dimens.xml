@@ -29,8 +29,7 @@
 
 
     <!--account_fragment-->
-    <dimen name="account_fragment_btn_users_description_textSize">10sp</dimen>
-    <dimen name="account_fragment_btn_selectImg_textSize">10dp</dimen>
+    <dimen name="account_fragment_btn_selectImg_textSize">10sp</dimen>
     <dimen name="account_fragment_btn_selectImg_marginTop">5dp</dimen>
     <dimen name="account_fragment_btn_marginTop">10dp</dimen>
     <dimen name="account_fragment_name_textSize">22sp</dimen>

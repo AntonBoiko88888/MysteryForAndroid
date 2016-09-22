@@ -17,7 +17,6 @@
     <!--account_fragment-->
     <string name="account_fragment_btn_users_upgrade_text">"  Повысить статус  "</string>
     <string name="account_fragment_btn_my_description">"  Мое описание  "</string>
-    <string name="account_fragment_btn_users_description">"  Описание других профилей  "</string>
     <string name="account_fragment_btn_selectImg">Выбрать фото</string>
 
 
