@@ -33,7 +33,7 @@ public class SphereDescription_fragment extends Fragment implements View.OnClick
     }
     private void createButtonMassive(String[] array){
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.sphere_grid);
-        tv_details = (TextView)rootView.findViewById(R.id.sphere_tv_details);
+        tv_details = (TextView)rootView.findViewById(R.id.horOn_tvResult);
 
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import keen.eye.ink1804.destination.Adapters.ViewPager_Description_adapter;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -49,7 +50,7 @@ public class Description_fragment extends Fragment {
         listener.toolbarSetTitle(toolbarText);
 
         mPagerAdapter = new ViewPager_Description_adapter(getChildFragmentManager(),
-                btnTextArray,layoutType);//*
+                btnTextArray,layoutType, MainActivity.ACCESS);//*
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         tabLayout.setTextColor(getResources().getColor(R.color.blue));

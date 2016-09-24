@@ -11,6 +11,7 @@ import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_birth_fragm
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_relations_fragment;
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_virtual_fragment;
 import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_zodiac_fragment;
+import keen.eye.ink1804.destination.Fragments_Advanced.NoAccess_fragment;
 
 /**
  * Created by Ink1804 on 14.08.16.
@@ -19,11 +20,13 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
 
     private String[] btnTextArray;
     private int type;
+    private boolean access;
 
-    public ViewPager_Description_adapter(FragmentManager fm, String[] _btnTextArray, int _type) {
+    public ViewPager_Description_adapter(FragmentManager fm, String[] _btnTextArray, int _type, boolean _access) {
         super(fm);
         btnTextArray = _btnTextArray;
         type = _type;
+        access = _access;
     }
 
 
@@ -45,6 +48,7 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
             }
         }
         else {
+            if(access)
             switch (type) {
                 case 0:
                     fragment = new Compatibility_zodiac_fragment();
@@ -58,7 +62,10 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
                 case 3:
                     fragment = new Compatibility_relations_fragment();
                     break;
+                default:break;
             }
+            else
+                fragment = new NoAccess_fragment();
         }
             fragment.setArguments(args);
         return fragment;

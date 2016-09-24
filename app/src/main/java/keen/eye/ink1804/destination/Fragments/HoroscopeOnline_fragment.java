@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.HtmlParser;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -16,8 +18,9 @@ import keen.eye.ink1804.destination.R;
 public class HoroscopeOnline_fragment extends Fragment implements View.OnClickListener{
 
     private View rootView;
-    ImageView oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley, ribi;
-    ImageView[] img_m;
+    private ImageView oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley, ribi;
+    private ImageView[] img_m;
+    private TextView tv_result;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.horoscope_online_layout_fragment,container,false);
@@ -55,24 +58,29 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         img_m = new ImageView[] {oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley,ribi};
         backgroundBlack();
         img_m[0].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
+        tv_result = (TextView)rootView.findViewById(R.id.horOn_tvResult);
     }
 
     @Override
     public void onClick(View view) {
+        int key = 1;
         switch (view.getId()) {
-            case R.id.oven: backgroundPressed(1, img_m); break;
-            case R.id.telec: backgroundPressed(2, img_m); break;
-            case R.id.blizneci: backgroundPressed(3, img_m); break;
-            case R.id.rak: backgroundPressed(4, img_m); break;
-            case R.id.lev: backgroundPressed(5, img_m); break;
-            case R.id.deva: backgroundPressed(6, img_m); break;
-            case R.id.vesi: backgroundPressed(7, img_m); break;
-            case R.id.skorpion: backgroundPressed(8, img_m); break;
-            case R.id.strelec: backgroundPressed(9, img_m); break;
-            case R.id.kozerog: backgroundPressed(10, img_m); break;
-            case R.id.vodoley: backgroundPressed(11, img_m); break;
-            case R.id.ribi: backgroundPressed(12, img_m); break;
+            case R.id.oven: key = 1; break;
+            case R.id.telec: key = 2; break;
+            case R.id.blizneci: key = 3; break;
+            case R.id.rak: key = 4; break;
+            case R.id.lev: key = 5; break;
+            case R.id.deva: key = 6; break;
+            case R.id.vesi: key = 7; break;
+            case R.id.skorpion: key = 8; break;
+            case R.id.strelec: key = 9; break;
+            case R.id.kozerog: key = 10; break;
+            case R.id.vodoley: key = 11; break;
+            case R.id.ribi: key = 12; break;
         }
+        backgroundPressed(key, img_m);
+        HtmlParser parser = new HtmlParser();
+        parser.parseHoroscope(getActivity(),tv_result, key-1);
     }
 
     private void backgroundPressed(int i, ImageView[] img_m) {

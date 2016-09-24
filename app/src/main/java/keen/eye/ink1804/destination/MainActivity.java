@@ -40,6 +40,7 @@ import keen.eye.ink1804.destination.Math.Constants;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 ,pushDateListener, View.OnClickListener {
 
+    public static boolean ACCESS = true;
     private Toolbar toolbar;
     private ImageView iconImage;
     private DrawerLayout drawer;
@@ -66,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             createAlert();
         }
         else{
-            DatePicker_fragment fragment = new DatePicker_fragment();
-//            Account_fragment fragment = new Account_fragment();//в дальнейшем
+//            DatePicker_fragment fragment = new DatePicker_fragment();
+            Account_fragment fragment = new Account_fragment();//в дальнейшем
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.fragment_container,fragment,"datePicker_fragment");
             transaction.commit();
@@ -170,9 +171,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void mainFragmentCreate() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        DatePicker_fragment accFragment = new DatePicker_fragment();
+//        DatePicker_fragment fragment = new DatePicker_fragment();
+        Account_fragment fragment = new Account_fragment();//в дальнейшем
         backStackID = 0;
-        transaction.replace(R.id.fragment_container,accFragment,"mainFragment");
+        transaction.replace(R.id.fragment_container,fragment,"mainFragment");
         transaction.commit();
 
     }
@@ -190,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     } else {
                         Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
                     }
-                    back_pressed = System.currentTimeMillis();// не удаляй
+                    back_pressed = System.currentTimeMillis();
                     break;
                 case 1:
                     clearBackStack();
