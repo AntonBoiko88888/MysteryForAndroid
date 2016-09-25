@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.HtmlParser;
 import keen.eye.ink1804.destination.R;
 
@@ -20,7 +22,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
     private View rootView;
     private ImageView oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley, ribi;
     private ImageView[] img_m;
-    private TextView tv_result;
+    private TextView tv_result, tv_sign_name;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.horoscope_online_layout_fragment,container,false);
@@ -29,6 +31,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
     }
 
     private void initViews(){
+        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Гороскоп онлайн");
         oven = (ImageView) rootView.findViewById(R.id.oven);
@@ -59,6 +62,11 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         backgroundBlack();
         img_m[0].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
         tv_result = (TextView)rootView.findViewById(R.id.horOn_tvResult);
+        tv_sign_name = (TextView)rootView.findViewById(R.id.sphere_tv_sign_name);
+        tv_sign_name.setTypeface(tf);
+        setZodiakName(3);
+        HtmlParser parser = new HtmlParser();
+        parser.parseHoroscope(getActivity(),tv_result, 0);
     }
 
     @Override
@@ -79,6 +87,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
             case R.id.ribi: key = 12; break;
         }
         backgroundPressed(key, img_m);
+        setZodiakName(key+2);
         HtmlParser parser = new HtmlParser();
         parser.parseHoroscope(getActivity(),tv_result, key-1);
     }
@@ -92,5 +101,11 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         for (int i = 0; i<img_m.length; i++) {
             img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_t));
         }
+    }
+
+    private void setZodiakName(int zod) {
+        if(zod>11) zod=zod-12;
+        Constants C = new Constants();
+        tv_sign_name.setText(C.ZODIAK_NAMES[zod]);
     }
 }

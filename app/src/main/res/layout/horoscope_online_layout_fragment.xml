@@ -81,7 +81,6 @@
         android:id="@+id/sphere_tv_sign_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Овен"
         android:layout_marginTop="@dimen/horoscope_online_textZodiac_marginTop"
         android:layout_gravity="center"
         android:textSize="@dimen/horoscope_online_textSignZodiac_textSize"/>
