@@ -5,9 +5,12 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +70,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         if (sex) tv_sex.setText("Пол: муж.");
         else tv_sex.setText("Пол: жен.");
         tv_status.setText("Статус:\n" + status);
+
+
     }
 
     @Override

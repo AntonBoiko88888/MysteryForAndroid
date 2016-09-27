@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -79,6 +81,8 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:clipToPadding="false"
+        android:outlineProvider="bounds"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <Button
@@ -94,7 +98,9 @@
         android:layout_alignParentRight="true"
         android:layout_width="@dimen/account_btnImg_width"
         android:layout_height="@dimen/account_btnImg_height"
+        android:layout_margin="10dp"
         android:background="@drawable/new_profile_states"/>
+
     </RelativeLayout>
 
 </LinearLayout>
