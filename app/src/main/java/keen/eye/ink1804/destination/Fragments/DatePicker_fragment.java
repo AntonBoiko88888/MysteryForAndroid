@@ -24,12 +24,10 @@ import keen.eye.ink1804.destination.R;
  */
 public class DatePicker_fragment extends Fragment implements View.OnClickListener {
 
-    private Button btn_next,btn_showDatePicker;
     private View rootView;
     private TextView tv_date;
     private DatePickerPopWin pickerPopWin;
     private RadioButton rb_male,rb_female;
-    private boolean sex;
 
     private int day = 1,month = 1,year = 2000,currentYear;
     @Override
@@ -45,9 +43,9 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Новый профиль");
         tv_date = (TextView)rootView.findViewById(R.id.picker_tv_date);
-        btn_next = (Button)rootView.findViewById(R.id.picker_btn_next);
+        Button btn_next = (Button) rootView.findViewById(R.id.picker_btn_next);
         btn_next.setOnClickListener(this);
-        btn_showDatePicker = (Button)rootView.findViewById(R.id.picker_btn_pick_date);
+        Button btn_showDatePicker = (Button) rootView.findViewById(R.id.picker_btn_pick_date);
         btn_showDatePicker.setOnClickListener(this);
         rb_male = (RadioButton)rootView.findViewById(R.id.picker_rb_male);
         rb_female = (RadioButton)rootView.findViewById(R.id.picker_rb_female);
@@ -82,7 +80,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
         switch (view.getId()) {
             case R.id.picker_btn_next:
                 pushDateListener listener = (pushDateListener) getActivity();
-                sex = rb_male.isChecked();
+                boolean sex = rb_male.isChecked();
                 rb_male.setChecked(sex);
                 listener.onDatePushed(day, month, year, currentYear, sex, 1);
                 break;

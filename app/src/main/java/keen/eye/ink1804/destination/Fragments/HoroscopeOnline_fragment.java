@@ -20,7 +20,6 @@ import keen.eye.ink1804.destination.R;
 public class HoroscopeOnline_fragment extends Fragment implements View.OnClickListener{
 
     private View rootView;
-    private ImageView oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley, ribi;
     private ImageView[] img_m;
     private TextView tv_result, tv_sign_name;
     @Override
@@ -30,41 +29,42 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         return rootView;
     }
 
-    private void initViews(){
+    private void initViews()
+    {
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Гороскоп онлайн");
-        oven = (ImageView) rootView.findViewById(R.id.oven);
-        oven.setOnClickListener(this);
-        telec = (ImageView) rootView.findViewById(R.id.telec);
-        telec.setOnClickListener(this);
-        blizneci = (ImageView) rootView.findViewById(R.id.blizneci);
-        blizneci.setOnClickListener(this);
-        rak = (ImageView) rootView.findViewById(R.id.rak);
-        rak.setOnClickListener(this);
-        lev = (ImageView) rootView.findViewById(R.id.lev);
-        lev.setOnClickListener(this);
-        deva = (ImageView) rootView.findViewById(R.id.deva);
-        deva.setOnClickListener(this);
-        vesi = (ImageView) rootView.findViewById(R.id.vesi);
-        vesi.setOnClickListener(this);
-        skorpion = (ImageView) rootView.findViewById(R.id.skorpion);
-        skorpion.setOnClickListener(this);
-        strelec = (ImageView) rootView.findViewById(R.id.strelec);
-        strelec.setOnClickListener(this);
-        kozerog = (ImageView) rootView.findViewById(R.id.kozerog);
-        kozerog.setOnClickListener(this);
-        vodoley = (ImageView) rootView.findViewById(R.id.vodoley);
-        vodoley.setOnClickListener(this);
-        ribi = (ImageView) rootView.findViewById(R.id.ribi);
-        ribi.setOnClickListener(this);
-        img_m = new ImageView[] {oven, telec, blizneci, rak, lev, deva, vesi, skorpion, strelec, kozerog, vodoley,ribi};
-        backgroundBlack();
+        ImageView aries = (ImageView) rootView.findViewById(R.id.aries);
+        aries.setOnClickListener(this);
+        ImageView taurus = (ImageView) rootView.findViewById(R.id.taurus);
+        taurus.setOnClickListener(this);
+        ImageView twins = (ImageView) rootView.findViewById(R.id.twins);
+        twins.setOnClickListener(this);
+        ImageView cancer = (ImageView) rootView.findViewById(R.id.cancer);
+        cancer.setOnClickListener(this);
+        ImageView lion = (ImageView) rootView.findViewById(R.id.lion);
+        lion.setOnClickListener(this);
+        ImageView virgo = (ImageView) rootView.findViewById(R.id.virgo);
+        virgo.setOnClickListener(this);
+        ImageView libra = (ImageView) rootView.findViewById(R.id.libra);
+        libra.setOnClickListener(this);
+        ImageView scorpio = (ImageView) rootView.findViewById(R.id.scorpio);
+        scorpio.setOnClickListener(this);
+        ImageView sagittarius = (ImageView) rootView.findViewById(R.id.sagittarius);
+        sagittarius.setOnClickListener(this);
+        ImageView capricorn = (ImageView) rootView.findViewById(R.id.capricorn);
+        capricorn.setOnClickListener(this);
+        ImageView aquarius = (ImageView) rootView.findViewById(R.id.aquarius);
+        aquarius.setOnClickListener(this);
+        ImageView fish = (ImageView) rootView.findViewById(R.id.fish);
+        fish.setOnClickListener(this);
+        img_m = new ImageView[] {aries, taurus, twins, cancer, lion, virgo, libra, scorpio, sagittarius, capricorn, aquarius, fish};
+        setBackgroundBlack();
         img_m[0].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
         tv_result = (TextView)rootView.findViewById(R.id.horOn_tvResult);
         tv_sign_name = (TextView)rootView.findViewById(R.id.sphere_tv_sign_name);
         tv_sign_name.setTypeface(tf);
-        setZodiakName(3);
+        setZodiacName(3);
         HtmlParser parser = new HtmlParser();
         parser.parseHoroscope(getActivity(),tv_result, 0);
     }
@@ -73,37 +73,37 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
     public void onClick(View view) {
         int key = 1;
         switch (view.getId()) {
-            case R.id.oven: key = 1; break;
-            case R.id.telec: key = 2; break;
-            case R.id.blizneci: key = 3; break;
-            case R.id.rak: key = 4; break;
-            case R.id.lev: key = 5; break;
-            case R.id.deva: key = 6; break;
-            case R.id.vesi: key = 7; break;
-            case R.id.skorpion: key = 8; break;
-            case R.id.strelec: key = 9; break;
-            case R.id.kozerog: key = 10; break;
-            case R.id.vodoley: key = 11; break;
-            case R.id.ribi: key = 12; break;
+            case R.id.aries: key = 1; break;
+            case R.id.taurus: key = 2; break;
+            case R.id.twins: key = 3; break;
+            case R.id.cancer: key = 4; break;
+            case R.id.lion: key = 5; break;
+            case R.id.virgo: key = 6; break;
+            case R.id.libra: key = 7; break;
+            case R.id.scorpio: key = 8; break;
+            case R.id.sagittarius: key = 9; break;
+            case R.id.capricorn: key = 10; break;
+            case R.id.aquarius: key = 11; break;
+            case R.id.fish: key = 12; break;
         }
         backgroundPressed(key, img_m);
-        setZodiakName(key+2);
+        setZodiacName(key+2);
         HtmlParser parser = new HtmlParser();
         parser.parseHoroscope(getActivity(),tv_result, key-1);
     }
 
     private void backgroundPressed(int i, ImageView[] img_m) {
-        backgroundBlack();
+        setBackgroundBlack();
         img_m[i-1].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
     }
 
-    private void backgroundBlack() {
+    private void setBackgroundBlack() {
         for (int i = 0; i<img_m.length; i++) {
             img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_t));
         }
     }
 
-    private void setZodiakName(int zod) {
+    private void setZodiacName(int zod) {
         if(zod>11) zod=zod-12;
         Constants C = new Constants();
         tv_sign_name.setText(C.ZODIAK_NAMES[zod]);

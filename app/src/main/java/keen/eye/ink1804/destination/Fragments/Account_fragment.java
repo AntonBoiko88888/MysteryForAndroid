@@ -33,7 +33,7 @@ import keen.eye.ink1804.destination.R;
 public class Account_fragment extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private TextView tv_name, tv_date, tv_sex, tv_status;
+    private TextView tv_name;
     private boolean sex;
     private ImageView imageView;
     private String status, name, icon;
@@ -58,9 +58,9 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.acc_btn_description).setOnClickListener(this);
         status = mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
-        tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
-        tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
-        tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
+        TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
+        TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
+        TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
         tv_date.setText("Дата рождения:\n" + day + "." + month + "." + year);
         tv_name.setText("Имя: " + name);
         if (sex) tv_sex.setText("Пол: муж.");

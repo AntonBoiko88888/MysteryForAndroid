@@ -24,7 +24,6 @@ import keen.eye.ink1804.destination.R;
 public class Compatibility_zodiac_fragment extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private MaterialSpinner maleSpinner,femaleSpinner;
     private TextView tv_result;
     private ImageView imv_male,imv_female;
     private String male,female;
@@ -45,8 +44,8 @@ public class Compatibility_zodiac_fragment extends Fragment implements View.OnCl
         listener.toolbarSetTitle("Знаки зодиака");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_zod_btn_result);
         btnGetResult.setOnClickListener(this);
-        maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_male_spinner);
-        femaleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_female_spinner);
+        MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_male_spinner);
+        MaterialSpinner femaleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_female_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
                 ZODIAK_NAMES);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

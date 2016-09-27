@@ -16,9 +16,8 @@ import keen.eye.ink1804.destination.R;
  */
 public class ProfileDetails_fragment extends Fragment {
 
-    private TextView tv_details;
     private View rootView;
-    private String key,tag;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.profile_details_layout_fragment,container,false);
@@ -30,9 +29,9 @@ public class ProfileDetails_fragment extends Fragment {
         listener.toolbarSetTitle("Интерпретация");
         Bundle args = getArguments();
         //null may be
-        key = args.getString("key");
-        tag = args.getString("tag");
-        tv_details = (TextView)rootView.findViewById(R.id.details_tv);
+        String key = args.getString("key");
+        String tag = args.getString("tag");
+        TextView tv_details = (TextView) rootView.findViewById(R.id.details_tv);
         String[] names = getResources().getStringArray(R.array.db_names);
         String[] details = getResources().getStringArray(R.array.db_details);
         String[] interesting_names = getResources().getStringArray(R.array.interesting_names);

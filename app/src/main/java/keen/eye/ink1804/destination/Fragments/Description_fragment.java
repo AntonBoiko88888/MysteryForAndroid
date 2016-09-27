@@ -19,11 +19,6 @@ import keen.eye.ink1804.destination.R;
  */
 public class Description_fragment extends Fragment {
     private View rootView;
-    private ViewPager viewPager;
-    private PagerTabStrip tabLayout;
-    private String[] btnTextArray;
-    private int layoutType;
-    private ViewPager_Description_adapter mPagerAdapter;
 
 
     @Override
@@ -39,18 +34,18 @@ public class Description_fragment extends Fragment {
     }
 
     private void initViews(){
-        tabLayout = (PagerTabStrip) rootView.findViewById(R.id.pagerTabStrip);
-        viewPager = (ViewPager)rootView.findViewById(R.id.desc_viewPager);
+        PagerTabStrip tabLayout = (PagerTabStrip) rootView.findViewById(R.id.pagerTabStrip);
+        ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.desc_viewPager);
         Bundle args = getArguments();
         String toolbarText = args.getString("toolbar");
-        btnTextArray = args.getStringArray("array");
-        layoutType = args.getInt("type");
+        String[] btnTextArray = args.getStringArray("array");
+        int layoutType = args.getInt("type");
 
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle(toolbarText);
 
-        mPagerAdapter = new ViewPager_Description_adapter(getChildFragmentManager(),
-                btnTextArray,layoutType, MainActivity.ACCESS);//*
+        ViewPager_Description_adapter mPagerAdapter = new ViewPager_Description_adapter(getChildFragmentManager(),
+                btnTextArray, layoutType, MainActivity.ACCESS);
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         tabLayout.setTextColor(getResources().getColor(R.color.blue));

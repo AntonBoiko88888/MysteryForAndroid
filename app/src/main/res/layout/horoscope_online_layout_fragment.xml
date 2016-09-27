@@ -16,62 +16,62 @@
         android:columnCount="4"
         >
         <ImageView
-            android:id="@+id/oven"
+            android:id="@+id/aries"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_oven" />
         <ImageView
-            android:id="@+id/telec"
+            android:id="@+id/taurus"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_telec"/>
         <ImageView
-            android:id="@+id/blizneci"
+            android:id="@+id/twins"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_blizneci"/>
         <ImageView
-            android:id="@+id/rak"
+            android:id="@+id/cancer"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_rak"/>
         <ImageView
-            android:id="@+id/lev"
+            android:id="@+id/lion"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_lev"/>
         <ImageView
-            android:id="@+id/deva"
+            android:id="@+id/virgo"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_deva"/>
         <ImageView
-            android:id="@+id/vesi"
+            android:id="@+id/libra"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_vesi"/>
         <ImageView
-            android:id="@+id/skorpion"
+            android:id="@+id/scorpio"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_skorpion"/>
         <ImageView
-            android:id="@+id/strelec"
+            android:id="@+id/sagittarius"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_strelec"/>
         <ImageView
-            android:id="@+id/kozerog"
+            android:id="@+id/capricorn"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_kozerog"/>
         <ImageView
-            android:id="@+id/vodoley"
+            android:id="@+id/aquarius"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_vodoley"/>
         <ImageView
-            android:id="@+id/ribi"
+            android:id="@+id/fish"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
             android:background="@drawable/hor_fish"/>

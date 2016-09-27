@@ -32,7 +32,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView  = inflater.inflate(keen.eye.ink1804.destination.R.layout.profile_description_layout_fragment,container,false);
+        rootView  = inflater.inflate(R.layout.profile_description_layout_fragment,container,false);
         initializeTView();
         fillInfo();
         return rootView;
