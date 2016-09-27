@@ -92,8 +92,9 @@
         android:id="@+id/acc_btn_new_profile"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="@dimen/account_btnImg_width"
+        android:layout_height="@dimen/account_btnImg_height"
+        android:background="@drawable/new_profile_states"/>
     </RelativeLayout>
 
 </LinearLayout>
