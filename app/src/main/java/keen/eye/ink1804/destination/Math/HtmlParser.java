@@ -9,7 +9,6 @@ import com.koushikdutta.ion.Ion;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 
 /**
  * Created by Ink1804 on 24.09.16.
@@ -30,8 +29,6 @@ public class HtmlParser {
 
                             String text;
                             doc = Jsoup.parse(result);
-                            //Element myDiv = doc.select("ul.horoscope-list").first();
-                            //text = myDiv.html();
                             text = doc.select("ul.horoscope-list").select("li").get(horCode).select("div.text").text();
                             tvResult.setText(text);
                             TTL = 0;

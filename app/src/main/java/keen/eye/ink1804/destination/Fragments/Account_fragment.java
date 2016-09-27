@@ -56,6 +56,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_select_img).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_description).setOnClickListener(this);
+        rootView.findViewById(R.id.acc_btn_new_profile).setOnClickListener(this);
         status = mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
@@ -81,6 +82,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
             case R.id.acc_btn_rename:
                 setName();
                 break;
+            case R.id.acc_btn_new_profile:
+                listener.onNewProfile();
             default: break;
         }
     }

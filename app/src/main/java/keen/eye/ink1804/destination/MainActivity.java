@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            DatePicker_fragment fragment = new DatePicker_fragment();
             Account_fragment fragment = new Account_fragment();//в дальнейшем
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.fragment_container,fragment,"datePicker_fragment");
+            transaction.add(R.id.fragment_container,fragment, "account_fragment");
             transaction.commit();
         }
     }
@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         ProfileDetails_fragment profDetFragment = new ProfileDetails_fragment();
-        String tag = "profDetFragment";
+        String tag = "profDetailsFragment";
 
         Bundle args = new Bundle();
         args.putString("key",key);
@@ -270,10 +270,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String tag = "accFragment";
                 transaction.replace(R.id.fragment_container, fragment, tag);
                 clearBackStack();
-                if (fm.findFragmentByTag(tag) == null) {
-                    transaction.addToBackStack(tag);
-                }
-                backStackID = 1;
+//                if (fm.findFragmentByTag(tag) == null) {
+//                    transaction.addToBackStack(tag);
+//                }
+                backStackID = 0;
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
@@ -316,5 +316,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, Crop.getError(data).getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
+    }
+    @Override
+    public void onNewProfile() {
+        String tag = "datePicker_fragment";
+        DatePicker_fragment fragment = new DatePicker_fragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+        }
+        backStackID = 1;
+        transaction.replace(R.id.fragment_container,fragment, "datePicker_fragment");
+        transaction.commit();
     }
 }
