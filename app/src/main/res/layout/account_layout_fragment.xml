@@ -101,6 +101,16 @@
         android:layout_margin="10dp"
         android:background="@drawable/new_profile_states"/>
 
+    <Button
+        android:id="@+id/acc_btn_new_push"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentLeft="true"
+        android:layout_width="@dimen/account_btnImg_width"
+        android:layout_height="@dimen/account_btnImg_height"
+        android:layout_margin="10dp"
+        android:background="@drawable/new_push_states"/>
+
     </RelativeLayout>
 
 </LinearLayout>
