@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,7 +60,10 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_select_img).setOnClickListener(this);
-        rootView.findViewById(R.id.acc_btn_description).setOnClickListener(this);
+        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
+        Button desc = (Button)rootView.findViewById(R.id.acc_btn_description);
+        desc.setTypeface(tf);
+        desc.setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_new_profile).setOnClickListener(this);
         status = mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
