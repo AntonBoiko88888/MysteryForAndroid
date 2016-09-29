@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <ImageView
+                android:layout_marginTop="@dimen/marginTopText_and_Img"
                 android:id="@+id/comp_birth_image"
                 android:layout_width="@dimen/com_img_width"
                 android:layout_height="@dimen/com_img_height"

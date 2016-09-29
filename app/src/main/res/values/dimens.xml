@@ -13,6 +13,7 @@
 
 
     <dimen name="textDescription">20sp</dimen>
+    <dimen name="marginTopText_and_Img">10sp</dimen>
 
     <!--Horoscope_online_fragment-->
     <dimen name="horoscope_online_img_height">80dp</dimen>

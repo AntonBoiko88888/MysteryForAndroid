@@ -31,6 +31,7 @@
                 android:text="@string/com_signMan_text"
                 android:textColor="@color/blue"/>
             <ImageView
+                android:layout_marginTop="@dimen/marginTopText_and_Img"
                 android:id="@+id/comp_zod_image_male"
                 android:layout_width="@dimen/com_img_width"
                 android:layout_height="@dimen/com_img_height"
@@ -60,6 +61,7 @@
                 android:text="@string/com_signWoman_text"
                 android:textColor="@color/blue"/>
             <ImageView
+                android:layout_marginTop="@dimen/marginTopText_and_Img"
                 android:id="@+id/comp_zod_image_female"
                 android:layout_width="@dimen/com_img_width"
                 android:layout_height="@dimen/com_img_height"
