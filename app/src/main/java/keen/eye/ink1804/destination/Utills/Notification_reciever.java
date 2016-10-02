@@ -1,14 +1,9 @@
 package keen.eye.ink1804.destination.Utills;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
-
-import keen.eye.ink1804.destination.MainActivity;
-import keen.eye.ink1804.destination.R;
 
 /**
  * Created by Ink1804 on 02.10.16.

@@ -5,15 +5,12 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.text.Spanned;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
-import java.io.CharArrayReader;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -73,7 +69,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
         TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
         TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
-        tv_date.setText(setTextSettingsThree("Дата рождения:<br>",  day + "."+  month + "."+  year+""));
+        tv_date.setText(setTextSettingsBirth("Дата рождения:<br>",  day + "."+  month + "."+  year+""));
         tv_name.setText(setTextSettings("Имя:"," "+name));
         if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
         else tv_sex.setText(setTextSettings("Пол:", " жен."));
@@ -167,7 +163,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         return Html.fromHtml(String.format("<u><i>%s</i></u>",text+" "+String.format("<b>%s</b>",value)));
     }
 
-    public Spanned setTextSettingsThree(String text, String value){
+    public Spanned setTextSettingsBirth(String text, String value){
         return Html.fromHtml(String.format("<u><i>%s</i></u>",text)+" "+String.format("<b>%s</b>",value));
     }
 

@@ -92,7 +92,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
-        android:textSize="@dimen/textDescription"
-        android:text="Подключение к интернету отсутствует"/>
+        android:textSize="@dimen/textDescription"/>
     </ScrollView>
 </LinearLayout>
