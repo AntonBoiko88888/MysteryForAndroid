@@ -104,7 +104,7 @@
         android:background="@drawable/new_profile_states"/>
 
     <Button
-        android:id="@+id/acc_btn_new_push"
+        android:id="@+id/acc_btn_pushSettings"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="false"
         android:layout_alignParentLeft="true"

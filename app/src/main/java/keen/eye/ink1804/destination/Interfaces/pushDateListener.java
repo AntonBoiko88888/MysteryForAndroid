@@ -12,5 +12,6 @@ public interface pushDateListener {
     void pictureDownload(ImageView imageView);
     void toolbarSetTitle(String title);
     void onNewProfile();
+    void setNotification();
 
 }

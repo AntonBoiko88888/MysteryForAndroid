@@ -62,6 +62,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_select_img).setOnClickListener(this);
+        rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         Button desc = (Button)rootView.findViewById(R.id.acc_btn_description);
         desc.setTypeface(tf);
@@ -72,7 +73,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
         TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
         TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
-        tv_date.setText(setTextSettingsThree("Дата рождения:<br>",  day + ".",  month + ".",  year+""));
+        tv_date.setText(setTextSettingsThree("Дата рождения:<br>",  day + "."+  month + "."+  year+""));
         tv_name.setText(setTextSettings("Имя:"," "+name));
         if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
         else tv_sex.setText(setTextSettings("Пол:", " жен."));
@@ -96,6 +97,10 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.acc_btn_new_profile:
                 listener.onNewProfile();
+                break;
+            case R.id.acc_btn_pushSettings:
+                listener.setNotification();
+                break;
             default: break;
         }
     }
@@ -141,7 +146,6 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         year = mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
         sex = mSettings.getBoolean(Constants.APP_PREF_SEX, false);
-
         icon = mSettings.getString(Constants.APP_PREF_IMAGE, "");
         Bitmap bitmap;
         InputStream is;
@@ -159,23 +163,13 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public Spanned setTextSettings(String _text, String _value){
-        String text = _text;
-        String value = _value;
-        text = String.format("<u><i>%s</i></u>",text);
-        value = String.format("<b>%s</b>",value);
-        return Html.fromHtml(text+" "+value);
+    public Spanned setTextSettings(String text, String value){
+        return Html.fromHtml(String.format("<u><i>%s</i></u>",text+" "+String.format("<b>%s</b>",value)));
     }
 
-    public Spanned setTextSettingsThree(String _text, String _value, String _value1, String _value2){
-        String text = _text;
-        String value = _value;
-        String value1 = _value1;
-        String value2 = _value2;
-        text = String.format("<u><i>%s</i></u>",text);
-        value = String.format("<b>%s</b>",value);
-        value1 = String.format("<b>%s</b>",value1);
-        value2 = String.format("<b>%s</b>",value2);
-        return Html.fromHtml(text+" "+value+value1+value2);
+    public Spanned setTextSettingsThree(String text, String value){
+        return Html.fromHtml(String.format("<u><i>%s</i></u>",text)+" "+String.format("<b>%s</b>",value));
     }
+
+
 }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
-import keen.eye.ink1804.destination.Math.HtmlParser;
+import keen.eye.ink1804.destination.Utills.HtmlParser;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -22,6 +22,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
     private View rootView;
     private ImageView[] img_m;
     private TextView tv_result, tv_sign_name;
+    HtmlParser parser = new HtmlParser();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.horoscope_online_layout_fragment,container,false);
@@ -65,7 +66,6 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         tv_sign_name = (TextView)rootView.findViewById(R.id.sphere_tv_sign_name);
         tv_sign_name.setTypeface(tf);
         setZodiacName(3);
-        HtmlParser parser = new HtmlParser();
         parser.parseHoroscope(getActivity(),tv_result, 0);
     }
 
@@ -88,7 +88,6 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         }
         backgroundPressed(key, img_m);
         setZodiacName(key+2);
-        HtmlParser parser = new HtmlParser();
         parser.parseHoroscope(getActivity(),tv_result, key-1);
     }
 

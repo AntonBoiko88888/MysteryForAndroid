@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="keen.eye.ink1804.destination">
 
-    <!--<activity android:name="com.soundcloud.android.crop.CropImageActivity" />-->
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.alarm.permissoon.SET_ALARM"/>
+    <!-- <activity android:name="com.soundcloud.android.crop.CropImageActivity" /> -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon_eye"
@@ -11,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-        <activity android:name="keen.eye.ink1804.destination.MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Utills.Repeating_activity"/>
+        <receiver android:name=".Utills.Notification_reciever"/>
     </application>
 
 </manifest>
