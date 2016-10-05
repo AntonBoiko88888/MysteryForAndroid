@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -19,6 +20,7 @@ import keen.eye.ink1804.destination.R;
  */
 public class HoroscopeOnline_fragment extends Fragment implements View.OnClickListener{
 
+    private ProgressBar progressBar;
     private View rootView;
     private ImageView[] img_m;
     private TextView tv_result, tv_sign_name;
@@ -59,6 +61,8 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         aquarius.setOnClickListener(this);
         ImageView fish = (ImageView) rootView.findViewById(R.id.fish);
         fish.setOnClickListener(this);
+        progressBar = (ProgressBar)rootView.findViewById(R.id.progressbar_horoscope);
+        progressBar.setVisibility(ProgressBar.VISIBLE);
         img_m = new ImageView[] {aries, taurus, twins, cancer, lion, virgo, libra, scorpio, sagittarius, capricorn, aquarius, fish};
         setBackgroundBlack();
         img_m[0].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
@@ -66,7 +70,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         tv_sign_name = (TextView)rootView.findViewById(R.id.sphere_tv_sign_name);
         tv_sign_name.setTypeface(tf);
         setZodiacName(3);
-        parser.parseHoroscope(getActivity(),tv_result, 0);
+        parser.parseHoroscope(getActivity(),tv_result, 0, progressBar);
     }
 
     @Override
@@ -88,7 +92,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         }
         backgroundPressed(key, img_m);
         setZodiacName(key+2);
-        parser.parseHoroscope(getActivity(),tv_result, key-1);
+        parser.parseHoroscope(getActivity(),tv_result, key-1, progressBar);
     }
 
     private void backgroundPressed(int i, ImageView[] img_m) {

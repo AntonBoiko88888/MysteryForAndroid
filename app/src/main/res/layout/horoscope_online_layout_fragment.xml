@@ -87,11 +87,21 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <ProgressBar
+        android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
+        android:id="@+id/progressbar_horoscope"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
     <TextView
         android:id="@+id/horOn_tvResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
         android:textSize="@dimen/textDescription"/>
+        </RelativeLayout>
     </ScrollView>
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ public class HtmlParser {
     Document doc;
     int TTL=0;
 
-    public void parseHoroscope(final Context context, final TextView tvResult, final int horCode) {
+    public void parseHoroscope(final Context context, final TextView tvResult, final int horCode, final ProgressBar progressbar) {
         try {
             Ion.with(context)
                     .load("https://utro.europaplus.ru/programs/horoscope")
@@ -35,6 +36,7 @@ public class HtmlParser {
                         @Override
                         public void onCompleted(Exception e, String result) {
 
+                            progressbar.setVisibility(ProgressBar.INVISIBLE);
                             String text;
                             doc = Jsoup.parse(result);
                             text = doc.select("ul.horoscope-list").select("li").get(horCode).select("div.text").text();
@@ -44,7 +46,6 @@ public class HtmlParser {
                     });
 
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(context, "Не удалось загрузить данные, проверьте интернет соединение.", Toast.LENGTH_SHORT).show();
         }
     }
@@ -66,7 +67,6 @@ public class HtmlParser {
                     });
 
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(context, "Не удалось загрузить данные, проверьте интернет соединение.", Toast.LENGTH_SHORT).show();
         }
 
