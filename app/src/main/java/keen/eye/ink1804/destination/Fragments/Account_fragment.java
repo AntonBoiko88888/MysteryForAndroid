@@ -147,12 +147,15 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         InputStream is;
         BufferedInputStream bis;
         try {
+            //FIXME to do in Picasso
+            //TODO example Picasso.with(context).load(url).into(imageView);
             URLConnection conn = new URL(icon).openConnection();
             conn.connect();
             is = conn.getInputStream();
             bis = new BufferedInputStream(is, 8192);
             bitmap = BitmapFactory.decodeStream(bis);
             imageView.setImageBitmap(bitmap);
+
         } catch (Exception e) {
             imageView.setImageResource(R.drawable.account_img);
         }
