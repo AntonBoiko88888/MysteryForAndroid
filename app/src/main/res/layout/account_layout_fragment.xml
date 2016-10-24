@@ -24,7 +24,7 @@
             android:id="@+id/acc_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/account_fragment_name_textSize"
+            android:textSize="@dimen/account_fragment_textSize"
             android:textColor="@color/blue" />
             <Button
                 android:id="@+id/acc_btn_rename"

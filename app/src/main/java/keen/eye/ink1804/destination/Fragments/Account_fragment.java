@@ -113,7 +113,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText et = (EditText)((AlertDialog) dialog).findViewById(R.id.alert_edit_name);
                                 String name = et.getText().toString();
-                                if (!name.equals("")&&!name.equals(" ")&&name.length()<=10) {
+                                if (!name.trim().equals("")&&name.length()<=10) {
                                     tv_name.setText("Имя: " + name);
                                     SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = mSettings.edit();
