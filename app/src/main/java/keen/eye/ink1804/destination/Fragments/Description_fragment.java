@@ -48,6 +48,7 @@ public class Description_fragment extends Fragment {
                 btnTextArray, layoutType, MainActivity.ACCESS);
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        //FIXME getColor deprecated -> ContextCompat.getColor(context,int Color)
         tabLayout.setTextColor(getResources().getColor(R.color.blue));
         tabLayout.setTabIndicatorColor(getResources().getColor(R.color.blue));
     }
