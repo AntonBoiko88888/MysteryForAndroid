@@ -27,6 +27,7 @@
     <TextView
         android:id="@+id/horOn_tvResult"
         android:textSize="@dimen/textDescription"
+        android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
         android:layout_below="@+id/sphere_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -69,7 +69,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
         TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
         TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
-        tv_date.setText(setTextSettingsBirth("Дата рождения:<br>",  day + "."+  month + "."+  year+""));
+        tv_date.setText(setTextSettings("Дата рождения:<br>",  day + "."+  month + "."+  year+""));
         tv_name.setText(setTextSettings("Имя:"," "+name));
         if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
         else tv_sex.setText(setTextSettings("Пол:", " жен."));
@@ -114,7 +114,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                                 EditText et = (EditText)((AlertDialog) dialog).findViewById(R.id.alert_edit_name);
                                 String name = et.getText().toString();
                                 if (!name.trim().equals("")&&name.length()<=10) {
-                                    tv_name.setText("Имя: " + name);
+                                    tv_name.setText(setTextSettings("Имя:", " "+name));
                                     SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = mSettings.edit();
                                     editor.putString(Constants.APP_PREF_NAME, name);
@@ -162,13 +162,12 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public Spanned setTextSettings(String text, String value){
-        return Html.fromHtml(String.format("<u><i>%s</i></u>",text+" "+String.format("<b>%s</b>",value)));
+    public Spanned setTextSettings(String _text, String _value){
+        String text = _text;
+        String value = _value;
+        text = String.format("<u><i>%s</i></u>",text);
+        value = String.format("<b>%s</b>",value);
+        return Html.fromHtml(text+" "+value);
     }
-
-    public Spanned setTextSettingsBirth(String text, String value){
-        return Html.fromHtml(String.format("<u><i>%s</i></u>",text)+" "+String.format("<b>%s</b>",value));
-    }
-
 
 }

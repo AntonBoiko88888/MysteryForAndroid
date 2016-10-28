@@ -463,7 +463,7 @@ public class Data_calculation {
 
         public String getVirtualPointsName(String vir1, String vir2) {
                 String res = "";
-                String five = "5 (хорошо)", four = "4 (нормально)", three = "3 (плохо)";
+                String five = "5 (Отлично)", four = "4 (Хорошо)", three = "3 (Нормально)";
                 if(vir1.equals(C.KING)) {
                     if(vir2.equals(C.KING) || vir2.equals(C.CLOWN)) res = five;
                     else if(vir2.equals(C.LEADER) || vir2.equals(C.VECTOR)) res = three;
