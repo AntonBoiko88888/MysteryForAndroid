@@ -74,8 +74,6 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
         else tv_sex.setText(setTextSettings("Пол:", " жен."));
         tv_status.setText(setTextSettings("Статус:<br>", status));
-
-
     }
 
     @Override
@@ -147,7 +145,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         InputStream is;
         BufferedInputStream bis;
         try {
-            //Чтобы знать, как можно еще сделать in Picasso
+            //Чтобы знать, как можно еще сделать in Glide
             // example Picasso.with(context).load(url).into(imageView);
             URLConnection conn = new URL(icon).openConnection();
             conn.connect();

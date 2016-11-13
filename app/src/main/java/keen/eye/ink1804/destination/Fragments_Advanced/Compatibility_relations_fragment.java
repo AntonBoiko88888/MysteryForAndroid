@@ -36,6 +36,7 @@ public class Compatibility_relations_fragment extends Fragment implements View.O
         listener.toolbarSetTitle("Взаимоотношения");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_rel_btn_result);
         btnGetResult.setOnClickListener(this);
+
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_rel_male_spinner);
         MaterialSpinner femaleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_rel_female_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
@@ -43,6 +44,7 @@ public class Compatibility_relations_fragment extends Fragment implements View.O
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         femaleSpinner.setAdapter(adapter);
         maleSpinner.setAdapter(adapter);
+
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
         tv_result = (TextView)rootView.findViewById(R.id.comp_rel_tv_result);
         tv_male = (TextView)rootView.findViewById(R.id.comp_rel_tv_male);

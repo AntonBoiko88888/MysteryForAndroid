@@ -54,5 +54,6 @@ public class AppIntr extends AppIntro {
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
         finish();
+        startActivity(new Intent(AppIntr.this,MainActivity.class));
     }
 }

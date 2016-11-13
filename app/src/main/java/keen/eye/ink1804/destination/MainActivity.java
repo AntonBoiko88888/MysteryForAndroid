@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -20,6 +21,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,6 +32,7 @@ import com.soundcloud.android.crop.Crop;
 import java.io.File;
 import java.util.Calendar;
 
+import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Fragments.Account_fragment;
 import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.Description_fragment;
@@ -68,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
             toggle.setDrawerIndicatorEnabled(false);
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            createAlert();
+            createAlert_setName();
         }
         else{
 //            DatePicker_fragment fragment = new DatePicker_fragment();
@@ -130,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 break;
             case R.id.tab_about:
+                fragment = new HoroscopeOnline_fragment();
                 break;
             default:break;
         }
@@ -154,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fm.popBackStack();
         }
     }
-    private void createAlert(){
+    private void createAlert_setName(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Аккаунт")
                 .setMessage("У вас еще не создан аккаунт, перейдите к заполнению формы.")
@@ -175,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
+
     private void mainFragmentCreate() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -339,18 +346,68 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void setNotification() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Аккаунт")
+                .setMessage("...")
+                .setCancelable(false)
+                .setView(R.layout.alert_setnotification)
+                .setIcon(R.drawable.icon_eye)
+                .setPositiveButton("ОК",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                MaterialSpinner zodSpiner = (MaterialSpinner)((AlertDialog) dialog).findViewById(R.id.alert_zodiac);
+                                MaterialSpinner timeSpiner = (MaterialSpinner)((AlertDialog) dialog).findViewById(R.id.alert_time);
+                                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_spinner_item,
+                                        new String[]{"00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00"
+                                ,"14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"});
+                                ArrayAdapter<String> zodAdapter = new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_spinner_item,
+                                       Constants.ZODIAK_NAMES);
+
+                                zodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                zodSpiner.setAdapter(zodAdapter);
+                                timeSpiner.setAdapter(timeAdapter);
+
+                                zodSpiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                    }
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {}
+                                });
+
+                                timeSpiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                    }
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {}
+                                });
+                            }
+                        })
+                .setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR_OF_DAY,15);//это получить из спинера
-        calendar.set(Calendar.MINUTE,00);
-        calendar.set(Calendar.SECOND,00);
-
-        Intent intent = new Intent(getApplicationContext(),Notification_reciever.class);
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),alarmManager.INTERVAL_DAY,pendingIntent);
-
-        Toast.makeText(getApplicationContext(), "Вы установили будильник", Toast.LENGTH_SHORT).show();
+//        calendar.set(Calendar.HOUR_OF_DAY,15);//это получить из спинера
+//        calendar.set(Calendar.MINUTE,00);
+//        calendar.set(Calendar.SECOND,00);
+//
+//        Intent intent = new Intent(getApplicationContext(),Notification_reciever.class);
+//
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+//        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),alarmManager.INTERVAL_DAY,pendingIntent);
+//
+//        Toast.makeText(getApplicationContext(), "Вы установили будильник", Toast.LENGTH_SHORT).show();
     }
 }
