@@ -26,6 +26,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.android.support:design:24.1.1'
     compile 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
+    compile 'com.github.paolorotolo:appintro:4.1.0'
     compile 'com.brucetoo.pickview:library:1.2.1'
     compile 'nl.qbusict:cupboard:2.1.2'
     compile 'com.soundcloud.android:android-crop:1.0.1@aar'

@@ -43,6 +43,10 @@
                         <!--android:id="@+id/tab_settings"-->
                         <!--android:icon="@drawable/nav_settings"-->
                         <!--android:title="Настройки"/>-->
+                    <item
+                        android:id="@+id/tab_about"
+                        android:icon="@drawable/nav_about"
+                        android:title="О приложении"/>
                 </group>
             </menu>
         </item>

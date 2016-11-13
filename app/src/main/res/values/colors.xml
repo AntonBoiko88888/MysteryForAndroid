@@ -2,7 +2,10 @@
 <resources>
     <color name="colorPrimary">#00011e</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#11a600</color>
+    <color name="colorAccent">#0283d9</color>
+
+    <color name="colorAccentWhite">#700283d9</color>
+    <color name="colorAccentWhite2">#35010d15</color>
 
     <color name="white">#fff</color>
     <color name="pro_zra_white">#d0ffffff</color>

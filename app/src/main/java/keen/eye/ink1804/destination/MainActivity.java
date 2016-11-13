@@ -121,12 +121,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 args.putInt("type",3);
                 fragment.setArguments(args);
                 break;
+
             case R.id.tab_interesting://done
                 fragment = new Interesting_fragment();
                 tag = "interesting";
                 if (fragmentManager.findFragmentByTag(tag) == null) {
                     transaction.addToBackStack(tag);
                 }
+                break;
+            case R.id.tab_about:
                 break;
             default:break;
         }

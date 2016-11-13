@@ -147,8 +147,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         InputStream is;
         BufferedInputStream bis;
         try {
-            //FIXME to do in Picasso
-            //TODO example Picasso.with(context).load(url).into(imageView);
+            //Чтобы знать, как можно еще сделать in Picasso
+            // example Picasso.with(context).load(url).into(imageView);
             URLConnection conn = new URL(icon).openConnection();
             conn.connect();
             is = conn.getInputStream();
