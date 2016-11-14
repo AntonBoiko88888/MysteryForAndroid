@@ -2,6 +2,7 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
@@ -48,8 +49,7 @@ public class Description_fragment extends Fragment {
                 btnTextArray, layoutType, MainActivity.ACCESS);
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-        //FIXME getColor deprecated -> ContextCompat.getColor(context,int Color)
-        tabLayout.setTextColor(getResources().getColor(R.color.blue));
-        tabLayout.setTabIndicatorColor(getResources().getColor(R.color.blue));
+        tabLayout.setTextColor(ContextCompat.getColor(getContext(), R.color.blue));
+        tabLayout.setTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.blue));
     }
 }

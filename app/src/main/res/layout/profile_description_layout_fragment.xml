@@ -15,87 +15,108 @@
             android:paddingTop="@dimen/profile_layout_paddingTop">
         <TextView
             android:id="@+id/picker_tv_date"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textStyle="italic"
             android:textColor="@color/blue"
             android:textSize="@dimen/profileDataTextSize" />
         <TextView
             android:id="@+id/prof_tv_virtual_type"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_year"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_zodiak"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_year_number"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_year_period"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_fate_symbol"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_energy"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_communicate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_psychology"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_type_of_thinking"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_vector_host"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_vector_servant"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         <TextView
             android:id="@+id/prof_tv_element_structure"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
+            android:textSize="@dimen/profileTextSize"
+            android:layout_marginTop="@dimen/profileMarginTop"/>
+        <TextView
+            android:id="@+id/prof_tv_socionics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_states"
             android:textSize="@dimen/profileTextSize"
             android:layout_marginTop="@dimen/profileMarginTop"/>
         </LinearLayout>

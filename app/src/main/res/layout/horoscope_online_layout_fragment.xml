@@ -92,7 +92,6 @@
       android:layout_height="wrap_content">
     <ProgressBar
         android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
-        android:indeterminateDrawable="@drawable/progressbar"
         android:id="@+id/progressbar_horoscope"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

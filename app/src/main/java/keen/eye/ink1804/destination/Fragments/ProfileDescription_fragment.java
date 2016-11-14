@@ -95,19 +95,19 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         D_vectorServant = struct_data.getServantName(i);
         D_elementStructure = struct_data.getElementName(day, month);
         tv_date.setText(                "Дата: "+day+"."+month+"."+year);
-        tv_virtual_type.setText(              setTextSettings("Тип:", D_virtualType));
+        tv_virtual_type.setText(        setTextSettings("Тип:", D_virtualType));
         tv_year.setText(                setTextSettings("Год:", D_year));
         tv_zodiac.setText(              setTextSettings("Знак зодиака:", D_zodiac));
-        tv_year_number.setText(         setTextSettings("Число года:", D_year_number));
+        tv_year_number.setText(         setTextSettings("","Ваш гороскоп на "+yearNow+" год!"));
         tv_year_period.setText(         setTextSettings("Годовой цикл:", D_yearPeriod));
         tv_fate_symbol.setText(         setTextSettings("По судьбе:", D_fateSymbol));
-        tv_energy.setText(          setTextSettings("Энергетика:", D_energy));
+        tv_energy.setText(              setTextSettings("Энергетика:", D_energy));
         tv_communicate.setText(         setTextSettings("Способы общения:", D_communicate));
         tv_psychology.setText(          setTextSettings("Психология человека:", D_psychology));
-        tv_type_of_thinking.setText(       setTextSettings("Тип мышления:", D_typeOfThinking));
+        tv_type_of_thinking.setText(    setTextSettings("Тип мышления:", D_typeOfThinking));
         tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
         tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
-        tv_element_structure.setText(      setTextSettings("Структура стихии:", D_elementStructure));
+        tv_element_structure.setText(   setTextSettings("Структура стихии:", D_elementStructure));
     }
     public Spanned setTextSettings(String _text, String _value){
         String text = _text;

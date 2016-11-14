@@ -8,9 +8,7 @@ import android.support.v4.app.Fragment;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
-import keen.eye.ink1804.destination.Fragments.IntroFirstFragment;
-import keen.eye.ink1804.destination.Fragments.IntroSecondFragment;
-import keen.eye.ink1804.destination.Fragments.IntroThirdFragment;
+import keen.eye.ink1804.destination.Fragments.Intro_fragment;
 import keen.eye.ink1804.destination.Math.Constants;
 
 /**
@@ -19,15 +17,26 @@ import keen.eye.ink1804.destination.Math.Constants;
 
 public class AppIntr extends AppIntro {
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addSlide(new IntroFirstFragment());
-        addSlide(new IntroSecondFragment());
-        addSlide(new IntroThirdFragment());
+        Bundle bundle = new Bundle();
+        bundle.putInt("int", 1);
+        Fragment fragment = new Intro_fragment();
+        fragment.setArguments(bundle);
+        Fragment fragment1 = new Intro_fragment();
+        fragment1.setArguments(bundle);
+        Fragment fragment2 = new Intro_fragment();
+        fragment2.setArguments(bundle);
+        Fragment fragment3 = new Intro_fragment();
+        fragment3.setArguments(bundle);
+        Fragment fragment4 = new Intro_fragment();
+        fragment4.setArguments(bundle);
+        addSlide(fragment);
+        addSlide(fragment1);
+        addSlide(fragment2);
+        addSlide(fragment3);
+        addSlide(fragment4);
 
        final SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         if (!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
@@ -47,7 +56,10 @@ public class AppIntr extends AppIntro {
             });
 
         }
-        else startActivity(new Intent(AppIntr.this,MainActivity.class));
+        else {
+            finish();
+            startActivity(new Intent(AppIntr.this, MainActivity.class));
+        }
     }
 
     @Override
