@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
+import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.Utills.HtmlParser;
 import keen.eye.ink1804.destination.R;
 
@@ -20,6 +23,8 @@ import keen.eye.ink1804.destination.R;
  */
 public class HoroscopeOnline_fragment extends Fragment implements View.OnClickListener{
 
+    int day, month, j;
+    SharedPreferences mSettings;
     private ProgressBar progressBar;
     private View rootView;
     private ImageView[] img_m;
@@ -69,8 +74,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         tv_result = (TextView)rootView.findViewById(R.id.horOn_tvResult);
         tv_sign_name = (TextView)rootView.findViewById(R.id.sphere_tv_sign_name);
         tv_sign_name.setTypeface(tf);
-        setZodiacName(3);
-        parser.parseHoroscope(getActivity(),tv_result, 0, progressBar);
+        onClickMySign();
     }
 
     @Override
@@ -110,5 +114,18 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         if(zod>11) zod=zod-12;
         Constants C = new Constants();
         tv_sign_name.setText(C.ZODIAK_NAMES[zod]);
+    }
+
+    private void onClickMySign() {
+        mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+        day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
+        Data_calculation struct_data = new Data_calculation();
+        j = struct_data.getDateId(day, month);
+        j += 10;
+        if(j>11) j -= 12;
+        backgroundPressed(j, img_m);
+        setZodiacName(j+2);
+        parser.parseHoroscope(getActivity(),tv_result, j-1, progressBar);
     }
 }
