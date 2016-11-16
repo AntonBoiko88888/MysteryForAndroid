@@ -138,7 +138,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         }
     }
     private void setZodiacName(int zod) {
-        if(zod>11) zod=zod-12;
+        zod=zod%12;
         Constants C = new Constants();
         tv_sign_name.setText(C.ZODIAK_NAMES[zod]);
     }
@@ -148,7 +148,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
         int month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         Data_calculation struct_data = new Data_calculation();
-        int j = (struct_data.getDateId(day, month) - 2) % 12;
+        int j = (struct_data.getDateId(day, month) + 10) % 12;
         backgroundPressed(j, img_m);
         setZodiacName(j +2);
         parser.parseHoroscope(getActivity(),tv_result, j -1, progressBar);
