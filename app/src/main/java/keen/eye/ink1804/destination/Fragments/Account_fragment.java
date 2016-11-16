@@ -84,7 +84,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                 listener.pictureDownload(imageView);
                 break;
             case R.id.acc_btn_description:
-                listener.onDatePushed(day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, 2);
+                listener.onDatePushed(day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, 1, true);
+                //поменял на 1, если что то будет тупить, надо исправить на 2, но не должно
                 break;
             case R.id.acc_btn_rename:
                 setName();
@@ -93,7 +94,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                 listener.onNewProfile();
                 break;
             case R.id.acc_btn_pushSettings:
-                listener.setNotification();
+                listener.setNotification(getActivity());
                 break;
             default: break;
         }

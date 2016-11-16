@@ -78,8 +78,8 @@ public class Compatibility_relations_fragment extends Fragment implements View.O
     @Override
     public void onClick(View view) {
         String key = male + "+" + female;
-        String[] names = getResources().getStringArray(R.array.com_names4);
-        String[] details = getResources().getStringArray(R.array.com_db4);
+        String[] names = getResources().getStringArray(R.array.com_socioRelat_names);
+        String[] details = getResources().getStringArray(R.array.com_socioRelat_db);
         int id = -1;
         for (int i = 0; i < names.length; i++) {
             if (names[i].equals(key)) {

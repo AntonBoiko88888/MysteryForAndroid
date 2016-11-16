@@ -82,7 +82,7 @@ public class DatePicker_fragment extends Fragment implements View.OnClickListene
                 pushDateListener listener = (pushDateListener) getActivity();
                 boolean sex = rb_male.isChecked();
                 rb_male.setChecked(sex);
-                listener.onDatePushed(day, month, year, currentYear, sex, 2);
+                listener.onDatePushed(day, month, year, currentYear, sex, 2, false);
                 break;
             case R.id.picker_btn_pick_date:
                 pickerPopWin.showPopWin(getActivity());

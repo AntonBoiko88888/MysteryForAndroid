@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
 
@@ -20,14 +23,14 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
 
     private TextView tv_year, tv_zodiac, tv_virtual_type, tv_year_number, tv_year_period, tv_fate_symbol
             , tv_energy, tv_communicate, tv_psychology, tv_type_of_thinking, tv_vector_host
-            , tv_vector_servant, tv_element_structure,tv_date;
+            , tv_vector_servant, tv_element_structure,tv_date,tv_socionics;
     private View rootView;
 
-    private boolean sex;//true - male, false - female
+    private boolean sex,socioAccess;//true - male, false - female
     private int yearNow, year, month, day;
     private String D_virtualType, D_year, D_zodiac, D_year_number, D_yearPeriod, D_fateSymbol
             , D_energy, D_communicate, D_psychology, D_typeOfThinking, D_vectorHost, D_vectorServant
-            , D_elementStructure;
+            , D_elementStructure, D_socionics;
 
 
     @Override
@@ -42,6 +45,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Характеристика профиля");
         Bundle args = getArguments();
+        socioAccess = args.getBoolean("isMyDescription",false);
         yearNow = args.getInt("currentYear");
         year = args.getInt("year");
         month = args.getInt("month");
@@ -74,11 +78,14 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_vector_servant.setOnClickListener(this);
         tv_element_structure = (TextView) rootView.findViewById(R.id.prof_tv_element_structure);
         tv_element_structure.setOnClickListener(this);
+        tv_socionics = (TextView) rootView.findViewById(R.id.prof_tv_socionics);
+        tv_socionics.setOnClickListener(this);
+        tv_socionics.setEnabled(false);
+        tv_socionics.setVisibility(View.GONE);
     }
     private void fillInfo() {
         Data_calculation struct_data = new Data_calculation();
         int i,j;
-
         i = struct_data.getYearId(year);
         j = struct_data.getDateId(day, month);
         D_virtualType = struct_data.getStructureType(i, j);
@@ -108,6 +115,13 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
         tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
         tv_element_structure.setText(   setTextSettings("Структура стихии:", D_elementStructure));
+        SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+        if(socioAccess&&mSettings.contains(Constants.APP_PREF_SOCIONICS)) {
+            D_socionics = mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
+            tv_socionics.setText(setTextSettings("Социотип:", D_socionics));
+            tv_socionics.setVisibility(View.VISIBLE);
+            tv_socionics.setEnabled(true);
+        }
     }
     public Spanned setTextSettings(String _text, String _value){
         String text = _text;
@@ -160,6 +174,10 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
                 break;
             case R.id.prof_tv_element_structure:
                 key = D_elementStructure;
+                break;
+            case R.id.prof_tv_socionics:
+                tag = "socionics";
+                key = D_socionics;
                 break;
             default:break;
         }

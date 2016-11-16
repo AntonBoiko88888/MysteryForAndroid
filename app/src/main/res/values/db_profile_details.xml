@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="db_names">
+    <string-array name="profDetails_names">
         <!--virtual-->
         <item>Вектор</item><!--0-->
         <item>Профессор</item>
@@ -84,7 +84,7 @@
 
 
     </string-array>
-    <string-array name="db_details">
+    <string-array name="profDetails_db">
         <!--virtual-->
         <item>
             <![CDATA[

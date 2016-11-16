@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="com_names4">
+    <string-array name="com_socioRelat_names">
         <!--inter_type-->
         <item>Дон Кихот+Дон Кихот</item><!--0-->
         <item>Дон Кихот+Дюма</item><!---->
@@ -293,7 +293,7 @@
     </string-array>
 
 
-    <string-array name="com_db4">
+    <string-array name="com_socioRelat_db">
         <!--inter_type-->
 
         <!--Дон Кихот/-->

@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +26,8 @@ public class Relationship_description_fragment extends Fragment implements View.
 
     private View rootView;
     private TextView tv_info;
-    Button saveProfile;
+    private Button saveProfile;
+    private String socioType;
 
     String[] tmp = {"-1","-1","-1","-1"};
 
@@ -42,8 +45,10 @@ public class Relationship_description_fragment extends Fragment implements View.
         tv_info = (TextView)rootView.findViewById(R.id.relD_tv_info);
         Button btnShowInfo = (Button)rootView.findViewById(R.id.relD_btn_showInfo);
         btnShowInfo.setOnClickListener(this);
-        saveProfile = (Button)rootView.findViewById(R.id.btn_save_prof);
+        saveProfile = (Button)rootView.findViewById(R.id.relD_btn_save_prof);
         saveProfile.setVisibility(View.INVISIBLE);
+        saveProfile.setOnClickListener(this);
+        saveProfile.setEnabled(false);
     }
 
 
@@ -75,8 +80,8 @@ public class Relationship_description_fragment extends Fragment implements View.
         return Constants.SOCIONICS[i][j][k][l];
     }
     private void setTvInfoText(String key_Name){
-        String[] names = getResources().getStringArray(R.array.relation_description_name);
-        String[] details = getResources().getStringArray(R.array.relation_description_db);
+        String[] names = getResources().getStringArray(R.array.socionics_names);
+        String[] details = getResources().getStringArray(R.array.socionics_db);
         int id = -1;
         for (int i = 0; i < names.length; i++) {
             if (names[i].equals(key_Name)) {
@@ -88,16 +93,25 @@ public class Relationship_description_fragment extends Fragment implements View.
     }
     @Override
     public void onClick(View view) {
-            if(view.getId() == R.id.relD_btn_showInfo) {
+        switch (view.getId()){
+            case R.id.relD_btn_showInfo:
                 if (tmp[0].equals("-1") || tmp[1].equals("-1") || tmp[2].equals("-1") || tmp[3].equals("-1"))
                     Toast.makeText(getActivity(), "Выберите все пункты", Toast.LENGTH_SHORT).show();
                 else {
-                    String socioType = getSocialType(tmp[0], tmp[1], tmp[2], tmp[3]);
+                    socioType = getSocialType(tmp[0], tmp[1], tmp[2], tmp[3]);
                     setTvInfoText(socioType);
                     saveProfile.setVisibility(View.VISIBLE);
+                    saveProfile.setEnabled(true);
                 }
-            }
-            else {
+                break;
+            case R.id.relD_btn_save_prof:
+                SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = mSettings.edit();
+                editor.putString(Constants.APP_PREF_SOCIONICS, socioType);
+                Toast.makeText(getActivity(), socioType+" - сохранено в профиль", Toast.LENGTH_SHORT).show();
+                editor.apply();
+                break;
+            default:
                 int btnID = view.getId();
                 Button pressedButton = (Button)rootView.findViewById(btnID);
                 setTvInfoText(pressedButton.getText().toString());
@@ -108,7 +122,7 @@ public class Relationship_description_fragment extends Fragment implements View.
                     rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border_thin);
                 else
                     rootView.findViewById(btnID + 1).setBackgroundResource(R.drawable.btn_border_thin);
-
-            }
+                break;
+        }
     }
 }

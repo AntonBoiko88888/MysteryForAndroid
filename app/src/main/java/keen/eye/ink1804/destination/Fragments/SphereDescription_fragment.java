@@ -63,8 +63,8 @@ public class SphereDescription_fragment extends Fragment implements View.OnClick
             rootView.findViewById(500 + i).setBackgroundResource(R.drawable.btn_border_thin);
         pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin);
         String key = view.getTag().toString();
-        String[] names = getResources().getStringArray(R.array.db_names);
-        String[] details = getResources().getStringArray(R.array.db_details);
+        String[] names = getResources().getStringArray(R.array.profDetails_names);
+        String[] details = getResources().getStringArray(R.array.profDetails_db);
         int id=-1;
         for(int i=0;i<names.length;i++){
             if(names[i].equals(key)){

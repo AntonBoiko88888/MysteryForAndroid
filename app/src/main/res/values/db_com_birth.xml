@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="com_names2">
+    <string-array name="com_marriage_names">
         <item>Романтический брак</item><!--0-->
         <item>Патриархальный брак</item><!---->
         <item>Духовный брак</item><!---->
@@ -9,7 +9,7 @@
 
     </string-array>
 
-    <string-array name="com_db2">
+    <string-array name="com_marriage_db">
          <item>
         <![CDATA[
             <html>

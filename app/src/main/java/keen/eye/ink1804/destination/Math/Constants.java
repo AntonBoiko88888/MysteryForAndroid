@@ -15,6 +15,9 @@ public class Constants {
     public static final String APP_PREF_STATUS = "status"; // статус пользователя
     public static final String APP_PREF_ISREGISTER = "isregister"; // наличие аккаунта
     public static final String APP_PREF_IMAGE = "icon";
+    public static final String APP_PREF_SOCIONICS = "socionics_type";
+    public static final String APP_PREF_NOTIFICATIONS = "doNotifications";
+
     public static final String APP_FIRST_LAUNCH = "first";
 
     //Годы по китайскому гороскопу
@@ -51,6 +54,7 @@ public class Constants {
     //Знаки зодиака Z_
 
     public static final String[] ZODIAK_NAMES ={"Козерог","Водолей","Рыбы","Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец"};
+    public static final String[] ZODIAK_NAMES_normal ={"Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец","Козерог","Водолей","Рыбы"};
 //    public static final String Z_CAPRICORN = "Козерог";//id = 0
 //    public static final String Z_AQUARIUS = "Водолей";
 //    public static final String Z_FISH = "Рыбы";

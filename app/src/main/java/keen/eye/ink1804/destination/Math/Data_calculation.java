@@ -161,24 +161,20 @@ public class Data_calculation {
                 }
                 return res;
         }//done
-
         public int getYearId(int year){
                 return year%12;
         }//done
-
         public String getYearName(int year){
                 String yearName="";
                 yearName = C.YEAR_NAMES[year%12];
                 return yearName;
         }//done
-
         public String getNumberYear(int yearNow, int month, int day){ // Возвращает число года
                 int numberYear = 0;
                 numberYear = yearNow+month+day;
                 numberYear = SummChislo(numberYear);
                 return String.valueOf(numberYear);
         }//done
-
         public int SummChislo(int Chislo) { // Суммирует каждую цифру числа
                 int res = 0;
                         for (int i = 0; i < 4; i++) {
@@ -188,8 +184,6 @@ public class Data_calculation {
                 if(res>9) res = SummChislo(res);
                 return res;
         }//done
-
-
         public String getMeansCommunicateName(int year) {
                 String res = "";
                 if(year==1||year==4||year==7||year==10) res = C.MEANS_COMMUNICATE_NAMES[0];
@@ -197,7 +191,6 @@ public class Data_calculation {
                 else if(year==2||year==5||year==8||year==11) res = C.MEANS_COMMUNICATE_NAMES[2];
                 return res;
         }
-
         public String getPsychologyName(int year) {
                 String res = "";
                 if(year==0||year==1||year==2) res = C.PSYCHOLOGY_NAMES[0];
@@ -206,7 +199,6 @@ public class Data_calculation {
                 else if(year==9||year==10||year==11) res = C.PSYCHOLOGY_NAMES[3];
                 return res;
         }
-
         public String getElementName(int day, int month) {
                 String elementName = "";
                 switch (month){
@@ -238,19 +230,16 @@ public class Data_calculation {
                 }
                 return elementName;
         }
-
         public String getHostName(int year) {
                 String res;
                 res = C.YEAR_HOST_NAMES[year];
                 return res;
         }//done
-
         public String getServantName(int year) {
                 String res;
                 res = C.YEAR_SERVANT_NAMES[year];
                 return res;
         }//done
-
         public int getYearIdTable(int yearNow) {
                 int res = yearNow%12;
                 switch (res) {
@@ -269,7 +258,6 @@ public class Data_calculation {
                 }
                 return res;
         }//done
-
         public int getTypeThinkingId(boolean man, int yearId){ // Возвращает id мышления
                 int numberYear = 0;
                 if(man) {
@@ -285,11 +273,9 @@ public class Data_calculation {
                 }
                 return numberYear;
         }//done
-
         public String getYearPeriod(int yearIdTable, int typeThinking){ // Возвращает какой год: Преодоление...
                 return YearPeriod[typeThinking][yearIdTable];
         }
-
         public String getTypeThinkingNames(boolean man, int year){ // Возвращает тип мышления
                 String typeThinking="";
                 if(man) {
@@ -305,7 +291,6 @@ public class Data_calculation {
                 }
                 return typeThinking;
         }//done
-
         public String getEnergyName(int year){ //вычисление темперамента(сангвиник, холерик...)
                 String EnergyName="";
                 if(year==3||year==5||year==10) EnergyName = C.ENERGY_STRUCTURE_NAMES[0];
@@ -314,7 +299,6 @@ public class Data_calculation {
                 else if(year==0||year==2||year==7) EnergyName = C.ENERGY_STRUCTURE_NAMES[3];
                 return EnergyName;
         }//done
-
         public String getSymbolFate(int year){ //вычисление Знака судьбы
                 String SymbolFate="";
                 if(year==1||year==3||year==11) SymbolFate = C.SYMBOL_FATE_NAMES[0];
@@ -323,7 +307,6 @@ public class Data_calculation {
                 else if(year==0||year==8||year==10) SymbolFate = C.SYMBOL_FATE_NAMES[3];
                 return SymbolFate;
         }//done
-
         public String getZodiakName(int day,int month){
                 String zodiakName = "";
                 switch (month){
@@ -355,16 +338,12 @@ public class Data_calculation {
                 }
                 return zodiakName;
         }//done
-
         public String getStructureType(int i,int j){
                 return StructureHor[i][j];
         }//done
-
         public String getStructureTypeAdmin(int i,int j){
                 return StructureHorADMIN[i][j];
         }//done
-
-
         public String getEqualMarriage(int year) {
                 String res = "";
                 switch (year) {
@@ -383,7 +362,6 @@ public class Data_calculation {
                 }
                 return res;
         }//done
-
         public String getRomanticMarriage(int year) {
                 String res = "";
                 switch (year) {
@@ -402,7 +380,6 @@ public class Data_calculation {
                 }
                 return res;
         }//done
-
         public String getSpiritualMarriage(int year) {
                 String res = "";
                 switch (year) {
@@ -421,7 +398,6 @@ public class Data_calculation {
                 }
                 return res;
         }//done
-
         public String getPatriarchalMarriage(int year) {
                 String res = "";
                 switch (year) {
@@ -440,7 +416,6 @@ public class Data_calculation {
                 }
                 return res;
         }//done
-
         public String getVectorMarriage(int year) {
                 String res = "";
 
@@ -460,7 +435,6 @@ public class Data_calculation {
                 }
                 return res;
         }
-
         public String getVirtualPointsName(String vir1, String vir2) {
                 String res = "";
                 String five = "5 (Отлично)", four = "4 (Хорошо)", three = "3 (Нормально)";
@@ -501,5 +475,12 @@ public class Data_calculation {
                 }
 
                 return res;
+        }
+        public int getZodiacId(String zodiac){
+                for(int i=0;i<12;i++){
+                        if(Constants.ZODIAK_NAMES_normal[i].equals(zodiac))
+                                return i;
+                }
+                return -1;
         }
 }

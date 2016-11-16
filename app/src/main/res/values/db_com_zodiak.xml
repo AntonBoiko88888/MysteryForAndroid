@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="com_names">
+    <string-array name="com_zodiacRelat_names">
 
         <item>Овен+Овен</item><!--0-->
         <item>Овен+Телец</item><!--1-->
@@ -160,7 +160,7 @@
 
     </string-array>
 
-    <string-array name="com_db">
+    <string-array name="com_zodiacRelat_db">
 
 
         <item>

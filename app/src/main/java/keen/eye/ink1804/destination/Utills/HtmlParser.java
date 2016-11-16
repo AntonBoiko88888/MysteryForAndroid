@@ -16,7 +16,10 @@ import com.koushikdutta.ion.Ion;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import keen.eye.ink1804.destination.Fragments.Description_fragment;
+import keen.eye.ink1804.destination.Fragments.HoroscopeOnline_fragment;
 import keen.eye.ink1804.destination.MainActivity;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -24,10 +27,10 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class HtmlParser {
-    Document doc;
-    int TTL=0;
+    private Document doc;
+    private int TTL=0;
 
-    public void parseHoroscope(final Context context, final TextView tvResult, final int horCode, final ProgressBar progressbar) {
+    public void parseHoroscope(final Context context, final TextView tvResult,final int horCode, final ProgressBar progressbar) {
         try {
             Ion.with(context)
                     .load("https://utro.europaplus.ru/programs/horoscope")
@@ -35,12 +38,14 @@ public class HtmlParser {
                     .setCallback(new FutureCallback<String>() {
                         @Override
                         public void onCompleted(Exception e, String result) {
-
                             progressbar.setVisibility(ProgressBar.INVISIBLE);
-                            String text;
+                            String text = "";
                             doc = Jsoup.parse(result);
-                            text = doc.select("ul.horoscope-list").select("li").get(horCode).select("div.text").text();
-                            tvResult.setText(text);
+                            for(int i=0;i<12;i++) {
+                                text = doc.select("ul.horoscope-list").select("li").get(i).select("div.text").text();
+                                HoroscopeOnline_fragment.descriptions.add(text);
+                            }
+                            tvResult.setText(HoroscopeOnline_fragment.descriptions.get(horCode));
                             TTL = 0;
                         }
                     });
@@ -61,7 +66,7 @@ public class HtmlParser {
                             String text;
                             doc = Jsoup.parse(result);
                             text = doc.select("ul.horoscope-list").select("li").get(horCode).select("div.text").text();
-                            createNotification(context, text);
+                            createNotification(context, text,horCode);
                             TTL = 0;
                         }
                     });
@@ -72,7 +77,7 @@ public class HtmlParser {
 
     }
 
-    void createNotification(Context context, String text){
+    void createNotification(Context context, String text, int horCode){
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context
                 .NOTIFICATION_SERVICE);
 
@@ -91,7 +96,8 @@ public class HtmlParser {
         Notification.Builder builder = new Notification.Builder(context)
                 .setContentIntent(pendingIntent)
                 .setContentTitle("Ваш гороскоп на сегодня")
-                .setContentText("Овен")
+                .setContentText(Constants.ZODIAK_NAMES_normal[horCode])
+                .setContentText(text)
                 .setSmallIcon(R.drawable.icon_eye)
                 .setAutoCancel(true);
 
