@@ -29,4 +29,40 @@
 
 
 
+
+
+    <!--Fo Registration-->
+    <string name="action_sign_in_short">Регистрация</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Слишком короткий пароль, введите минимум 6 символов!</string>
+    <string name="auth_failed">Ошибка аутентификации, проверьте свою электронную почту и пароль или зарегистрируйтесь</string>
+    <string name="change_email">Сменить Email</string>
+    <string name="change_password">Сменить Пароль</string>
+    <string name="send_password_reset_email">Отправить Восстановление пароля по электронной почте</string>
+    <string name="remove_user">Удалить пользователя</string>
+    <string name="new_pass">Новый пароль</string>
+    <string name="title_activity_profile">Firebase</string>
+    <string name="title_activity_login">Войти</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Пароль</string>
+    <string name="hint_name">Имя</string>
+    <string name="btn_login">Войти</string>
+    <string name="btn_link_to_register">Вы не зарегистрированы? Зарегистрируйтесь сейчас!</string>
+    <string name="btn_link_to_login">Уже зарегистрированы?. Войти </string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">Забыли пароль?</string>
+    <string name="btn_reset_password">Сброс пароля</string>
+    <string name="btn_back"><![CDATA[<< Назад]]></string>
+    <string name="hint_new_email">Новый Email</string>
+    <string name="btn_change">Изменить</string>
+    <string name="btn_send">Отослать</string>
+    <string name="btn_remove">Удалить</string>
+    <string name="btn_sign_out">Выйти</string>
+    <string name="lbl_forgot_password">Забыли пароль?</string>
+    <string name="forgot_password_msg">Нам просто нужно зарегистрированный идентификатор электронной почты, чтобы отправить вам инструкции по сбросу пароля.</string>
+    <string name="prompt_password">%s</string>
+
+
+
+
 </resources>

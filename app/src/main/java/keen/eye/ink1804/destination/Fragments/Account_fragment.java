@@ -63,6 +63,8 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
         Button desc = (Button)rootView.findViewById(R.id.acc_btn_description);
         desc.setTypeface(tf);
         desc.setOnClickListener(this);
+        Button userUpgrage = (Button)rootView.findViewById(R.id.btn_users_upgrade);
+        userUpgrage.setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_new_profile).setOnClickListener(this);
         status = mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
@@ -95,6 +97,9 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.acc_btn_pushSettings:
                 listener.setNotification(getActivity());
+                break;
+            case R.id.btn_users_upgrade:
+                listener.registration();
                 break;
             default: break;
         }

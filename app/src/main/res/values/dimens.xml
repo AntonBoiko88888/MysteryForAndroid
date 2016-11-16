@@ -50,4 +50,14 @@
     <dimen name="com_fiveMarriage_TextSize">30sp</dimen>
 
 
+
+
+    <!--Fo Registration-->
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="logo_w_h">100dp</dimen>
+    <dimen name="editFragment_marginLeft">15dp</dimen>
+    <dimen name="editFragment_marginRight">15dp</dimen>
+    <dimen name="editFragment_marginTop">10dp</dimen>
+    <dimen name="editFragment_marginTopBelowImg">20dp</dimen>
+
 </resources>

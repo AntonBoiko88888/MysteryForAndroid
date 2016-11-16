@@ -35,7 +35,7 @@ public class Intro_fragment extends Fragment {
             case 0: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.icon_eue_512)); break;
             case 1: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.com_zod_rak)); break;
             case 2: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.com_birth_snake)); break;
-            case 3: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.appintr_virtual)); break;
+            case 3: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.appintr_virtual_persona)); break;
             case 4: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.appintr_description)); break;
         }
         Typeface tf_title = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");

@@ -41,9 +41,12 @@ import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
 import keen.eye.ink1804.destination.Fragments.Description_fragment;
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline_fragment;
 import keen.eye.ink1804.destination.Fragments.Interesting_fragment;
+import keen.eye.ink1804.destination.Fragments.LoginFragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDescription_fragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDetails_fragment;
 import keen.eye.ink1804.destination.Fragments.Registration_fragment;
+import keen.eye.ink1804.destination.Fragments.ResetFragment;
+import keen.eye.ink1804.destination.Fragments.SignUpFragment;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Utills.Notification_reciever;
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean isSelectedNotific = false;
     public static int backStackID;
     private SharedPreferences mSettings;
-//    0 - мы на главном фрагменте
+    //    0 - мы на главном фрагменте
 //    1 - один шаг от главного фрагмента
 //    2 - больше одного шага от главного фрагмента
     private static long back_pressed;
@@ -72,19 +75,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         createActivityViews();
         mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        isSelectedNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS,false);
+        isSelectedNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS, false);
 
         backStackID = 0;
-        if(!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
+        if (!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
             toggle.setDrawerIndicatorEnabled(false);
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             createAlert_setName();
-        }
-        else{
+        } else {
 //            DatePicker_fragment fragment = new DatePicker_fragment();
             Account_fragment fragment = new Account_fragment();//в дальнейшем
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.fragment_container,fragment, "account_fragment");
+            transaction.add(R.id.fragment_container, fragment, "account_fragment");
             transaction.commit();
         }
     }
@@ -96,22 +98,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment = null;
         String tag = "default";
         Bundle args = new Bundle();
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.tab_hor_online://no
                 fragment = new HoroscopeOnline_fragment();
                 break;
             case R.id.tab_zodiaс_sign://done
                 fragment = new Description_fragment();
-                args.putStringArray("array",Constants.ZODIAK_NAMES);
-                args.putString("toolbar","Знаки зодиака");
-                args.putInt("type",0);
+                args.putStringArray("array", Constants.ZODIAK_NAMES);
+                args.putString("toolbar", "Знаки зодиака");
+                args.putInt("type", 0);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_birth_sign://done
                 fragment = new Description_fragment();
-                args.putStringArray("array",Constants.YEAR_NAMES);
-                args.putString("toolbar","Знаки рождения");
-                args.putInt("type",1);
+                args.putStringArray("array", Constants.YEAR_NAMES);
+                args.putString("toolbar", "Знаки рождения");
+                args.putInt("type", 1);
                 fragment.setArguments(args);
                 tag = "birth_sign_vp";
                 if (fragmentManager.findFragmentByTag(tag) == null) {
@@ -120,15 +122,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.tab_virtual_sign://done
                 fragment = new Description_fragment();
-                args.putStringArray("array",Constants.VIRTUAL_NAMES);
-                args.putString("toolbar","Виртуальные знаки");
-                args.putInt("type",2);
+                args.putStringArray("array", Constants.VIRTUAL_NAMES);
+                args.putString("toolbar", "Виртуальные знаки");
+                args.putInt("type", 2);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_relations://done
                 fragment = new Description_fragment();
-                args.putString("toolbar","Взаимоотношения");
-                args.putInt("type",3);
+                args.putString("toolbar", "Взаимоотношения");
+                args.putInt("type", 3);
                 fragment.setArguments(args);
                 break;
 
@@ -142,7 +144,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.tab_about:
                 fragment = new HoroscopeOnline_fragment();
                 break;
-            default:break;
+            default:
+                break;
         }
         clearBackStack();
 //        transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
@@ -152,7 +155,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void createActivityViews(){
+
+    private void createActivityViews() {
         toolbarSetTitle("Постижение тайны");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -160,13 +164,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View header = navigationView.getHeaderView(0);
         header.setOnClickListener(this);
     }
-    private void clearBackStack(){
+
+    private void clearBackStack() {
         FragmentManager fm = getSupportFragmentManager();
-        for(int i = 0; i < fm.getBackStackEntryCount(); i++) {
+        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
             fm.popBackStack();
         }
     }
-    private void createAlert_setName(){
+
+    private void createAlert_setName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Аккаунт")
                 .setMessage("У вас еще не создан аккаунт, перейдите к заполнению формы.")
@@ -180,38 +186,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 Registration_fragment fragment = new Registration_fragment();
                                 Bundle args = new Bundle();
                                 fragment.setArguments(args);
-                                transaction.replace(R.id.fragment_container,fragment,"registrationFragment");
+                                transaction.replace(R.id.fragment_container, fragment, "registrationFragment");
                                 transaction.commit();
                             }
                         });
         AlertDialog alert = builder.create();
         alert.show();
     }
+
     private void mainFragmentCreate() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
 //        DatePicker_fragment fragment = new DatePicker_fragment();
         Account_fragment fragment = new Account_fragment();//в дальнейшем
         backStackID = 0;
-        transaction.replace(R.id.fragment_container,fragment,"mainFragment");
+        transaction.replace(R.id.fragment_container, fragment, "mainFragment");
         transaction.commit();
 
     }
+
     public boolean isOnline(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {return true;}
-        else {return false;}
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
-            switch (backStackID){
+        } else {
+            switch (backStackID) {
                 case 0:
                     if (back_pressed + 2000 > System.currentTimeMillis()) {
                         super.onBackPressed();
@@ -225,60 +235,62 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     mainFragmentCreate();
                     break;
                 case 2:
-                    if(getSupportFragmentManager().getBackStackEntryCount()<=1) {
+                    if (getSupportFragmentManager().getBackStackEntryCount() <= 1) {
                         clearBackStack();
                         mainFragmentCreate();
-                    }
-                    else
-                    super.onBackPressed();
+                    } else
+                        super.onBackPressed();
                     break;
             }
         }
     }
+
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex, int _backStackID, boolean isMyDescr) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         ProfileDescription_fragment profDescFragment = new ProfileDescription_fragment();
         String tag = "profDescFragment";
 
         Bundle args = new Bundle();
-        args.putBoolean("isMyDescription",isMyDescr);
-        args.putInt("day",day);
-        args.putInt("month",month);
-        args.putInt("year",year);
-        args.putInt("currentYear",currentYear);
-        args.putBoolean("sex",sex);
+        args.putBoolean("isMyDescription", isMyDescr);
+        args.putInt("day", day);
+        args.putInt("month", month);
+        args.putInt("year", year);
+        args.putInt("currentYear", currentYear);
+        args.putBoolean("sex", sex);
         profDescFragment.setArguments(args);
 
-        transaction.replace(R.id.fragment_container,profDescFragment,tag);
+        transaction.replace(R.id.fragment_container, profDescFragment, tag);
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
         backStackID = _backStackID;
         transaction.commit();
     }
+
     @Override
     public void onDescriptionClicked(String key, String layoutTag) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         ProfileDetails_fragment profDetFragment = new ProfileDetails_fragment();
         String tag = "profDetailsFragment";
 
         Bundle args = new Bundle();
-        args.putString("key",key);
-        args.putString("tag",layoutTag);
+        args.putString("key", key);
+        args.putString("tag", layoutTag);
         profDetFragment.setArguments(args);
 
-        transaction.replace(R.id.fragment_container,profDetFragment,tag);
+        transaction.replace(R.id.fragment_container, profDetFragment, tag);
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
         backStackID = 2;
         transaction.commit();
     }
+
     @Override
     public void onRegistration(int day, int month, int year, boolean sex) {
         toggle.setDrawerIndicatorEnabled(true);
@@ -286,16 +298,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         Account_fragment accFragment = new Account_fragment();
 
-        transaction.replace(R.id.fragment_container,accFragment,"accFragment");
+        transaction.replace(R.id.fragment_container, accFragment, "accFragment");
         transaction.commit();
     }
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.nav_header:
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
-                transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+                transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
                 Account_fragment fragment = new Account_fragment();
                 String tag = "accFragment";
                 transaction.replace(R.id.fragment_container, fragment, tag);
@@ -309,12 +322,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
     }
+
     @Override
     public void pictureDownload(ImageView imageView) {
         iconImage = imageView;
         Crop.pickImage(this);
         iconImage.buildDrawingCache();
     }
+
     @Override
     public void toolbarSetTitle(String title) {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -326,15 +341,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
             Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
 
-            SharedPreferences mSettings = getSharedPreferences(Constants.APP_PREF,Context.MODE_PRIVATE);
+            SharedPreferences mSettings = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = mSettings.edit();
-            editor.putString(Constants.APP_PREF_IMAGE,destination.toString());
+            editor.putString(Constants.APP_PREF_IMAGE, destination.toString());
             editor.apply();
 
             Crop.of(data.getData(), destination).asSquare().start(this);
@@ -347,6 +363,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
+
     @Override
     public void onNewProfile() {
         String tag = "datePicker_fragment";
@@ -357,21 +374,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.addToBackStack(tag);
         }
         backStackID = 1;
-        transaction.replace(R.id.fragment_container,fragment, "datePicker_fragment");
+        transaction.replace(R.id.fragment_container, fragment, "datePicker_fragment");
         transaction.commit();
     }
+
     @Override
     public void setNotification(Context context) {
-        String[] times = new String[]{"00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00"
-                ,"14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"};
-        View v = View.inflate(context,R.layout.alert_setnotification, null);
+        String[] times = new String[]{"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00"
+                , "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
+        View v = View.inflate(context, R.layout.alert_setnotification, null);
         MaterialSpinner zodSpinner = (MaterialSpinner) v.findViewById(R.id.alert_zodiac);
         MaterialSpinner timeSpinner = (MaterialSpinner) v.findViewById(R.id.alert_time);
-        final Switch sw = (Switch)v.findViewById(R.id.alert_switch);
+        final Switch sw = (Switch) v.findViewById(R.id.alert_switch);
         sw.setChecked(isSelectedNotific);
 
-        ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_spinner_item, times);
-        final ArrayAdapter<String> zodAdapter = new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_spinner_item,
+        ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, times);
+        final ArrayAdapter<String> zodAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item,
                 Constants.ZODIAK_NAMES_normal);
 
         zodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -384,17 +402,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiacNotific = Constants.ZODIAK_NAMES_normal[i];
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
 
         timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                timeNotific = i+"";
+                timeNotific = i + "";
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Уведомления")
@@ -411,31 +433,66 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 Calendar calendar = Calendar.getInstance();
 
                                 calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeNotific));//это получить из спинера
-                                calendar.set(Calendar.MINUTE,00);
-                                calendar.set(Calendar.SECOND,00);
+                                calendar.set(Calendar.MINUTE, 00);
+                                calendar.set(Calendar.SECOND, 00);
 
-                                Intent intent = new Intent(getApplicationContext(),Notification_reciever.class);
-                                intent.putExtra("zodiac",zodiacNotific);
-                                intent.putExtra("time",timeNotific);
-                                intent.putExtra("notify",isSelectedNotific);
+                                Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
+                                intent.putExtra("zodiac", zodiacNotific);
+                                intent.putExtra("time", timeNotific);
+                                intent.putExtra("notify", isSelectedNotific);
 
-                                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-                                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-                                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),alarmManager.INTERVAL_DAY,pendingIntent);
-                                if(isSelectedNotific)
-                                    Toast.makeText(getApplicationContext(), "Напоминание установлено на "+timeNotific+":00", Toast.LENGTH_SHORT).show();
+                                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmManager.INTERVAL_DAY, pendingIntent);
+                                if (isSelectedNotific)
+                                    Toast.makeText(getApplicationContext(), "Напоминание установлено на " + timeNotific + ":00", Toast.LENGTH_SHORT).show();
                                 else
                                     Toast.makeText(getApplicationContext(), "Напоминание не установлено", Toast.LENGTH_SHORT).show();
                             }
                         })
                 .setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                dialog.cancel();
-            }
-        });
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
         AlertDialog alert = builder.create();
         alert.show();
     }
 
+    @Override
+    public void registration() {
+        LoginFragment fragment = new LoginFragment();//в дальнейшем
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.fragment_container, fragment, "login_fragment");
+        transaction.commit();
+    }
+
+    @Override
+    public void onStartLoginFragment(String email, String password) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        LoginFragment fragment = new LoginFragment();
+        transaction.replace(R.id.fragment_container, fragment, "loginFragment");
+        transaction.commit();
+        Bundle args = new Bundle();
+        args.putString("email", email);
+        args.putString("password", password);
+        fragment.setArguments(args);
+    }
+
+    @Override
+    public void onStartResetFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        ResetFragment fragment = new ResetFragment();
+        transaction.replace(R.id.fragment_container, fragment, "resetFragment");
+        transaction.commit();
+    }
+
+    @Override
+    public void onStartSignUpFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        SignUpFragment fragment = new SignUpFragment();
+        transaction.replace(R.id.fragment_container, fragment, "signUpFragment");
+        transaction.commit();
+    }
 }
