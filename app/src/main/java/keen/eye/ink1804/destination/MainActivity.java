@@ -401,18 +401,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiacNotific = Constants.ZODIAK_NAMES_normal[i];
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
+
         Data_calculation dc = new Data_calculation();
         int day = mSettings.getInt(Constants.APP_PREF_DAY,1);
         int month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
         String zod = dc.getZodiakName(day, month);
-        //TODO Подумать как сделать сохранение зодиака
-//            zod = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFOCATION,"Овен");
+        if(mSettings.contains(Constants.APP_PREF_ZODIAC_NOTIFOCATION))
+            zod = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFOCATION,"Овен");
         int id = dc.getZodiacId(zod);
         zodSpinner.setSelection(id);
         timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -422,9 +420,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
         String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFOCATION,0+"");
         timeSpinner.setSelection(Integer.parseInt(time));
