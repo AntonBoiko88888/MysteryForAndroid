@@ -105,7 +105,6 @@ public class Data_calculation {
                 }
                 return res;
         }//done
-
         public int getDateId(int day,int month){
                 int res = -1;
                 switch (month) {

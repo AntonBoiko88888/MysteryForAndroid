@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -25,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -49,6 +47,7 @@ import keen.eye.ink1804.destination.Fragments.ResetFragment;
 import keen.eye.ink1804.destination.Fragments.SignUpFragment;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
+import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.Utills.Notification_reciever;
 
 
@@ -64,8 +63,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static int backStackID;
     private SharedPreferences mSettings;
     //    0 - мы на главном фрагменте
-//    1 - один шаг от главного фрагмента
-//    2 - больше одного шага от главного фрагмента
+    //    1 - один шаг от главного фрагмента
+    //    2 - больше одного шага от главного фрагмента
     private static long back_pressed;
 
     @Override
@@ -383,8 +382,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String[] times = new String[]{"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00"
                 , "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
         View v = View.inflate(context, R.layout.alert_setnotification, null);
-        MaterialSpinner zodSpinner = (MaterialSpinner) v.findViewById(R.id.alert_zodiac);
-        MaterialSpinner timeSpinner = (MaterialSpinner) v.findViewById(R.id.alert_time);
+        final MaterialSpinner zodSpinner = (MaterialSpinner) v.findViewById(R.id.alert_zodiac);
+        final MaterialSpinner timeSpinner = (MaterialSpinner) v.findViewById(R.id.alert_time);
         final Switch sw = (Switch) v.findViewById(R.id.alert_switch);
         sw.setChecked(isSelectedNotific);
 
@@ -405,9 +404,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
-
+        Data_calculation dc = new Data_calculation();
+        int day = mSettings.getInt(Constants.APP_PREF_DAY,1);
+        int month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
+        String zod = dc.getZodiakName(day, month);
+        //TODO Подумать как сделать сохранение зодиака
+//            zod = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFOCATION,"Овен");
+        int id = dc.getZodiacId(zod);
+        zodSpinner.setSelection(id);
         timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -416,8 +423,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
+        String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFOCATION,0+"");
+        timeSpinner.setSelection(Integer.parseInt(time));
+
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Уведомления")
                 .setCancelable(true)
@@ -430,6 +441,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 isSelectedNotific = sw.isChecked();
                                 SharedPreferences.Editor editor = mSettings.edit();
                                 editor.putBoolean(Constants.APP_PREF_NOTIFICATIONS, isSelectedNotific);
+                                editor.putString(Constants.APP_PREF_TIME_NOTIFOCATION, timeNotific);
+                                editor.putString(Constants.APP_PREF_ZODIAC_NOTIFOCATION, zodiacNotific);
+                                editor.apply();
                                 Calendar calendar = Calendar.getInstance();
 
                                 calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeNotific));//это получить из спинера
@@ -437,8 +451,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 calendar.set(Calendar.SECOND, 00);
 
                                 Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
-                                intent.putExtra("zodiac", zodiacNotific);
-                                intent.putExtra("time", timeNotific);
+//                                intent.putExtra("zodiac", zodiacNotific);
+//                                intent.putExtra("time", timeNotific);
                                 intent.putExtra("notify", isSelectedNotific);
 
                                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);

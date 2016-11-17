@@ -17,6 +17,8 @@ public class Constants {
     public static final String APP_PREF_IMAGE = "icon";
     public static final String APP_PREF_SOCIONICS = "socionics_type";
     public static final String APP_PREF_NOTIFICATIONS = "doNotifications";
+    public static final String APP_PREF_TIME_NOTIFOCATION = "timeNotification";
+    public static final String APP_PREF_ZODIAC_NOTIFOCATION = "zodiacNotification";
 
     public static final String APP_FIRST_LAUNCH = "first";
 
