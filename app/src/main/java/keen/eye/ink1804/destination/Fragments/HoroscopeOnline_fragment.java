@@ -90,20 +90,20 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        int key = 1;
+        int key = 0;
         switch (view.getId()) {
-            case R.id.aries: key = 1; break;
-            case R.id.taurus: key = 2; break;
-            case R.id.twins: key = 3; break;
-            case R.id.cancer: key = 4; break;
-            case R.id.lion: key = 5; break;
-            case R.id.virgo: key = 6; break;
-            case R.id.libra: key = 7; break;
-            case R.id.scorpio: key = 8; break;
-            case R.id.sagittarius: key = 9; break;
-            case R.id.capricorn: key = 10; break;
-            case R.id.aquarius: key = 11; break;
-            case R.id.fish: key = 12; break;
+            case R.id.aries: key = 0; break;
+            case R.id.taurus: key = 1; break;
+            case R.id.twins: key = 2; break;
+            case R.id.cancer: key = 3; break;
+            case R.id.lion: key = 4; break;
+            case R.id.virgo: key = 5; break;
+            case R.id.libra: key = 6; break;
+            case R.id.scorpio: key = 7; break;
+            case R.id.sagittarius: key = 8; break;
+            case R.id.capricorn: key = 9; break;
+            case R.id.aquarius: key = 10; break;
+            case R.id.fish: key = 11; break;
             default: break;
         }
         try{
@@ -113,13 +113,13 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
                 tv_result.setText("");
                 progressBar.setVisibility(View.VISIBLE);
                 backgroundPressed(key, img_m);
-                setZodiacName(key+2);
-                parser.parseHoroscope(getActivity(), tv_result, key - 1, progressBar);
+                setZodiacName(key);
+                parser.parseHoroscope(getActivity(), tv_result, key, progressBar);
             }
             else {
                 backgroundPressed(key, img_m);
-                setZodiacName(key + 2);
-                tv_result.setText(descriptions.get(key - 1));
+                setZodiacName(key);
+                tv_result.setText(descriptions.get(key));
                 tv_sign_name.setVisibility(View.VISIBLE);
 
             }
@@ -130,7 +130,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
 
     private void backgroundPressed(int i, ImageView[] img_m) {
         setBackgroundBlack();
-        img_m[i-1].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
+        img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
     }
     private void setBackgroundBlack() {
         for (int i = 0; i<img_m.length; i++) {
@@ -138,9 +138,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         }
     }
     private void setZodiacName(int zod) {
-        zod=zod%12;
-        Constants C = new Constants();
-        tv_sign_name.setText(C.ZODIAK_NAMES[zod]);
+        tv_sign_name.setText(Constants.ZODIAK_NAMES_normal[zod]);
     }
 
     private void onMySignClick() {
@@ -148,9 +146,9 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
         int month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         Data_calculation struct_data = new Data_calculation();
-        int j = (struct_data.getDateId(day, month) + 10) % 12;
+        int j = (struct_data.getDateId(day, month) + 9) % 12;
         backgroundPressed(j, img_m);
-        setZodiacName(j +2);
-        parser.parseHoroscope(getActivity(),tv_result, j -1, progressBar);
+        setZodiacName(j);
+        parser.parseHoroscope(getActivity(),tv_result, j, progressBar);
     }
 }
