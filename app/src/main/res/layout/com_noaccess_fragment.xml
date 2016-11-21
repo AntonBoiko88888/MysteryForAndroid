@@ -20,5 +20,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="    Повысить статус    "
-        android:background="@drawable/btn_states_thin"/>
+        android:background="@drawable/btn_states_thin_circ"/>
 </LinearLayout>

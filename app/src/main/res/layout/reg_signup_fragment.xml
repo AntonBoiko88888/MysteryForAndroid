@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/btn_states_thin"
+            android:background="@drawable/btn_states_thin_circ"
             android:text="далее" />
 
         </RelativeLayout>

@@ -14,13 +14,13 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 20.08.16.
  */
-public class Interesting_fragment extends Fragment implements View.OnClickListener{
+public class Interesting extends Fragment implements View.OnClickListener{
 
     private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.interesting_layout_fragment,container,false);
+        rootView = inflater.inflate(R.layout.interesting_fragment,container,false);
         initializeTView();
         return rootView;
     }

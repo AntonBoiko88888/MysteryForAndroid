@@ -4,22 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/back1">
+    android:background="@drawable/background2">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Укажите ваше имя"
-        android:textColor="@color/blue"
-        android:textSize="25sp"
-        android:gravity="center"/>
-    <EditText
-        android:id="@+id/reg_et_name"
-        android:layout_width="150dp"
-        android:inputType="text"
-        android:hint="Имя"
-        android:layout_height="wrap_content" />
-    <TextView
+        android:id="@+id/tv_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
@@ -27,19 +15,19 @@
         android:textSize="25sp"
         android:gravity="center"/>
 
-    <Button
-        android:id="@+id/reg_pick_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/date_picker_selectDate_text"
-        android:background="@drawable/btn_states_thin"/>
-    <TextView
-        android:id="@+id/reg_tv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+            <Button
+                android:id="@+id/picker_btn_pick_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_picker_selectDate_text"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_states_thin_rect"/>
+            <TextView
+                android:id="@+id/picker_tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,14 +44,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
-                android:id="@+id/reg_rb_male"
-                android:checked="true"
+                android:id="@+id/picker_rb_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
+                android:checked="true"
                 android:text="@string/date_picker_man_text"/>
             <RadioButton
-                android:id="@+id/reg_rb_female"
+                android:id="@+id/picker_rb_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
@@ -72,11 +60,11 @@
         </RadioGroup>
     </LinearLayout>
     <Button
-        android:id="@+id/reg_btn_registrate"
+        android:id="@+id/picker_btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/date_picker_onward_text"
-        android:background="@drawable/btn_states_thin"/>
+        android:background="@drawable/btn_states_thin_rect"/>
 
 
 </LinearLayout>

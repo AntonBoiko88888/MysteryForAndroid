@@ -20,13 +20,13 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 28.08.16.
  */
-public class Compatibility_virtual_fragment extends Fragment implements View.OnClickListener {
+public class Com_virtualSign extends Fragment implements View.OnClickListener {
     private View rootView;
     private TextView tv_result,tv_male, tv_female;
     private String male,female;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.comp_virtual_fragment_viewpager, container, false);
+        rootView = inflater.inflate(R.layout.com_virtual_fragment, container, false);
         initViews();
         return rootView;
     }

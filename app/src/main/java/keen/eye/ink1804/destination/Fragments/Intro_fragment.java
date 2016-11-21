@@ -23,7 +23,7 @@ public class Intro_fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_intro,container,false);
+        View root = inflater.inflate(R.layout.intro_fragment,container,false);
         String[] appintr_description = getResources().getStringArray(R.array.appintr_description);
         String[] appintr_description_db = getResources().getStringArray(R.array.appintr_description_db);
         TextView tv_title = (TextView) root.findViewById(R.id.appintr_title);

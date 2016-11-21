@@ -2,15 +2,17 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,11 +30,12 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 20.08.16.
  */
-public class HoroscopeOnline_fragment extends Fragment implements View.OnClickListener{
+public class HoroscopeOnline extends Fragment implements View.OnClickListener{
 
     private ProgressBar progressBar;
     private View rootView;
-    private ImageView[] img_m;
+    private ImageView[] images;
+    private int img_ids[];
     private TextView tv_result, tv_sign_name;
     private HtmlParser parser = new HtmlParser();
     private MainActivity mainActivity = new MainActivity();
@@ -55,34 +58,50 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Гороскоп онлайн");
-        ImageView aries = (ImageView) rootView.findViewById(R.id.aries);
-        aries.setOnClickListener(this);
-        ImageView taurus = (ImageView) rootView.findViewById(R.id.taurus);
-        taurus.setOnClickListener(this);
-        ImageView twins = (ImageView) rootView.findViewById(R.id.twins);
-        twins.setOnClickListener(this);
-        ImageView cancer = (ImageView) rootView.findViewById(R.id.cancer);
-        cancer.setOnClickListener(this);
-        ImageView lion = (ImageView) rootView.findViewById(R.id.lion);
-        lion.setOnClickListener(this);
-        ImageView virgo = (ImageView) rootView.findViewById(R.id.virgo);
-        virgo.setOnClickListener(this);
-        ImageView libra = (ImageView) rootView.findViewById(R.id.libra);
-        libra.setOnClickListener(this);
-        ImageView scorpio = (ImageView) rootView.findViewById(R.id.scorpio);
-        scorpio.setOnClickListener(this);
-        ImageView sagittarius = (ImageView) rootView.findViewById(R.id.sagittarius);
-        sagittarius.setOnClickListener(this);
-        ImageView capricorn = (ImageView) rootView.findViewById(R.id.capricorn);
-        capricorn.setOnClickListener(this);
-        ImageView aquarius = (ImageView) rootView.findViewById(R.id.aquarius);
-        aquarius.setOnClickListener(this);
-        ImageView fish = (ImageView) rootView.findViewById(R.id.fish);
-        fish.setOnClickListener(this);
+        img_ids = new int[]{R.id.aries,R.id.taurus,R.id.twins,R.id.cancer,R.id.lion,R.id.virgo
+                ,R.id.libra,R.id.scorpio,R.id.sagittarius,R.id.capricorn,R.id.aquarius,R.id.fish};
+        images = new ImageView[12];
+        for(int i=0;i<12;i++){
+            Display display = getActivity().getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            Data_calculation dc = new Data_calculation();
+            int width = (size.x-2*dc.dpToPx(5,getActivity()))/4;
+            LinearLayout.LayoutParams gridParams = new LinearLayout.LayoutParams(width, width);
+            GridLayout.LayoutParams imageViewParams = new GridLayout.LayoutParams(gridParams);
+            images[i] = (ImageView) rootView.findViewById(img_ids[i]);
+            images[i].setOnClickListener(this);
+            images[i].setLayoutParams(imageViewParams);
+        }
+//        ImageView aries = (ImageView) rootView.findViewById(R.id.aries);
+//        aries.setOnClickListener(this);
+//        ImageView taurus = (ImageView) rootView.findViewById(R.id.taurus);
+//        taurus.setOnClickListener(this);
+//        ImageView twins = (ImageView) rootView.findViewById(R.id.twins);
+//        twins.setOnClickListener(this);
+//        ImageView cancer = (ImageView) rootView.findViewById(R.id.cancer);
+//        cancer.setOnClickListener(this);
+//        ImageView lion = (ImageView) rootView.findViewById(R.id.lion);
+//        lion.setOnClickListener(this);
+//        ImageView virgo = (ImageView) rootView.findViewById(R.id.virgo);
+//        virgo.setOnClickListener(this);
+//        ImageView libra = (ImageView) rootView.findViewById(R.id.libra);
+//        libra.setOnClickListener(this);
+//        ImageView scorpio = (ImageView) rootView.findViewById(R.id.scorpio);
+//        scorpio.setOnClickListener(this);
+//        ImageView sagittarius = (ImageView) rootView.findViewById(R.id.sagittarius);
+//        sagittarius.setOnClickListener(this);
+//        ImageView capricorn = (ImageView) rootView.findViewById(R.id.capricorn);
+//        capricorn.setOnClickListener(this);
+//        ImageView aquarius = (ImageView) rootView.findViewById(R.id.aquarius);
+//        aquarius.setOnClickListener(this);
+//        ImageView fish = (ImageView) rootView.findViewById(R.id.fish);
+//        fish.setOnClickListener(this);
+//        images = new ImageView[] {aries, taurus, twins, cancer, lion, virgo, libra, scorpio, sagittarius, capricorn, aquarius, fish};
         progressBar = (ProgressBar)rootView.findViewById(R.id.progressbar_horoscope);
         progressBar.setVisibility(ProgressBar.VISIBLE);
-        img_m = new ImageView[] {aries, taurus, twins, cancer, lion, virgo, libra, scorpio, sagittarius, capricorn, aquarius, fish};
         setBackgroundBlack();
+
         tv_result = (TextView)rootView.findViewById(R.id.horOn_tvResult);
         tv_sign_name = (TextView)rootView.findViewById(R.id.sphere_tv_sign_name);
         tv_sign_name.setTypeface(tf);
@@ -112,12 +131,13 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
                 tv_sign_name.setVisibility(View.VISIBLE);
                 tv_result.setText("");
                 progressBar.setVisibility(View.VISIBLE);
-                backgroundPressed(key, img_m);
+                backgroundPressed(key, images);
                 setZodiacName(key);
                 parser.parseHoroscope(getActivity(), tv_result, key, progressBar);
+                HtmlParser.TTL = 0;
             }
             else {
-                backgroundPressed(key, img_m);
+                backgroundPressed(key, images);
                 setZodiacName(key);
                 tv_result.setText(descriptions.get(key));
                 tv_sign_name.setVisibility(View.VISIBLE);
@@ -133,8 +153,8 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
     }
     private void setBackgroundBlack() {
-        for (int i = 0; i<img_m.length; i++) {
-            img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_t));
+        for (int i = 0; i< images.length; i++) {
+            images[i].setImageDrawable(getResources().getDrawable(R.drawable.img_t));
         }
     }
     private void setZodiacName(int zod) {
@@ -147,7 +167,7 @@ public class HoroscopeOnline_fragment extends Fragment implements View.OnClickLi
         int month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         Data_calculation struct_data = new Data_calculation();
         int j = (struct_data.getDateId(day, month) + 9) % 12;
-        backgroundPressed(j, img_m);
+        backgroundPressed(j, images);
         setZodiacName(j);
         parser.parseHoroscope(getActivity(),tv_result, j, progressBar);
     }

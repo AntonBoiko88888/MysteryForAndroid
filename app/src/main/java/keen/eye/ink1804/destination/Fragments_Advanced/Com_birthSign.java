@@ -20,7 +20,7 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 28.08.16.
  */
-public class Compatibility_birth_fragment extends Fragment implements View.OnClickListener {
+public class Com_birthSign extends Fragment implements View.OnClickListener {
 
     private View rootView;
     private ImageView imageView;
@@ -35,7 +35,7 @@ public class Compatibility_birth_fragment extends Fragment implements View.OnCli
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.comp_birth_fragment_viewpager,container,false);
+        rootView = inflater.inflate(R.layout.com_birth_fragment,container,false);
         initViews();
         return rootView;
     }

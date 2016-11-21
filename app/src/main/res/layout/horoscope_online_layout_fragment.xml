@@ -5,7 +5,7 @@
     android:background="@drawable/background1">
     <GridLayout
         android:id="@+id/sphere_grid"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stretchMode="columnWidth"
@@ -19,63 +19,74 @@
             android:id="@+id/aries"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_oven" />
         <ImageView
             android:id="@+id/taurus"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_telec"/>
         <ImageView
             android:id="@+id/twins"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_blizneci"/>
         <ImageView
             android:id="@+id/cancer"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_rak"/>
         <ImageView
             android:id="@+id/lion"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_lev"/>
         <ImageView
             android:id="@+id/virgo"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_deva"/>
         <ImageView
             android:id="@+id/libra"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_vesi"/>
         <ImageView
             android:id="@+id/scorpio"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_skorpion"/>
         <ImageView
             android:id="@+id/sagittarius"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_strelec"/>
         <ImageView
             android:id="@+id/capricorn"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_kozerog"/>
         <ImageView
             android:id="@+id/aquarius"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_vodoley"/>
         <ImageView
             android:id="@+id/fish"
             android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
+            android:scaleType="fitXY"
             android:background="@drawable/hor_fish"/>
-
     </GridLayout>
     <TextView
         android:id="@+id/sphere_tv_sign_name"

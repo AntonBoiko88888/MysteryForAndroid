@@ -7,7 +7,7 @@
     <dimen name="profileTextSize">23sp</dimen>
     <dimen name="profileDataTextSize">33sp</dimen>
     <dimen name="profile_layout_paddingTop">15dp</dimen>
-    <dimen name="interestingTextSize">18sp</dimen>
+    <dimen name="interestingTextSize">16sp</dimen>
     <dimen name="acc_width_img">130dp</dimen>
     <dimen name="acc_height_img">130dp</dimen>
 

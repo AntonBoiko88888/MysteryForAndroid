@@ -14,13 +14,13 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 08.08.16.
  */
-public class ProfileDetails_fragment extends Fragment {
+public class Details extends Fragment {
 
     private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.profile_details_layout_fragment,container,false);
+        rootView = inflater.inflate(R.layout.details_fragment,container,false);
         fillData();
         return rootView;
     }

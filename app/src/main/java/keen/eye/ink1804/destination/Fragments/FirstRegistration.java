@@ -23,7 +23,7 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 17.08.16.
  */
-public class Registration_fragment extends Fragment implements View.OnClickListener {
+public class FirstRegistration extends Fragment implements View.OnClickListener {
     private TextView tv_date;
     private EditText et_name;
     private DatePickerPopWin pickerPopWin;
@@ -33,7 +33,7 @@ public class Registration_fragment extends Fragment implements View.OnClickListe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.registration_layout_fragment,container,false);
+        rootView = inflater.inflate(R.layout.firstreg_fragment,container,false);
         createDatePicker();
         initializeTView();
         return rootView;

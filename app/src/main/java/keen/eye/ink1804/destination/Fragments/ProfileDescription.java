@@ -19,7 +19,7 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 29.07.16.
  */
-public class ProfileDescription_fragment extends Fragment implements View.OnClickListener{
+public class ProfileDescription extends Fragment implements View.OnClickListener{
 
     private TextView tv_year, tv_zodiac, tv_virtual_type, tv_year_number, tv_year_period, tv_fate_symbol
             , tv_energy, tv_communicate, tv_psychology, tv_type_of_thinking, tv_vector_host
@@ -35,7 +35,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView  = inflater.inflate(R.layout.profile_description_layout_fragment,container,false);
+        rootView  = inflater.inflate(R.layout.profile_description_fragment,container,false);
         initializeTView();
         fillInfo();
         return rootView;
@@ -127,7 +127,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         String text = _text;
         String value = _value;
         text = String.format("&#149;<u><i>%s</i></u>",text);
-        value = String.format("<b>%s</b>;",value);
+        value = String.format("<b>%s</b>",value);
         return Html.fromHtml(text+" "+value);
     }
     @Override

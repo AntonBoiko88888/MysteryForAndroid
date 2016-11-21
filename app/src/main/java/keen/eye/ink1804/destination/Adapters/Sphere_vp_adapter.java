@@ -5,24 +5,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import keen.eye.ink1804.destination.Fragments.Relationship_description_fragment;
-import keen.eye.ink1804.destination.Fragments.SphereDescription_fragment;
-import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_birth_fragment;
-import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_relations_fragment;
-import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_virtual_fragment;
-import keen.eye.ink1804.destination.Fragments_Advanced.Compatibility_zodiac_fragment;
-import keen.eye.ink1804.destination.Fragments_Advanced.NoAccess_fragment;
+import keen.eye.ink1804.destination.Fragments.Socionics;
+import keen.eye.ink1804.destination.Fragments.SphereDescription;
+import keen.eye.ink1804.destination.Fragments_Advanced.Com_birthSign;
+import keen.eye.ink1804.destination.Fragments_Advanced.Com_socionics;
+import keen.eye.ink1804.destination.Fragments_Advanced.Com_virtualSign;
+import keen.eye.ink1804.destination.Fragments_Advanced.Com_zodiacSign;
+import keen.eye.ink1804.destination.Fragments_Advanced.NoAccess;
 
 /**
  * Created by Ink1804 on 14.08.16.
  */
-public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
+public class Sphere_vp_adapter extends FragmentStatePagerAdapter {
 
     private String[] btnTextArray;
     private int type;
     private boolean access;
 
-    public ViewPager_Description_adapter(FragmentManager fm, String[] _btnTextArray, int _type, boolean _access) {
+    public Sphere_vp_adapter(FragmentManager fm, String[] _btnTextArray, int _type, boolean _access) {
         super(fm);
         btnTextArray = _btnTextArray;
         type = _type;
@@ -41,9 +41,9 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
         Bundle args = new Bundle();
         if(position==0) {
             if(type == 3)
-                fragment = new Relationship_description_fragment();
+                fragment = new Socionics();
             else {
-                fragment = new SphereDescription_fragment();
+                fragment = new SphereDescription();
                 args.putStringArray("btnTextArray", btnTextArray);
             }
         }
@@ -51,21 +51,21 @@ public class ViewPager_Description_adapter extends FragmentStatePagerAdapter {
             if(access)
             switch (type) {
                 case 0:
-                    fragment = new Compatibility_zodiac_fragment();
+                    fragment = new Com_zodiacSign();
                     break;
                 case 1:
-                    fragment = new Compatibility_birth_fragment();
+                    fragment = new Com_birthSign();
                     break;
                 case 2:
-                    fragment = new Compatibility_virtual_fragment();
+                    fragment = new Com_virtualSign();
                     break;
                 case 3:
-                    fragment = new Compatibility_relations_fragment();
+                    fragment = new Com_socionics();
                     break;
                 default:break;
             }
             else
-                fragment = new NoAccess_fragment();
+                fragment = new NoAccess();
         }
             fragment.setArguments(args);
         return fragment;

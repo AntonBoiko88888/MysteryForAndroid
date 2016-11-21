@@ -12,13 +12,13 @@ import keen.eye.ink1804.destination.R;
  * Created by Ink1804 on 23.09.16.
  */
 
-public class NoAccess_fragment extends Fragment {
+public class NoAccess extends Fragment {
 
     private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.comp_noaccess_fragment_viewpager, container, false);
+        rootView = inflater.inflate(R.layout.com_noaccess_fragment, container, false);
         return rootView;
     }
 }

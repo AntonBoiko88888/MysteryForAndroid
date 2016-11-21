@@ -1,41 +1,45 @@
 package keen.eye.ink1804.destination.Math;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+
 /**
  * Created by Ink1804 on 29.07.16.
  */
 public class Data_calculation {
-        static Constants C = new Constants();
+//        static Constants Constants = new Constants();
         public static final String[][] StructureHorADMIN = {
-                {C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN},//обезьяна
-                {C.KING,C.KING+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING},//петух
-                {C.VECTOR,C.VECTOR+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.VECTOR},//собака
-                {C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT},//кабан
-                {C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.ARISTOCRAT},//крыса
-                {C.PROFESSOR,C.PROFESSOR+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR},//бык
-                {C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.LEADER},//тигр
-                {C.VECTOR,C.VECTOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.VECTOR},//кот
-                {C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER},//дракон
-                {C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.VECTOR,C.VECTOR,C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.PROFESSOR},//змея
-                {C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.VECTOR,C.VECTOR,C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT,C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT},//лошадь
-                {C.KNIGHT,C.KNIGHT+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.LEADER,C.LEADER,C.LEADER+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.PROFESSOR,C.PROFESSOR,C.PROFESSOR+"+"+C.ARISTOCRAT,C.ARISTOCRAT,C.ARISTOCRAT+"+"+C.VECTOR,C.VECTOR,C.VECTOR+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KING,C.KING,C.KING+"+"+C.CLOWN,C.CLOWN,C.CLOWN+"+"+C.KNIGHT},//коза
+                {Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN},//обезьяна
+                {Constants.KING, Constants.KING+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING},//петух
+                {Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.VECTOR},//собака
+                {Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT},//кабан
+                {Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.ARISTOCRAT},//крыса
+                {Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR},//бык
+                {Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.LEADER},//тигр
+                {Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.VECTOR},//кот
+                {Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER},//дракон
+                {Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.PROFESSOR},//змея
+                {Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT},//лошадь
+                {Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT},//коза
         };public static final String[][] StructureHor = {
-                {C.CLOWN,C.KNIGHT,C.ARISTOCRAT,C.VECTOR,C.LEADER,C.ARISTOCRAT,C.LEADER,C.PROFESSOR,C.VECTOR,C.KNIGHT,C.CLOWN,C.KING},//обезьяна
-                {C.KING,C.VECTOR,C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR,C.LEADER,C.VECTOR,C.LEADER,C.PROFESSOR,C.ARISTOCRAT,C.KNIGHT,C.CLOWN},//петух
-                {C.VECTOR,C.KING,C.CLOWN,C.KNIGHT,C.VECTOR,C.PROFESSOR,C.LEADER,C.ARISTOCRAT,C.LEADER,C.PROFESSOR,C.ARISTOCRAT,C.KNIGHT},//собака
-                {C.KNIGHT,C.CLOWN,C.KING,C.CLOWN,C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR,C.VECTOR,C.ARISTOCRAT,C.VECTOR,C.PROFESSOR,C.ARISTOCRAT},//кабан
-                {C.ARISTOCRAT,C.KNIGHT,C.CLOWN,C.KING,C.CLOWN,C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR,C.LEADER,C.VECTOR,C.LEADER,C.VECTOR},//крыса
-                {C.PROFESSOR,C.VECTOR,C.KNIGHT,C.CLOWN,C.KING,C.VECTOR,C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR,C.LEADER,C.ARISTOCRAT,C.LEADER},//бык
-                {C.LEADER,C.PROFESSOR,C.ARISTOCRAT,C.KNIGHT,C.VECTOR,C.KING,C.CLOWN,C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR,C.VECTOR,C.ARISTOCRAT},//тигр
-                {C.VECTOR,C.LEADER,C.PROFESSOR,C.ARISTOCRAT,C.KNIGHT,C.CLOWN,C.KING,C.VECTOR,C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR,C.LEADER},//кот
-                {C.LEADER,C.ARISTOCRAT,C.VECTOR,C.PROFESSOR,C.ARISTOCRAT,C.KNIGHT,C.VECTOR,C.KING,C.CLOWN,C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR},//дракон
-                {C.PROFESSOR,C.LEADER,C.ARISTOCRAT,C.LEADER,C.PROFESSOR,C.ARISTOCRAT,C.KNIGHT,C.CLOWN,C.KING,C.CLOWN,C.VECTOR,C.VECTOR,C.VECTOR,},//змея
-                {C.ARISTOCRAT,C.PROFESSOR,C.VECTOR,C.VECTOR,C.VECTOR,C.LEADER,C.PROFESSOR,C.ARISTOCRAT,C.KNIGHT,C.CLOWN,C.KING,C.CLOWN,C.KNIGHT,},//лошадь
-                {C.KNIGHT,C.ARISTOCRAT,C.PROFESSOR,C.LEADER,C.ARISTOCRAT,C.VECTOR,C.PROFESSOR,C.ARISTOCRAT,C.VECTOR,C.CLOWN,C.KING,C.CLOWN},//коза
+                {Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.VECTOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER, Constants.PROFESSOR, Constants.VECTOR, Constants.KNIGHT, Constants.CLOWN, Constants.KING},//обезьяна
+                {Constants.KING, Constants.VECTOR, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER, Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN},//петух
+                {Constants.VECTOR, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.VECTOR, Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT},//собака
+                {Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.VECTOR, Constants.ARISTOCRAT, Constants.VECTOR, Constants.PROFESSOR, Constants.ARISTOCRAT},//кабан
+                {Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER, Constants.VECTOR, Constants.LEADER, Constants.VECTOR},//крыса
+                {Constants.PROFESSOR, Constants.VECTOR, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.VECTOR, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER},//бык
+                {Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.VECTOR, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.VECTOR, Constants.ARISTOCRAT},//тигр
+                {Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.VECTOR, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER},//кот
+                {Constants.LEADER, Constants.ARISTOCRAT, Constants.VECTOR, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.VECTOR, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR},//дракон
+                {Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR,},//змея
+                {Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.KNIGHT,},//лошадь
+                {Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.VECTOR, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.VECTOR, Constants.CLOWN, Constants.KING, Constants.CLOWN},//коза
         };public static final String[][] YearPeriod = {
-                {C.P_PRESENTATION, C.P_OVERCOMING,   C.P_DISCUISE,     C.P_EASE},//Логики
-                {C.P_EASE,         C.P_PRESENTATION, C.P_OVERCOMING,   C.P_DISCUISE},//Волевики
-                {C.P_DISCUISE,     C.P_EASE,         C.P_PRESENTATION, C.P_OVERCOMING},//Реалисты
-                {C.P_OVERCOMING,   C.P_DISCUISE,     C.P_EASE,         C.P_PRESENTATION},//Мистики
+                {Constants.P_PRESENTATION, Constants.P_OVERCOMING,   Constants.P_DISCUISE,     Constants.P_EASE},//Логики
+                {Constants.P_EASE,         Constants.P_PRESENTATION, Constants.P_OVERCOMING,   Constants.P_DISCUISE},//Волевики
+                {Constants.P_DISCUISE,     Constants.P_EASE,         Constants.P_PRESENTATION, Constants.P_OVERCOMING},//Реалисты
+                {Constants.P_OVERCOMING,   Constants.P_DISCUISE,     Constants.P_EASE,         Constants.P_PRESENTATION},//Мистики
         };
 
         public int getDateIdAdmin(int day,int month){
@@ -165,7 +169,7 @@ public class Data_calculation {
         }//done
         public String getYearName(int year){
                 String yearName="";
-                yearName = C.YEAR_NAMES[year%12];
+                yearName = Constants.YEAR_NAMES[year%12];
                 return yearName;
         }//done
         public String getNumberYear(int yearNow, int month, int day){ // Возвращает число года
@@ -174,7 +178,7 @@ public class Data_calculation {
                 numberYear = SummChislo(numberYear);
                 return String.valueOf(numberYear);
         }//done
-        public int SummChislo(int Chislo) { // Суммирует каждую цифру числа
+        private int SummChislo(int Chislo) { // Суммирует каждую цифру числа
                 int res = 0;
                         for (int i = 0; i < 4; i++) {
                                 res += Chislo % 10;
@@ -185,58 +189,58 @@ public class Data_calculation {
         }//done
         public String getMeansCommunicateName(int year) {
                 String res = "";
-                if(year==1||year==4||year==7||year==10) res = C.MEANS_COMMUNICATE_NAMES[0];
-                else if(year==0||year==3||year==6||year==9) res = C.MEANS_COMMUNICATE_NAMES[1];
-                else if(year==2||year==5||year==8||year==11) res = C.MEANS_COMMUNICATE_NAMES[2];
+                if(year==1||year==4||year==7||year==10) res = Constants.MEANS_COMMUNICATE_NAMES[0];
+                else if(year==0||year==3||year==6||year==9) res = Constants.MEANS_COMMUNICATE_NAMES[1];
+                else if(year==2||year==5||year==8||year==11) res = Constants.MEANS_COMMUNICATE_NAMES[2];
                 return res;
         }
         public String getPsychologyName(int year) {
                 String res = "";
-                if(year==0||year==1||year==2) res = C.PSYCHOLOGY_NAMES[0];
-                else if(year==3||year==4||year==5) res = C.PSYCHOLOGY_NAMES[1];
-                else if(year==6||year==7||year==8) res = C.PSYCHOLOGY_NAMES[2];
-                else if(year==9||year==10||year==11) res = C.PSYCHOLOGY_NAMES[3];
+                if(year==0||year==1||year==2) res = Constants.PSYCHOLOGY_NAMES[0];
+                else if(year==3||year==4||year==5) res = Constants.PSYCHOLOGY_NAMES[1];
+                else if(year==6||year==7||year==8) res = Constants.PSYCHOLOGY_NAMES[2];
+                else if(year==9||year==10||year==11) res = Constants.PSYCHOLOGY_NAMES[3];
                 return res;
         }
         public String getElementName(int day, int month) {
                 String elementName = "";
                 switch (month){
                         case 1:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[3]; else elementName = C.ELEMENT_NAMES[1]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[3]; else elementName = Constants.ELEMENT_NAMES[1]; break;
                         case 2:
-                                if(day>=21) elementName = C.ELEMENT_NAMES[0]; else elementName = C.ELEMENT_NAMES[3]; break;
+                                if(day>=21) elementName = Constants.ELEMENT_NAMES[0]; else elementName = Constants.ELEMENT_NAMES[3]; break;
                         case 3:
-                                if(day>=23) elementName = C.ELEMENT_NAMES[2]; else elementName = C.ELEMENT_NAMES[0]; break;
+                                if(day>=23) elementName = Constants.ELEMENT_NAMES[2]; else elementName = Constants.ELEMENT_NAMES[0]; break;
                         case 4:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[1]; else elementName = C.ELEMENT_NAMES[2]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[1]; else elementName = Constants.ELEMENT_NAMES[2]; break;
                         case 5:
-                                if(day>=23) elementName = C.ELEMENT_NAMES[3]; else elementName = C.ELEMENT_NAMES[1]; break;
+                                if(day>=23) elementName = Constants.ELEMENT_NAMES[3]; else elementName = Constants.ELEMENT_NAMES[1]; break;
                         case 6:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[0]; else elementName = C.ELEMENT_NAMES[3]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[0]; else elementName = Constants.ELEMENT_NAMES[3]; break;
                         case 7:
-                                if(day>=23) elementName = C.ELEMENT_NAMES[2]; else elementName = C.ELEMENT_NAMES[0]; break;
+                                if(day>=23) elementName = Constants.ELEMENT_NAMES[2]; else elementName = Constants.ELEMENT_NAMES[0]; break;
                         case 8:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[1]; else elementName = C.ELEMENT_NAMES[2]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[1]; else elementName = Constants.ELEMENT_NAMES[2]; break;
                         case 9:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[3]; else elementName = C.ELEMENT_NAMES[1]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[3]; else elementName = Constants.ELEMENT_NAMES[1]; break;
                         case 10:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[0]; else elementName = C.ELEMENT_NAMES[3]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[0]; else elementName = Constants.ELEMENT_NAMES[3]; break;
                         case 11:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[2]; else elementName = C.ELEMENT_NAMES[0]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[2]; else elementName = Constants.ELEMENT_NAMES[0]; break;
                         case 12:
-                                if(day>=22) elementName = C.ELEMENT_NAMES[1]; else elementName = C.ELEMENT_NAMES[2]; break;
+                                if(day>=22) elementName = Constants.ELEMENT_NAMES[1]; else elementName = Constants.ELEMENT_NAMES[2]; break;
                         default: break;
                 }
                 return elementName;
         }
         public String getHostName(int year) {
                 String res;
-                res = C.YEAR_HOST_NAMES[year];
+                res = Constants.YEAR_HOST_NAMES[year];
                 return res;
         }//done
         public String getServantName(int year) {
                 String res;
-                res = C.YEAR_SERVANT_NAMES[year];
+                res = Constants.YEAR_SERVANT_NAMES[year];
                 return res;
         }//done
         public int getYearIdTable(int yearNow) {
@@ -278,61 +282,61 @@ public class Data_calculation {
         public String getTypeThinkingNames(boolean man, int year){ // Возвращает тип мышления
                 String typeThinking="";
                 if(man) {
-                        if(year==1||year==5||year==9) typeThinking = C.TYPE_THINKING_NAMES[0];
-                        else if(year==2||year==6||year==10) typeThinking = C.TYPE_THINKING_NAMES[1];
-                        else if(year==3||year==7||year==11) typeThinking = C.TYPE_THINKING_NAMES[2];
-                        else if(year==0||year==4||year==8) typeThinking = C.TYPE_THINKING_NAMES[3];
+                        if(year==1||year==5||year==9) typeThinking = Constants.TYPE_THINKING_NAMES[0];
+                        else if(year==2||year==6||year==10) typeThinking = Constants.TYPE_THINKING_NAMES[1];
+                        else if(year==3||year==7||year==11) typeThinking = Constants.TYPE_THINKING_NAMES[2];
+                        else if(year==0||year==4||year==8) typeThinking = Constants.TYPE_THINKING_NAMES[3];
                 } else {
-                        if(year==2||year==6||year==10) typeThinking = C.TYPE_THINKING_NAMES[0];
-                        else if(year==1||year==5||year==9) typeThinking = C.TYPE_THINKING_NAMES[1];
-                        else if(year==0||year==4||year==8) typeThinking = C.TYPE_THINKING_NAMES[2];
-                        else if(year==3||year==7||year==11) typeThinking = C.TYPE_THINKING_NAMES[3];
+                        if(year==2||year==6||year==10) typeThinking = Constants.TYPE_THINKING_NAMES[0];
+                        else if(year==1||year==5||year==9) typeThinking = Constants.TYPE_THINKING_NAMES[1];
+                        else if(year==0||year==4||year==8) typeThinking = Constants.TYPE_THINKING_NAMES[2];
+                        else if(year==3||year==7||year==11) typeThinking = Constants.TYPE_THINKING_NAMES[3];
                 }
                 return typeThinking;
         }//done
         public String getEnergyName(int year){ //вычисление темперамента(сангвиник, холерик...)
                 String EnergyName="";
-                if(year==3||year==5||year==10) EnergyName = C.ENERGY_STRUCTURE_NAMES[0];
-                else if(year==4||year==9||year==11) EnergyName = C.ENERGY_STRUCTURE_NAMES[1];
-                else if(year==1||year==6||year==8) EnergyName = C.ENERGY_STRUCTURE_NAMES[2];
-                else if(year==0||year==2||year==7) EnergyName = C.ENERGY_STRUCTURE_NAMES[3];
+                if(year==3||year==5||year==10) EnergyName = Constants.ENERGY_STRUCTURE_NAMES[0];
+                else if(year==4||year==9||year==11) EnergyName = Constants.ENERGY_STRUCTURE_NAMES[1];
+                else if(year==1||year==6||year==8) EnergyName = Constants.ENERGY_STRUCTURE_NAMES[2];
+                else if(year==0||year==2||year==7) EnergyName = Constants.ENERGY_STRUCTURE_NAMES[3];
                 return EnergyName;
         }//done
         public String getSymbolFate(int year){ //вычисление Знака судьбы
                 String SymbolFate="";
-                if(year==1||year==3||year==11) SymbolFate = C.SYMBOL_FATE_NAMES[0];
-                else if(year==2||year==4||year==6) SymbolFate = C.SYMBOL_FATE_NAMES[1];
-                else if(year==5||year==7||year==9) SymbolFate = C.SYMBOL_FATE_NAMES[2];
-                else if(year==0||year==8||year==10) SymbolFate = C.SYMBOL_FATE_NAMES[3];
+                if(year==1||year==3||year==11) SymbolFate = Constants.SYMBOL_FATE_NAMES[0];
+                else if(year==2||year==4||year==6) SymbolFate = Constants.SYMBOL_FATE_NAMES[1];
+                else if(year==5||year==7||year==9) SymbolFate = Constants.SYMBOL_FATE_NAMES[2];
+                else if(year==0||year==8||year==10) SymbolFate = Constants.SYMBOL_FATE_NAMES[3];
                 return SymbolFate;
         }//done
         public String getZodiakName(int day,int month){
                 String zodiakName = "";
                 switch (month){
                         case 1:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[1]; else zodiakName = C.ZODIAK_NAMES[0]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[1]; else zodiakName = Constants.ZODIAK_NAMES[0]; break;
                         case 2:
-                                if(day>=21) zodiakName = C.ZODIAK_NAMES[2]; else zodiakName = C.ZODIAK_NAMES[1]; break;
+                                if(day>=21) zodiakName = Constants.ZODIAK_NAMES[2]; else zodiakName = Constants.ZODIAK_NAMES[1]; break;
                         case 3:
-                                if(day>=23) zodiakName = C.ZODIAK_NAMES[3]; else zodiakName = C.ZODIAK_NAMES[2]; break;
+                                if(day>=23) zodiakName = Constants.ZODIAK_NAMES[3]; else zodiakName = Constants.ZODIAK_NAMES[2]; break;
                         case 4:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[4]; else zodiakName = C.ZODIAK_NAMES[3]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[4]; else zodiakName = Constants.ZODIAK_NAMES[3]; break;
                         case 5:
-                                if(day>=23) zodiakName = C.ZODIAK_NAMES[5]; else zodiakName = C.ZODIAK_NAMES[4]; break;
+                                if(day>=23) zodiakName = Constants.ZODIAK_NAMES[5]; else zodiakName = Constants.ZODIAK_NAMES[4]; break;
                         case 6:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[6]; else zodiakName = C.ZODIAK_NAMES[5]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[6]; else zodiakName = Constants.ZODIAK_NAMES[5]; break;
                         case 7:
-                                if(day>=23) zodiakName = C.ZODIAK_NAMES[7]; else zodiakName = C.ZODIAK_NAMES[6]; break;
+                                if(day>=23) zodiakName = Constants.ZODIAK_NAMES[7]; else zodiakName = Constants.ZODIAK_NAMES[6]; break;
                         case 8:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[8]; else zodiakName = C.ZODIAK_NAMES[7]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[8]; else zodiakName = Constants.ZODIAK_NAMES[7]; break;
                         case 9:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[9]; else zodiakName = C.ZODIAK_NAMES[8]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[9]; else zodiakName = Constants.ZODIAK_NAMES[8]; break;
                         case 10:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[10]; else zodiakName = C.ZODIAK_NAMES[9]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[10]; else zodiakName = Constants.ZODIAK_NAMES[9]; break;
                         case 11:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[11]; else zodiakName = C.ZODIAK_NAMES[10]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[11]; else zodiakName = Constants.ZODIAK_NAMES[10]; break;
                         case 12:
-                                if(day>=22) zodiakName = C.ZODIAK_NAMES[0]; else zodiakName = C.ZODIAK_NAMES[11]; break;
+                                if(day>=22) zodiakName = Constants.ZODIAK_NAMES[0]; else zodiakName = Constants.ZODIAK_NAMES[11]; break;
                         default: break;
                 }
                 return zodiakName;
@@ -346,72 +350,72 @@ public class Data_calculation {
         public String getEqualMarriage(int year) {
                 String res = "";
                 switch (year) {
-                        case 0:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
-                        case 1:res = C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 2:res = C.YEAR_NAMES[9]; break;
-                        case 3:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]; break;
-                        case 4:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
-                        case 5:res = C.YEAR_NAMES[10]; break;
-                        case 6:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[9]; break;
-                        case 7:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]; break;
-                        case 8:res = C.YEAR_NAMES[11]; break;
-                        case 9:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 10:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 11:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
+                        case 0:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 1:res = Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 2:res = Constants.YEAR_NAMES[9]; break;
+                        case 3:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]; break;
+                        case 4:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 5:res = Constants.YEAR_NAMES[10]; break;
+                        case 6:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 7:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]; break;
+                        case 8:res = Constants.YEAR_NAMES[11]; break;
+                        case 9:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 10:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 11:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
                 }
                 return res;
         }//done
         public String getRomanticMarriage(int year) {
                 String res = "";
                 switch (year) {
-                        case 0:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 1:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[11]; break;
-                        case 2:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
-                        case 3:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 4:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]; break;
-                        case 5:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
-                        case 6:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
-                        case 7:res = C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 8:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 9:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]; break;
-                        case 10:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[8]; break;
-                        case 11:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]; break;
+                        case 0:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 1:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 2:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 3:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 4:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]; break;
+                        case 5:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 6:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 7:res = Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 8:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 9:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]; break;
+                        case 10:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 11:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]; break;
                 }
                 return res;
         }//done
         public String getSpiritualMarriage(int year) {
                 String res = "";
                 switch (year) {
-                        case 0:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]; break;
-                        case 1:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
-                        case 2:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
-                        case 3:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]; break;
-                        case 4:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 5:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
-                        case 6:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]; break;
-                        case 7:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 8:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 9:res = C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
-                        case 10:res = C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
-                        case 11:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[10]; break;
+                        case 0:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]; break;
+                        case 1:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 2:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 3:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]; break;
+                        case 4:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 5:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 6:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]; break;
+                        case 7:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 8:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 9:res = Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 10:res = Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 11:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[10]; break;
                 }
                 return res;
         }//done
         public String getPatriarchalMarriage(int year) {
                 String res = "";
                 switch (year) {
-                        case 0:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[8]; break;
-                        case 1:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 2:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 3:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
-                        case 4:res = C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
-                        case 5:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 6:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 7:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
-                        case 8:res = C.YEAR_NAMES[0]+", "+C.YEAR_NAMES[4]+", "+C.YEAR_NAMES[8]; break;
-                        case 9:res = C.YEAR_NAMES[1]+", "+C.YEAR_NAMES[5]+", "+C.YEAR_NAMES[9]; break;
-                        case 10:res = C.YEAR_NAMES[2]+", "+C.YEAR_NAMES[6]+", "+C.YEAR_NAMES[10]; break;
-                        case 11:res = C.YEAR_NAMES[3]+", "+C.YEAR_NAMES[7]+", "+C.YEAR_NAMES[11]; break;
+                        case 0:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 1:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 2:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 3:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 4:res = Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 5:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 6:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 7:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
+                        case 8:res = Constants.YEAR_NAMES[0]+", "+ Constants.YEAR_NAMES[4]+", "+ Constants.YEAR_NAMES[8]; break;
+                        case 9:res = Constants.YEAR_NAMES[1]+", "+ Constants.YEAR_NAMES[5]+", "+ Constants.YEAR_NAMES[9]; break;
+                        case 10:res = Constants.YEAR_NAMES[2]+", "+ Constants.YEAR_NAMES[6]+", "+ Constants.YEAR_NAMES[10]; break;
+                        case 11:res = Constants.YEAR_NAMES[3]+", "+ Constants.YEAR_NAMES[7]+", "+ Constants.YEAR_NAMES[11]; break;
                 }
                 return res;
         }//done
@@ -419,57 +423,57 @@ public class Data_calculation {
                 String res = "";
 
                 switch (year) {
-                        case 0:res = "Хозяин: "+C.YEAR_NAMES[9]+", Слуга: "+C.YEAR_NAMES[4]; break;
-                        case 1:res = "Хозяин: "+C.YEAR_NAMES[7]+", Слуга: "+C.YEAR_NAMES[2]; break;
-                        case 2:res = "Хозяин: "+C.YEAR_NAMES[1]+", Слуга: "+C.YEAR_NAMES[5]; break;
-                        case 3:res = "Хозяин: "+C.YEAR_NAMES[10]+", Слуга: "+C.YEAR_NAMES[8]; break;
-                        case 4:res = "Хозяин: "+C.YEAR_NAMES[0]+", Слуга: "+C.YEAR_NAMES[10]; break;
-                        case 5:res = "Хозяин: "+C.YEAR_NAMES[2]+", Слуга: "+C.YEAR_NAMES[6]; break;
-                        case 6:res = "Хозяин: "+C.YEAR_NAMES[5]+", Слуга: "+C.YEAR_NAMES[11]; break;
-                        case 7:res = "Хозяин: "+C.YEAR_NAMES[8]+", Слуга: "+C.YEAR_NAMES[1]; break;
-                        case 8:res = "Хозяин: "+C.YEAR_NAMES[3]+", Слуга: "+C.YEAR_NAMES[7]; break;
-                        case 9:res = "Хозяин: "+C.YEAR_NAMES[11]+", Слуга: "+C.YEAR_NAMES[0]; break;
-                        case 10:res = "Хозяин: "+C.YEAR_NAMES[4]+", Слуга: "+C.YEAR_NAMES[3]; break;
-                        case 11:res = "Хозяин: "+C.YEAR_NAMES[6]+", Слуга: "+C.YEAR_NAMES[9]; break;
+                        case 0:res = "Хозяин: "+ Constants.YEAR_NAMES[9]+", Слуга: "+ Constants.YEAR_NAMES[4]; break;
+                        case 1:res = "Хозяин: "+ Constants.YEAR_NAMES[7]+", Слуга: "+ Constants.YEAR_NAMES[2]; break;
+                        case 2:res = "Хозяин: "+ Constants.YEAR_NAMES[1]+", Слуга: "+ Constants.YEAR_NAMES[5]; break;
+                        case 3:res = "Хозяин: "+ Constants.YEAR_NAMES[10]+", Слуга: "+ Constants.YEAR_NAMES[8]; break;
+                        case 4:res = "Хозяин: "+ Constants.YEAR_NAMES[0]+", Слуга: "+ Constants.YEAR_NAMES[10]; break;
+                        case 5:res = "Хозяин: "+ Constants.YEAR_NAMES[2]+", Слуга: "+ Constants.YEAR_NAMES[6]; break;
+                        case 6:res = "Хозяин: "+ Constants.YEAR_NAMES[5]+", Слуга: "+ Constants.YEAR_NAMES[11]; break;
+                        case 7:res = "Хозяин: "+ Constants.YEAR_NAMES[8]+", Слуга: "+ Constants.YEAR_NAMES[1]; break;
+                        case 8:res = "Хозяин: "+ Constants.YEAR_NAMES[3]+", Слуга: "+ Constants.YEAR_NAMES[7]; break;
+                        case 9:res = "Хозяин: "+ Constants.YEAR_NAMES[11]+", Слуга: "+ Constants.YEAR_NAMES[0]; break;
+                        case 10:res = "Хозяин: "+ Constants.YEAR_NAMES[4]+", Слуга: "+ Constants.YEAR_NAMES[3]; break;
+                        case 11:res = "Хозяин: "+ Constants.YEAR_NAMES[6]+", Слуга: "+ Constants.YEAR_NAMES[9]; break;
                 }
                 return res;
         }
         public String getVirtualPointsName(String vir1, String vir2) {
                 String res = "";
                 String five = "5 (Отлично)", four = "4 (Хорошо)", three = "3 (Нормально)";
-                if(vir1.equals(C.KING)) {
-                    if(vir2.equals(C.KING) || vir2.equals(C.CLOWN)) res = five;
-                    else if(vir2.equals(C.LEADER) || vir2.equals(C.VECTOR)) res = three;
+                if(vir1.equals(Constants.KING)) {
+                    if(vir2.equals(Constants.KING) || vir2.equals(Constants.CLOWN)) res = five;
+                    else if(vir2.equals(Constants.LEADER) || vir2.equals(Constants.VECTOR)) res = three;
                         else res = four;
                 }
-                else if(vir1.equals(C.ARISTOCRAT)) {
-                        if(vir2.equals(C.KNIGHT) || vir2.equals(C.CLOWN)) res = five;
-                        else if(vir2.equals(C.PROFESSOR) || vir2.equals(C.VECTOR)) res = three;
+                else if(vir1.equals(Constants.ARISTOCRAT)) {
+                        if(vir2.equals(Constants.KNIGHT) || vir2.equals(Constants.CLOWN)) res = five;
+                        else if(vir2.equals(Constants.PROFESSOR) || vir2.equals(Constants.VECTOR)) res = three;
                         else res = four;
                 }
-                else if(vir1.equals(C.KNIGHT)) {
-                        if(vir2.equals(C.ARISTOCRAT) || vir2.equals(C.VECTOR)) res = five;
-                        else if(vir2.equals(C.KNIGHT) || vir2.equals(C.PROFESSOR)) res = three;
+                else if(vir1.equals(Constants.KNIGHT)) {
+                        if(vir2.equals(Constants.ARISTOCRAT) || vir2.equals(Constants.VECTOR)) res = five;
+                        else if(vir2.equals(Constants.KNIGHT) || vir2.equals(Constants.PROFESSOR)) res = three;
                         else res = four;
                 }
-                else if(vir1.equals(C.PROFESSOR)) {
-                        if(vir2.equals(C.PROFESSOR) || vir2.equals(C.LEADER)) res = five;
-                        else if(vir2.equals(C.ARISTOCRAT) || vir2.equals(C.KNIGHT)) res = three;
+                else if(vir1.equals(Constants.PROFESSOR)) {
+                        if(vir2.equals(Constants.PROFESSOR) || vir2.equals(Constants.LEADER)) res = five;
+                        else if(vir2.equals(Constants.ARISTOCRAT) || vir2.equals(Constants.KNIGHT)) res = three;
                         else res = four;
                 }
-                else if(vir1.equals(C.CLOWN)) {
-                        if(vir2.equals(C.KING) || vir2.equals(C.ARISTOCRAT)) res = five;
-                        else if(vir2.equals(C.CLOWN) || vir2.equals(C.LEADER)) res = three;
+                else if(vir1.equals(Constants.CLOWN)) {
+                        if(vir2.equals(Constants.KING) || vir2.equals(Constants.ARISTOCRAT)) res = five;
+                        else if(vir2.equals(Constants.CLOWN) || vir2.equals(Constants.LEADER)) res = three;
                         else res = four;
                 }
-                else if(vir1.equals(C.LEADER)) {
-                        if(vir2.equals(C.PROFESSOR) || vir2.equals(C.VECTOR)) res = five;
-                        else if(vir2.equals(C.KING) || vir2.equals(C.CLOWN)) res = three;
+                else if(vir1.equals(Constants.LEADER)) {
+                        if(vir2.equals(Constants.PROFESSOR) || vir2.equals(Constants.VECTOR)) res = five;
+                        else if(vir2.equals(Constants.KING) || vir2.equals(Constants.CLOWN)) res = three;
                         else res = four;
                 }
                 else {
-                        if(vir2.equals(C.KNIGHT) || vir2.equals(C.LEADER)) res = five;
-                        else if(vir2.equals(C.KING) || vir2.equals(C.ARISTOCRAT)) res = three;
+                        if(vir2.equals(Constants.KNIGHT) || vir2.equals(Constants.LEADER)) res = five;
+                        else if(vir2.equals(Constants.KING) || vir2.equals(Constants.ARISTOCRAT)) res = three;
                         else res = four;
                 }
 
@@ -481,5 +485,12 @@ public class Data_calculation {
                                 return i;
                 }
                 return -1;
+        }
+        public int dpToPx(int dp, Context context) {
+                /**
+                 * Converting dp to pixel
+                 */
+                Resources r = context.getApplicationContext().getResources();
+                return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
         }
 }

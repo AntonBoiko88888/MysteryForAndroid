@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import keen.eye.ink1804.destination.Adapters.ViewPager_Description_adapter;
+import keen.eye.ink1804.destination.Adapters.Sphere_vp_adapter;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.R;
@@ -18,13 +18,13 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 14.08.16.
  */
-public class Description_fragment extends Fragment {
+public class Sphere_container extends Fragment {
     private View rootView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.description_layout_fragment,container,false);
+        rootView = inflater.inflate(R.layout.vp_sphere_container,container,false);
         initViews();
         return rootView;
     }
@@ -45,7 +45,7 @@ public class Description_fragment extends Fragment {
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle(toolbarText);
 
-        ViewPager_Description_adapter mPagerAdapter = new ViewPager_Description_adapter(getChildFragmentManager(),
+        Sphere_vp_adapter mPagerAdapter = new Sphere_vp_adapter(getChildFragmentManager(),
                 btnTextArray, layoutType, MainActivity.ACCESS);
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);

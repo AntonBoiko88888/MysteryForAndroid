@@ -17,12 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Math.Constants;
+import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
 
 /**
  * Created by Ink1804 on 28.08.16.
  */
-public class Relationship_description_fragment extends Fragment implements View.OnClickListener{
+public class Socionics extends Fragment implements View.OnClickListener{
 
     private View rootView;
     private TextView tv_info;
@@ -35,7 +36,7 @@ public class Relationship_description_fragment extends Fragment implements View.
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.relationship_desc_fragment_viewpager,container,false);
+        rootView = inflater.inflate(R.layout.socionics_fragment,container,false);
         initViews();
         return rootView;
     }
@@ -53,19 +54,19 @@ public class Relationship_description_fragment extends Fragment implements View.
 
 
     private void createGridButtons(GridLayout grid){
+        Data_calculation dc = new Data_calculation();
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = size.x-20;
-        int height = size.y/20;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width/2, height);
+        int width = (size.x-2*dc.dpToPx(5,getActivity()))/2;
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, width/5);
         for(int i=0;i<8;i++){
             Button btn = new Button(getActivity());
             btn.setText(names[i]);
             btn.setTag(""+i%2);
             btn.setTextSize(14);
             btn.setId(2000+i);
-            btn.setBackgroundResource(R.drawable.btn_border_thin);
+            btn.setBackgroundResource(R.drawable.btn_border_thin_circ);
             btn.setLayoutParams(layoutParams);
             btn.setOnClickListener(this);
             grid.addView(btn);
@@ -115,13 +116,13 @@ public class Relationship_description_fragment extends Fragment implements View.
                 int btnID = view.getId();
                 Button pressedButton = (Button)rootView.findViewById(btnID);
                 setTvInfoText(pressedButton.getText().toString());
-                pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin);
+                pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin_circ);
                 tmp[btnID % 2000 / 2] = pressedButton.getTag().toString();
                 saveProfile.setVisibility(View.GONE);
                 if (btnID % 2 == 1)
-                    rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border_thin);
+                    rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border_thin_circ);
                 else
-                    rootView.findViewById(btnID + 1).setBackgroundResource(R.drawable.btn_border_thin);
+                    rootView.findViewById(btnID + 1).setBackgroundResource(R.drawable.btn_border_thin_circ);
                 break;
         }
     }

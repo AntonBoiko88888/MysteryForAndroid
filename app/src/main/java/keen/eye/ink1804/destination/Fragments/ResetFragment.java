@@ -35,7 +35,7 @@ public class ResetFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_reset, container, false);
+        root = inflater.inflate(R.layout.reg_reset_fragment, container, false);
         initViews();
         return root;
     }

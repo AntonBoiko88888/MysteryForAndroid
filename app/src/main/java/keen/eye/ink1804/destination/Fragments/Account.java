@@ -33,7 +33,7 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 12.08.16.
  */
-public class Account_fragment extends Fragment implements View.OnClickListener {
+public class Account extends Fragment implements View.OnClickListener {
 
     private View rootView;
     private TextView tv_name;
@@ -45,7 +45,7 @@ public class Account_fragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.account_layout_fragment, container, false);
+        rootView = inflater.inflate(R.layout.account_fragment, container, false);
         initializeViews();
         return rootView;
     }

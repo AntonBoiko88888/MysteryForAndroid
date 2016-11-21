@@ -34,15 +34,15 @@ import java.io.File;
 import java.util.Calendar;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
-import keen.eye.ink1804.destination.Fragments.Account_fragment;
-import keen.eye.ink1804.destination.Fragments.DatePicker_fragment;
-import keen.eye.ink1804.destination.Fragments.Description_fragment;
-import keen.eye.ink1804.destination.Fragments.HoroscopeOnline_fragment;
-import keen.eye.ink1804.destination.Fragments.Interesting_fragment;
+import keen.eye.ink1804.destination.Fragments.Account;
+import keen.eye.ink1804.destination.Fragments.DatePicker;
+import keen.eye.ink1804.destination.Fragments.Sphere_container;
+import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
+import keen.eye.ink1804.destination.Fragments.Interesting;
 import keen.eye.ink1804.destination.Fragments.LoginFragment;
-import keen.eye.ink1804.destination.Fragments.ProfileDescription_fragment;
-import keen.eye.ink1804.destination.Fragments.ProfileDetails_fragment;
-import keen.eye.ink1804.destination.Fragments.Registration_fragment;
+import keen.eye.ink1804.destination.Fragments.ProfileDescription;
+import keen.eye.ink1804.destination.Fragments.Details;
+import keen.eye.ink1804.destination.Fragments.FirstRegistration;
 import keen.eye.ink1804.destination.Fragments.ResetFragment;
 import keen.eye.ink1804.destination.Fragments.SignUpFragment;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             createAlert_setName();
         } else {
 //            DatePicker_fragment fragment = new DatePicker_fragment();
-            Account_fragment fragment = new Account_fragment();//в дальнейшем
+            Account fragment = new Account();//в дальнейшем
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.fragment_container, fragment, "account_fragment");
             transaction.commit();
@@ -99,17 +99,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Bundle args = new Bundle();
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                fragment = new HoroscopeOnline_fragment();
+                fragment = new HoroscopeOnline();
                 break;
             case R.id.tab_zodiaс_sign://done
-                fragment = new Description_fragment();
+                fragment = new Sphere_container();
                 args.putStringArray("array", Constants.ZODIAK_NAMES);
                 args.putString("toolbar", "Знаки зодиака");
                 args.putInt("type", 0);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_birth_sign://done
-                fragment = new Description_fragment();
+                fragment = new Sphere_container();
                 args.putStringArray("array", Constants.YEAR_NAMES);
                 args.putString("toolbar", "Знаки рождения");
                 args.putInt("type", 1);
@@ -120,28 +120,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 break;
             case R.id.tab_virtual_sign://done
-                fragment = new Description_fragment();
+                fragment = new Sphere_container();
                 args.putStringArray("array", Constants.VIRTUAL_NAMES);
                 args.putString("toolbar", "Виртуальные знаки");
                 args.putInt("type", 2);
                 fragment.setArguments(args);
                 break;
             case R.id.tab_relations://done
-                fragment = new Description_fragment();
+                fragment = new Sphere_container();
                 args.putString("toolbar", "Взаимоотношения");
                 args.putInt("type", 3);
                 fragment.setArguments(args);
                 break;
 
             case R.id.tab_interesting://done
-                fragment = new Interesting_fragment();
+                fragment = new Interesting();
                 tag = "interesting";
                 if (fragmentManager.findFragmentByTag(tag) == null) {
                     transaction.addToBackStack(tag);
                 }
                 break;
             case R.id.tab_about:
-                fragment = new HoroscopeOnline_fragment();
+                fragment = new HoroscopeOnline();
                 break;
             default:
                 break;
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                                Registration_fragment fragment = new Registration_fragment();
+                                FirstRegistration fragment = new FirstRegistration();
                                 Bundle args = new Bundle();
                                 fragment.setArguments(args);
                                 transaction.replace(R.id.fragment_container, fragment, "registrationFragment");
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
 //        DatePicker_fragment fragment = new DatePicker_fragment();
-        Account_fragment fragment = new Account_fragment();//в дальнейшем
+        Account fragment = new Account();//в дальнейшем
         backStackID = 0;
         transaction.replace(R.id.fragment_container, fragment, "mainFragment");
         transaction.commit();
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        ProfileDescription_fragment profDescFragment = new ProfileDescription_fragment();
+        ProfileDescription profDescFragment = new ProfileDescription();
         String tag = "profDescFragment";
 
         Bundle args = new Bundle();
@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        ProfileDetails_fragment profDetFragment = new ProfileDetails_fragment();
+        Details profDetFragment = new Details();
         String tag = "profDetailsFragment";
 
         Bundle args = new Bundle();
@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.setDrawerIndicatorEnabled(true);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Account_fragment accFragment = new Account_fragment();
+        Account accFragment = new Account();
 
         transaction.replace(R.id.fragment_container, accFragment, "accFragment");
         transaction.commit();
@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
                 transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                Account_fragment fragment = new Account_fragment();
+                Account fragment = new Account();
                 String tag = "accFragment";
                 transaction.replace(R.id.fragment_container, fragment, tag);
                 clearBackStack();
@@ -354,7 +354,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onNewProfile() {
         String tag = "datePicker_fragment";
-        DatePicker_fragment fragment = new DatePicker_fragment();
+        DatePicker fragment = new DatePicker();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
@@ -460,7 +460,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void registration() {
         LoginFragment fragment = new LoginFragment();//в дальнейшем
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment_container, fragment, "login_fragment");
+        transaction.replace(R.id.fragment_container, fragment, "login_fragment");
         transaction.commit();
     }
     @Override
