@@ -58,7 +58,7 @@ public class Socionics extends Fragment implements View.OnClickListener{
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = (size.x-2*dc.dpToPx(5,getActivity()))/2;
+        int width = (size.x-2*dc.dpToPx(6,getActivity()))/2;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, width/5);
         for(int i=0;i<8;i++){
             Button btn = new Button(getActivity());

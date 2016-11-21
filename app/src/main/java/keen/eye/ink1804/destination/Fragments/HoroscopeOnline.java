@@ -42,7 +42,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
     public static List<String> descriptions = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.horoscope_online_layout_fragment,container,false);
+        rootView = inflater.inflate(R.layout.hor_online_fragment,container,false);
         initViews();
         if(mainActivity.isOnline(getActivity()))
             onMySignClick();
@@ -66,9 +66,12 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
             Point size = new Point();
             display.getSize(size);
             Data_calculation dc = new Data_calculation();
-            int width = (size.x-2*dc.dpToPx(5,getActivity()))/4;
+            int m1dp = dc.dpToPx(1,getActivity());
+            int m6dp = dc.dpToPx(6,getActivity());
+            int width = (size.x-2*m6dp-5*m1dp)/4;
             LinearLayout.LayoutParams gridParams = new LinearLayout.LayoutParams(width, width);
             GridLayout.LayoutParams imageViewParams = new GridLayout.LayoutParams(gridParams);
+            imageViewParams.setMargins(m1dp,m1dp,m1dp,m1dp);
             images[i] = (ImageView) rootView.findViewById(img_ids[i]);
             images[i].setOnClickListener(this);
             images[i].setLayoutParams(imageViewParams);

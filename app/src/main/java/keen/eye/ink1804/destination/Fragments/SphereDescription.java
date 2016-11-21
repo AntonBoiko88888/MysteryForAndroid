@@ -41,7 +41,7 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = (size.x-2*dpToPx(5,getActivity()))/4;
+        int width = (size.x-2*dpToPx(6,getActivity()))/4;
         int length = array.length;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         for(int i=0;i<length;i++){
