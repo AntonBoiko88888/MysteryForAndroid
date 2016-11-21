@@ -1,120 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background1">
+    android:background="@drawable/background1"
+    android:orientation="vertical"
+    android:padding="@dimen/defaultMargin">
+
     <GridLayout
         android:id="@+id/sphere_grid"
-        android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stretchMode="columnWidth"
-        android:numColumns="auto_fit"
-        android:gravity="center"
-        android:verticalSpacing="1dp"
         android:layout_gravity="center"
+        android:layout_margin="5dp"
         android:columnCount="4"
-        >
+        android:gravity="center"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="1dp">
+
         <ImageView
             android:id="@+id/aries"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_oven" />
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_oven"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/taurus"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_telec"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_telec"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/twins"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_blizneci"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_blizneci"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/cancer"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_rak"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_rak"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/lion"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_lev"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_lev"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/virgo"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_deva"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_deva"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/libra"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_vesi"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_vesi"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/scorpio"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_skorpion"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_skorpion"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/sagittarius"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_strelec"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_strelec"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/capricorn"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_kozerog"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_kozerog"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/aquarius"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_vodoley"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_vodoley"
+            android:scaleType="fitXY" />
+
         <ImageView
             android:id="@+id/fish"
-            android:layout_height="@dimen/horoscope_online_img_height"
             android:layout_width="@dimen/horoscope_online_img_width"
-            android:scaleType="fitXY"
-            android:background="@drawable/hor_fish"/>
+            android:layout_height="@dimen/horoscope_online_img_height"
+            android:background="@drawable/hor_fish"
+            android:scaleType="fitXY" />
     </GridLayout>
+
     <TextView
         android:id="@+id/sphere_tv_sign_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/horoscope_online_textZodiac_marginTop"
         android:layout_gravity="center"
-        android:textSize="@dimen/horoscope_online_textSignZodiac_textSize"/>
+        android:layout_marginTop="@dimen/horoscope_online_textZodiac_marginTop"
+        android:textSize="@dimen/horoscope_online_textSignZodiac_textSize" />
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-    <ProgressBar
-        android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
-        android:id="@+id/progressbar_horoscope"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
-    <TextView
-        android:id="@+id/horOn_tvResult"
-        android:layout_width="wrap_content"
-        android:layout_margin="@dimen/horoscope_online_text_marginTop"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/horoscope_online_text_marginTop"
-        android:textSize="@dimen/textDescription"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/progressbar_horoscope"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/defaultMargin_triple" />
+
+            <TextView
+                android:id="@+id/horOn_tvResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/defaultMargin_triple"
+                android:gravity="center"
+                android:textSize="@dimen/textDescription" />
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

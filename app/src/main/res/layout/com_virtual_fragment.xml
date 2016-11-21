@@ -1,96 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    android:padding="10dp">
+    android:orientation="vertical"
+    android:padding="@dimen/defaultMargin">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp">
+
             <LinearLayout
                 android:id="@+id/comp_vir_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/defaultMargin_double"
+                android:layout_marginTop="@dimen/defaultMargin_double"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="@dimen/com_layoutForSpinner_width"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/comp_vir_tv_male"
                         android:layout_width="wrap_content"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:textSize="@dimen/com_signs_TextSize"
-                        android:textColor="@color/blue"/>
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/com_signs_TextSize" />
+
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_vir_male_spinner"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:ms_multiline="false"
-                        app:ms_enableFloatingLabel="false"
-                        app:ms_enableErrorLabel="false"
-                        app:ms_floatingLabelText="floating label"
                         android:popupBackground="@color/black"
-                        app:ms_thickness="2dp"
-                        app:ms_arrowSize="16dp"
                         app:ms_alignLabels="false"
-                        app:ms_baseColor="@color/blue"/>
+                        app:ms_arrowSize="@dimen/defaultMargin_double"
+                        app:ms_baseColor="@color/blue"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="false"
+                        app:ms_floatingLabelText="floating label"
+                        app:ms_multiline="false"
+                        app:ms_thickness="2dp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="@dimen/com_layoutForSpinner_width"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="60dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/comp_vir_tv_female"
                         android:layout_width="wrap_content"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:textSize="@dimen/com_signs_TextSize"
-                        android:textColor="@color/blue"/>
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/com_signs_TextSize" />
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_vir_female_spinner"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        app:ms_multiline="false"
-                        app:ms_enableFloatingLabel="false"
-                        app:ms_enableErrorLabel="false"
-                        app:ms_floatingLabelText="floating label"
                         android:popupBackground="@color/black"
-                        app:ms_thickness="2dp"
-                        app:ms_arrowSize="16dp"
                         app:ms_alignLabels="false"
-                        app:ms_baseColor="@color/blue"/>
+                        app:ms_arrowSize="@dimen/defaultMargin_double"
+                        app:ms_baseColor="@color/blue"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="false"
+                        app:ms_floatingLabelText="floating label"
+                        app:ms_multiline="false"
+                        app:ms_thickness="2dp" />
                 </LinearLayout>
             </LinearLayout>
+
             <Button
                 android:id="@+id/comp_vir_btn_result"
-                android:layout_below="@id/comp_vir_linear"
                 android:layout_width="@dimen/com_btnImg_width"
                 android:layout_height="@dimen/com_btnImg_height"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/virtual_btn_states"
-                android:layout_centerHorizontal="true" />
+                android:layout_below="@id/comp_vir_linear"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/defaultMargin_double"
+                android:background="@drawable/virtual_btn_states" />
+
             <TextView
                 android:id="@+id/comp_vir_tv_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
                 android:layout_below="@id/comp_vir_btn_result"
                 android:layout_marginTop="40dp"
-                android:textSize="@dimen/com_signs_TextSize"/>
+                android:textColor="@color/blue"
+                android:textSize="@dimen/com_signs_TextSize" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

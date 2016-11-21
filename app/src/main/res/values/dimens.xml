@@ -1,4 +1,8 @@
 <resources>
+    <dimen name="defaultMargin_half">3dp</dimen>
+    <dimen name="defaultMargin">6dp</dimen>
+    <dimen name="defaultMargin_double">12dp</dimen>
+    <dimen name="defaultMargin_triple">18dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -48,8 +52,6 @@
     <dimen name="com_layoutForSpinner_width">130dp</dimen>
     <dimen name="com_signs_TextSize">18sp</dimen>
     <dimen name="com_fiveMarriage_TextSize">30sp</dimen>
-
-
 
 
     <!--Fo Registration-->

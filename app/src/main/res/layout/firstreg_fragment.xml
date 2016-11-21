@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back1"
     android:gravity="center"
-    android:background="@drawable/back1">
+    android:orientation="vertical"
+    android:padding="@dimen/defaultMargin">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Укажите ваше имя"
         android:textColor="@color/blue"
-        android:textSize="25sp"
-        android:gravity="center"/>
+        android:textSize="25sp" />
+
     <EditText
         android:id="@+id/reg_et_name"
         android:layout_width="150dp"
-        android:inputType="text"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/defaultMargin"
         android:hint="Имя"
-        android:layout_height="wrap_content" />
+        android:inputType="text" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/blue"
+        android:gravity="center"
         android:text="@string/date_picker_selectDateBirthday_text"
-        android:textSize="25sp"
-        android:gravity="center"/>
+        android:textColor="@color/blue"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/reg_pick_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/date_picker_selectDate_text"
-        android:background="@drawable/btn_states_thin_rect"/>
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:background="@drawable/btn_states_thin_rect"
+        android:text="@string/date_picker_selectDate_text" />
+
     <TextView
         android:id="@+id/reg_tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:layout_marginTop="@dimen/defaultMargin"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/blue"
         android:text="@string/date_picker_selectSex_text"
-        android:textSize="25sp"/>
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:textColor="@color/blue"
+        android:textSize="25sp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -55,28 +63,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/reg_rb_male"
-                android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="@string/date_picker_man_text"/>
+                android:checked="true"
+                android:layout_margin="@dimen/defaultMargin"
+                android:text="@string/date_picker_man_text"
+                android:textSize="20dp" />
+
             <RadioButton
                 android:id="@+id/reg_rb_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="@string/date_picker_woman_text"/>
+                android:layout_margin="@dimen/defaultMargin"
+                android:text="@string/date_picker_woman_text"
+                android:textSize="20dp" />
 
         </RadioGroup>
     </LinearLayout>
+
     <Button
         android:id="@+id/reg_btn_registrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/date_picker_onward_text"
-        android:background="@drawable/btn_states_thin_rect"/>
-
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:background="@drawable/btn_states_thin_rect"
+        android:text="@string/date_picker_onward_text" />
 
 </LinearLayout>

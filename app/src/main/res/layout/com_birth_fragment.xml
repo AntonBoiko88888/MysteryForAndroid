@@ -1,131 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2">
+    android:background="@drawable/background2"
+    android:orientation="vertical"
+    android:padding="@dimen/defaultMargin">
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/comp_birth2_layout"
-        android:orientation="horizontal">
-    <LinearLayout
-        android:id="@+id/comp_birth_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp">
-        <TextView
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:typeface="serif"
-            android:text="@string/com_selectSign_text"
-            android:textColor="@color/blue"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_marginTop="@dimen/marginTopText_and_Img"
-                android:id="@+id/comp_birth_image"
-                android:layout_width="@dimen/com_img_width"
-                android:layout_height="@dimen/com_img_height"
-                android:background="@drawable/com_birth_monkey"/>
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/comp_birth_spinner"
-                android:layout_width="fill_parent"
+            >
+
+            <LinearLayout
+                android:id="@+id/comp_birth2_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:ms_multiline="false"
-                app:ms_enableFloatingLabel="false"
-                app:ms_enableErrorLabel="false"
-                app:ms_floatingLabelText="floating label"
-                android:popupBackground="@color/black"
-                app:ms_thickness="2dp"
-                app:ms_arrowSize="16dp"
-                app:ms_alignLabels="false"
-                app:ms_baseColor="@color/blue"/>
-        </LinearLayout>
+                android:orientation="horizontal">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_gravity="center"
-        android:gravity="center">
-    <Button
-        android:id="@+id/comp_birth_btn_result"
-        android:layout_width="@dimen/com_img_width"
-        android:layout_height="@dimen/com_img_height"
-        android:layout_margin="10dp"
-        android:background="@drawable/answer_states"/>
-    </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="vertical"
-        android:layout_below="@+id/comp_birth2_layout">
+                <LinearLayout
+                    android:id="@+id/comp_birth_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/defaultMargin_triple"
+                    android:layout_marginTop="@dimen/defaultMargin_triple"
+                    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/birth_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/com_fiveMarriage_TextSize" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/com_selectSign_text"
+                        android:textColor="@color/blue"
+                        android:typeface="serif" />
 
-        <TextView
-            android:id="@+id/comp_birth_tv_romantic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/txt_states"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/profileTextSize"
-            android:layout_marginTop="@dimen/profileMarginTop"/>
-        <TextView
-            android:id="@+id/comp_birth_tv_patriarch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/txt_states"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/profileTextSize"
-            android:layout_marginTop="@dimen/profileMarginTop"/>
-        <TextView
-            android:id="@+id/comp_birth_tv_soul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/txt_states"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/profileTextSize"
-            android:layout_marginTop="@dimen/profileMarginTop"/>
-        <TextView
-            android:id="@+id/comp_birth_tv_equal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/txt_states"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/profileTextSize"
-            android:layout_marginTop="@dimen/profileMarginTop"/>
-        <TextView
-            android:id="@+id/comp_birth_tv_vector"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/txt_states"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/profileTextSize"
-            android:layout_marginTop="@dimen/profileMarginTop"/>
-    </LinearLayout>
-    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/comp_birth_image"
+                        android:layout_width="@dimen/com_img_width"
+                        android:layout_height="@dimen/com_img_height"
+                        android:layout_marginTop="@dimen/marginTopText_and_Img"
+                        android:background="@drawable/com_birth_monkey" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/comp_birth_spinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:popupBackground="@color/black"
+                        app:ms_alignLabels="false"
+                        app:ms_arrowSize="@dimen/defaultMargin_double"
+                        app:ms_baseColor="@color/blue"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="false"
+                        app:ms_floatingLabelText="floating label"
+                        app:ms_multiline="false"
+                        app:ms_thickness="2dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/defaultMargin_triple"
+                    android:layout_marginTop="@dimen/defaultMargin_triple"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/comp_birth_btn_result"
+                        android:layout_width="@dimen/com_img_width"
+                        android:layout_height="@dimen/com_img_height"
+                        android:background="@drawable/answer_states" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/comp_birth2_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/birth_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/com_fiveMarriage_TextSize" />
+
+                <TextView
+                    android:id="@+id/comp_birth_tv_romantic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/defaultMargin"
+                    android:background="@drawable/txt_states"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/profileTextSize" />
+
+                <TextView
+                    android:id="@+id/comp_birth_tv_patriarch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/defaultMargin"
+                    android:background="@drawable/txt_states"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/profileTextSize" />
+
+                <TextView
+                    android:id="@+id/comp_birth_tv_soul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/defaultMargin"
+                    android:background="@drawable/txt_states"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/profileTextSize" />
+
+                <TextView
+                    android:id="@+id/comp_birth_tv_equal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/defaultMargin"
+                    android:background="@drawable/txt_states"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/profileTextSize" />
+
+                <TextView
+                    android:id="@+id/comp_birth_tv_vector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/defaultMargin"
+                    android:background="@drawable/txt_states"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/profileTextSize" />
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

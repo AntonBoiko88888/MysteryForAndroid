@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background1"
-    android:gravity="center">
+    android:gravity="center"
+    android:padding="@dimen/defaultMargin">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -12,14 +13,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="5dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/year_woman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_margin="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:text="@string/interesting_character_woman"
@@ -29,52 +29,57 @@
                 android:id="@+id/year_man"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_margin="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:text="@string/interesting_character_man"
                 android:textSize="@dimen/interestingTextSize" />
+
             <TextView
                 android:id="@+id/tactics_forgive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_margin="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:text="@string/interesting_tactics_pardon"
                 android:textSize="@dimen/interestingTextSize" />
+
             <TextView
                 android:id="@+id/pros_cons_signs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_margin="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:text="@string/interesting_pros_cons_signs"
                 android:textSize="@dimen/interestingTextSize" />
+
             <TextView
                 android:id="@+id/time_birth_numerology"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_margin="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:text="@string/interesting_time_birth_numerology"
                 android:textSize="@dimen/interestingTextSize" />
+
             <TextView
                 android:id="@+id/zodiac_poems"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_margin="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:text="@string/interesting_zodiac_poems"
                 android:textSize="@dimen/interestingTextSize" />
+
             <TextView
                 android:id="@+id/distribution_tolerance_signs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_margin="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:text="@string/interesting_distribution_tolerance_signs"

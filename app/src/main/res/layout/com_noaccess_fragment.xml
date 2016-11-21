@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back1"
     android:gravity="center"
-    android:background="@drawable/back1">
+    android:orientation="vertical"
+    android:padding="@dimen/defaultMargin">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:typeface="serif"
-        android:gravity="center"
-        android:textSize="18dp"
-        android:text="  Данный раздел доступен продвинутому пользователю!  "
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="30dp"
-        android:layout_gravity="center_horizontal"/>
+        android:gravity="center"
+        android:text="  Данный раздел доступен только продвинутым пользователям!  "
+        android:textSize="18sp"
+        android:typeface="serif" />
+
     <Button
         android:id="@+id/na_btn_getAccess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="    Повысить статус    "
-        android:background="@drawable/btn_states_thin_circ"/>
+        android:background="@drawable/btn_states_thin_rect"
+        android:text="    Повысить статус    " />
 </LinearLayout>

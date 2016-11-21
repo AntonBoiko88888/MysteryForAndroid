@@ -1,101 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    android:padding="10dp">
+    android:orientation="vertical"
+    android:padding="@dimen/defaultMargin">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-    <LinearLayout
-        android:id="@+id/comp_zod_linear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/com_signMan_text"
-                android:textColor="@color/blue"/>
-            <ImageView
-                android:layout_marginTop="@dimen/marginTopText_and_Img"
-                android:id="@+id/comp_zod_image_male"
-                android:layout_width="@dimen/com_img_width"
-                android:layout_height="@dimen/com_img_height"
-                android:background="@drawable/com_zod_oven"/>
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/comp_zod_male_spinner"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                app:ms_multiline="false"
-                app:ms_enableFloatingLabel="false"
-                app:ms_enableErrorLabel="false"
-                app:ms_floatingLabelText="floating label"
-                android:popupBackground="@color/black"
-                app:ms_thickness="2dp"
-                app:ms_arrowSize="16dp"
-                app:ms_alignLabels="false"
-                app:ms_baseColor="@color/blue"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/com_signWoman_text"
-                android:textColor="@color/blue"/>
-            <ImageView
-                android:layout_marginTop="@dimen/marginTopText_and_Img"
-                android:id="@+id/comp_zod_image_female"
-                android:layout_width="@dimen/com_img_width"
-                android:layout_height="@dimen/com_img_height"
-                android:background="@drawable/com_zod_oven"/>
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/comp_zod_female_spinner"
-                android:layout_width="fill_parent"
+            <LinearLayout
+                android:id="@+id/comp_zod_linear"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:ms_multiline="false"
-                app:ms_enableFloatingLabel="false"
-                app:ms_enableErrorLabel="false"
-                app:ms_floatingLabelText="floating label"
-                android:popupBackground="@color/black"
-                app:ms_thickness="2dp"
-                app:ms_arrowSize="16dp"
-                app:ms_alignLabels="false"
-                app:ms_baseColor="@color/blue"/>
-        </LinearLayout>
-    </LinearLayout>
-    <Button
-        android:id="@+id/comp_zod_btn_result"
-        android:layout_below="@id/comp_zod_linear"
-        android:layout_width="@dimen/com_btnImg_width"
-        android:layout_height="@dimen/com_btnImg_height"
-        android:background="@drawable/hearth_states"
-        android:layout_centerHorizontal="true" />
-    <TextView
-        android:id="@+id/comp_zod_tv_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/blue"
-        android:layout_below="@id/comp_zod_btn_result"
-        android:textSize="@dimen/com_signs_TextSize"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/com_signMan_text"
+                        android:textColor="@color/blue" />
+
+                    <ImageView
+                        android:id="@+id/comp_zod_image_male"
+                        android:layout_width="@dimen/com_img_width"
+                        android:layout_height="@dimen/com_img_height"
+                        android:layout_marginTop="@dimen/defaultMargin_double"
+                        android:background="@drawable/com_zod_oven" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/comp_zod_male_spinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:popupBackground="@color/black"
+                        app:ms_alignLabels="false"
+                        app:ms_arrowSize="@dimen/defaultMargin_double"
+                        app:ms_baseColor="@color/blue"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="false"
+                        app:ms_floatingLabelText="floating label"
+                        app:ms_multiline="false"
+                        app:ms_thickness="2dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/com_signWoman_text"
+                        android:textColor="@color/blue" />
+
+                    <ImageView
+                        android:id="@+id/comp_zod_image_female"
+                        android:layout_width="@dimen/com_img_width"
+                        android:layout_height="@dimen/com_img_height"
+                        android:layout_marginTop="@dimen/defaultMargin_double"
+                        android:background="@drawable/com_zod_oven" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/comp_zod_female_spinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:popupBackground="@color/black"
+                        app:ms_alignLabels="false"
+                        app:ms_arrowSize="@dimen/defaultMargin_double"
+                        app:ms_baseColor="@color/blue"
+                        app:ms_enableErrorLabel="false"
+                        app:ms_enableFloatingLabel="false"
+                        app:ms_floatingLabelText="floating label"
+                        app:ms_multiline="false"
+                        app:ms_thickness="2dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/comp_zod_btn_result"
+                android:layout_width="@dimen/com_btnImg_width"
+                android:layout_height="@dimen/com_btnImg_height"
+                android:layout_below="@id/comp_zod_linear"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/defaultMargin_double"
+                android:background="@drawable/hearth_states" />
+
+            <TextView
+                android:id="@+id/comp_zod_tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/comp_zod_btn_result"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/com_signs_TextSize" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

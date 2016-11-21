@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background="@drawable/acc_states"
-    android:layout_marginRight="4dp"
     android:layout_marginLeft="4dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:orientation="horizontal"
-    android:gravity="start"
+    android:layout_marginRight="4dp"
+    android:background="@drawable/acc_states"
     android:clickable="true"
-    android:id="@+id/nav_header">
+    android:gravity="start"
+    android:orientation="horizontal"
+    android:padding="@dimen/defaultMargin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="@dimen/nav_header_main_img_width"
         android:layout_height="@dimen/nav_header_main_img_height"
-        android:src="@drawable/acc_icon"
-        android:id="@+id/imageView"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"
+        android:src="@drawable/acc_icon" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nav_header_main_acc_text"
-        android:textSize="@dimen/nav_header_main_acc_textSize"
-        android:textColor="@color/pro_zra_white"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_header_main_acc_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/pro_zra_white"
+            android:textSize="@dimen/nav_header_main_acc_textSize" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Начинающий"
-            android:textSize="@dimen/nav_header_main_textSize"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/pro_zra_status"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+            android:textSize="@dimen/nav_header_main_textSize" />
     </LinearLayout>
-
 </LinearLayout>
