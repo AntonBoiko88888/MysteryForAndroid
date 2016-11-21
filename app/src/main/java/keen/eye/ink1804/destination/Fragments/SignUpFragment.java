@@ -138,30 +138,30 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                                     else {
                                                         emailBundle = email;
                                                         passwordBundle = password;
-                                                        btnIsEmailVerification.setEnabled(true);
                                                         FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
                                                             @Override
                                                             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                                                                 user = firebaseAuth.getCurrentUser();
                                                                 if (user != null)
                                                                     if (!user.isEmailVerified())
-                                                                        user.sendEmailVerification();
+                                                                        if (flag) {
+                                                                            user.sendEmailVerification();
+                                                                            flag = false;
+                                                                        }
                                                             }
                                                         };
                                                         auth.addAuthStateListener(authListener);
+                                                        dialogVerification();
+                                                        btnSignUp.setEnabled(false);
+                                                        auth.signOut();
                                                     }
                                                 }
                                             });
-
-                                    dialogVerification();
-
                                 }
                             }
                         });
                 break;
             case R.id.btn_isEmailVerification:
-
-                auth.signOut();
                 auth.signInWithEmailAndPassword(emailBundle, passwordBundle)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
@@ -179,11 +179,10 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                                     UsersModel usersModel = new UsersModel(user.getEmail(), user.getUid());
                                                     usersModel.toMap();
                                                     messageRef.child(count + "").setValue(usersModel);
-                                                    messageRef.child(count + "").setValue(usersModel);
-                                                    FirebaseDatabase.getInstance().getReference("users").child(count + "").child("Email").setValue(user.getEmail());
                                                     listener.onStartLoginFragment(emailBundle, passwordBundle);
+                                                    auth.signOut();
                                                 } else
-                                                    Toast.makeText(getContext(), "Вы еще не верифицировали свою почту!",
+                                                    Toast.makeText(getContext(), "Вы еще не подтвердили свою почту!",
                                                             Toast.LENGTH_SHORT).show();
                                             }
                                         }
@@ -204,8 +203,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                 .setNegativeButton("Ок",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                btnIsEmailVerification.setVisibility(View.VISIBLE);
-
+                                btnIsEmailVerification.setEnabled(true);
                                 }
                         });
         AlertDialog alert = builder.create();

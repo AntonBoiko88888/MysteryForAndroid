@@ -70,7 +70,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="50dp"
@@ -83,8 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/btn_states_thin_circ"
-            android:text="далее" />
+            android:background="@drawable/btn_states_thin_rect"
+            android:text="@string/date_picker_onward_text" />
 
         </RelativeLayout>
     </LinearLayout>

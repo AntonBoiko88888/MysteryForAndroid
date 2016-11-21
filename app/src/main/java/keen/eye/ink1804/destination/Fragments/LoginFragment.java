@@ -129,6 +129,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                         Toast.makeText(getContext(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 }
+                                else {
+                                    Toast.makeText(getActivity(), "Вы успешно вошли! Сейчас вы должны попасть на описание статусов", Toast.LENGTH_LONG).show();
+                                    btnSignup.setEnabled(false);
+                                }
+
                             }
                         });
                 break;
