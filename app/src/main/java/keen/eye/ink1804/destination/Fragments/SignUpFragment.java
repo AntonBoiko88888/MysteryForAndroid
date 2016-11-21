@@ -33,15 +33,17 @@ import keen.eye.ink1804.destination.Utills.UsersModel;
  * Created by anton on 15.11.16.
  */
 
-public class SignUpFragment extends Fragment implements View.OnClickListener{
+public class SignUpFragment extends Fragment implements View.OnClickListener {
     private EditText inputEmail, inputPassword;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
+    protected Button btnSignUp;
+    protected Button btnIsEmailVerification;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
-
-    private FirebaseAuth.AuthStateListener authListener;
     FirebaseUser user;
-    long count=0;
+    private String emailBundle, passwordBundle;
+
+    boolean flag = true;
+    long count = 0;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
     final private DatabaseReference messageRef = mDatabase.getRef();
@@ -54,34 +56,33 @@ public class SignUpFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_signup,container,false);
+        root = inflater.inflate(R.layout.fragment_signup, container, false);
         initViews();
         return root;
     }
 
     private void initViews() {
-        pushDateListener listener = (pushDateListener)getActivity();
+        pushDateListener listener = (pushDateListener) getActivity();
         listener.toolbarSetTitle("Регистрация");
-        btnSignIn = (Button) root.findViewById(R.id.sign_in_button);
         btnSignUp = (Button) root.findViewById(R.id.sign_up_button);
         inputEmail = (EditText) root.findViewById(R.id.email);
         inputPassword = (EditText) root.findViewById(R.id.password);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
-        btnResetPassword = (Button) root.findViewById(R.id.btn_reset_password);
-        btnSignIn.setOnClickListener(this);
+        btnIsEmailVerification = (Button) root.findViewById(R.id.btn_isEmailVerification);
         btnSignUp.setOnClickListener(this);
+        btnIsEmailVerification.setOnClickListener(this);
+        btnIsEmailVerification.setEnabled(false);
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+
+
     }
 
     @Override
     public void onClick(View view) {
-        final pushDateListener listener = (pushDateListener)getActivity();
+        final pushDateListener listener = (pushDateListener) getActivity();
         switch (view.getId()) {
-            case R.id.sign_in_button:
-                listener.onStartSignUpFragment();
-                break;
             case R.id.sign_up_button:
                 final String email = inputEmail.getText().toString().trim();
                 final String password = inputPassword.getText().toString().trim();
@@ -103,81 +104,113 @@ public class SignUpFragment extends Fragment implements View.OnClickListener{
 
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
-
-                user = null;
-
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull final Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
+                                progressBar.setVisibility(View.INVISIBLE);
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Аунтефикация не удалась, попробуйте ввести другой почтовый адресс.",
                                             Toast.LENGTH_SHORT).show();
-                                } else if(task.isSuccessful()) {
+                                } else if (task.isSuccessful()) {
                                     messageRef.addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             count = dataSnapshot.getChildrenCount();
                                         }
+
                                         @Override
                                         public void onCancelled(DatabaseError databaseError) {
                                         }
                                     });
-                                    authListener = new FirebaseAuth.AuthStateListener() {
+
+                                    auth.signInWithEmailAndPassword(email, password)
+                                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                    if (!task.isSuccessful()) {
+                                                        if (password.length() < 6) {
+                                                            inputPassword.setError(getString(R.string.minimum_password));
+                                                        } else {
+                                                            Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                                    else {
+                                                        emailBundle = email;
+                                                        passwordBundle = password;
+                                                        btnIsEmailVerification.setEnabled(true);
+                                                        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
+                                                            @Override
+                                                            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                                                                user = firebaseAuth.getCurrentUser();
+                                                                if (user != null)
+                                                                    if (!user.isEmailVerified())
+                                                                        user.sendEmailVerification();
+                                                            }
+                                                        };
+                                                        auth.addAuthStateListener(authListener);
+                                                    }
+                                                }
+                                            });
+
+                                    dialogVerification();
+
+                                }
+                            }
+                        });
+                break;
+            case R.id.btn_isEmailVerification:
+
+                auth.signOut();
+                auth.signInWithEmailAndPassword(emailBundle, passwordBundle)
+                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (!task.isSuccessful()) {
+                                        Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
                                         @Override
                                         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                                             user = firebaseAuth.getCurrentUser();
                                             if (user != null) {
-                                                if (!user.isEmailVerified()) {
-                                                    dialogVerification(task, email);
-                                                }
-                                                if (user.isEmailVerified())
-                                                    Toast.makeText(getActivity(), "Ваша почта подтверждена, теперь вы можете войти!", Toast.LENGTH_LONG).show();
-                                                listener.onStartLoginFragment(email, password);
+                                                if (user.isEmailVerified()) {
+                                                    UsersModel usersModel = new UsersModel(user.getEmail(), user.getUid());
+                                                    usersModel.toMap();
+                                                    messageRef.child(count + "").setValue(usersModel);
+                                                    messageRef.child(count + "").setValue(usersModel);
+                                                    FirebaseDatabase.getInstance().getReference("users").child(count + "").child("Email").setValue(user.getEmail());
+                                                    listener.onStartLoginFragment(emailBundle, passwordBundle);
+                                                } else
+                                                    Toast.makeText(getContext(), "Вы еще не верифицировали свою почту!",
+                                                            Toast.LENGTH_SHORT).show();
                                             }
-                                            else
-                                                Toast.makeText(getActivity(), "Дерьмо собачье", Toast.LENGTH_LONG).show();
                                         }
                                     };
                                     auth.addAuthStateListener(authListener);
                                 }
                             }
                         });
+                break;
         }
     }
-    private void dialogVerification(final Task<AuthResult> task, final String email){
+    private void dialogVerification() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Верификация")
-                .setMessage("Ваша почта еще не подтверждена. Отправьте себе письмо с подтверждением, нажав на кнопку 'Послать'. Если вы подтвердили свою почту через письмо, нажмите 'Ок' и войдите, в противном случае вы не войдете.")
-                .setIcon(R.drawable.icon_eye)
+                .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации.")
+                .setIcon(R.drawable.icon_eue_512)
                 .setCancelable(false)
                 .setNegativeButton("Ок",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                btnIsEmailVerification.setVisibility(View.VISIBLE);
 
-                                if(!user.isEmailVerified())
-                                    dialogVerification(task, email);
-                                else
-                                {
-                                    UsersModel usersModel = new UsersModel(user.getEmail(), user.getUid());
-                                    usersModel.toMap();
-                                    messageRef.child(count+"").setValue(usersModel);
-                                    messageRef.child(count+"").setValue(usersModel);
-                                    FirebaseDatabase.getInstance().getReference("users").child(count + "").child("Email").setValue(user.getEmail());
-                                    Toast.makeText(getActivity(), "Регистрация прошла успешно, теперь вы можете войти", Toast.LENGTH_LONG).show();
-                                    dialog.cancel();
                                 }
-                            }
-                        })
-                .setPositiveButton("Послать", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        user.sendEmailVerification();
-                        dialogVerification(task, email);
-                    }
-                });
+                        });
         AlertDialog alert = builder.create();
         alert.show();
     }
+
 }
 

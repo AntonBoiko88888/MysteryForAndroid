@@ -37,18 +37,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
-    private Button btnSignup, btnLogin, btnReset;
+    private Button btnSignup;
+    private Button btnReset;
     FirebaseUser user;
-    private FirebaseAuth.AuthStateListener authListener;
     int emailVerification = 0;
-    long count=0;
-    boolean flag = true; //true - add user in Database
 
-    String emailArgs, emailFirebase="";
+    String emailArgs;
     View root;
-
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
-    final private DatabaseReference messageRef = mDatabase.getRef();
 
     public LoginFragment() {
     }
@@ -67,7 +62,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         inputPassword = (EditText)root.findViewById(R.id.password);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
         btnSignup = (Button) root.findViewById(R.id.btn_signup);
-        btnLogin = (Button) root.findViewById(R.id.btn_login);
+        Button btnLogin = (Button) root.findViewById(R.id.btn_login);
         btnReset = (Button) root.findViewById(R.id.btn_reset_password);
         btnLogin.setOnClickListener(this);
         btnReset.setOnClickListener(this);
@@ -76,12 +71,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
         user = null;
-        authListener = new FirebaseAuth.AuthStateListener() {
+        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    if (!user.isEmailVerified()&emailVerification==0) {
+                    if (!user.isEmailVerified() & emailVerification == 0) {
                         emailVerification = 1;
                     }
                     if (user.isEmailVerified())
@@ -123,15 +118,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-                btnReset.setVisibility(View.GONE);
-                btnSignup.setVisibility(View.GONE);
+                btnReset.setVisibility(View.INVISIBLE);
+                btnSignup.setVisibility(View.INVISIBLE);
 
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
+                                progressBar.setVisibility(View.INVISIBLE);
                                 btnReset.setVisibility(View.VISIBLE);
                                 btnSignup.setVisibility(View.VISIBLE);
                                 if (!task.isSuccessful()) {
@@ -141,14 +136,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                     } else {
                                         Toast.makeText(getContext(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
-                                } else if (task.isSuccessful()) {
-                                    if (emailVerification!=2) {
-                                    }
-                                    else {
-                                        userUpdateDatabase(task, email);
-                                    }
                                 }
-
                             }
                         });
                 break;
@@ -167,29 +155,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 //                .build();
 //        user1.updateProfile(profileUpdates);     Нужная фигня
 
-
-
-        messageRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                count = dataSnapshot.getChildrenCount();
-                for(DataSnapshot postSnapshot : dataSnapshot.child("users").getChildren()){
-                    UsersModel model = postSnapshot.getValue(UsersModel.class);
-                    emailFirebase = model.Email;
-                    Toast.makeText(getContext(), emailFirebase, Toast.LENGTH_LONG).show();
-
-                    if (emailFirebase.equals(user.getEmail())) {
-                        flag = false;
-                        return;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 }
 

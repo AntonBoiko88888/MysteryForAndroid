@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:typeface="serif"
         android:text="Мой знак"/>
     <fr.ganfra.materialspinner.MaterialSpinner
         android:id="@+id/alert_zodiac"
@@ -28,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:typeface="serif"
+
         android:text="Получать уведомления в "/>
     <fr.ganfra.materialspinner.MaterialSpinner
         android:id="@+id/alert_time"
@@ -47,7 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Off/On"/>
+        android:typeface="serif"
+        android:text="Off / On"/>
     <Switch
         android:id="@+id/alert_switch"
         android:layout_width="wrap_content"

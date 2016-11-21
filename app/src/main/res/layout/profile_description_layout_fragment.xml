@@ -19,8 +19,9 @@
             android:id="@+id/picker_tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:typeface="serif"
             android:background="@drawable/txt_states"
-            android:textStyle="italic"
             android:textColor="@color/blue"
             android:textSize="@dimen/profileDataTextSize" />
         <TextView

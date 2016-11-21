@@ -26,6 +26,13 @@
     <string name="com_selectSign_text">Выберите знак</string>
     <string name="com_relationResult_text">"  Узнать результат  "</string>
 
+    <!--date_picker_text -->
+    <string name="date_picker_onward_text">Далее</string>
+    <string name="date_picker_woman_text">Женский</string>
+    <string name="date_picker_man_text">Мужской</string>
+    <string name="date_picker_selectSex_text">Выберите пол</string>
+    <string name="date_picker_selectDate_text">"   Выбрать дату   "</string>
+    <string name="date_picker_selectDateBirthday_text">Выберите дату своего рождения</string>
 
 
 

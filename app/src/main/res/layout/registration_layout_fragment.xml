@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
-        android:text="Выберите дату своего рождения"
+        android:text="@string/date_picker_selectDateBirthday_text"
         android:textSize="25sp"
         android:gravity="center"/>
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Выбрать дату"
+        android:text="@string/date_picker_selectDate_text"
         android:background="@drawable/btn_states_thin"/>
     <TextView
         android:id="@+id/reg_tv_date"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/blue"
-        android:text="Выберите пол"
+        android:text="@string/date_picker_selectSex_text"
         android:textSize="25sp"/>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -61,13 +61,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="Мужской"/>
+                android:text="@string/date_picker_man_text"/>
             <RadioButton
                 android:id="@+id/reg_rb_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="Женский"/>
+                android:text="@string/date_picker_woman_text"/>
 
         </RadioGroup>
     </LinearLayout>
@@ -75,7 +75,7 @@
         android:id="@+id/reg_btn_registrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="далее"
+        android:text="@string/date_picker_onward_text"
         android:background="@drawable/btn_states_thin"/>
 
 

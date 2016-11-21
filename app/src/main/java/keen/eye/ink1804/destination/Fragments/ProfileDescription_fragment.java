@@ -105,7 +105,7 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
         tv_virtual_type.setText(        setTextSettings("Тип:", D_virtualType));
         tv_year.setText(                setTextSettings("Год:", D_year));
         tv_zodiac.setText(              setTextSettings("Знак зодиака:", D_zodiac));
-        tv_year_number.setText(         setTextSettings("","Ваш гороскоп на "+yearNow+" год!"));
+        tv_year_number.setText(      Html.fromHtml("&#9824;<u><b>Ваш гороскоп на "+yearNow+" год!</b></u>&#9824;"));
         tv_year_period.setText(         setTextSettings("Годовой цикл:", D_yearPeriod));
         tv_fate_symbol.setText(         setTextSettings("По судьбе:", D_fateSymbol));
         tv_energy.setText(              setTextSettings("Энергетика:", D_energy));
@@ -126,8 +126,8 @@ public class ProfileDescription_fragment extends Fragment implements View.OnClic
     public Spanned setTextSettings(String _text, String _value){
         String text = _text;
         String value = _value;
-        text = String.format("<u><i>%s</i></u>",text);
-        value = String.format("<b>%s</b>",value);
+        text = String.format("&#149;<u><i>%s</i></u>",text);
+        value = String.format("<b>%s</b>;",value);
         return Html.fromHtml(text+" "+value);
     }
     @Override
