@@ -3,21 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background1"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin"
-        >
+        android:padding="@dimen/activity_horizontal_margin">
 
         <ImageView
             android:layout_width="@dimen/logo_w_h"
             android:layout_height="@dimen/logo_w_h"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/defaultMargin_triple"
             android:layout_marginTop="60dp"
+            android:layout_marginBottom="30dp"
             android:src="@drawable/icon_eue_512" />
 
         <android.support.design.widget.TextInputLayout
@@ -29,11 +29,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
+                android:textColorHint="@color/white"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@android:color/white" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -47,13 +47,13 @@
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
                 android:hint="@string/hint_password"
+                android:textColorHint="@color/white"
                 android:imeActionId="@+id/login"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@android:color/white" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -62,7 +62,7 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/defaultMargin_triple"
+            android:layout_marginTop="16dp"
             android:background="@color/colorAccent"
             android:text="@string/action_sign_in_short"
             android:textColor="@android:color/black"
@@ -70,23 +70,21 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:visibility="invisible" />
-
-            <Button
-                android:id="@+id/btn_isEmailVerification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/btn_states_thin_rect"
-                android:text="далее" />
+            android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
+        <Button
+            android:id="@+id/btn_isEmailVerification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_states_thin_rect"
+            android:text="@string/date_picker_onward_text" />
 
         </RelativeLayout>
     </LinearLayout>

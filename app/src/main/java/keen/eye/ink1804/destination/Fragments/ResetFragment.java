@@ -25,9 +25,9 @@ import keen.eye.ink1804.destination.R;
 
 public class ResetFragment extends Fragment {
     private EditText inputEmail;
-    private Button btnReset, btnBack;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
+    pushDateListener listener;
     View root;
 
     public ResetFragment() {
@@ -42,11 +42,11 @@ public class ResetFragment extends Fragment {
 
     private void initViews() {
 
-        pushDateListener listener = (pushDateListener)getActivity();
+        listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Новый пароль");
         inputEmail = (EditText) root.findViewById(R.id.email);
-        btnReset = (Button) root.findViewById(R.id.btn_reset_password);
-        btnBack = (Button) root.findViewById(R.id.btn_back);
+        final Button btnReset = (Button) root.findViewById(R.id.btn_reset_password);
+        Button btnBack = (Button) root.findViewById(R.id.btn_back);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
 
         auth = FirebaseAuth.getInstance();
@@ -54,7 +54,7 @@ public class ResetFragment extends Fragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                listener.onStartLoginFragment("","");
             }
         });
 
@@ -75,12 +75,12 @@ public class ResetFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "Мы отправили письмо на почту для восстановления пароля", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Мы отправили письмо на вашу почту для восстановления пароля", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(getContext(), "Ошибка, проверьте правильность почты", Toast.LENGTH_SHORT).show();
                                 }
 
-                                progressBar.setVisibility(View.GONE);
+                                progressBar.setVisibility(View.INVISIBLE);
                             }
                         });
             }
