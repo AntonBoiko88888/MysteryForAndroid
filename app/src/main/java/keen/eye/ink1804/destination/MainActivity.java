@@ -163,14 +163,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View header = navigationView.getHeaderView(0);
         header.setOnClickListener(this);
     }
-
     private void clearBackStack() {
         FragmentManager fm = getSupportFragmentManager();
         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
             fm.popBackStack();
         }
     }
-
     private void createAlert_setName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Аккаунт")
@@ -192,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
-
     private void mainFragmentCreate() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -204,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
 
     }
-
     public boolean isOnline(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -243,7 +239,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
-
     @Override
     public void onDatePushed(int day, int month, int year, int currentYear, boolean sex, int _backStackID, boolean isMyDescr) {
         FragmentManager fm = getSupportFragmentManager();
@@ -268,7 +263,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = _backStackID;
         transaction.commit();
     }
-
     @Override
     public void onDescriptionClicked(String key, String layoutTag) {
         FragmentManager fm = getSupportFragmentManager();
@@ -289,7 +283,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = 2;
         transaction.commit();
     }
-
     @Override
     public void onRegistration(int day, int month, int year, boolean sex) {
         toggle.setDrawerIndicatorEnabled(true);
@@ -300,7 +293,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container, accFragment, "accFragment");
         transaction.commit();
     }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -321,14 +313,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
     }
-
     @Override
     public void pictureDownload(ImageView imageView) {
         iconImage = imageView;
         Crop.pickImage(this);
         iconImage.buildDrawingCache();
     }
-
     @Override
     public void toolbarSetTitle(String title) {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -340,7 +330,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -362,7 +351,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
-
     @Override
     public void onNewProfile() {
         String tag = "datePicker_fragment";
@@ -376,7 +364,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container, fragment, "datePicker_fragment");
         transaction.commit();
     }
-
     @Override
     public void setNotification(Context context) {
         String[] times = new String[]{"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00"
@@ -469,7 +456,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
-
     @Override
     public void registration() {
         LoginFragment fragment = new LoginFragment();//в дальнейшем
@@ -477,7 +463,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.add(R.id.fragment_container, fragment, "login_fragment");
         transaction.commit();
     }
-
     @Override
     public void onStartLoginFragment(String email, String password) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -489,7 +474,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putString("password", password);
         fragment.setArguments(args);
     }
-
     @Override
     public void onStartResetFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -497,7 +481,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container, fragment, "resetFragment");
         transaction.commit();
     }
-
     @Override
     public void onStartSignUpFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

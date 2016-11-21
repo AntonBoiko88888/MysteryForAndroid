@@ -10,12 +10,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="5dp">
     <GridLayout
         android:id="@+id/sphere_grid"
-        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:stretchMode="columnWidth"
         android:numColumns="auto_fit"
         android:gravity="center"

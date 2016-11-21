@@ -1,9 +1,12 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,9 +41,10 @@ public class SphereDescription_fragment extends Fragment implements View.OnClick
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = size.x-20;
+        int width = (size.x-2*dpToPx(5,getActivity()))/4;
+        int m1dp = dpToPx(1,getActivity());
         int length = array.length;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width/4, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width/*-2*m1dp*/, ViewGroup.LayoutParams.WRAP_CONTENT);
         for(int i=0;i<length;i++){
             Button btn = new Button(getActivity());
             btn.setText(array[(i+3)%length]);
@@ -73,5 +77,12 @@ public class SphereDescription_fragment extends Fragment implements View.OnClick
             }
         }
         tv_details.setText(Html.fromHtml(details[id]));
+    }
+    public int dpToPx(int dp, Context context) {
+        /**
+         * Converting dp to pixel
+         */
+        Resources r = context.getApplicationContext().getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 }
