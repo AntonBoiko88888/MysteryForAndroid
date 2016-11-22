@@ -68,7 +68,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
             Data_calculation dc = new Data_calculation();
             int m1dp = dc.dpToPx(1,getActivity());
             int m6dp = dc.dpToPx(6,getActivity());
-            int width = (size.x-2*m6dp-5*m1dp)/4;
+            int width = (size.x-17*m1dp)/4;
             LinearLayout.LayoutParams gridParams = new LinearLayout.LayoutParams(width, width);
             GridLayout.LayoutParams imageViewParams = new GridLayout.LayoutParams(gridParams);
             imageViewParams.setMargins(m1dp,m1dp,m1dp,m1dp);

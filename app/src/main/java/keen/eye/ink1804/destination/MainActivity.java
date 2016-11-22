@@ -236,6 +236,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     } else
                         super.onBackPressed();
                     break;
+                default: break;
             }
         }
     }
@@ -458,33 +459,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void registration() {
+        String tag = "reg";
         LoginFragment fragment = new LoginFragment();//в дальнейшем
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+        }
+        backStackID = 1;
         transaction.replace(R.id.fragment_container, fragment, "login_fragment");
         transaction.commit();
     }
     @Override
-    public void onStartLoginFragment(String email, String password) {
+    public void onLoginClick(String email, String password) {
+        String tag = "login_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         LoginFragment fragment = new LoginFragment();
         transaction.replace(R.id.fragment_container, fragment, "loginFragment");
-        transaction.commit();
         Bundle args = new Bundle();
         args.putString("email", email);
         args.putString("password", password);
         fragment.setArguments(args);
+        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+        }
+        backStackID = 2;
+        transaction.commit();
     }
     @Override
-    public void onStartResetFragment() {
+    public void onStartResetPassword() {
+        String tag = "reset_password_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         ResetFragment fragment = new ResetFragment();
+        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+        }
+        backStackID = 2;
         transaction.replace(R.id.fragment_container, fragment, "resetFragment");
         transaction.commit();
     }
     @Override
-    public void onStartSignUpFragment() {
+    public void onStartRegistration() {
+        String tag = "start_reg_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         SignUpFragment fragment = new SignUpFragment();
+        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+        }
+        backStackID = 2;
         transaction.replace(R.id.fragment_container, fragment, "signUpFragment");
         transaction.commit();
     }

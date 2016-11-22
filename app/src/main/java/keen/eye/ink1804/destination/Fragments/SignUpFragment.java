@@ -179,7 +179,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                                     UsersModel usersModel = new UsersModel(user.getEmail(), user.getUid());
                                                     usersModel.toMap();
                                                     messageRef.child(count + "").setValue(usersModel);
-                                                    listener.onStartLoginFragment(emailBundle, passwordBundle);
+                                                    listener.onLoginClick(emailBundle, passwordBundle);
                                                     auth.signOut();
                                                 } else
                                                     Toast.makeText(getContext(), "Вы еще не подтвердили свою почту!",

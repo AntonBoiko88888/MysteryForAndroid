@@ -53,7 +53,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         inputEmail = (EditText)root.findViewById(R.id.email);
         inputPassword = (EditText)root.findViewById(R.id.password);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
-        btnSignup = (Button) root.findViewById(R.id.btn_signup);
+        btnSignup = (Button) root.findViewById(R.id.btn_registrate);
         Button btnLogin = (Button) root.findViewById(R.id.btn_login);
         btnReset = (Button) root.findViewById(R.id.btn_reset_password);
         btnLogin.setOnClickListener(this);
@@ -92,23 +92,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         final pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()) {
-            case R.id.btn_signup:
-                listener.onStartSignUpFragment();
+            case R.id.btn_registrate:
+                listener.onStartRegistration();
                 break;
             case R.id.btn_login:
                 final String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
-
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getContext(), "Введите email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getContext(), "Введите пароль!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 progressBar.setVisibility(View.VISIBLE);
                 btnReset.setVisibility(View.INVISIBLE);
                 btnSignup.setVisibility(View.INVISIBLE);
@@ -138,7 +135,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         });
                 break;
             case R.id.btn_reset_password:
-                listener.onStartResetFragment();
+                listener.onStartResetPassword();
+                Toast.makeText(getActivity(), "SIGN_UP", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

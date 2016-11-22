@@ -54,7 +54,7 @@ public class ResetFragment extends Fragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onStartLoginFragment("","");
+                listener.onLoginClick("","");
             }
         });
 

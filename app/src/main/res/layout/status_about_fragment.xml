@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    android:padding="@dimen/defaultMargin"
+    android:gravity="center_horizontal">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/defaultMargin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="Начинающий"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/defaultMargin"
+            android:textSize="20sp"
+            android:text="- Описание\n- и еще описание\n- может даже еше что то и еще и еще, фантазии нет предела!!!!"/>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/defaultMargin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="@dimen/defaultMargin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="Продвинутый"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/defaultMargin"
+                android:textSize="20sp"
+                android:text="- Описание\n- и еще описание\n- может даже еше что то"/>
+            <Button
+                android:id="@+id/statAbout_getAdvanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   Приообрести   "
+                android:background="@drawable/btn_states_thin_rect"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <Button
+        android:id="@+id/statAbout_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Спасибо, не надо!   "
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:background="@drawable/btn_states_thin_rect"/>
+</LinearLayout>
