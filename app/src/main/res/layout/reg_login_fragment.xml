@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,12 +11,11 @@
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
-
         <ImageView
             android:layout_width="@dimen/logo_w_h"
             android:layout_height="@dimen/logo_w_h"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="@dimen/defaultMargin_triple"
             android:src="@drawable/icon_eue_512" />
 
         <android.support.design.widget.TextInputLayout
@@ -29,7 +26,7 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="@dimen/defaultMargin_double"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
                 android:textColor="@android:color/white"
@@ -44,7 +41,7 @@
                 android:id="@+id/password"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="@dimen/defaultMargin_double"
                 android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:textColor="@android:color/white"
@@ -57,7 +54,7 @@
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="@dimen/defaultMargin_triple"
             android:background="@color/colorAccent"
             android:text="@string/btn_login"
             android:textColor="@android:color/black" />
@@ -66,7 +63,7 @@
             android:id="@+id/btn_reset_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="@dimen/defaultMargin_triple"
             android:background="@null"
             android:text="@string/btn_forgot_password"
             android:textAllCaps="false"
@@ -81,11 +78,10 @@
             android:id="@+id/btn_registrate"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="@dimen/defaultMargin_triple"
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAllCaps="false"
-
             android:textColor="@color/white"
             android:textSize="15dp" />
 
@@ -94,7 +90,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="@dimen/defaultMargin_triple"
             android:visibility="invisible"/>
         </RelativeLayout>
 

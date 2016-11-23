@@ -136,7 +136,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_reset_password:
                 listener.onStartResetPassword();
-                Toast.makeText(getActivity(), "SIGN_UP", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

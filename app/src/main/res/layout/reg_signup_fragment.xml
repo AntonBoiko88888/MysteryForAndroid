@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,7 +16,7 @@
             android:layout_height="@dimen/logo_w_h"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="60dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="@dimen/defaultMargin_triple"
             android:src="@drawable/icon_eue_512" />
 
         <android.support.design.widget.TextInputLayout
@@ -62,7 +61,7 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/defaultMargin_double"
             android:background="@color/colorAccent"
             android:text="@string/action_sign_in_short"
             android:textColor="@android:color/black"
