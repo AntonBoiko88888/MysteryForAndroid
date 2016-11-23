@@ -16,7 +16,7 @@
             android:layout_height="@dimen/logo_w_h"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/defaultMargin_triple"
-            android:src="@drawable/icon_eue_512" />
+            android:src="@drawable/icon_eye_512" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"

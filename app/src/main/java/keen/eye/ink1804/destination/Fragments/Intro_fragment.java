@@ -32,7 +32,7 @@ public class Intro_fragment extends Fragment {
         Bundle bundle = this.getArguments();
         int i=bundle.getInt("number");
         switch (i) {
-            case 0: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.icon_eue_512)); break;
+            case 0: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.icon_eye_512)); break;
             case 1: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.com_zod_rak)); break;
             case 2: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.com_birth_snake)); break;
             case 3: img.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.appintr_virtual_persona)); break;

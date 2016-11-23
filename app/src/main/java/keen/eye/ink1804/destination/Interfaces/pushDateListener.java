@@ -17,5 +17,5 @@ public interface pushDateListener {
     void onLoginClick(String email, String password);
     void onStartResetPassword();
     void onStartRegistration();
-    void registration();
+    void onRegEnter();
 }

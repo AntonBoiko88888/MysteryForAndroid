@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.setTitle("Аккаунт")
                 .setMessage("У вас еще не создан аккаунт, перейдите к заполнению формы.")
                 .setCancelable(false)
-                .setIcon(R.drawable.icon_eue_512)
+                .setIcon(R.drawable.icon_eye_512)
                 .setNegativeButton("ОК",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -417,7 +417,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         builder.setTitle("Гороскоп уведомления")
                 .setCancelable(true)
                 .setView(v)
-                .setIcon(R.drawable.icon_eue_512)
+                .setIcon(R.drawable.icon_eye_512)
                 .setPositiveButton("ОК",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -458,7 +458,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         alert.show();
     }
     @Override
-    public void registration() {
+    public void onRegEnter() {
         String tag = "reg";
         LoginFragment fragment = new LoginFragment();//в дальнейшем
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

@@ -99,7 +99,7 @@ public class Account extends Fragment implements View.OnClickListener {
                 listener.setNotification(getActivity());
                 break;
             case R.id.btn_users_upgrade:
-                listener.registration();
+                listener.onRegEnter();
                 break;
             default: break;
         }
@@ -110,7 +110,7 @@ public class Account extends Fragment implements View.OnClickListener {
         builder.setTitle("Редактирование имени")
                 .setMessage("Введите новое имя")
                 .setCancelable(false)
-                .setIcon(R.drawable.icon_eue_512)
+                .setIcon(R.drawable.icon_eye_512)
                 .setView(R.layout.alert_setname)
                 .setPositiveButton("Ок",
                         new DialogInterface.OnClickListener() {
