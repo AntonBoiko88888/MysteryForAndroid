@@ -19,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -414,7 +415,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFOCATION,0+"");
         timeSpinner.setSelection(Integer.parseInt(time));
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
         builder.setTitle("Гороскоп уведомления")
                 .setCancelable(true)
                 .setView(v)
