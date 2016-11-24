@@ -45,6 +45,7 @@ import keen.eye.ink1804.destination.Fragments.Details;
 import keen.eye.ink1804.destination.Fragments.FirstRegistration;
 import keen.eye.ink1804.destination.Fragments.ResetFragment;
 import keen.eye.ink1804.destination.Fragments.SignUpFragment;
+import keen.eye.ink1804.destination.Fragments.StatusAbout;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
@@ -467,6 +468,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         backStackID = 1;
         transaction.replace(R.id.fragment_container, fragment, "login_fragment");
+        transaction.commit();
+    }
+    @Override
+    public void onStatusAbout() {
+        String tag = "status";
+        StatusAbout fragment = new StatusAbout();//в дальнейшем
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
+            transaction.addToBackStack(tag);
+        }
+        backStackID = 1;
+        transaction.replace(R.id.fragment_container, fragment, "status_about_fragment");
         transaction.commit();
     }
     @Override

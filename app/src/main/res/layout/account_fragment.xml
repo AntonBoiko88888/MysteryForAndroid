@@ -52,13 +52,21 @@
                 android:textColor="@color/blue"
                 android:textSize="@dimen/account_fragment_textSize" />
 
-            <TextView
-                android:id="@+id/acc_tv_status"
+
+
+                <TextView
+                    android:id="@+id/acc_tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/defaultMargin_half"
+                    android:textColor="@color/yellow"
+                    android:textSize="@dimen/account_fragment_textSize" />
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/defaultMargin_half"
-                android:textColor="@color/yellow"
-                android:textSize="@dimen/account_fragment_textSize" />
+                android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_users_upgrade"
@@ -67,6 +75,14 @@
                 android:layout_marginTop="@dimen/defaultMargin_half"
                 android:background="@drawable/btn_states_thin_rect"
                 android:text="@string/account_fragment_btn_users_upgrade_text" />
+                <Button
+                    android:id="@+id/acc_btn_question"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="@dimen/defaultMargin"
+                    android:background="@drawable/question_states" />
+            </LinearLayout>
 
         </LinearLayout>
 

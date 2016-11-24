@@ -59,6 +59,7 @@ public class Account extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_select_img).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);
+        rootView.findViewById(R.id.acc_btn_question).setOnClickListener(this);
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         Button desc = (Button)rootView.findViewById(R.id.acc_btn_description);
         desc.setTypeface(tf);
@@ -100,6 +101,9 @@ public class Account extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_users_upgrade:
                 listener.onRegEnter();
+                break;
+            case R.id.acc_btn_question:
+                listener.onStatusAbout();
                 break;
             default: break;
         }

@@ -13,6 +13,7 @@ public interface pushDateListener {
     void pictureDownload(ImageView imageView);
     void toolbarSetTitle(String title);
     void onNewProfile();
+    void onStatusAbout();
     void setNotification(Context context);
     void onLoginClick(String email, String password);
     void onStartResetPassword();
