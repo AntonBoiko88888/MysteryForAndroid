@@ -39,26 +39,28 @@ public class Notification_reciever extends BroadcastReceiver {
         zodiac = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFOCATION,"Овен");
         int zodId = math.getZodiacId(zodiac);
         if(showNotific)
-        parser.parseNotificHoroscope(context, zodId);
+            parser.parseNotificHoroscope(context, zodId);
 
 
-//        NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context
-//                .NOTIFICATION_SERVICE);
+//            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context
+//                    .NOTIFICATION_SERVICE);
 //
-//        Intent repeating_intent = new Intent(context,MainActivity.class);
-//        repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            Intent repeating_intent = new Intent(context, MainActivity.class);
+//            repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            repeating_intent.putExtra("isHoroscope",true);
 //
-//        PendingIntent pendingIntent = PendingIntent.getActivity(context,100,repeating_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//            PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, repeating_intent, PendingIntent.FLAG_UPDATE_CURRENT);
 //
 //
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-//                .setContentIntent(pendingIntent)
-//                .setSmallIcon(R.drawable.crop__ic_done)
-//                .setContentTitle("Гороскоп на сегодня")
+//            NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+//                    .setContentIntent(pendingIntent)
+//                    .setSmallIcon(R.drawable.crop__ic_done)
+//                    .setContentTitle("Гороскоп на сегодня")
 ////                .setContentText(text)
-//                .setSubText("hello")
-//                .setAutoCancel(true);
+//                    .setSubText("hello")
+//                    .setAutoCancel(true);
 //
-//        notificationManager.notify(100,builder.build());
+//            notificationManager.notify(100, builder.build());
+//        }
     }
 }

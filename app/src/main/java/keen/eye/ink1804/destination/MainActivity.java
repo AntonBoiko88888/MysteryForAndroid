@@ -84,12 +84,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             createAlert_setName();
         } else {
-//            DatePicker_fragment fragment = new DatePicker_fragment();
-            Account fragment = new Account();//в дальнейшем
+            Account fragment = new Account();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.fragment_container, fragment, "account_fragment");
             transaction.commit();
+            Intent intent = getIntent();
+            if(intent.getBooleanExtra("isHoroscope",false)) {
+                FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
+                HoroscopeOnline horFragment = new HoroscopeOnline();//в дальнейшем
+                horTransaction.replace(R.id.fragment_container, horFragment, "drawer_fragment");
+                horTransaction.commit();
+                backStackID = 1;
+            }
         }
+
     }
 
     @Override

@@ -5,8 +5,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.ProgressBar;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,6 +95,7 @@ public class HtmlParser {
 
         Intent repeating_intent = new Intent(context,MainActivity.class);
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        repeating_intent.putExtra("isHoroscope",true);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context,100,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);
 //
@@ -104,12 +106,18 @@ public class HtmlParser {
 //                .setContentText(text)
 //                .setSubText("hello")
 //                .setAutoCancel(true);
+        int[] img_ids = new int[]{R.drawable.hor_oven,R.drawable.hor_telec,R.drawable.hor_blizneci,R.drawable.hor_rak
+                ,R.drawable.hor_lev,R.drawable.hor_deva,R.drawable.hor_vesi,R.drawable.hor_skorpion
+                ,R.drawable.hor_strelec,R.drawable.hor_kozerog,R.drawable.hor_vodoley,R.drawable.hor_fish};
+        Bitmap icon = BitmapFactory.decodeResource(context.getResources(),
+                R.drawable.icon_eye);
         Notification.Builder builder = new Notification.Builder(context)
                 .setContentIntent(pendingIntent)
                 .setContentTitle("Ваш гороскоп на сегодня")
                 .setContentText(Constants.ZODIAK_NAMES_normal[horCode])
                 .setContentText(text)
-                .setSmallIcon(R.drawable.icon_eye)
+                .setSmallIcon(img_ids[horCode])
+                .setLargeIcon(icon)
                 .setAutoCancel(true);
 
         Notification notification = new Notification.BigTextStyle(builder)
