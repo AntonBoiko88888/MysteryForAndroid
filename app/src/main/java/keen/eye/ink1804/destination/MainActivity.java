@@ -479,7 +479,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFOCATION,0+"");
         timeSpinner.setSelection(Integer.parseInt(time));
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
         builder.setTitle("Уведомления")
                 .setCancelable(true)
                 .setView(v)
