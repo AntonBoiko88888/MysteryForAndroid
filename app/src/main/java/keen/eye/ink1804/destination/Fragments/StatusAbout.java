@@ -29,9 +29,11 @@ public class StatusAbout extends Fragment implements View.OnClickListener {
         beginning.setText(Html.fromHtml(status_about_db[0]));
         advanced.setText(Html.fromHtml(status_about_db[1]));
 
+
         rootView.findViewById(R.id.statAbout_purchase).setOnClickListener(this);
         return rootView;
     }
+
 
     @Override
     public void onClick(View view) {

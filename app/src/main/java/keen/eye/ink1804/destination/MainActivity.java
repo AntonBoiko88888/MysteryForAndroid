@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //    2 - больше одного шага от главного фрагмента
     private static long back_pressed;
 
+
     IInAppBillingService mService;
     ServiceConnection connection;
     String inAppId = "android.test.purchased";
@@ -112,9 +113,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 horTransaction.commit();
                 backStackID = 1;
             }
-//            setBillingConnection();
-        }
 
+        }
+//            setBillingConnection();
 
     }
 
@@ -591,13 +592,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (connection != null) {
-            unbindService(connection);
-        }
-    }
 
     @Override
     public void onPurchaseClick() {
@@ -647,4 +641,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (connection != null) {
+            unbindService(connection);
+        }
+    }
+
 }
