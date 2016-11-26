@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@color/black"
             android:padding="@dimen/defaultMargin">
         <TextView
             android:layout_width="wrap_content"
@@ -54,7 +53,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@color/black"
+            android:background="@color/for_cardView"
             android:padding="@dimen/defaultMargin">
             <TextView
                 android:layout_width="wrap_content"
@@ -65,6 +64,7 @@
                 android:id="@+id/advanced_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/pro_zra_advanced_status"
                 android:padding="@dimen/defaultMargin"
                 android:textSize="20sp"
                 android:text="- Описание\n- и еще описание\n- может даже еше что то"/>

@@ -23,4 +23,5 @@
     <color name="pro_zra">#00f2f0f0</color>
     <color name="pro_zra_beginning_status">#fd969594</color>
     <color name="pro_zra_advanced_status">#fd19b6ff</color>
+    <color name="for_cardView">#00ffffff</color>
 </resources>

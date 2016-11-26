@@ -161,7 +161,7 @@ public class Account extends Fragment implements View.OnClickListener {
             URLConnection conn = new URL(icon).openConnection();
             conn.connect();
             is = conn.getInputStream();
-            bis = new BufferedInputStream(is, 8192);
+            bis = new BufferedInputStream(is);
             bitmap = BitmapFactory.decodeStream(bis);
             imageView.setImageBitmap(bitmap);
 
