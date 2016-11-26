@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppIntr"
+        <activity android:name=".SplashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity
+            android:name=".AppIntr"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 
        <!-- <activity android:name=".Utills.Repeating_activity"/>-->
         <receiver android:name=".Utills.Notification_reciever"/>

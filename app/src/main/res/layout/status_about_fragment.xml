@@ -14,15 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/AlertDialogCustom"
-        android:background="@drawable/background1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/for_cardView"
             android:gravity="center"
             android:padding="@dimen/defaultMargin">
         <TextView
@@ -41,17 +37,11 @@
             android:text="- Описание\n- и еще описание\n- может даже еше что то и еще и еще, фантазии нет предела!!!!"/>
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background1"
-        android:layout_marginTop="@dimen/defaultMargin">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="@dimen/account_fragment_btn_marginTop"
             android:gravity="center"
             android:background="@color/for_cardView"
             android:padding="@dimen/defaultMargin">
@@ -59,6 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
+                android:textColor="@color/pro_zra_advanced_status"
+
                 android:text="Продвинутый"/>
             <TextView
                 android:id="@+id/advanced_text"
@@ -76,7 +68,6 @@
                 android:background="@drawable/btn_states_thin_rect"/>
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
     <Button
         android:id="@+id/statAbout_back"
         android:layout_width="wrap_content"
