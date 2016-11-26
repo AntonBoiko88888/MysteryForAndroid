@@ -157,7 +157,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void dialogLogin() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustomBlack));
         builder.setTitle("Данные пользователя")
                 .setMessage("Вы вошли, Данные профиля: Здесь будут данные про статус, имя, и дату рождения пользователя")
                 .setIcon(R.drawable.icon_eye_512)

@@ -111,7 +111,7 @@ public class Account extends Fragment implements View.OnClickListener {
     }
 
     private void setName(){
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustomBlack));
         builder.setTitle("Редактирование имени")
                 .setMessage("Введите новое имя")
                 .setCancelable(false)
