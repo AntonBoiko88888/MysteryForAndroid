@@ -4,13 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.android.alarm.permissoon.SET_ALARM"/>
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <!-- <activity android:name="com.soundcloud.android.crop.CropImageActivity" /> -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon_eye_512"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreenActivity"
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+        <activity android:name=".AppIntr"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,14 +23,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AppIntr"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 
        <!-- <activity android:name=".Utills.Repeating_activity"/>-->
         <receiver android:name=".Utills.Notification_reciever"/>

@@ -20,4 +20,5 @@ public interface pushDateListener {
     void onStartResetPassword();
     void onStartRegistration();
     void onRegEnter();
+    void onPurchaseClick();
 }

@@ -2,14 +2,20 @@ package keen.eye.ink1804.destination;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.RemoteException;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,9 +35,14 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.android.vending.billing.IInAppBillingService;
 import com.soundcloud.android.crop.Crop;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
@@ -69,11 +80,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //    2 - больше одного шага от главного фрагмента
     private static long back_pressed;
 
+    IInAppBillingService mService;
+    ServiceConnection connection;
+    String inAppId = "android.test.purchased";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         createActivityViews();
         mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         isSelectedNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS, false);
@@ -96,7 +112,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 horTransaction.commit();
                 backStackID = 1;
             }
+//            setBillingConnection();
         }
+
 
     }
 
@@ -219,6 +237,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             return false;
         }
+    }
+    private void setBillingConnection(){
+        connection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                mService = IInAppBillingService.Stub.asInterface(iBinder);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                mService = null;
+            }
+        };
+//        bindService(new Intent("com.android.vending.billing.InAppBillingService.BIND"),
+//                connection, Context.BIND_AUTO_CREATE);
+        Intent purchaseIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+// This is the key line that fixed everything for me
+        purchaseIntent.setPackage("com.android.vending");
+        bindService(purchaseIntent, connection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -359,6 +396,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 iconImage.setImageURI(Crop.getOutput(data));
             } else if (resultCode == Crop.RESULT_ERROR) {
                 Toast.makeText(this, Crop.getError(data).getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        if (requestCode == 1001) {
+            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+
+            if (resultCode == RESULT_OK) {
+                try {
+                    JSONObject jo = new JSONObject(purchaseData);
+                    String sku = jo.getString(inAppId);
+                    Toast.makeText(
+                            MainActivity.this,
+                            "You have bought the " + sku
+                                    + ". Excellent choice,adventurer!",
+                            Toast.LENGTH_LONG).show();
+
+                } catch (JSONException e) {
+                    System.out.println("Failed to parse purchase data.");
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -533,5 +589,62 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = 2;
         transaction.replace(R.id.fragment_container, fragment, "signUpFragment");
         transaction.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (connection != null) {
+            unbindService(connection);
+        }
+    }
+
+    @Override
+    public void onPurchaseClick() {
+        ArrayList skuList = new ArrayList();
+        skuList.add(inAppId);
+        Bundle querySkus = new Bundle();
+        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
+        Bundle skuDetails;
+        try {
+            skuDetails = mService.getSkuDetails(3, getPackageName(),
+                    "inapp", querySkus);
+
+            int response = skuDetails.getInt("RESPONSE_CODE");
+            if (response == 0) {
+
+                ArrayList<String> responseList = skuDetails
+                        .getStringArrayList("DETAILS_LIST");
+
+                for (String thisResponse : responseList) {
+                    JSONObject object = new JSONObject(thisResponse);
+                    String sku = object.getString("productId");
+                    String price = object.getString("price");
+                    if (sku.equals(inAppId)) {
+                        System.out.println("price " + price);
+                        Bundle buyIntentBundle = mService
+                                .getBuyIntent(3, getPackageName(), sku,
+                                        "inapp",
+                                        "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
+                        PendingIntent pendingIntent = buyIntentBundle
+                                .getParcelable("BUY_INTENT");
+                        startIntentSenderForResult(
+                                pendingIntent.getIntentSender(), 1001,
+                                new Intent(), Integer.valueOf(0),
+                                Integer.valueOf(0), Integer.valueOf(0));
+                    }
+                }
+            }
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IntentSender.SendIntentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 }
