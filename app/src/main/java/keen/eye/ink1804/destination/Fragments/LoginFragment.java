@@ -1,8 +1,11 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +37,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     FirebaseUser user;
     int emailVerification = 0;
 
+    pushDateListener listener;
+
     String emailArgs;
     View root;
 
@@ -48,7 +53,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initViews() {
-        pushDateListener listener = (pushDateListener)getActivity();
+        listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Вход");
         inputEmail = (EditText)root.findViewById(R.id.email);
         inputPassword = (EditText)root.findViewById(R.id.password);
@@ -127,7 +132,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                     }
                                 }
                                 else {
-                                    Toast.makeText(getActivity(), "Вы успешно вошли! Сейчас вы должны попасть на описание статусов", Toast.LENGTH_LONG).show();
+                                    dialogLogin();
                                     btnSignup.setEnabled(false);
                                 }
 
@@ -149,6 +154,22 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 //                .build();
 //        user1.updateProfile(profileUpdates);     Нужная фигня
 
+    }
+
+    private void dialogLogin() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
+        builder.setTitle("Данные пользователя")
+                .setMessage("Вы вошли, Данные профиля: Здесь будут данные про статус, имя, и дату рождения пользователя")
+                .setIcon(R.drawable.icon_eye_512)
+                .setCancelable(false)
+                .setNegativeButton("Ок",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                listener.mainFragmentCreate();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
 

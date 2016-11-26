@@ -14,6 +14,7 @@ public interface pushDateListener {
     void toolbarSetTitle(String title);
     void onNewProfile();
     void onStatusAbout();
+    void mainFragmentCreate();
     void setNotification(Context context);
     void onLoginClick(String email, String password);
     void onStartResetPassword();

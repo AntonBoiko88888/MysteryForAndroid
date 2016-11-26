@@ -6,6 +6,16 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:typeface="monospace"
+        android:layout_marginTop="@dimen/appIntroDefaultPaddingBottom"
+        android:layout_marginBottom="@dimen/appIntroDefaultPaddingBottom"
+        android:text="Гороскоп будет приходить каждый день в назначенное время"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,7 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:typeface="serif"
-
         android:text="Получать уведомления в "/>
     <fr.ganfra.materialspinner.MaterialSpinner
         android:id="@+id/alert_time"

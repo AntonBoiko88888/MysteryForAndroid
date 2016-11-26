@@ -17,22 +17,26 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/AlertDialogCustom"
         android:background="@drawable/background1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
+            android:background="@color/black"
             android:padding="@dimen/defaultMargin">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/pro_zra_beginning_status"
             android:textSize="30sp"
             android:text="Начинающий"/>
         <TextView
             android:id="@+id/beginning_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/pro_zra_beginning_status"
             android:padding="@dimen/defaultMargin"
             android:textSize="20sp"
             android:text="- Описание\n- и еще описание\n- может даже еше что то и еще и еще, фантазии нет предела!!!!"/>
@@ -50,6 +54,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
+            android:background="@color/black"
             android:padding="@dimen/defaultMargin">
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +72,7 @@
                 android:id="@+id/statAbout_getAdvanced"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="   Приообрести   "
+                android:text="   Приобрести   "
                 android:background="@drawable/btn_states_thin_rect"/>
 
         </LinearLayout>

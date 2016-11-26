@@ -20,16 +20,31 @@ public class AppIntr extends AppIntro {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        for(int i=0;i<5;i++){
-        Bundle bundle = new Bundle();
-        bundle.putInt("number", i);
-        Fragment fragment = new Intro_fragment();
-        fragment.setArguments(bundle);
-            addSlide(fragment);
-        }
+   //     setContentView(R.layout.activity_splash_screen);
+
 
        final SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         if (!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
+
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    try {
+//                        Thread.sleep(5000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+
+
+            for(int i=0;i<5;i++){
+                Bundle bundle = new Bundle();
+                bundle.putInt("number", i);
+                Fragment fragment = new Intro_fragment();
+                fragment.setArguments(bundle);
+                addSlide(fragment);
+            }
 
 
             showStatusBar(false);
@@ -47,6 +62,16 @@ public class AppIntr extends AppIntro {
 
         }
         else {
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    try {
+//                        Thread.sleep(5000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
             finish();
             startActivity(new Intent(AppIntr.this, MainActivity.class));
         }

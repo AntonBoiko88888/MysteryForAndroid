@@ -200,12 +200,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
-    private void mainFragmentCreate() {
+    @Override
+    public void mainFragmentCreate() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-//        DatePicker_fragment fragment = new DatePicker_fragment();
-        Account fragment = new Account();//в дальнейшем
+        Account fragment = new Account();
         backStackID = 0;
         transaction.replace(R.id.fragment_container, fragment, "mainFragment");
         transaction.commit();
@@ -423,8 +423,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFOCATION,0+"");
         timeSpinner.setSelection(Integer.parseInt(time));
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
-        builder.setTitle("Гороскоп уведомления")
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Уведомления")
                 .setCancelable(true)
                 .setView(v)
                 .setIcon(R.drawable.icon_eye_512)

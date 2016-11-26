@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="Начинающий"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/pro_zra_status"
+            android:textColor="@color/pro_zra_beginning_status"
             android:textSize="@dimen/nav_header_main_textSize" />
     </LinearLayout>
 </LinearLayout>

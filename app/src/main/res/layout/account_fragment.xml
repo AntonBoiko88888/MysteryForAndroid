@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/defaultMargin_half"
-                    android:textColor="@color/yellow"
+                    android:textColor="@color/pro_zra_beginning_status"
                     android:textSize="@dimen/account_fragment_textSize" />
 
 

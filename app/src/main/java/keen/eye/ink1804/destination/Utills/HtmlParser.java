@@ -110,7 +110,7 @@ public class HtmlParser {
                 ,R.drawable.hor_lev,R.drawable.hor_deva,R.drawable.hor_vesi,R.drawable.hor_skorpion
                 ,R.drawable.hor_strelec,R.drawable.hor_kozerog,R.drawable.hor_vodoley,R.drawable.hor_fish};
         Bitmap icon = BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.icon_eye);
+                R.drawable.icon_eye_512);
         Notification.Builder builder = new Notification.Builder(context)
                 .setContentIntent(pendingIntent)
                 .setContentTitle("Ваш гороскоп на сегодня")
