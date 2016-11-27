@@ -27,8 +27,8 @@ public class SplashScreenActivity extends Activity {
                 public void run() {
                     try {
                         Thread.sleep(5000);
-                        Intent i = new Intent(SplashScreenActivity.this, AppIntr.class);
-                        startActivity(i);
+                        startActivity(new Intent(SplashScreenActivity.this, AppIntr.class));
+                        finish();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -42,8 +42,8 @@ public class SplashScreenActivity extends Activity {
                 public void run() {
                     try {
                         Thread.sleep(3000);
-                        Intent i = new Intent(SplashScreenActivity.this, AppIntr.class);
-                        startActivity(i);
+                        startActivity(new Intent(SplashScreenActivity.this, AppIntr.class));
+                        finish();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

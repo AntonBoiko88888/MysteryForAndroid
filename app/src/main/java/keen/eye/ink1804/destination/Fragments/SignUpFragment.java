@@ -196,7 +196,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         }
     }
     private void dialogVerification() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustomBlack));
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
         builder.setTitle("Верификация")
                 .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации.")
                 .setIcon(R.drawable.icon_eye_512)
