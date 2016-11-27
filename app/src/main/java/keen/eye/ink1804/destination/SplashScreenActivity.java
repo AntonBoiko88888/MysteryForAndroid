@@ -26,7 +26,7 @@ public class SplashScreenActivity extends Activity {
                 @Override
                 public void run() {
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(8000);
                         startActivity(new Intent(SplashScreenActivity.this, AppIntr.class));
                         finish();
                     } catch (InterruptedException e) {
@@ -34,14 +34,13 @@ public class SplashScreenActivity extends Activity {
                     }
                 }
             }).start();
-
         }
         else {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(4000);
                         startActivity(new Intent(SplashScreenActivity.this, AppIntr.class));
                         finish();
                     } catch (InterruptedException e) {
