@@ -25,13 +25,9 @@ public class StatusAbout extends Fragment implements View.OnClickListener {
         rootView = inflater.inflate(R.layout.status_about_fragment,container,false);
         TextView beginning = (TextView)rootView.findViewById(R.id.beginning_text);
         TextView advanced = (TextView)rootView.findViewById(R.id.advanced_text);
-        TextView advanced_money = (TextView)rootView.findViewById(R.id.advanced_money);
         String[] status_about_db = getResources().getStringArray(R.array.status_about_db);
         beginning.setText(Html.fromHtml(status_about_db[0]));
         advanced.setText(Html.fromHtml(status_about_db[1]));
-        advanced_money.setText(Html.fromHtml(""));
-
-
         rootView.findViewById(R.id.statAbout_purchase).setOnClickListener(this);
         return rootView;
     }

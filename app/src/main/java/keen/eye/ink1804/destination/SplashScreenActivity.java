@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import keen.eye.ink1804.destination.Math.Constants;
 
 /**
@@ -18,6 +21,10 @@ public class SplashScreenActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        TextView loading = (TextView)findViewById(R.id.loading);
+        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
+        loading.setTypeface(tf);
+
 
         final SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         if (!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {

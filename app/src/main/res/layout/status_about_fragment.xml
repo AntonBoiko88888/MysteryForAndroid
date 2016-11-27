@@ -61,15 +61,6 @@
                 android:textSize="20sp"
                 android:text="- Описание\n- и еще описание\n- может даже еше что то"/>
 
-
-            <TextView
-                android:id="@+id/advanced_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/pro_zra_advanced_status"
-                android:padding="@dimen/defaultMargin"
-                android:textSize="20sp"/>
-
             <Button
                 android:id="@+id/statAbout_purchase"
                 android:layout_width="wrap_content"
@@ -83,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="   Спасибо, не надо!   "
-        android:layout_marginTop="@dimen/defaultMargin"
+        android:layout_marginTop="@dimen/horoscope_online_textZodiac_marginTop"
         android:background="@drawable/btn_states_thin_rect"/>
         </LinearLayout>
     </ScrollView>
