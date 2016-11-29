@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -157,7 +158,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void dialogLogin() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
+        Context context = getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Данные пользователя")
                 .setMessage("Вы вошли, Данные профиля: Здесь будут данные про статус, имя, и дату рождения пользователя")
                 .setIcon(R.drawable.icon_eye_512)

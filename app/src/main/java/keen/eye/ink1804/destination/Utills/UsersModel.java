@@ -7,15 +7,15 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class UsersModel {
-    private int Day;
-    private String Email;
-    private int Month;
-    private String Name;
-    private String Password;
-    private String Sex;
-    private String Socionics;
-    private String Status;
-    private int Year;
+    public int Day;
+    public String Email;
+    public int Month;
+    public String Name;
+    public String Password;
+    public String Sex;
+    public String Socionics;
+    public String Status;
+    public int Year;
 
     public UsersModel(String name, int day, int month, int year, String sex, String socionics, String email, String password, String status) {
         Name = name;
