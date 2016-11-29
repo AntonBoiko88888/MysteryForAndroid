@@ -1,10 +1,5 @@
 package keen.eye.ink1804.destination.Utills;
-
-import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by anton on 15.11.16.
@@ -12,25 +7,31 @@ import java.util.Map;
 
 @IgnoreExtraProperties
 public class UsersModel {
-    public String Email;
-    public String Id;
+    private int Day;
+    private String Email;
+    private int Month;
+    private String Name;
+    private String Password;
+    private String Sex;
+    private String Socionics;
+    private String Status;
+    private int Year;
+
+    public UsersModel(String name, int day, int month, int year, String sex, String socionics, String email, String password, String status) {
+        Name = name;
+        Day = day;
+        Month = month;
+        Year = year;
+        Sex = sex;
+        Socionics = socionics;
+        Email = email;
+        Password = password;
+        Status = status;
+    }
 
     public UsersModel() {
 
     }
 
-    public UsersModel(String Email, String Id) {
-        this.Email = Email;
-        this.Id = Id;
-    }
-
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("Email", Email);
-        result.put("Id", Id);
-
-        return result;
-    }
 }
 

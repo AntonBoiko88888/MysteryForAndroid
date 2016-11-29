@@ -76,7 +76,7 @@ public class ResetFragment extends Fragment {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getContext(), "Мы отправили письмо на вашу почту для восстановления пароля", Toast.LENGTH_SHORT).show();
-                                } else {
+                                    } else {
                                     Toast.makeText(getContext(), "Ошибка, проверьте правильность почты", Toast.LENGTH_SHORT).show();
                                 }
 

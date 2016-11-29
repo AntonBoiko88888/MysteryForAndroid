@@ -1,6 +1,8 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -27,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.UsersModel;
 
@@ -111,7 +114,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                             public void onComplete(@NonNull final Task<AuthResult> task) {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "Аунтефикация не удалась, попробуйте ввести другой почтовый адресс.",
+                                    Toast.makeText(getContext(), "Аунтефикация не удалась, проверьте соединение с интернетом или попробуйте ввести другой почтовый адресс.",
                                             Toast.LENGTH_SHORT).show();
                                 } else if (task.isSuccessful()) {
                                     messageRef.addValueEventListener(new ValueEventListener() {
@@ -171,14 +174,21 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                         Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
                                 }
                                 else {
+                                    final SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
                                     FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
                                         @Override
                                         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                                             user = firebaseAuth.getCurrentUser();
                                             if (user != null) {
                                                 if (user.isEmailVerified()) {
-                                                    UsersModel usersModel = new UsersModel(user.getEmail(), user.getUid());
-                                                    usersModel.toMap();
+                                                    UsersModel usersModel = new UsersModel(mSettings.getString(Constants.APP_PREF_NAME, "noName"),
+                                                            mSettings.getInt(Constants.APP_PREF_DAY, 1),
+                                                            mSettings.getInt(Constants.APP_PREF_MONTH, 1),
+                                                            mSettings.getInt(Constants.APP_PREF_YEAR, 2000),
+                                                            "true",
+                                                            mSettings.getString(Constants.APP_PREF_SOCIONICS, ""),
+                                                            emailBundle, passwordBundle,
+                                                            mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
                                                     messageRef.child(count + "").setValue(usersModel);
                                                     listener.onLoginClick(emailBundle, passwordBundle);
                                                     auth.signOut();
