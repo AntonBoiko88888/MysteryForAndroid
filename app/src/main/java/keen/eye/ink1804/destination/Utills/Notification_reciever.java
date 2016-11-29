@@ -33,9 +33,9 @@ public class Notification_reciever extends BroadcastReceiver {
 //        zodiac = intent.getStringExtra("zodiac");
 //        time = intent.getIntExtra("time",0);
 //        showNotific = intent.getBooleanExtra("notify",false);
-
-        showNotific = MainActivity.mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS,false);
-        zodiac = MainActivity.mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFOCATION,"Овен");
+        SharedPreferences mSettings = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        showNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS,false);
+        zodiac = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFOCATION,"Овен");
         int zodId = math.getZodiacId(zodiac);
         if(showNotific)
             parser.parseNotificHoroscope(context, zodId);
