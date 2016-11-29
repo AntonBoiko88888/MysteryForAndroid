@@ -592,9 +592,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container, fragment, "signUpFragment");
         transaction.commit();
     }
-
-
-
     @Override
     public void onPurchaseClick() {
         ArrayList skuList = new ArrayList();
@@ -643,9 +640,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

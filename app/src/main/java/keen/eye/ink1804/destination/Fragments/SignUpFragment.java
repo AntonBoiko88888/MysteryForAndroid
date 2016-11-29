@@ -221,5 +221,24 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         alert.show();
     }
 
+    private void createUser(String _email, String _password){
+        SharedPreferences mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSettings.edit();
+        String name = mSettings.getString(Constants.APP_PREF_NAME,"Default");
+        int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        int month = mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        int year = mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        boolean sex = mSettings.getBoolean(Constants.APP_PREF_SEX, true);
+        String socionics = mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
+        String email = _email;
+        String password = _password;
+        String status = "Начинающий";
+        editor.putString(Constants.APP_PREF_EMAIL, email);
+        editor.putString(Constants.APP_PREF_PASSWORD, password);
+        editor.apply();
+
+        UsersModel user = new UsersModel(name,day,month,year,sex+"",socionics,email,password,status);
+
+    }
 }
 

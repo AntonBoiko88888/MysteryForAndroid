@@ -13,6 +13,8 @@ public class Constants {
     public static final String APP_PREF_YEAR = "year"; // дата рождения
     public static final String APP_PREF_SEX = "sex"; // пол
     public static final String APP_PREF_STATUS = "status"; // статус пользователя
+    public static final String APP_PREF_EMAIL = "email"; // статус пользователя
+    public static final String APP_PREF_PASSWORD = "password"; // статус пользователя
     public static final String APP_PREF_ISREGISTER = "isregister"; // наличие аккаунта
     public static final String APP_PREF_IMAGE = "icon";
     public static final String APP_PREF_SOCIONICS = "socionics_type";
