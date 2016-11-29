@@ -8,8 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -36,7 +39,17 @@ public class StatusAbout extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         pushDateListener listener = (pushDateListener) getActivity();
-        listener.onPurchaseClick();
+        switch (view.getId()){
+            case R.id.statAbout_purchase:
+                if(MainActivity.mSettings.contains(Constants.APP_PREF_EMAIL)) {
+                    listener.onPurchaseClick();
+                }
+                else{
+                    listener.onRegEnter();
+                }
+                break;
+        }
+
 //        switch (view.getId()){
 //            case R.id.statAbout_purchase:
 //                break;

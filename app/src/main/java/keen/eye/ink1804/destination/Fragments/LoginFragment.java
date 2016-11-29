@@ -2,6 +2,7 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -35,6 +38,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private ProgressBar progressBar;
     private Button btnSignup;
     private Button btnReset;
+    private Context context;
     FirebaseUser user;
     int emailVerification = 0;
 
@@ -49,6 +53,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.reg_login_fragment,container,false);
+        context = getActivity();
         initViews();
         return root;
     }
@@ -57,7 +62,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Вход");
         inputEmail = (EditText)root.findViewById(R.id.email);
+        inputEmail.setText(MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,""));
         inputPassword = (EditText)root.findViewById(R.id.password);
+        inputPassword.setText(MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD,""));
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
         btnSignup = (Button) root.findViewById(R.id.btn_registrate);
         Button btnLogin = (Button) root.findViewById(R.id.btn_login);
@@ -158,7 +165,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void dialogLogin() {
-        Context context = getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Данные пользователя")
                 .setMessage("Вы вошли, Данные профиля: Здесь будут данные про статус, имя, и дату рождения пользователя")
@@ -168,6 +174,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 listener.mainFragmentCreate();
+                                //TODO сделать проверку на статус, если не Продвинутый, то отправлять на окно StatusAbout
+                                //TODO подкачивать данные из базы в sharedPref
                             }
                         });
         AlertDialog alert = builder.create();

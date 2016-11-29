@@ -49,6 +49,7 @@ public class Sphere_vp_adapter extends FragmentStatePagerAdapter {
         }
         else {
             if(access)
+                //TODO сделать access как String
             switch (type) {
                 case 0:
                     fragment = new Com_zodiacSign();
@@ -65,7 +66,14 @@ public class Sphere_vp_adapter extends FragmentStatePagerAdapter {
                 default:break;
             }
             else
-                fragment = new NoAccess();
+            switch (type) {
+                case 0:
+                    fragment = new Com_zodiacSign();
+                    break;
+                default:
+                    fragment = new NoAccess();
+                    break;
+            }
         }
             fragment.setArguments(args);
         return fragment;

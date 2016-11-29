@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
@@ -106,8 +107,7 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 }
                 break;
             case R.id.relD_btn_save_prof:
-                SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = mSettings.edit();
+                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                 editor.putString(Constants.APP_PREF_SOCIONICS, socioType);
                 Toast.makeText(getActivity(), socioType+" - сохранено в профиль", Toast.LENGTH_SHORT).show();
                 editor.apply();

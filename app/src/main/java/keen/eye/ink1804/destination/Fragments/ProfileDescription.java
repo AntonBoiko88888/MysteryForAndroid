@@ -2,6 +2,7 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
@@ -115,9 +117,8 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
         tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
         tv_element_structure.setText(   setTextSettings("Структура стихии:", D_elementStructure));
-        SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
-        if(socioAccess&&mSettings.contains(Constants.APP_PREF_SOCIONICS)) {
-            D_socionics = mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
+        if(socioAccess&& MainActivity.mSettings.contains(Constants.APP_PREF_SOCIONICS)) {
+            D_socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
             tv_socionics.setText(setTextSettings("Социотип:", D_socionics));
             tv_socionics.setVisibility(View.VISIBLE);
             tv_socionics.setEnabled(true);
@@ -128,7 +129,12 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         String value = _value;
         text = String.format("&#149;<u><i>%s</i></u>",text);
         value = String.format("<b>%s</b>",value);
-        return Html.fromHtml(text+" "+value);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(text+" "+value, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            return Html.fromHtml(text+" "+value);
+        }
+//        return Html.fromHtml(text+" "+value);
     }
     @Override
     public void onClick(View view) {

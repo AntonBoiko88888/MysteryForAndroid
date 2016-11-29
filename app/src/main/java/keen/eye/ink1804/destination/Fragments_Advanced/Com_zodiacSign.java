@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments_Advanced;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -90,6 +91,10 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
                         break;
                     }
                 }
-                tv_result.setText(Html.fromHtml(details[id]));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            tv_result.setText(Html.fromHtml(details[id], Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            tv_result.setText(Html.fromHtml(details[id]));
+        }
     }
 }

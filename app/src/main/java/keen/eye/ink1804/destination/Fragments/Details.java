@@ -1,8 +1,10 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +46,7 @@ public class Details extends Fragment {
                         break;
                     }
                 }
-                tv_details.setText(Html.fromHtml(details[id]));
+                tv_details.setText(setTvTextWithHtml(details[id]));
                 break;
             case "interesting":
                 String[] interesting_db = getResources().getStringArray(R.array.interesting_db);
@@ -55,7 +57,7 @@ public class Details extends Fragment {
                         break;
                     }
                 }
-                tv_details.setText(Html.fromHtml(interesting_db[id]));
+                tv_details.setText(setTvTextWithHtml(interesting_db[id]));
                 break;
             case "com_birth":
                 String[] com_names = getResources().getStringArray(R.array.com_marriage_names);
@@ -66,7 +68,7 @@ public class Details extends Fragment {
                         break;
                     }
                 }
-                tv_details.setText(Html.fromHtml(com_db[id]));
+                tv_details.setText(setTvTextWithHtml(com_db[id]));
                 break;
             case "socionics":
                 String[] socioNames = getResources().getStringArray(R.array.socionics_names);
@@ -77,9 +79,17 @@ public class Details extends Fragment {
                         break;
                     }
                 }
-                tv_details.setText(Html.fromHtml(socioDB[id]));
+                    tv_details.setText(setTvTextWithHtml(socioDB[id]));
                 break;
             default:break;
         }
+    }
+    private Spanned setTvTextWithHtml(String text){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            return Html.fromHtml(text);
+        }
+
     }
 }

@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.UsersModel;
@@ -43,16 +44,14 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     protected Button btnIsEmailVerification;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private Context context;
     FirebaseUser user;
     private String emailBundle, passwordBundle;
 
-    boolean flag = true;
     long count = 0;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
     final private DatabaseReference messageRef = mDatabase.getRef();
-
-
     View root;
 
     public SignUpFragment() {
@@ -61,6 +60,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.reg_signup_fragment, container, false);
+        context = getActivity();
         initViews();
         return root;
     }
@@ -77,7 +77,6 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         btnIsEmailVerification.setOnClickListener(this);
         btnIsEmailVerification.setEnabled(false);
 
-        //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
 
@@ -138,23 +137,11 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                                         } else {
                                                             Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
                                                         }
-                                                    }
-                                                    else {
+                                                    } else {
                                                         emailBundle = email;
                                                         passwordBundle = password;
-                                                        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-                                                            @Override
-                                                            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                                                                user = firebaseAuth.getCurrentUser();
-                                                                if (user != null)
-                                                                    if (!user.isEmailVerified())
-                                                                        if (flag) {
-                                                                            user.sendEmailVerification();
-                                                                            flag = false;
-                                                                        }
-                                                            }
-                                                        };
-                                                        auth.addAuthStateListener(authListener);
+                                                        user = auth.getCurrentUser();
+                                                        user.sendEmailVerification();
                                                         dialogVerification();
                                                         btnSignUp.setEnabled(false);
                                                         auth.signOut();
@@ -171,34 +158,28 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                        Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
-                                }
-                                else {
-                                    FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-                                        @Override
-                                        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                                            user = firebaseAuth.getCurrentUser();
-                                            if (user != null) {
-                                                if (user.isEmailVerified()) {
-                                                UsersModel mUser = createUser(emailBundle, passwordBundle);
-                                                    messageRef.child(count + "").setValue(mUser);
-                                                    listener.onLoginClick(emailBundle, passwordBundle);
-                                                    auth.signOut();
-                                                } else
-                                                    Toast.makeText(getContext(), "Вы еще не подтвердили свою почту!",
-                                                            Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    };
-                                    auth.addAuthStateListener(authListener);
+                                    Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
+                                } else {
+                                    user = auth.getCurrentUser();
+                                    if (user != null) {
+                                        if (user.isEmailVerified()) {
+                                            UsersModel mUser = createUser(emailBundle, passwordBundle);
+                                            messageRef.child(count + "").setValue(mUser);
+                                            listener.onLoginClick(emailBundle, passwordBundle);
+                                            auth.signOut();
+                                        } else
+                                            Toast.makeText(getContext(), "Вы еще не подтвердили свою почту!",
+                                                    Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
                         });
                 break;
         }
     }
+
     private void dialogVerification() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Верификация")
                 .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации.")
                 .setIcon(R.drawable.icon_eye_512)
@@ -207,21 +188,20 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 btnIsEmailVerification.setEnabled(true);
-                                }
+                            }
                         });
         AlertDialog alert = builder.create();
         alert.show();
     }
 
-    private UsersModel createUser(String _email, String _password){
-        SharedPreferences mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = mSettings.edit();
-        String name = mSettings.getString(Constants.APP_PREF_NAME,"Default");
-        int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
-        int month = mSettings.getInt(Constants.APP_PREF_DAY, 1);
-        int year = mSettings.getInt(Constants.APP_PREF_DAY, 1);
-        boolean sex = mSettings.getBoolean(Constants.APP_PREF_SEX, true);
-        String socionics = mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
+    private UsersModel createUser(String _email, String _password) {
+        SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+        String name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "Default");
+        int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
+        int year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 1);
+        boolean sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, true);
+        String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
         String email = _email;
         String password = _password;
         String status = "Начинающий";
@@ -229,7 +209,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         editor.putString(Constants.APP_PREF_PASSWORD, password);
         editor.apply();
 
-        UsersModel user = new UsersModel(name,day,month,year,sex,socionics,email,password,status);
+        UsersModel user = new UsersModel(name, day, month, year, sex, socionics, email, password, status);
         return user;
 
     }

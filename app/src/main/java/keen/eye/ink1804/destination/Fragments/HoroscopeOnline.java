@@ -137,9 +137,8 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
     }
 
     private void onMySignClick() {
-        SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
-        int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
-        int month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
+        int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         Data_calculation struct_data = new Data_calculation();
         int j = (struct_data.getDateId(day, month) + 9) % 12;
         backgroundPressed(j, images);

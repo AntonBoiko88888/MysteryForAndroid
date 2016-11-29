@@ -24,7 +24,6 @@ public class AppIntr extends AppIntro {
        final SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         if (!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
 
-
             for(int i=0;i<5;i++){
                 Bundle bundle = new Bundle();
                 bundle.putInt("number", i);
@@ -32,7 +31,6 @@ public class AppIntr extends AppIntro {
                 fragment.setArguments(bundle);
                 addSlide(fragment);
             }
-
 
             showStatusBar(false);
             showSkipButton(false);

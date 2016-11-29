@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
@@ -82,8 +83,7 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
             if (!et_name.getText().toString().equals("")) {
                 String name = et_name.getText().toString();
                 listener.onRegistration(day, month, year, sex);
-                SharedPreferences  mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = mSettings.edit();
+                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                 editor.putBoolean(Constants.APP_PREF_ISREGISTER, true);
                 editor.putString(Constants.APP_PREF_NAME, name);
                 editor.putInt(Constants.APP_PREF_DAY, day);

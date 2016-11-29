@@ -28,6 +28,7 @@ import java.net.URLConnection;
 import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
@@ -42,7 +43,6 @@ public class Account extends Fragment implements View.OnClickListener {
     private ImageView imageView;
     private String status, name, icon;
     private int day, month, year;
-    private SharedPreferences mSettings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class Account extends Fragment implements View.OnClickListener {
         Button userUpgrage = (Button)rootView.findViewById(R.id.btn_users_upgrade);
         userUpgrage.setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_new_profile).setOnClickListener(this);
-        status = mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
+        status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
         TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
@@ -124,8 +124,8 @@ public class Account extends Fragment implements View.OnClickListener {
                                 String name = et.getText().toString();
                                 if (!name.trim().equals("")&&name.length()<=10) {
                                     tv_name.setText(setTextSettings("Имя:", " "+name));
-                                    SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = mSettings.edit();
+
+                                    SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                                     editor.putString(Constants.APP_PREF_NAME, name);
                                     editor.apply();
                                     dialog.cancel();
@@ -145,13 +145,13 @@ public class Account extends Fragment implements View.OnClickListener {
         alert.show();
     }
     private void getPreferences() {
-        mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
-        name = mSettings.getString(Constants.APP_PREF_NAME, "noName");
-        day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
-        month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
-        year = mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
-        sex = mSettings.getBoolean(Constants.APP_PREF_SEX, false);
-        icon = mSettings.getString(Constants.APP_PREF_IMAGE, "");
+        MainActivity.mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+        name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "noName");
+        day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
+        year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
+        sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, false);
+        icon = MainActivity.mSettings.getString(Constants.APP_PREF_IMAGE, "");
         Bitmap bitmap;
         InputStream is;
         BufferedInputStream bis;

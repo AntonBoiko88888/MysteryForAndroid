@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
     public static int backStackID;
-    private SharedPreferences mSettings;
+    public static SharedPreferences mSettings;
     //    0 - мы на главном фрагменте
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента
@@ -386,7 +386,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
             Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
 
-            SharedPreferences mSettings = getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+
             SharedPreferences.Editor editor = mSettings.edit();
             editor.putString(Constants.APP_PREF_IMAGE, destination.toString());
             editor.apply();
@@ -409,10 +409,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String sku = jo.getString(inAppId);
                     Toast.makeText(
                             MainActivity.this,
-                            "You have bought the " + sku
-                                    + ". Excellent choice,adventurer!",
+                            "Вы приобрели " + sku
+                                    + ". Приятного пользования!",
                             Toast.LENGTH_LONG).show();
-
+                    //TODO Изменять статус пользователя после приобретения доступа Продвинутого
                 } catch (JSONException e) {
                     System.out.println("Failed to parse purchase data.");
                     e.printStackTrace();
@@ -623,8 +623,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 .getParcelable("BUY_INTENT");
                         startIntentSenderForResult(
                                 pendingIntent.getIntentSender(), 1001,
-                                new Intent(), Integer.valueOf(0),
-                                Integer.valueOf(0), Integer.valueOf(0));
+                                new Intent(), 0,
+                                0, 0);
                     }
                 }
             }
@@ -636,6 +636,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         } catch (IntentSender.SendIntentException e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
 
