@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static long back_pressed;
 
 
-    IInAppBillingService mService;
-    ServiceConnection connection;
-    String inAppId = "android.test.purchased";
+    private IInAppBillingService mService;
+    private ServiceConnection connection;
+    private String inAppId = "android.test.purchased";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         }
-//            setBillingConnection();
+            setBillingConnection();
 
     }
 
@@ -378,6 +378,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -592,6 +594,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
     @Override
     public void onPurchaseClick() {
         ArrayList skuList = new ArrayList();
@@ -641,6 +644,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -648,5 +653,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             unbindService(connection);
         }
     }
-
 }
