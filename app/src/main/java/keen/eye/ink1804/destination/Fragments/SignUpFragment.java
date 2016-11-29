@@ -174,22 +174,14 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                         Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
                                 }
                                 else {
-                                    final SharedPreferences mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
                                     FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
                                         @Override
                                         public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                                             user = firebaseAuth.getCurrentUser();
                                             if (user != null) {
                                                 if (user.isEmailVerified()) {
-                                                    UsersModel usersModel = new UsersModel(mSettings.getString(Constants.APP_PREF_NAME, "noName"),
-                                                            mSettings.getInt(Constants.APP_PREF_DAY, 1),
-                                                            mSettings.getInt(Constants.APP_PREF_MONTH, 1),
-                                                            mSettings.getInt(Constants.APP_PREF_YEAR, 2000),
-                                                            "true",
-                                                            mSettings.getString(Constants.APP_PREF_SOCIONICS, ""),
-                                                            emailBundle, passwordBundle,
-                                                            mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
-                                                    messageRef.child(count + "").setValue(usersModel);
+                                                UsersModel mUser = createUser(emailBundle, passwordBundle);
+                                                    messageRef.child(count + "").setValue(mUser);
                                                     listener.onLoginClick(emailBundle, passwordBundle);
                                                     auth.signOut();
                                                 } else
@@ -221,7 +213,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         alert.show();
     }
 
-    private void createUser(String _email, String _password){
+    private UsersModel createUser(String _email, String _password){
         SharedPreferences mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSettings.edit();
         String name = mSettings.getString(Constants.APP_PREF_NAME,"Default");
@@ -237,7 +229,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         editor.putString(Constants.APP_PREF_PASSWORD, password);
         editor.apply();
 
-        UsersModel user = new UsersModel(name,day,month,year,sex+"",socionics,email,password,status);
+        UsersModel user = new UsersModel(name,day,month,year,sex,socionics,email,password,status);
+        return user;
 
     }
 }

@@ -12,12 +12,12 @@ public class UsersModel {
     public int Month;
     public String Name;
     public String Password;
-    public String Sex;
+    public boolean Sex;
     public String Socionics;
     public String Status;
     public int Year;
 
-    public UsersModel(String name, int day, int month, int year, String sex, String socionics, String email, String password, String status) {
+    public UsersModel(String name, int day, int month, int year, boolean sex, String socionics, String email, String password, String status) {
         Name = name;
         Day = day;
         Month = month;
