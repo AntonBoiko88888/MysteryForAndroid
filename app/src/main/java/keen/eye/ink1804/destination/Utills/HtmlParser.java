@@ -106,9 +106,9 @@ public class HtmlParser {
 //                .setContentText(text)
 //                .setSubText("hello")
 //                .setAutoCancel(true);
-        int[] img_ids = new int[]{R.drawable.hor_oven,R.drawable.hor_telec,R.drawable.hor_blizneci,R.drawable.hor_rak
-                ,R.drawable.hor_lev,R.drawable.hor_deva,R.drawable.hor_vesi,R.drawable.hor_skorpion
-                ,R.drawable.hor_strelec,R.drawable.hor_kozerog,R.drawable.hor_vodoley,R.drawable.hor_fish};
+        int[] img_ids = new int[]{R.drawable.push_aries,R.drawable.push_taurus,R.drawable.push_twins,R.drawable.push_cancer
+                ,R.drawable.push_lion,R.drawable.push_virgo,R.drawable.push_libra,R.drawable.push_scorpio
+                ,R.drawable.push_sagittarius,R.drawable.push_capricorn,R.drawable.push_aquarius,R.drawable.push_fish};
         Bitmap icon = BitmapFactory.decodeResource(context.getResources(),
                 R.drawable.icon_eye_512);
         Notification.Builder builder = new Notification.Builder(context)

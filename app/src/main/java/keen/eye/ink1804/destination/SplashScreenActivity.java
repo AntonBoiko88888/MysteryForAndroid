@@ -47,7 +47,7 @@ public class SplashScreenActivity extends Activity {
                 @Override
                 public void run() {
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                         startActivity(new Intent(SplashScreenActivity.this, AppIntr.class));
                         finish();
                     } catch (InterruptedException e) {

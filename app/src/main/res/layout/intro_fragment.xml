@@ -23,7 +23,7 @@
         android:layout_height="140dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:src="@drawable/hor_oven" />
+        android:src="@drawable/hor_aries" />
 
     <ScrollView
         android:layout_width="match_parent"
