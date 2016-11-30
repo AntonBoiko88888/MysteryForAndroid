@@ -20,9 +20,9 @@ public class Sphere_vp_adapter extends FragmentStatePagerAdapter {
 
     private String[] btnTextArray;
     private int type;
-    private boolean access;
+    private String access;
 
-    public Sphere_vp_adapter(FragmentManager fm, String[] _btnTextArray, int _type, boolean _access) {
+    public Sphere_vp_adapter(FragmentManager fm, String[] _btnTextArray, int _type, String _access) {
         super(fm);
         btnTextArray = _btnTextArray;
         type = _type;
@@ -48,8 +48,8 @@ public class Sphere_vp_adapter extends FragmentStatePagerAdapter {
             }
         }
         else {
-            if(access)
-                //TODO сделать access как String
+            if(!access.equals("Начинающий"))
+
             switch (type) {
                 case 0:
                     fragment = new Com_zodiacSign();

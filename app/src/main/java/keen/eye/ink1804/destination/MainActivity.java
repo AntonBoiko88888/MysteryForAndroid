@@ -66,7 +66,7 @@ import keen.eye.ink1804.destination.Utills.Notification_reciever;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 ,pushDateListener, View.OnClickListener {
 
-    public static boolean ACCESS = true;
+    public static String ACCESS = "Начинающий";
     private ImageView iconImage;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
@@ -620,13 +620,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         } catch (RemoteException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (JSONException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IntentSender.SendIntentException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
