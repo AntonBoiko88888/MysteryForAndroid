@@ -28,10 +28,5 @@ public class UsersModel {
         Password = password;
         Status = status;
     }
-
-    public UsersModel() {
-
-    }
-
 }
 

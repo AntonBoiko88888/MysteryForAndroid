@@ -98,14 +98,6 @@ public class HtmlParser {
         repeating_intent.putExtra("isHoroscope",true);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(context,100,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-//                .setContentIntent(pendingIntent)
-//                .setSmallIcon(R.drawable.crop__ic_done)
-//                .setContentTitle("Гороскоп на сегодня")
-//                .setContentText(text)
-//                .setSubText("hello")
-//                .setAutoCancel(true);
         int[] img_ids = new int[]{R.drawable.push_aries,R.drawable.push_taurus,R.drawable.push_twins,R.drawable.push_cancer
                 ,R.drawable.push_lion,R.drawable.push_virgo,R.drawable.push_libra,R.drawable.push_scorpio
                 ,R.drawable.push_sagittarius,R.drawable.push_capricorn,R.drawable.push_aquarius,R.drawable.push_fish};

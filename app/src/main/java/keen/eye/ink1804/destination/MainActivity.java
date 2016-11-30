@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
         clearBackStack();
-//        transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
         transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
         transaction.commit();
         backStackID = 1;
@@ -199,8 +198,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     private void createAlert_setName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
-        builder.setTitle("Аккаунт")
-                .setMessage("У вас еще не создан аккаунт, перейдите к заполнению формы.")
+        builder.setTitle("Профиль")
+                .setMessage("У вас еще не создан ваш профиль, перейдите к заполнению формы.")
                 .setCancelable(false)
                 .setIcon(R.drawable.icon_eye_512)
                 .setNegativeButton("ОК",
@@ -232,11 +231,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean isOnline(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            return true;
-        } else {
-            return false;
-        }
+        return networkInfo != null && networkInfo.isConnected();
     }
     private void setBillingConnection(){
         connection = new ServiceConnection() {
@@ -352,9 +347,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String tag = "accFragment";
                 transaction.replace(R.id.fragment_container, fragment, tag);
                 clearBackStack();
-//                if (fm.findFragmentByTag(tag) == null) {
-//                    transaction.addToBackStack(tag);
-//                }
                 backStackID = 0;
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
@@ -425,7 +417,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String tag = "datePicker_fragment";
         DatePicker fragment = new DatePicker();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }

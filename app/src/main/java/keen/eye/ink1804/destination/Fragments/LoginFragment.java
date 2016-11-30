@@ -2,7 +2,6 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -40,7 +39,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private Button btnReset;
     private Context context;
     FirebaseUser user;
-    int emailVerification = 0;
 
     pushDateListener listener;
 
@@ -73,23 +71,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         btnReset.setOnClickListener(this);
         btnSignup.setOnClickListener(this);
 
-        //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-        user = null;
-        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    if (!user.isEmailVerified() & emailVerification == 0) {
-                        emailVerification = 1;
-                    }
-                    if (user.isEmailVerified())
-                        emailVerification = 2;
-                }
-            }
-        };
-        auth.addAuthStateListener(authListener);
         Bundle args = getArguments();
         if (args != null) {
             emailArgs = args.getString("email");
@@ -140,8 +122,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                     }
                                 }
                                 else {
-                                    dialogLogin();
-                                    btnSignup.setEnabled(false);
+                                    user = auth.getCurrentUser();
+                                    if(user != null) {
+                                        if (user.isEmailVerified()) {
+                                            dialogLogin();
+                                            btnSignup.setEnabled(false);
+                                        }
+                                        else
+                                            Toast.makeText(getContext(), "Ваша почта не подтверждена!", Toast.LENGTH_LONG).show();
+                                    }
                                 }
 
                             }
@@ -151,17 +140,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 listener.onStartResetPassword();
                 break;
         }
-    }
-
-
-
-    private void userUpdateDatabase(Task<AuthResult> task, final String email){
-//        final FirebaseUser user1 = task.getResult().getUser();
-//        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-//                .setDisplayName(email)
-//                .build();
-//        user1.updateProfile(profileUpdates);     Нужная фигня
-
     }
 
     private void dialogLogin() {

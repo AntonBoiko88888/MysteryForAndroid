@@ -63,14 +63,14 @@ public class DatePicker extends Fragment implements View.OnClickListener {
                 month = mm;
                 year = yyyy;
             }
-        }).textConfirm("CANCEL11") //text of confirm button
-                .textCancel("CONFIRM11") //text of cancel button
-                .btnTextSize(16) // button text size
+        }).textConfirm("CANCEL") //text of confirm button
+                .textCancel("CONFIRM") //text of cancel button
+                .btnTextSize(28) // button text size
                 .viewTextSize(25) // pick view text size
                 .colorCancel(Color.parseColor("#0000FF")) //color of cancel button
-                .colorConfirm(Color.parseColor("#FF00FF"))//color of confirm button
+                .colorConfirm(getResources().getColor(R.color.colorAccent))//color of confirm button
                 .minYear(1920) //min year in loop
-                .maxYear(2080) // max year in loop
+                .maxYear(2018) // max year in loop
                 .dateChose(year+"-"+month+"-"+day) // date chose when init popwindow
                 .build();
     }

@@ -1,6 +1,5 @@
 package keen.eye.ink1804.destination.Fragments;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;

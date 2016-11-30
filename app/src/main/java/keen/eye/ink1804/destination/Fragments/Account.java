@@ -53,7 +53,7 @@ public class Account extends Fragment implements View.OnClickListener {
 
     private void initializeViews() {
         pushDateListener listener = (pushDateListener) getActivity();
-        listener.toolbarSetTitle("Аккаунт");
+        listener.toolbarSetTitle("Профиль");
         imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
         getPreferences();
 

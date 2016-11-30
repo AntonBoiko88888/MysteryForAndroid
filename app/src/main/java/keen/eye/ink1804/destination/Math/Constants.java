@@ -59,18 +59,6 @@ public class Constants {
 
     public static final String[] ZODIAK_NAMES ={"Козерог","Водолей","Рыбы","Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец"};
     public static final String[] ZODIAK_NAMES_normal ={"Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец","Козерог","Водолей","Рыбы"};
-//    public static final String Z_CAPRICORN = "Козерог";//id = 0
-//    public static final String Z_AQUARIUS = "Водолей";
-//    public static final String Z_FISH = "Рыбы";
-//    public static final String Z_ARIES = "Овен";
-//    public static final String Z_TAURUS = "Телец";
-//    public static final String Z_TWINS = "Близнецы";
-//    public static final String Z_CANCER = "Рак";
-//    public static final String Z_LION = "Лев";
-//    public static final String Z_VIRGO = "Дева";
-//    public static final String Z_LIBRA = "Весы";
-//    public static final String Z_SCORPION = "Скорпион";
-//    public static final String Z_SAGITTARIUS = "Стрелец";
 
     public static final String[] VIRTUAL_NAMES = {"Рыцарь","Вождь","Король","Шут","Аристократ","Профессор","Вектор"};
     public static final String KNIGHT = "Рыцарь";
