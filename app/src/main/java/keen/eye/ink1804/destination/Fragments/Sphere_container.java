@@ -46,7 +46,7 @@ public class Sphere_container extends Fragment {
         listener.toolbarSetTitle(toolbarText);
 
         Sphere_vp_adapter mPagerAdapter = new Sphere_vp_adapter(getChildFragmentManager(),
-                btnTextArray, layoutType, MainActivity.ACCESS);
+                btnTextArray, layoutType/*, MainActivity.ACCESS*/);
         viewPager.setAdapter(mPagerAdapter);
         tabLayout.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         tabLayout.setTextColor(ContextCompat.getColor(getContext(), R.color.blue));

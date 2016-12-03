@@ -9,6 +9,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class UsersModel {
     public int Day;
     public String Email;
+    public long Id;
     public int Month;
     public String Name;
     public String Password;
@@ -17,7 +18,8 @@ public class UsersModel {
     public String Status;
     public int Year;
 
-    public UsersModel(String name, int day, int month, int year, boolean sex, String socionics, String email, String password, String status) {
+    public UsersModel(long id, String name, int day, int month, int year, boolean sex, String socionics, String email, String password, String status) {
+        Id = id;
         Name = name;
         Day = day;
         Month = month;
@@ -27,6 +29,10 @@ public class UsersModel {
         Email = email;
         Password = password;
         Status = status;
+    }
+
+    public UsersModel() {
+
     }
 }
 

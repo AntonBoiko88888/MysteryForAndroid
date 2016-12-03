@@ -48,10 +48,10 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     FirebaseUser user;
     private String emailBundle, passwordBundle;
 
-    long count = 0;
+    static long count = 0;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
-    final private DatabaseReference messageRef = mDatabase.getRef();
+    final private DatabaseReference usersRef = mDatabase.getRef();
     View root;
 
     public SignUpFragment() {
@@ -76,10 +76,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         btnSignUp.setOnClickListener(this);
         btnIsEmailVerification.setOnClickListener(this);
         btnIsEmailVerification.setEnabled(false);
-
         auth = FirebaseAuth.getInstance();
-
-
     }
 
     @Override
@@ -94,17 +91,14 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getContext(), "Введите email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getContext(), "Введите пароль!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 if (password.length() < 6) {
                     Toast.makeText(getContext(), "Пароль короткий, минимум 6 символов!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
                 auth.createUserWithEmailAndPassword(email, password)
@@ -116,17 +110,22 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                     Toast.makeText(getContext(), "Аунтефикация не удалась, проверьте соединение с интернетом или попробуйте ввести другой почтовый адресс.",
                                             Toast.LENGTH_SHORT).show();
                                 } else if (task.isSuccessful()) {
-                                    messageRef.addValueEventListener(new ValueEventListener() {
+                                    usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
-                                            count = dataSnapshot.getChildrenCount();
-                                        }
+                                            UsersModel lastUser = null;
+                                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                                lastUser = postSnapshot.getValue(UsersModel.class);
+                                                count = lastUser.Id + 1;
+                                            }
+                                            Toast.makeText(context, count+"", Toast.LENGTH_SHORT).show();
 
+
+                                        }
                                         @Override
                                         public void onCancelled(DatabaseError databaseError) {
                                         }
                                     });
-
                                     auth.signInWithEmailAndPassword(email, password)
                                             .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                                                 @Override
@@ -164,7 +163,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                     if (user != null) {
                                         if (user.isEmailVerified()) {
                                             UsersModel mUser = createUser(emailBundle, passwordBundle);
-                                            messageRef.child(count + "").setValue(mUser);
+                                            usersRef.child(count + "").setValue(mUser);
                                             listener.onLoginClick(emailBundle, passwordBundle);
                                             auth.signOut();
                                         } else
@@ -197,20 +196,20 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private UsersModel createUser(String _email, String _password) {
         SharedPreferences.Editor editor = MainActivity.mSettings.edit();
         String name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "Default");
+//        long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,count);
+
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         int year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 1);
         boolean sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, true);
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
-        String email = _email;
-        String password = _password;
         String status = "Начинающий";
-        editor.putString(Constants.APP_PREF_EMAIL, email);
-        editor.putString(Constants.APP_PREF_PASSWORD, password);
+        editor.putString(Constants.APP_PREF_EMAIL, _email);
+        editor.putLong(Constants.APP_PREF_USER_ID, count);
+        editor.putString(Constants.APP_PREF_PASSWORD, _password);
         editor.apply();
 
-        UsersModel user = new UsersModel(name, day, month, year, sex, socionics, email, password, status);
-        return user;
+        return new UsersModel(count, name, day, month, year, sex, socionics, _email, _password, status);
 
     }
 }

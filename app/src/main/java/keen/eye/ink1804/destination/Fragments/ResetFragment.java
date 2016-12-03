@@ -57,18 +57,14 @@ public class ResetFragment extends Fragment {
                 listener.onLoginClick("","");
             }
         });
-
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = inputEmail.getText().toString().trim();
-
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getActivity().getApplication(), "Введите свой Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 progressBar.setVisibility(View.VISIBLE);
                 auth.sendPasswordResetEmail(email)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {

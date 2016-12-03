@@ -26,6 +26,7 @@ import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.firebaseUtill;
 
 /**
  * Created by anton on 15.11.16.
@@ -39,7 +40,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private Button btnReset;
     private Context context;
     FirebaseUser user;
-
+    private String email,password;
     pushDateListener listener;
 
     String emailArgs;
@@ -91,8 +92,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 listener.onStartRegistration();
                 break;
             case R.id.btn_login:
-                final String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
+                email = inputEmail.getText().toString();
+                password = inputPassword.getText().toString();
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getContext(), "Введите email!", Toast.LENGTH_SHORT).show();
                     return;
@@ -132,7 +133,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                             Toast.makeText(getContext(), "Ваша почта не подтверждена!", Toast.LENGTH_LONG).show();
                                     }
                                 }
-
                             }
                         });
                 break;
@@ -151,7 +151,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 .setNegativeButton("Ок",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                listener.mainFragmentCreate();
+                                progressBar.setVisibility(View.VISIBLE);
+                                btnReset.setVisibility(View.INVISIBLE);
+                                btnSignup.setVisibility(View.INVISIBLE);
+                                firebaseUtill fbUtills = new firebaseUtill();
+                                fbUtills.onLogin(context,email,password);
+
                                 //TODO сделать проверку на статус, если не Продвинутый, то отправлять на окно StatusAbout
                                 //TODO подкачивать данные из базы в sharedPref
                             }

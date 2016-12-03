@@ -12,6 +12,8 @@ import keen.eye.ink1804.destination.Fragments_Advanced.Com_socionics;
 import keen.eye.ink1804.destination.Fragments_Advanced.Com_virtualSign;
 import keen.eye.ink1804.destination.Fragments_Advanced.Com_zodiacSign;
 import keen.eye.ink1804.destination.Fragments_Advanced.NoAccess;
+import keen.eye.ink1804.destination.MainActivity;
+import keen.eye.ink1804.destination.Math.Constants;
 
 /**
  * Created by Ink1804 on 14.08.16.
@@ -22,11 +24,11 @@ public class Sphere_vp_adapter extends FragmentStatePagerAdapter {
     private int type;
     private String access;
 
-    public Sphere_vp_adapter(FragmentManager fm, String[] _btnTextArray, int _type, String _access) {
+    public Sphere_vp_adapter(FragmentManager fm, String[] _btnTextArray, int _type/*, String _access*/) {
         super(fm);
         btnTextArray = _btnTextArray;
         type = _type;
-        access = _access;
+//        access = _access;
     }
 
 
@@ -48,6 +50,7 @@ public class Sphere_vp_adapter extends FragmentStatePagerAdapter {
             }
         }
         else {
+            access = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS,"Начинающий");
             if(!access.equals("Начинающий"))
 
             switch (type) {

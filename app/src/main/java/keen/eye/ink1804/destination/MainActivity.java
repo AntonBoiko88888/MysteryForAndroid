@@ -32,6 +32,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.vending.billing.IInAppBillingService;
@@ -66,9 +67,10 @@ import keen.eye.ink1804.destination.Utills.Notification_reciever;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 ,pushDateListener, View.OnClickListener {
 
-    public static String ACCESS = "Начинающий";
+//    public static String ACCESS = "Начинающий";
     private ImageView iconImage;
     private DrawerLayout drawer;
+    private static View header;
     private ActionBarDrawerToggle toggle;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
@@ -86,12 +88,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createActivityViews();
         mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        createActivityViews();
         isSelectedNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS, false);
 
         backStackID = 0;
@@ -187,7 +188,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header = navigationView.getHeaderView(0);
+        header = navigationView.getHeaderView(0);
+        TextView nav_headerStatus = (TextView)header.findViewById(R.id.nav_header_textStatus);
+        nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
         header.setOnClickListener(this);
     }
     private void clearBackStack() {
@@ -377,12 +380,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
             Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
-
-
             SharedPreferences.Editor editor = mSettings.edit();
             editor.putString(Constants.APP_PREF_IMAGE, destination.toString());
             editor.apply();
-
             Crop.of(data.getData(), destination).asSquare().start(this);
         } else if (requestCode == Crop.REQUEST_CROP) {
             if (resultCode == RESULT_OK) {
@@ -394,20 +394,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (requestCode == 1001) {
             String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
-
             if (resultCode == RESULT_OK) {
                 try {
                     JSONObject jo = new JSONObject(purchaseData);
                     String sku = jo.getString(inAppId);
-                    Toast.makeText(
-                            MainActivity.this,
-                            "Вы приобрели " + sku
-                                    + ". Приятного пользования!",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Вы приобрели " + sku + ". Приятного пользования!", Toast.LENGTH_LONG).show();
+//                    ACCESS = "Продвинутый";
                     //TODO Изменять статус пользователя после приобретения доступа Продвинутого
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     System.out.println("Failed to parse purchase data.");
                     e.printStackTrace();
+                    Toast.makeText(MainActivity.this,"FLJKSDHLJS",Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -612,19 +609,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
                         PendingIntent pendingIntent = buyIntentBundle
                                 .getParcelable("BUY_INTENT");
-                        startIntentSenderForResult(
-                                pendingIntent.getIntentSender(), 1001,
-                                new Intent(), 0,
-                                0, 0);
+                        if (pendingIntent != null) {
+                            startIntentSenderForResult(pendingIntent.getIntentSender(), 1001, new Intent(), 0, 0, 0);
+                        }
                     }
                 }
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IntentSender.SendIntentException e) {
-            e.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
         }
