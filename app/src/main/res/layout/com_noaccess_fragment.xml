@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back1"
+    android:background="@drawable/background2"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/defaultMargin">
@@ -13,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:text="  Данный раздел доступен только продвинутым пользователям!  "
+        android:text="@string/com_no_access_text"
         android:textSize="18sp"
         android:typeface="serif" />
 
@@ -23,5 +23,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/btn_states_thin_rect"
-        android:text="    Повысить статус    " />
+        android:text="@string/com_no_access_up_status_text" />
 </LinearLayout>

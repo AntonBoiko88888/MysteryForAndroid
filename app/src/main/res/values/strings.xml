@@ -35,6 +35,10 @@
     <string name="date_picker_selectDateBirthday_text">Выберите дату своего рождения</string>
 
 
+    <!--com_no_access_fragment-->
+    <string name="com_no_access_text">"  Данный раздел доступен только продвинутым пользователям!  "</string>
+    <string name="com_no_access_up_status_text">"    Повысить статус    "</string>
+
 
 
 
