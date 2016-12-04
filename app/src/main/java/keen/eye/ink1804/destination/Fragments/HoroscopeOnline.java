@@ -115,7 +115,6 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
                 setZodiacName(key);
                 tv_result.setText(descriptions.get(key));
                 tv_sign_name.setVisibility(View.VISIBLE);
-
             }
         }catch (Exception e){
             Toast.makeText(getActivity(), "Данные еще не загрузились", Toast.LENGTH_SHORT).show();
@@ -135,10 +134,16 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
     }
 
     private void onMySignClick() {
+        Bundle args = getArguments();
+
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         Data_calculation struct_data = new Data_calculation();
-        int j = (struct_data.getDateId(day, month) + 9) % 12;
+        int j = 0;
+        if(args!=null)
+            j= struct_data.getZodiacId(MainActivity.mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION,"Овен"));
+        else
+            j = (struct_data.getDateId(day, month) + 9) % 12;
         backgroundPressed(j, images);
         setZodiacName(j);
         parser.parseHoroscope(getActivity(),tv_result, j, progressBar);

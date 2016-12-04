@@ -20,8 +20,8 @@ public class Constants {
     public static final String APP_PREF_SOCIONICS = "socionics_type";
     public static final String APP_PREF_USER_ID = "user_id";
     public static final String APP_PREF_NOTIFICATIONS = "doNotifications";
-    public static final String APP_PREF_TIME_NOTIFOCATION = "timeNotification";
-    public static final String APP_PREF_ZODIAC_NOTIFOCATION = "zodiacNotification";
+    public static final String APP_PREF_TIME_NOTIFICATION = "timeNotification";
+    public static final String APP_PREF_ZODIAC_NOTIFICATION = "zodiacNotification";
 
     public static final String APP_FIRST_LAUNCH = "first";
 

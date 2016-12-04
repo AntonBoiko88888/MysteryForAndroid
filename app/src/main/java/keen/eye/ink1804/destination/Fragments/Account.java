@@ -32,6 +32,7 @@ import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FirebaseUtills;
 
 /**
  * Created by Ink1804 on 12.08.16.
@@ -129,6 +130,8 @@ public class Account extends Fragment implements View.OnClickListener {
                                     SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                                     editor.putString(Constants.APP_PREF_NAME, name);
                                     editor.apply();
+                                    FirebaseUtills firebaseUtills = new FirebaseUtills();
+                                    firebaseUtills.setName(name);
                                     dialog.cancel();
                                 }else{
                                     Toast.makeText(getActivity(), "Недопустимое имя", Toast.LENGTH_SHORT).show();

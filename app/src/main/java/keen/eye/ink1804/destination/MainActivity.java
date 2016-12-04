@@ -6,7 +6,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -14,7 +13,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.RemoteException;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -38,7 +36,6 @@ import android.widget.Toast;
 import com.android.vending.billing.IInAppBillingService;
 import com.soundcloud.android.crop.Crop;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -62,6 +59,7 @@ import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.Utills.Notification_reciever;
+import keen.eye.ink1804.destination.Utills.FirebaseUtills;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
@@ -70,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //    public static String ACCESS = "Начинающий";
     private ImageView iconImage;
     private DrawerLayout drawer;
-    private static View header;
     private ActionBarDrawerToggle toggle;
+    private static TextView nav_headerStatus;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
     public static int backStackID;
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        createActivityViews();
+        initViews();
         isSelectedNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS, false);
 
         backStackID = 0;
@@ -108,7 +106,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = getIntent();
             if(intent.getBooleanExtra("isHoroscope",false)) {
                 FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
+                Bundle args = new Bundle();
                 HoroscopeOnline horFragment = new HoroscopeOnline();//в дальнейшем
+                args.putBoolean("fromNotification",true);
+                horFragment.setArguments(args);
                 horTransaction.replace(R.id.fragment_container, horFragment, "drawer_fragment");
                 horTransaction.commit();
                 backStackID = 1;
@@ -183,16 +184,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void createActivityViews() {
+    private void initViews() {
         toolbarSetTitle("Постижение тайны");
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        header = navigationView.getHeaderView(0);
-        TextView nav_headerStatus = (TextView)header.findViewById(R.id.nav_header_textStatus);
+        View header = navigationView.getHeaderView(0);
+        nav_headerStatus = (TextView) header.findViewById(R.id.nav_header_textStatus);
         nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
         header.setOnClickListener(this);
     }
+
     private void clearBackStack() {
         FragmentManager fm = getSupportFragmentManager();
         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
@@ -222,6 +223,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void mainFragmentCreate() {
+        nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -236,26 +238,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
-    private void setBillingConnection(){
-        connection = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                mService = IInAppBillingService.Stub.asInterface(iBinder);
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName componentName) {
-                mService = null;
-            }
-        };
-//        bindService(new Intent("com.android.vending.billing.InAppBillingService.BIND"),
-//                connection, Context.BIND_AUTO_CREATE);
-        Intent purchaseIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-// This is the key line that fixed everything for me
-        purchaseIntent.setPackage("com.android.vending");
-        bindService(purchaseIntent, connection, Context.BIND_AUTO_CREATE);
-    }
-
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -393,19 +375,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         if (requestCode == 1001) {
-            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+//            int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
+//            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+//            String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
+
             if (resultCode == RESULT_OK) {
-                try {
-                    JSONObject jo = new JSONObject(purchaseData);
-                    String sku = jo.getString(inAppId);
-                    Toast.makeText(MainActivity.this, "Вы приобрели " + sku + ". Приятного пользования!", Toast.LENGTH_LONG).show();
-//                    ACCESS = "Продвинутый";
-                    //TODO Изменять статус пользователя после приобретения доступа Продвинутого
-                } catch (Exception e) {
-                    System.out.println("Failed to parse purchase data.");
-                    e.printStackTrace();
-                    Toast.makeText(MainActivity.this,"FLJKSDHLJS",Toast.LENGTH_LONG).show();
-                }
+//                try {
+//                    JSONObject jo = new JSONObject(purchaseData);
+//                    String sku = jo.getString("productId");
+                    Toast.makeText(this, "Вы стали Продвинутым пользователем!", Toast.LENGTH_SHORT).show();
+                    nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
+                    FirebaseUtills firebaseUtills = new FirebaseUtills();
+                    firebaseUtills.setAccessToAdvanced();
+//                }
+//                catch (JSONException e) {
+//                    Toast.makeText(this, "Failed to parse purchase data.", Toast.LENGTH_SHORT).show();
+//                    e.printStackTrace();
+//                }
             }
         }
     }
@@ -453,8 +439,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int day = mSettings.getInt(Constants.APP_PREF_DAY,1);
         int month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
         String zod = dc.getZodiakName(day, month);
-        if(mSettings.contains(Constants.APP_PREF_ZODIAC_NOTIFOCATION))
-            zod = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFOCATION,"Овен");
+        if(mSettings.contains(Constants.APP_PREF_ZODIAC_NOTIFICATION))
+            zod = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION,"Овен");
         int id = dc.getZodiacId(zod);
         zodSpinner.setSelection(id);
         timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -466,7 +452,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
-        String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFOCATION,0+"");
+        String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFICATION,0+"");
         timeSpinner.setSelection(Integer.parseInt(time));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
@@ -481,8 +467,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 isSelectedNotific = sw.isChecked();
                                 SharedPreferences.Editor editor = mSettings.edit();
                                 editor.putBoolean(Constants.APP_PREF_NOTIFICATIONS, isSelectedNotific);
-                                editor.putString(Constants.APP_PREF_TIME_NOTIFOCATION, timeNotific);
-                                editor.putString(Constants.APP_PREF_ZODIAC_NOTIFOCATION, zodiacNotific);
+                                editor.putString(Constants.APP_PREF_TIME_NOTIFICATION, timeNotific);
+                                editor.putString(Constants.APP_PREF_ZODIAC_NOTIFICATION, zodiacNotific);
                                 editor.apply();
                                 Calendar calendar = Calendar.getInstance();
 
@@ -542,16 +528,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String tag = "login_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         LoginFragment fragment = new LoginFragment();
-        transaction.replace(R.id.fragment_container, fragment, "loginFragment");
         Bundle args = new Bundle();
         args.putString("email", email);
         args.putString("password", password);
         fragment.setArguments(args);
-        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
         backStackID = 2;
+        transaction.replace(R.id.fragment_container, fragment, "loginFragment");
         transaction.commit();
     }
     @Override
@@ -579,6 +565,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = 2;
         transaction.replace(R.id.fragment_container, fragment, "signUpFragment");
         transaction.commit();
+    }
+    private void setBillingConnection(){
+        connection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                mService = IInAppBillingService.Stub.asInterface(iBinder);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                mService = null;
+            }
+        };
+//        bindService(new Intent("com.android.vending.billing.InAppBillingService.BIND"),
+//                connection, Context.BIND_AUTO_CREATE);
+        Intent purchaseIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
+// This is the key line that fixed everything for me
+        purchaseIntent.setPackage("com.android.vending");
+        bindService(purchaseIntent, connection, Context.BIND_AUTO_CREATE);
     }
     @Override
     public void onPurchaseClick() {
@@ -609,14 +614,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
                         PendingIntent pendingIntent = buyIntentBundle
                                 .getParcelable("BUY_INTENT");
-                        if (pendingIntent != null) {
-                            startIntentSenderForResult(pendingIntent.getIntentSender(), 1001, new Intent(), 0, 0, 0);
-                        }
+//                        if (pendingIntent != null) {
+                            startIntentSenderForResult(pendingIntent.getIntentSender()
+                                    , 1001, new Intent()
+                                    , Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0));
+//                        }
                     }
                 }
             }
         } catch (Exception e){
             e.printStackTrace();
+            Toast.makeText(this, "Вы уже приобрели доступ", Toast.LENGTH_SHORT).show();
         }
 
     }
