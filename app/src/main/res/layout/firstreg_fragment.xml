@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/defaultMargin"
+        android:padding="@dimen/defaultMargin_double"
         android:background="@drawable/btn_states_thin_rect"
         android:text="@string/date_picker_selectDate_text" />
 
@@ -89,6 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/defaultMargin"
+        android:padding="@dimen/defaultMargin"
         android:background="@drawable/btn_states_thin_rect"
         android:text="@string/date_picker_onward_text" />
 

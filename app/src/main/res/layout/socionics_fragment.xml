@@ -34,6 +34,8 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/defaultMargin_double"
+                android:paddingLeft="@dimen/defaultMargin_double"
+                android:paddingRight="@dimen/defaultMargin_double"
                 android:background="@drawable/btn_states_fat"
                 android:text="@string/com_relationResult_text"
                 android:textColor="@color/blue" />
@@ -51,8 +53,9 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="40dp"
+                android:padding="@dimen/defaultMargin"
                 android:background="@drawable/btn_states_thin_rect"
-                android:text="  Сохранить в профиль  " />
+                android:text="Сохранить в профиль" />
 
         </LinearLayout>
     </ScrollView>

@@ -27,12 +27,13 @@ public class DatePicker extends Fragment implements View.OnClickListener {
     private View rootView;
     private TextView tv_date;
     private DatePickerPopWin pickerPopWin;
-    private RadioButton rb_male,rb_female;
+    private RadioButton rb_male, rb_female;
 
-    private int day = 1,month = 1,year = 2000,currentYear;
+    private int day = 1, month = 1, year = 2000, currentYear;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView  = inflater.inflate(R.layout.datepicker_fragment,container,false);
+        rootView = inflater.inflate(R.layout.datepicker_fragment, container, false);
         initializeTView();
         createDatePicker();
         return rootView;
@@ -40,39 +41,43 @@ public class DatePicker extends Fragment implements View.OnClickListener {
 
 
     private void initializeTView() {
-        pushDateListener listener = (pushDateListener)getActivity();
+        pushDateListener listener = (pushDateListener) getActivity();
         listener.toolbarSetTitle("Новый профиль");
-        tv_date = (TextView)rootView.findViewById(R.id.picker_tv_date);
+        tv_date = (TextView) rootView.findViewById(R.id.picker_tv_date);
         Button btn_next = (Button) rootView.findViewById(R.id.picker_btn_next);
         btn_next.setOnClickListener(this);
         Button btn_showDatePicker = (Button) rootView.findViewById(R.id.picker_btn_pick_date);
         btn_showDatePicker.setOnClickListener(this);
-        rb_male = (RadioButton)rootView.findViewById(R.id.picker_rb_male);
-        rb_female = (RadioButton)rootView.findViewById(R.id.picker_rb_female);
+        rb_male = (RadioButton) rootView.findViewById(R.id.picker_rb_male);
+        rb_female = (RadioButton) rootView.findViewById(R.id.picker_rb_female);
 
     }
-    private void createDatePicker(){
+
+    private void createDatePicker() {
         Calendar calendar = Calendar.getInstance();
         currentYear = calendar.get(Calendar.YEAR);
+
         pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
             @Override
             public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
-                tv_date.setText("Выбранная дата: "+dd+"."+mm+"."+yyyy);
-                Toast.makeText(getActivity(), dd+"."+mm+"."+yyyy, Toast.LENGTH_SHORT).show();
+                tv_date.setText("Выбранная дата: " + dd + "." + mm + "." + yyyy);
+                Toast.makeText(getActivity(), dd + "." + mm + "." + yyyy, Toast.LENGTH_SHORT).show();
                 day = dd;
                 month = mm;
                 year = yyyy;
             }
-        }).textConfirm("CANCEL") //text of confirm button
-                .textCancel("CONFIRM") //text of cancel button
-                .btnTextSize(28) // button text size
+        }).btnTextSize(28) // button text size
                 .viewTextSize(25) // pick view text size
                 .colorCancel(Color.parseColor("#0000FF")) //color of cancel button
                 .colorConfirm(getResources().getColor(R.color.colorAccent))//color of confirm button
                 .minYear(1920) //min year in loop
                 .maxYear(2018) // max year in loop
-                .dateChose(year+"-"+month+"-"+day) // date chose when init popwindow
+                .dateChose(year + "-" + month + "-" + day) // date chose when init popwindow
                 .build();
+        pickerPopWin.confirmBtn.setText("Установить   ");
+        pickerPopWin.cancelBtn.setText("Отмена");
+
+
     }
 
     @Override
@@ -91,9 +96,10 @@ public class DatePicker extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
     @Override
     public void onResume() {
-        tv_date.setText("Выбранная дата: "+day+"."+month+"."+year);
+        tv_date.setText("Выбранная дата: " + day + "." + month + "." + year);
         super.onResume();
     }
 }

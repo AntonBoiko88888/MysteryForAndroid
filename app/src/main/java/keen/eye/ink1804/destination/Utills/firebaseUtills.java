@@ -55,15 +55,14 @@ public class FirebaseUtills {
                 editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
                 editor.apply();
                 pushDateListener listener = (pushDateListener) context;
-                UsersModel setUser = new UsersModel(user.Id,user.Name,user.Day,user.Month,user.Year
-                        ,user.Sex,user.Socionics,user.Email,password,user.Status);
+                UsersModel setUser = new UsersModel(user.Id, user.Name, user.Day, user.Month, user.Year
+                        , user.Sex, user.Socionics, user.Email, password, user.Status);
                 mRef.child(user.Id + "").setValue(setUser);
                 listener.mainFragmentCreate();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
@@ -71,6 +70,8 @@ public class FirebaseUtills {
 
     public void setAccessToAdvanced() {
         String status = "Продвинутый";
+        SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+        editor.putString(Constants.APP_PREF_STATUS, status);
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
@@ -80,10 +81,11 @@ public class FirebaseUtills {
         String email = MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL, "");
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
-        UsersModel user = new UsersModel(id,name,day,month,year,sex,socionics,email,password,status);
+        UsersModel user = new UsersModel(id, name, day, month, year, sex, socionics, email, password, status);
         mRef.child(id + "").setValue(user);
     }
-    public void setName(String _name){
+
+    public void setName(String _name) {
         String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
@@ -93,7 +95,7 @@ public class FirebaseUtills {
         String email = MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL, "");
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
-        UsersModel user = new UsersModel(id, _name,day,month,year,sex,socionics,email,password,status);
+        UsersModel user = new UsersModel(id, _name, day, month, year, sex, socionics, email, password, status);
         mRef.child(id + "").setValue(user);
     }
 }

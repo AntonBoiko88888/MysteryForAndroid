@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
@@ -40,11 +39,12 @@ import keen.eye.ink1804.destination.Utills.FirebaseUtills;
 public class Account extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private TextView tv_name, nav_headerStatus;
+    private TextView tv_name;
     private boolean sex;
     private ImageView imageView;
-    private String status, name, icon;
+    private String name;
     private int day, month, year;
+    private String status;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,25 +61,33 @@ public class Account extends Fragment implements View.OnClickListener {
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_select_img).setOnClickListener(this);
-        rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_question).setOnClickListener(this);
+        Button btn_push = (Button) rootView.findViewById(R.id.acc_btn_pushSettings);
+        Button btn_new_profile = (Button) rootView.findViewById(R.id.acc_btn_new_profile);
+        btn_push.setOnClickListener(this);
+        btn_new_profile.setOnClickListener(this);
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
-        Button desc = (Button)rootView.findViewById(R.id.acc_btn_description);
+        Button desc = (Button) rootView.findViewById(R.id.acc_btn_description);
         desc.setTypeface(tf);
         desc.setOnClickListener(this);
-        Button userUpgrage = (Button)rootView.findViewById(R.id.btn_users_upgrade);
+        Button userUpgrage = (Button) rootView.findViewById(R.id.btn_users_upgrade);
         userUpgrage.setOnClickListener(this);
-        rootView.findViewById(R.id.acc_btn_new_profile).setOnClickListener(this);
         status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
         TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
         TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
-        tv_date.setText(setTextSettings("Дата рождения:<br>",  day + "."+  month + "."+  year+""));
-        tv_name.setText(setTextSettings("Имя:"," "+name));
+        tv_date.setText(setTextSettings("Дата рождения:<br>", day + "." + month + "." + year + ""));
+        tv_name.setText(setTextSettings("Имя:", " " + name));
         if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
         else tv_sex.setText(setTextSettings("Пол:", " жен."));
         tv_status.setText(setTextSettings("Статус:<br>", status));
+        if (status.equals("Начинающий")) {
+//            btn_push.setEnabled(false);
+            btn_push.setBackgroundResource(R.drawable.acc_push_pressed);
+//            btn_new_profile.setEnabled(false);
+            btn_new_profile.setBackgroundResource(R.drawable.acc_new_profile_pressed);
+        }
     }
 
     @Override
@@ -97,10 +105,16 @@ public class Account extends Fragment implements View.OnClickListener {
                 setName();
                 break;
             case R.id.acc_btn_new_profile:
-                listener.onNewProfile();
+                if (status.equals("Начинающий"))
+                    Toast.makeText(getActivity(), "Начинающим пользователям сюда нельзя!", Toast.LENGTH_SHORT).show();
+                else
+                    listener.onNewProfile();
                 break;
             case R.id.acc_btn_pushSettings:
-                listener.setNotification(getActivity());
+                if (status.equals("Начинающий"))
+                    Toast.makeText(getActivity(), "Начинающим пользователям сюда нельзя!", Toast.LENGTH_SHORT).show();
+                else
+                    listener.setNotification(getActivity());
                 break;
             case R.id.btn_users_upgrade:
                 listener.onRegEnter();
@@ -108,11 +122,12 @@ public class Account extends Fragment implements View.OnClickListener {
             case R.id.acc_btn_question:
                 listener.onStatusAbout();
                 break;
-            default: break;
+            default:
+                break;
         }
     }
 
-    private void setName(){
+    private void setName() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom));
         builder.setTitle("Редактирование имени")
                 .setMessage("Введите новое имя")
@@ -122,32 +137,32 @@ public class Account extends Fragment implements View.OnClickListener {
                 .setPositiveButton("Ок",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                EditText et = (EditText)((AlertDialog) dialog).findViewById(R.id.alert_edit_name);
+                                EditText et = (EditText) ((AlertDialog) dialog).findViewById(R.id.alert_edit_name);
                                 String name = et.getText().toString();
-                                if (!name.trim().equals("")&&name.length()<=10) {
-                                    tv_name.setText(setTextSettings("Имя:", " "+name));
-
+                                if (!name.trim().equals("") && name.length() <= 10) {
+                                    tv_name.setText(setTextSettings("Имя:", " " + name));
                                     SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                                     editor.putString(Constants.APP_PREF_NAME, name);
                                     editor.apply();
                                     FirebaseUtills firebaseUtills = new FirebaseUtills();
                                     firebaseUtills.setName(name);
                                     dialog.cancel();
-                                }else{
+                                } else {
                                     Toast.makeText(getActivity(), "Недопустимое имя", Toast.LENGTH_SHORT).show();
                                     setName();
                                 }
                             }
                         })
-        .setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                dialog.cancel();
-            }
-        });
+                .setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
         AlertDialog alert = builder.create();
         alert.show();
     }
+
     private void getPreferences() {
         MainActivity.mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
         name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "noName");
@@ -155,13 +170,11 @@ public class Account extends Fragment implements View.OnClickListener {
         month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
         sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, false);
-        icon = MainActivity.mSettings.getString(Constants.APP_PREF_IMAGE, "");
+        String icon = MainActivity.mSettings.getString(Constants.APP_PREF_IMAGE, "");
         Bitmap bitmap;
         InputStream is;
         BufferedInputStream bis;
         try {
-            //Чтобы знать, как можно еще сделать in Glide
-            // example Picasso.with(context).load(url).into(imageView);
             URLConnection conn = new URL(icon).openConnection();
             conn.connect();
             is = conn.getInputStream();
@@ -175,12 +188,12 @@ public class Account extends Fragment implements View.OnClickListener {
 
     }
 
-    public Spanned setTextSettings(String _text, String _value){
+    public Spanned setTextSettings(String _text, String _value) {
         String text = _text;
         String value = _value;
-        text = String.format("<u><i>%s</i></u>",text);
-        value = String.format("<b>%s</b>",value);
-        return Html.fromHtml(text+" "+value);
+        text = String.format("<u><i>%s</i></u>", text);
+        value = String.format("<b>%s</b>", value);
+        return Html.fromHtml(text + " " + value);
     }
 
 }

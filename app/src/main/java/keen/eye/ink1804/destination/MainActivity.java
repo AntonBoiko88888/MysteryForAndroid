@@ -63,9 +63,9 @@ import keen.eye.ink1804.destination.Utills.FirebaseUtills;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-,pushDateListener, View.OnClickListener {
+        , pushDateListener, View.OnClickListener {
 
-//    public static String ACCESS = "Начинающий";
+    //    public static String ACCESS = "Начинающий";
     private ImageView iconImage;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
@@ -104,11 +104,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.fragment_container, fragment, "account_fragment");
             transaction.commit();
             Intent intent = getIntent();
-            if(intent.getBooleanExtra("isHoroscope",false)) {
+            if (intent.getBooleanExtra("isHoroscope", false)) {
                 FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
                 Bundle args = new Bundle();
                 HoroscopeOnline horFragment = new HoroscopeOnline();//в дальнейшем
-                args.putBoolean("fromNotification",true);
+                args.putBoolean("fromNotification", true);
                 horFragment.setArguments(args);
                 horTransaction.replace(R.id.fragment_container, horFragment, "drawer_fragment");
                 horTransaction.commit();
@@ -116,10 +116,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         }
-            setBillingConnection();
-
+        setBillingConnection();
     }
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -183,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     private void initViews() {
         toolbarSetTitle("Постижение тайны");
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -193,7 +190,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
         header.setOnClickListener(this);
     }
-
     private void clearBackStack() {
         FragmentManager fm = getSupportFragmentManager();
         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
@@ -263,7 +259,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     } else
                         super.onBackPressed();
                     break;
-                default: break;
+                default:
+                    break;
             }
         }
     }
@@ -355,8 +352,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
     }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -378,15 +373,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
 //            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
 //            String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
-
             if (resultCode == RESULT_OK) {
 //                try {
 //                    JSONObject jo = new JSONObject(purchaseData);
 //                    String sku = jo.getString("productId");
-                    Toast.makeText(this, "Вы стали Продвинутым пользователем!", Toast.LENGTH_SHORT).show();
-                    nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
-                    FirebaseUtills firebaseUtills = new FirebaseUtills();
-                    firebaseUtills.setAccessToAdvanced();
+                nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
+                FirebaseUtills firebaseUtills = new FirebaseUtills();
+                firebaseUtills.setAccessToAdvanced();
+                Toast.makeText(this, "Вы стали Продвинутым пользователем!", Toast.LENGTH_SHORT).show();
 //                }
 //                catch (JSONException e) {
 //                    Toast.makeText(this, "Failed to parse purchase data.", Toast.LENGTH_SHORT).show();
@@ -431,16 +425,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 zodiacNotific = Constants.ZODIAK_NAMES_normal[i];
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
 
         Data_calculation dc = new Data_calculation();
-        int day = mSettings.getInt(Constants.APP_PREF_DAY,1);
-        int month = mSettings.getInt(Constants.APP_PREF_MONTH,1);
+        int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        int month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         String zod = dc.getZodiakName(day, month);
-        if(mSettings.contains(Constants.APP_PREF_ZODIAC_NOTIFICATION))
-            zod = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION,"Овен");
+        if (mSettings.contains(Constants.APP_PREF_ZODIAC_NOTIFICATION))
+            zod = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION, "Овен");
         int id = dc.getZodiacId(zod);
         zodSpinner.setSelection(id);
         timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -450,9 +446,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
-        String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFICATION,0+"");
+        String time = mSettings.getString(Constants.APP_PREF_TIME_NOTIFICATION, 0 + "");
         timeSpinner.setSelection(Integer.parseInt(time));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
@@ -532,7 +529,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         args.putString("email", email);
         args.putString("password", password);
         fragment.setArguments(args);
-        transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
@@ -545,7 +542,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String tag = "reset_password_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         ResetFragment fragment = new ResetFragment();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
@@ -558,7 +555,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String tag = "start_reg_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         SignUpFragment fragment = new SignUpFragment();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
@@ -566,7 +563,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container, fragment, "signUpFragment");
         transaction.commit();
     }
-    private void setBillingConnection(){
+    private void setBillingConnection() {
         connection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -615,14 +612,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         PendingIntent pendingIntent = buyIntentBundle
                                 .getParcelable("BUY_INTENT");
 //                        if (pendingIntent != null) {
-                            startIntentSenderForResult(pendingIntent.getIntentSender()
-                                    , 1001, new Intent()
-                                    , Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0));
+                        startIntentSenderForResult(pendingIntent.getIntentSender()
+                                , 1001, new Intent()
+                                , Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0));
 //                        }
                     }
                 }
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Вы уже приобрели доступ", Toast.LENGTH_SHORT).show();
         }
