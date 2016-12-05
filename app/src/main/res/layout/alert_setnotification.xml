@@ -7,7 +7,7 @@
 
     <TextView
         android:layout_gravity="center"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/notific_width"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:typeface="monospace"
@@ -23,7 +23,7 @@
         android:text="Мой знак"/>
     <fr.ganfra.materialspinner.MaterialSpinner
         android:id="@+id/alert_zodiac"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/notific_width"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         app:ms_multiline="false"
@@ -32,7 +32,7 @@
         app:ms_floatingLabelText="floating label"
         android:popupBackground="@color/black"
         app:ms_thickness="2dp"
-        app:ms_arrowSize="16dp"
+        app:ms_arrowSize="@dimen/defaultMargin_double"
         app:ms_alignLabels="false"
         app:ms_baseColor="@color/blue"/>
     <TextView
@@ -43,7 +43,7 @@
         android:text="Получать уведомления в "/>
     <fr.ganfra.materialspinner.MaterialSpinner
         android:id="@+id/alert_time"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/notific_width"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         app:ms_multiline="false"
@@ -52,7 +52,7 @@
         app:ms_floatingLabelText="floating label"
         android:popupBackground="@color/black"
         app:ms_thickness="2dp"
-        app:ms_arrowSize="16dp"
+        app:ms_arrowSize="@dimen/defaultMargin_double"
         app:ms_alignLabels="false"
         app:ms_baseColor="@color/blue"/>
     <TextView

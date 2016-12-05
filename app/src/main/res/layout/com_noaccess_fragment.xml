@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="@dimen/defaultMargin_triple"
         android:gravity="center"
         android:text="@string/com_no_access_text"
-        android:textSize="18sp"
+        android:textSize="@dimen/no_access_text"
         android:typeface="serif" />
 
     <Button

@@ -3,63 +3,39 @@
     <dimen name="defaultMargin">6dp</dimen>
     <dimen name="defaultMargin_double">12dp</dimen>
     <dimen name="defaultMargin_triple">18dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="profileMarginTop">8sp</dimen>
-    <dimen name="interestingMarginTop">12sp</dimen>
-    <dimen name="profileTextSize">23sp</dimen>
-    <dimen name="profileDataTextSize">33sp</dimen>
-    <dimen name="profile_layout_paddingTop">15dp</dimen>
-    <dimen name="interestingTextSize">16sp</dimen>
-    <dimen name="acc_width_img">130dp</dimen>
-    <dimen name="acc_height_img">130dp</dimen>
 
-
-    <dimen name="textDescription">20sp</dimen>
-    <dimen name="marginTopText_and_Img">10sp</dimen>
-
-    <!--Horoscope_online_fragment-->
-    <dimen name="horoscope_online_img_height">80dp</dimen>
-    <dimen name="horoscope_online_img_width">80dp</dimen>
-    <dimen name="horoscope_online_textSignZodiac_textSize">30sp</dimen>
-    <dimen name="horoscope_online_text_marginTop">20dp</dimen>
-    <dimen name="horoscope_online_textZodiac_marginTop">30dp</dimen>
-
-    <!--nav_header_main-->
-    <dimen name="nav_header_main_img_width">75dp</dimen>
-    <dimen name="nav_header_main_img_height">75dp</dimen>
-    <dimen name="nav_header_main_acc_textSize">30sp</dimen>
-    <dimen name="nav_header_main_textSize">20sp</dimen>
-
+    <dimen name="image_icon">130dp</dimen>
+    <dimen name="btn_com_image_icon">100dp</dimen>
 
     <!--account_fragment-->
-    <dimen name="account_fragment_btn_selectImg_textSize">10sp</dimen>
-    <dimen name="account_fragment_btn_selectImg_marginTop">5dp</dimen>
-    <dimen name="account_fragment_btn_marginTop">10dp</dimen>
-    <dimen name="account_fragment_name_textSize">22sp</dimen>
-    <dimen name="account_fragment_textSize">20sp</dimen>
-    <dimen name="account_fragment_btn_height">30dp</dimen>
-    <dimen name="account_btnImg_width">70dp</dimen>
-    <dimen name="account_btnImg_height">70dp</dimen>
+    <dimen name="btn_size_small">30dp</dimen>
+    <dimen name="btn_description_size">50dp</dimen>
+    <dimen name="btn_push_n_prof">70dp</dimen>
+
+    <dimen name="btn_description_text_size">25dp</dimen>
+    <dimen name="btn_select_img_text_size">10sp</dimen>
+    <dimen name="tv_info">20sp</dimen>
+
+    <!--alert-->
+    <dimen name="alert_edit_name">250dp</dimen>
+    <dimen name="notific_width">200dp</dimen>
+
+    <!--com_birth_fragment-->
+    <dimen name="birth_image_size">100dp</dimen>
+
+    <dimen name="birth_text">30sp</dimen>
+    <dimen name="birth_text_info">23sp</dimen>
+
+    <!--com_noaccess_fragment-->
+    <dimen name="no_access_text">18sp</dimen>
+
+    <!--com_socionics_fragment-->
+    <dimen name="sub_spinner_margin">60dp</dimen>
+    <dimen name="soc_text_height">70dp</dimen>
+
+    <dimen name="soc_text_size">18sp</dimen>
 
 
-    <!--com_options-->
-    <dimen name="com_img_width">100dp</dimen>
-    <dimen name="com_img_height">100dp</dimen>
-    <dimen name="com_btnImg_width">100dp</dimen>
-    <dimen name="com_btnImg_height">100dp</dimen>
-    <dimen name="com_layoutForSpinner_width">130dp</dimen>
-    <dimen name="com_signs_TextSize">18sp</dimen>
-    <dimen name="com_fiveMarriage_TextSize">30sp</dimen>
 
-
-    <!--Fo Registration-->
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="logo_w_h">100dp</dimen>
-    <dimen name="editFragment_marginLeft">15dp</dimen>
-    <dimen name="editFragment_marginRight">15dp</dimen>
-    <dimen name="editFragment_marginTop">10dp</dimen>
-    <dimen name="editFragment_marginTopBelowImg">20dp</dimen>
 
 </resources>

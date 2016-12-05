@@ -57,7 +57,7 @@
                 android:checked="true"
                 android:layout_margin="@dimen/defaultMargin"
                 android:text="@string/date_picker_man_text"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/picker_rb_female"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/defaultMargin"
                 android:text="@string/date_picker_woman_text"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </RadioGroup>
     </LinearLayout>

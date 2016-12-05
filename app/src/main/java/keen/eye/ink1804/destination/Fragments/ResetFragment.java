@@ -46,17 +46,10 @@ public class ResetFragment extends Fragment {
         listener.toolbarSetTitle("Новый пароль");
         inputEmail = (EditText) root.findViewById(R.id.email);
         final Button btnReset = (Button) root.findViewById(R.id.btn_reset_password);
-        Button btnBack = (Button) root.findViewById(R.id.btn_back);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
 
         auth = FirebaseAuth.getInstance();
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onLoginClick("","");
-            }
-        });
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

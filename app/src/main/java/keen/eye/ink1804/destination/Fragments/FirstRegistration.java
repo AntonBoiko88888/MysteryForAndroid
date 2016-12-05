@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
 
     private void initializeTView() {
         pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Регистрация аккаунта");
+        listener.toolbarSetTitle("Создание профиля");
         tv_date = (TextView)rootView.findViewById(R.id.reg_tv_date);
         et_name = (EditText)rootView.findViewById(R.id.reg_et_name);
         Button btn_registrate = (Button)rootView.findViewById(R.id.reg_btn_registrate);
@@ -61,16 +62,13 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
                 month = mm;
                 year = yyyy;
             }
-        }).textConfirm("CANCEL11") //text of confirm button
-                .textCancel("CONFIRM11") //text of cancel button
-                .btnTextSize(16) // button text size
-                .viewTextSize(25) // pick view text size
-                .colorCancel(Color.parseColor("#0000FF")) //color of cancel button
-                .colorConfirm(Color.parseColor("#FF00FF"))//color of confirm button
-                .minYear(1920) //min year in loop
-                .maxYear(2080) // max year in loop
+        }).minYear(1920) //min year in loop
+                .maxYear(2018) // max year in loop
                 .dateChose(year+"-"+month+"-"+day) // date chose when init popwindow
                 .build();
+        pickerPopWin.confirmBtn.setText("Установить   ");
+        pickerPopWin.cancelBtn.setText("Отмена");
+        pickerPopWin.confirmBtn.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
     }
 
     @Override

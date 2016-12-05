@@ -37,8 +37,8 @@
 
                     <ImageView
                         android:id="@+id/comp_zod_image_male"
-                        android:layout_width="@dimen/com_img_width"
-                        android:layout_height="@dimen/com_img_height"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_zod_oven" />
 
@@ -71,8 +71,8 @@
 
                     <ImageView
                         android:id="@+id/comp_zod_image_female"
-                        android:layout_width="@dimen/com_img_width"
-                        android:layout_height="@dimen/com_img_height"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_zod_oven" />
 
@@ -94,8 +94,8 @@
 
             <Button
                 android:id="@+id/comp_zod_btn_result"
-                android:layout_width="@dimen/com_btnImg_width"
-                android:layout_height="@dimen/com_btnImg_height"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_below="@id/comp_zod_linear"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/defaultMargin_double"
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/comp_zod_btn_result"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/com_signs_TextSize" />
+                android:textSize="18sp" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

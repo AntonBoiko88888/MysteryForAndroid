@@ -3,6 +3,7 @@ package keen.eye.ink1804.destination.Fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,18 +66,13 @@ public class DatePicker extends Fragment implements View.OnClickListener {
                 month = mm;
                 year = yyyy;
             }
-        }).btnTextSize(28) // button text size
-                .viewTextSize(25) // pick view text size
-                .colorCancel(Color.parseColor("#0000FF")) //color of cancel button
-                .colorConfirm(getResources().getColor(R.color.colorAccent))//color of confirm button
-                .minYear(1920) //min year in loop
+        }).minYear(1920) //min year in loop
                 .maxYear(2018) // max year in loop
                 .dateChose(year + "-" + month + "-" + day) // date chose when init popwindow
                 .build();
         pickerPopWin.confirmBtn.setText("Установить   ");
         pickerPopWin.cancelBtn.setText("Отмена");
-
-
+        pickerPopWin.confirmBtn.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
     }
 
     @Override

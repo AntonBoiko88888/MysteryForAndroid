@@ -40,9 +40,9 @@
 
                     <ImageView
                         android:id="@+id/comp_birth_image"
-                        android:layout_width="@dimen/com_img_width"
-                        android:layout_height="@dimen/com_img_height"
-                        android:layout_marginTop="@dimen/marginTopText_and_Img"
+                        android:layout_width="@dimen/birth_image_size"
+                        android:layout_height="@dimen/birth_image_size"
+                        android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_birth_monkey" />
 
                     <fr.ganfra.materialspinner.MaterialSpinner
@@ -72,8 +72,8 @@
 
                     <Button
                         android:id="@+id/comp_birth_btn_result"
-                        android:layout_width="@dimen/com_img_width"
-                        android:layout_height="@dimen/com_img_height"
+                        android:layout_width="@dimen/birth_image_size"
+                        android:layout_height="@dimen/birth_image_size"
                         android:background="@drawable/answer_states" />
                 </LinearLayout>
             </LinearLayout>
@@ -82,15 +82,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/comp_birth2_layout"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="@dimen/defaultMargin_triple"
+                android:layout_marginTop="@dimen/defaultMargin_triple"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/birth_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/com_fiveMarriage_TextSize" />
+                    android:textSize="@dimen/birth_text" />
 
                 <TextView
                     android:id="@+id/comp_birth_tv_romantic"
@@ -99,7 +99,7 @@
                     android:layout_marginTop="@dimen/defaultMargin"
                     android:background="@drawable/txt_states"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/profileTextSize" />
+                    android:textSize="@dimen/birth_text_info" />
 
                 <TextView
                     android:id="@+id/comp_birth_tv_patriarch"
@@ -108,7 +108,7 @@
                     android:layout_marginTop="@dimen/defaultMargin"
                     android:background="@drawable/txt_states"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/profileTextSize" />
+                    android:textSize="@dimen/birth_text_info" />
 
                 <TextView
                     android:id="@+id/comp_birth_tv_soul"
@@ -117,7 +117,7 @@
                     android:layout_marginTop="@dimen/defaultMargin"
                     android:background="@drawable/txt_states"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/profileTextSize" />
+                    android:textSize="@dimen/birth_text_info" />
 
                 <TextView
                     android:id="@+id/comp_birth_tv_equal"
@@ -126,7 +126,7 @@
                     android:layout_marginTop="@dimen/defaultMargin"
                     android:background="@drawable/txt_states"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/profileTextSize" />
+                    android:textSize="@dimen/birth_text_info" />
 
                 <TextView
                     android:id="@+id/comp_birth_tv_vector"
@@ -135,7 +135,7 @@
                     android:layout_marginTop="@dimen/defaultMargin"
                     android:background="@drawable/txt_states"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/profileTextSize" />
+                    android:textSize="@dimen/birth_text_info" />
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

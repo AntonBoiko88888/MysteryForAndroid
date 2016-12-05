@@ -26,12 +26,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/blue"
-                    android:textSize="@dimen/account_fragment_textSize" />
+                    android:textSize="@dimen/tv_info" />
 
                 <Button
                     android:id="@+id/acc_btn_rename"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/btn_size_small"
+                    android:layout_height="@dimen/btn_size_small"
                     android:layout_marginLeft="@dimen/defaultMargin"
                     android:background="@drawable/change_name_states" />
             </LinearLayout>
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin_half"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/account_fragment_textSize" />
+                android:textSize="@dimen/tv_info" />
 
             <TextView
                 android:id="@+id/acc_tv_sex"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin_half"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/account_fragment_textSize" />
+                android:textSize="@dimen/tv_info" />
 
 
 
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/defaultMargin_half"
                     android:textColor="@color/pro_zra_beginning_status"
-                    android:textSize="@dimen/account_fragment_textSize" />
+                    android:textSize="@dimen/tv_info" />
 
 
             <LinearLayout
@@ -71,16 +71,16 @@
             <Button
                 android:id="@+id/btn_users_upgrade"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/account_fragment_btn_height"
+                android:layout_height="@dimen/btn_size_small"
                 android:layout_marginTop="@dimen/defaultMargin_half"
                 android:padding="@dimen/defaultMargin"
                 android:background="@drawable/btn_states_thin_rect"
                 android:text="@string/account_fragment_btn_users_upgrade_text" />
                 <Button
                     android:id="@+id/acc_btn_question"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_marginTop="@dimen/defaultMargin"
+                    android:layout_width="@dimen/btn_size_small"
+                    android:layout_height="@dimen/btn_size_small"
                     android:layout_marginLeft="@dimen/defaultMargin"
                     android:background="@drawable/question_states" />
             </LinearLayout>
@@ -89,8 +89,8 @@
 
         <ImageView
             android:id="@+id/acc_image_icon"
-            android:layout_width="@dimen/acc_width_img"
-            android:layout_height="@dimen/acc_height_img"
+            android:layout_width="@dimen/image_icon"
+            android:layout_height="@dimen/image_icon"
             android:layout_alignParentRight="true"
             android:background="@drawable/acc_icon_border"
             android:scaleType="fitXY"
@@ -99,14 +99,14 @@
         <Button
             android:id="@+id/acc_select_img"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/account_fragment_btn_height"
+            android:layout_height="@dimen/btn_size_small"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/acc_image_icon"
             android:layout_marginTop="@dimen/defaultMargin"
-            android:width="@dimen/acc_width_img"
+            android:width="@dimen/image_icon"
             android:background="@drawable/btn_states_thin_rect"
             android:text="@string/account_fragment_btn_selectImg"
-            android:textSize="@dimen/account_fragment_btn_selectImg_textSize" />
+            android:textSize="@dimen/btn_select_img_text_size" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -119,19 +119,19 @@
             <Button
                 android:id="@+id/acc_btn_description"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/btn_description_size"
                 android:layout_centerInParent="true"
                 android:background="@drawable/btn_states_fat"
                 android:paddingLeft="@dimen/defaultMargin_double"
                 android:paddingRight="@dimen/defaultMargin_double"
                 android:text="@string/account_fragment_btn_my_description"
                 android:textColor="@color/blue"
-                android:textSize="25dp" />
+                android:textSize="@dimen/btn_description_text_size" />
 
             <Button
                 android:id="@+id/acc_btn_new_profile"
-                android:layout_width="@dimen/account_btnImg_width"
-                android:layout_height="@dimen/account_btnImg_height"
+                android:layout_width="@dimen/btn_push_n_prof"
+                android:layout_height="@dimen/btn_push_n_prof"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="@dimen/defaultMargin_double"
@@ -139,8 +139,8 @@
 
             <Button
                 android:id="@+id/acc_btn_pushSettings"
-                android:layout_width="@dimen/account_btnImg_width"
-                android:layout_height="@dimen/account_btnImg_height"
+                android:layout_width="@dimen/btn_push_n_prof"
+                android:layout_height="@dimen/btn_push_n_prof"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="false"

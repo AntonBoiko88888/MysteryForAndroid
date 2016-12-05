@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin_double"
-                android:textSize="@dimen/textDescription" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/relD_btn_save_prof"

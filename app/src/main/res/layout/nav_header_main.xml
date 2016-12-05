@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/nav_header_main_img_width"
-        android:layout_height="@dimen/nav_header_main_img_height"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_gravity="start"
         android:src="@drawable/acc_icon" />
 
@@ -30,15 +30,14 @@
             android:text="@string/nav_header_main_acc_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/pro_zra_white"
-            android:textSize="@dimen/nav_header_main_acc_textSize" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/nav_header_textStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Начинающий"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/pro_zra_beginning_status"
-            android:textSize="@dimen/nav_header_main_textSize" />
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>
