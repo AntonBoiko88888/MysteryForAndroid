@@ -21,7 +21,7 @@ import keen.eye.ink1804.destination.Math.Constants;
  */
 
 public class FirebaseUtills {
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
     final private DatabaseReference mRef = mDatabase.getRef();
 
     public void onLogin(final Context context, final String email, final String password) {
@@ -89,12 +89,11 @@ public class FirebaseUtills {
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         int year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
-        String name = _name;
         boolean sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, true);
         String email = MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL, "");
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
-        UsersModel user = new UsersModel(id,name,day,month,year,sex,socionics,email,password,status);
+        UsersModel user = new UsersModel(id, _name,day,month,year,sex,socionics,email,password,status);
         mRef.child(id + "").setValue(user);
     }
 }
