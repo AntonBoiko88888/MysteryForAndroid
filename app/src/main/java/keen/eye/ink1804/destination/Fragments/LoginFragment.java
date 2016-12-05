@@ -126,8 +126,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                     user = auth.getCurrentUser();
                                     if(user != null) {
                                         if (user.isEmailVerified()) {
-                                            dialogLogin();
                                             btnSignup.setEnabled(false);
+                                            btnReset.setEnabled(false);
+                                            progressBar.setVisibility(View.VISIBLE);
+                                            btnReset.setVisibility(View.INVISIBLE);
+                                            btnSignup.setVisibility(View.INVISIBLE);
+                                            FbUtills firebaseUtills = new FbUtills();
+                                            firebaseUtills.onLogin(context,email,password);
+                                            Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_LONG).show();
                                         }
                                         else
                                             Toast.makeText(getContext(), "Ваша почта не подтверждена!", Toast.LENGTH_LONG).show();
@@ -140,27 +146,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 listener.onStartResetPassword();
                 break;
         }
-    }
-
-    private void dialogLogin() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
-        builder.setTitle("Данные пользователя")
-                .setMessage("Вы вошли, Данные профиля: Здесь будут данные про статус, имя, и дату рождения пользователя")
-                .setIcon(R.drawable.icon_eye_512)
-                .setCancelable(false)
-                .setNegativeButton("Ок",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                progressBar.setVisibility(View.VISIBLE);
-                                btnReset.setVisibility(View.INVISIBLE);
-                                btnSignup.setVisibility(View.INVISIBLE);
-                                FbUtills firebaseUtills = new FbUtills();
-                                firebaseUtills.onLogin(context,email,password);
-
-                            }
-                        });
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 }
 
