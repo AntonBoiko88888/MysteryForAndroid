@@ -21,35 +21,27 @@ public class AppIntr extends AppIntro {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       final SharedPreferences mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
-        if (!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
+        for (int i = 0; i < 5; i++) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("number", i);
+            Fragment fragment = new Intro_fragment();
+            fragment.setArguments(bundle);
+            addSlide(fragment);
+        }
 
-            for(int i=0;i<5;i++){
-                Bundle bundle = new Bundle();
-                bundle.putInt("number", i);
-                Fragment fragment = new Intro_fragment();
-                fragment.setArguments(bundle);
-                addSlide(fragment);
+        showStatusBar(false);
+        showSkipButton(false);
+
+        setFlowAnimation();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(AppIntr.this, MainActivity.class);
+                startActivity(i);
             }
+        });
 
-            showStatusBar(false);
-            showSkipButton(false);
-
-            setFlowAnimation();
-
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Intent i = new Intent(AppIntr.this, MainActivity.class);
-                    startActivity(i);
-                }
-            });
-
-        }
-        else {
-            finish();
-            startActivity(new Intent(AppIntr.this, MainActivity.class));
-        }
     }
 
     @Override

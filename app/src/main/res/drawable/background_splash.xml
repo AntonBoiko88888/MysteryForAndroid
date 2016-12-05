@@ -7,7 +7,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/icon_eue_80_splash"
+            android:src="@drawable/splach_screen_z"
             />
     </item>
 
