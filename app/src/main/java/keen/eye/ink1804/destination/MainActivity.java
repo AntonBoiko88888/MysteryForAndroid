@@ -223,6 +223,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         Account fragment = new Account();
         backStackID = 0;
+        toggle.setDrawerIndicatorEnabled(true);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         transaction.replace(R.id.fragment_container, fragment, "mainFragment");
         transaction.commit();
 
@@ -503,6 +505,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.addToBackStack(tag);
         }
         backStackID = 1;
+        toggle.setDrawerIndicatorEnabled(false);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         transaction.replace(R.id.fragment_container, fragment, "login_fragment");
         transaction.commit();
     }
