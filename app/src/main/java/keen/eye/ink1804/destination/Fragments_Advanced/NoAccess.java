@@ -19,12 +19,11 @@ import keen.eye.ink1804.destination.R;
 
 public class NoAccess extends Fragment {
 
-    private View rootView;
     private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.com_noaccess_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.com_noaccess_fragment, container, false);
         context = getActivity();
         rootView.findViewById(R.id.na_btn_getAccess).setOnClickListener(new View.OnClickListener() {
             @Override

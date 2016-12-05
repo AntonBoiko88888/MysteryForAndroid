@@ -17,8 +17,6 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class Intro_fragment extends Fragment {
-    public Intro_fragment() {
-    }
 
 
     @Override
@@ -46,4 +44,7 @@ public class Intro_fragment extends Fragment {
 
         return root;
     }
+    public Intro_fragment() {
+    }
+
 }

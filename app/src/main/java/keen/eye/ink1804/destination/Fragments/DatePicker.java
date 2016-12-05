@@ -27,7 +27,7 @@ public class DatePicker extends Fragment implements View.OnClickListener {
     private View rootView;
     private TextView tv_date;
     private DatePickerPopWin pickerPopWin;
-    private RadioButton rb_male, rb_female;
+    private RadioButton rb_male;
 
     private int day = 1, month = 1, year = 2000, currentYear;
 
@@ -49,7 +49,6 @@ public class DatePicker extends Fragment implements View.OnClickListener {
         Button btn_showDatePicker = (Button) rootView.findViewById(R.id.picker_btn_pick_date);
         btn_showDatePicker.setOnClickListener(this);
         rb_male = (RadioButton) rootView.findViewById(R.id.picker_rb_male);
-        rb_female = (RadioButton) rootView.findViewById(R.id.picker_rb_female);
 
     }
 

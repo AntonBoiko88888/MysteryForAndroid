@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -30,7 +31,6 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
     private int[] zodiacDrawables = {R.drawable.com_zod_oven, R.drawable.com_zod_telec, R.drawable.com_zod_blizneci,
             R.drawable.com_zod_rak, R.drawable.com_zod_lev, R.drawable.com_zod_deva, R.drawable.com_zod_vesi, R.drawable.com_zod_skorpion,
             R.drawable.com_zod_strelec, R.drawable.com_zod_kozerog, R.drawable.com_zod_vodoley, R.drawable.com_zod_ribi};
-    private String[] ZODIAK_NAMES ={"Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец","Козерог","Водолей","Рыбы"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_male_spinner);
         MaterialSpinner femaleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_female_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
-                ZODIAK_NAMES);
+                Constants.ZODIAK_NAMES_normal);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         femaleSpinner.setAdapter(adapter);
         maleSpinner.setAdapter(adapter);
@@ -60,7 +60,7 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 imv_male.setBackgroundResource(zodiacDrawables[i]);
-                male = ZODIAK_NAMES[i];
+                male = Constants.ZODIAK_NAMES_normal[i];
                 tv_result.setText(" ");
             }
             @Override
@@ -71,7 +71,7 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 imv_female.setBackgroundResource(zodiacDrawables[i]);
-                female = ZODIAK_NAMES[i];
+                female = Constants.ZODIAK_NAMES_normal[i];
                 tv_result.setText(" ");
             }
             @Override

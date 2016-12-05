@@ -23,7 +23,6 @@ public class Constants {
     public static final String APP_PREF_TIME_NOTIFICATION = "timeNotification";
     public static final String APP_PREF_ZODIAC_NOTIFICATION = "zodiacNotification";
 
-    public static final String APP_FIRST_LAUNCH = "first";
 
     //Годы по китайскому гороскопу
     public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};

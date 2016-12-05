@@ -65,7 +65,6 @@ import keen.eye.ink1804.destination.Utills.Notification_reciever;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         , pushDateListener, View.OnClickListener {
 
-    //    public static String ACCESS = "Начинающий";
     private ImageView iconImage;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
@@ -82,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private IInAppBillingService mService;
     private ServiceConnection connection;
-    private String inAppId = "android.test.purchased";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -585,6 +583,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPurchaseClick() {
         ArrayList skuList = new ArrayList();
+        String inAppId = "android.test.purchased";
         skuList.add(inAppId);
         Bundle querySkus = new Bundle();
         querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
