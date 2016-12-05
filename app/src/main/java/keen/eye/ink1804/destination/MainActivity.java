@@ -58,8 +58,8 @@ import keen.eye.ink1804.destination.Fragments.StatusAbout;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 import keen.eye.ink1804.destination.Utills.Notification_reciever;
-import keen.eye.ink1804.destination.Utills.FirebaseUtills;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
@@ -378,7 +378,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                    JSONObject jo = new JSONObject(purchaseData);
 //                    String sku = jo.getString("productId");
                 nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
-                FirebaseUtills firebaseUtills = new FirebaseUtills();
+                FbUtills firebaseUtills = new FbUtills();
                 firebaseUtills.setAccessToAdvanced();
                 Toast.makeText(this, "Вы стали Продвинутым пользователем!", Toast.LENGTH_SHORT).show();
 //                }

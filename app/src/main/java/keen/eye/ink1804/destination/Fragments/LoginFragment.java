@@ -26,7 +26,7 @@ import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
-import keen.eye.ink1804.destination.Utills.FirebaseUtills;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by anton on 15.11.16.
@@ -154,8 +154,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                                 progressBar.setVisibility(View.VISIBLE);
                                 btnReset.setVisibility(View.INVISIBLE);
                                 btnSignup.setVisibility(View.INVISIBLE);
-                                FirebaseUtills fbUtills = new FirebaseUtills();
-                                fbUtills.onLogin(context,email,password);
+                                FbUtills firebaseUtills = new FbUtills();
+                                firebaseUtills.onLogin(context,email,password);
 
                             }
                         });
