@@ -44,6 +44,7 @@ import java.util.Calendar;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Fragments.Account;
+import keen.eye.ink1804.destination.Fragments.ApplicationAbout;
 import keen.eye.ink1804.destination.Fragments.DatePicker;
 import keen.eye.ink1804.destination.Fragments.Sphere_container;
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
@@ -167,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 break;
             case R.id.tab_about:
-                fragment = new HoroscopeOnline();
+                fragment = new ApplicationAbout();
                 break;
             default:
                 break;
