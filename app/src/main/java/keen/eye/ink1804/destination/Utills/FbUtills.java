@@ -72,6 +72,7 @@ public class FbUtills {
         String status = "Продвинутый";
         SharedPreferences.Editor editor = MainActivity.mSettings.edit();
         editor.putString(Constants.APP_PREF_STATUS, status);
+        editor.apply();
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
