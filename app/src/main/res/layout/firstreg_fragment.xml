@@ -13,11 +13,11 @@
         android:gravity="center"
         android:text="Укажите ваше имя"
         android:textColor="@color/blue"
-        android:textSize="25sp" />
+        android:textSize="@dimen/tv_select_datetime_size" />
 
     <EditText
         android:id="@+id/reg_et_name"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/et_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/defaultMargin"
         android:hint="Имя"
@@ -29,7 +29,7 @@
         android:gravity="center"
         android:text="@string/date_picker_selectDateBirthday_text"
         android:textColor="@color/blue"
-        android:textSize="25sp" />
+        android:textSize="@dimen/tv_select_datetime_size" />
 
     <Button
         android:id="@+id/reg_pick_date"
@@ -44,7 +44,7 @@
         android:id="@+id/reg_tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/tv_datetime_size"
         android:layout_marginTop="@dimen/defaultMargin"
         android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
         android:text="@string/date_picker_selectSex_text"
         android:layout_marginTop="@dimen/defaultMargin"
         android:textColor="@color/blue"
-        android:textSize="25sp" />
+        android:textSize="@dimen/tv_select_datetime_size" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
                 android:checked="true"
                 android:layout_margin="@dimen/defaultMargin"
                 android:text="@string/date_picker_man_text"
-                android:textSize="20dp" />
+                android:textSize="@dimen/tv_datetime_size" />
 
             <RadioButton
                 android:id="@+id/reg_rb_female"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/defaultMargin"
                 android:text="@string/date_picker_woman_text"
-                android:textSize="20dp" />
+                android:textSize="@dimen/tv_datetime_size" />
 
         </RadioGroup>
     </LinearLayout>

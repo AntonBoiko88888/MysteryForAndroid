@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="@dimen/defaultMargin_triple">
 
             <LinearLayout
                 android:id="@+id/comp_vir_linear"
@@ -26,17 +26,17 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="@dimen/image_icon"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/comp_vir_tv_male"
                         android:layout_width="wrap_content"
-                        android:layout_height="70dp"
+                        android:layout_height="@dimen/tv_vir_height"
                         android:layout_gravity="center"
                         android:textColor="@color/blue"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/com_text_size" />
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_vir_male_spinner"
@@ -54,18 +54,18 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="130dp"
+                    android:layout_width="@dimen/image_icon"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
+                    android:layout_marginLeft="@dimen/sub_spinner_margin"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/comp_vir_tv_female"
                         android:layout_width="wrap_content"
-                        android:layout_height="70dp"
+                        android:layout_height="@dimen/tv_vir_height"
                         android:layout_gravity="center"
                         android:textColor="@color/blue"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/com_text_size" />
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_vir_female_spinner"
@@ -85,8 +85,8 @@
 
             <Button
                 android:id="@+id/comp_vir_btn_result"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/btn_com_image_icon"
+                android:layout_height="@dimen/btn_com_image_icon"
                 android:layout_below="@id/comp_vir_linear"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/defaultMargin_double"
@@ -97,9 +97,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/comp_vir_btn_result"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/defaultMargin_triple"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="@dimen/com_text_size" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

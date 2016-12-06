@@ -23,7 +23,7 @@
                 android:background="@drawable/txt_states"
                 android:gravity="center"
                 android:textColor="@color/blue"
-                android:textSize="33sp"
+                android:textSize="@dimen/pr_descr_date_size"
                 android:typeface="serif" />
 
             <TextView
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_year"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_zodiak"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_year_number"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_year_period"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_fate_symbol"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_energy"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_communicate"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_psychology"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_type_of_thinking"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_vector_host"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_vector_servant"
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_element_structure"
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
                 android:id="@+id/prof_tv_socionics"
@@ -137,7 +137,7 @@
                 android:layout_marginBottom="@dimen/defaultMargin"
                 android:layout_marginTop="@dimen/defaultMargin"
                 android:background="@drawable/txt_states"
-                android:textSize="23sp" />
+                android:textSize="@dimen/pr_descr_tv_size" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/pro_zra_beginning_status"
-            android:textSize="30sp"
+            android:textSize="@dimen/stat_about_title_size"
             android:text="Начинающий"/>
         <TextView
             android:id="@+id/beginning_text"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/pro_zra_beginning_status"
             android:padding="@dimen/defaultMargin"
-            android:textSize="20sp"
+            android:textSize="@dimen/stat_about_text_size"
             android:text=""/>
         </LinearLayout>
 
@@ -41,14 +41,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/defaultMargin_double"
             android:gravity="center"
             android:background="@color/for_cardView"
             android:padding="@dimen/defaultMargin">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="@dimen/stat_about_title_size"
                 android:textColor="@color/pro_zra_advanced_status"
 
                 android:text="Продвинутый"/>
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/pro_zra_advanced_status"
                 android:padding="@dimen/defaultMargin"
-                android:textSize="20sp"
+                android:textSize="@dimen/stat_about_text_size"
                 android:text=""/>
 
             <Button

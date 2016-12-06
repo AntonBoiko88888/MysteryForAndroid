@@ -31,7 +31,7 @@
             <Button
                 android:id="@+id/relD_btn_showInfo"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/defaultMargin_double"
                 android:paddingLeft="@dimen/defaultMargin_double"
@@ -45,14 +45,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/defaultMargin_double"
-                android:textSize="20sp" />
+                android:textSize="@dimen/soc_text_size" />
 
             <Button
                 android:id="@+id/relD_btn_save_prof"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="@dimen/defaultMargin_triple"
                 android:padding="@dimen/defaultMargin"
                 android:background="@drawable/btn_states_thin_rect"
                 android:text="Сохранить в профиль" />

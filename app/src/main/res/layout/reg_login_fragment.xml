@@ -12,8 +12,8 @@
         android:padding="@dimen/defaultMargin_triple">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/btn_com_image_icon"
+            android:layout_height="@dimen/btn_com_image_icon"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/defaultMargin_triple"
             android:src="@drawable/icon_eye_512" />
@@ -82,13 +82,12 @@
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textColor="@color/white" />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/reg_progress_size"
+            android:layout_height="@dimen/reg_progress_size"
             android:layout_centerInParent="true"
             android:layout_marginBottom="@dimen/defaultMargin_triple"
             android:visibility="invisible"/>

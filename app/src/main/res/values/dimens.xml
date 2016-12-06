@@ -35,6 +35,55 @@
 
     <dimen name="soc_text_size">18sp</dimen>
 
+    <!--virtual_fragment-->
+    <dimen name="tv_vir_height">70dp</dimen>
+    <dimen name="com_text_size">18sp</dimen>
+
+    <!--zodiac_fragment-->
+    <dimen name="image_marginTop">50dp</dimen>
+
+    <!--datePicker_fragment-->
+    <dimen name="tv_datetime_size">20sp</dimen>
+    <dimen name="tv_select_datetime_size">25sp</dimen>
+
+    <!--datePicker_fragment-->
+    <dimen name="et_width">150sp</dimen>
+
+    <dimen name="tv_details_size">20sp</dimen>
+
+    <!--datePicker_fragment-->
+    <dimen name="hor_online_tv_size">30sp</dimen>
+
+    <!--interesting-->
+    <dimen name="interes_tv_size">16sp</dimen>
+
+    <!--intro-->
+    <dimen name="intro_image_size">140dp</dimen>
+
+    <dimen name="intro_title_size">30sp</dimen>
+    <dimen name="intro_tv_size">20sp</dimen>
+
+    <!--header-->
+    <dimen name="header_image_size">75dp</dimen>
+
+    <dimen name="header_tv_size">30sp</dimen>
+    <dimen name="header_status_size">20sp</dimen>
+
+    <!--profile_descr-->
+    <dimen name="pr_descr_date_size">33sp</dimen>
+    <dimen name="pr_descr_tv_size">23sp</dimen>
+
+    <!--reg-->
+    <dimen name="reg_progress_size">50dp</dimen>
+
+    <dimen name="reg_forgot_tv_size">20sp</dimen>
+
+    <!--socionics-->
+    <dimen name="socio_tv_size">20sp</dimen>
+
+    <!--status about-->
+    <dimen name="stat_about_title_size">30sp</dimen>
+    <dimen name="stat_about_text_size">20sp</dimen>
 
 
 

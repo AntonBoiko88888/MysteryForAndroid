@@ -37,7 +37,7 @@
 
     <!--com_no_access_fragment-->
     <string name="com_no_access_text">"  Данный раздел доступен только продвинутым пользователям!  "</string>
-    <string name="com_no_access_up_status_text">"    Повысить статус    "</string>
+    <string name="com_no_access_up_status_text">"Повысить статус"</string>
 
 
 

@@ -20,8 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/image_marginTop"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -37,8 +36,8 @@
 
                     <ImageView
                         android:id="@+id/comp_zod_image_male"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="@dimen/btn_com_image_icon"
+                        android:layout_height="@dimen/btn_com_image_icon"
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_zod_oven" />
 
@@ -60,7 +59,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
+                    android:layout_marginLeft="@dimen/sub_spinner_margin"
                     android:orientation="vertical">
 
                     <TextView
@@ -71,8 +70,8 @@
 
                     <ImageView
                         android:id="@+id/comp_zod_image_female"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="@dimen/btn_com_image_icon"
+                        android:layout_height="@dimen/btn_com_image_icon"
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_zod_oven" />
 
@@ -94,8 +93,8 @@
 
             <Button
                 android:id="@+id/comp_zod_btn_result"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/btn_com_image_icon"
+                android:layout_height="@dimen/btn_com_image_icon"
                 android:layout_below="@id/comp_zod_linear"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/defaultMargin_double"
@@ -107,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/comp_zod_btn_result"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="@dimen/com_text_size" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

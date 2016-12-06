@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sphere_grid"
                 android:layout_marginTop="@dimen/defaultMargin_double"
-                android:textSize="20sp" />
+                android:textSize="@dimen/soc_text_size" />
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

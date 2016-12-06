@@ -10,36 +10,36 @@
         android:id="@+id/appintr_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="@dimen/defaultMargin_triple"
         android:gravity="center"
         android:textColor="@color/colorAccent"
-        android:textSize="30sp"
+        android:textSize="@dimen/intro_title_size"
         android:textStyle="bold" />
 
 
     <ImageView
         android:id="@+id/appintr_img"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="@dimen/intro_image_size"
+        android:layout_height="@dimen/intro_image_size"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/defaultMargin_triple"
         android:src="@drawable/hor_aries" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginBottom="@dimen/defaultMargin_triple"
+        android:layout_marginTop="@dimen/defaultMargin_triple">
 
         <TextView
             android:id="@+id/appintr_first"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginBottom="@dimen/defaultMargin_double"
+            android:layout_marginLeft="@dimen/defaultMargin_triple"
+            android:layout_marginRight="@dimen/defaultMargin_triple"
             android:gravity="center"
-            android:textSize="20sp" />
+            android:textSize="@dimen/intro_tv_size" />
     </ScrollView>
 
 </LinearLayout>

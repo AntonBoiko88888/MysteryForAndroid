@@ -107,8 +107,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:textSize="30sp" />
+        android:layout_marginTop="@dimen/defaultMargin_triple"
+        android:textSize="@dimen/hor_online_tv_size" />
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/defaultMargin_triple"
                 android:gravity="center"
-                android:textSize="20sp" />
+                android:textSize="@dimen/tv_datetime_size" />
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>
