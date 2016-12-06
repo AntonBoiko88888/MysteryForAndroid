@@ -3,8 +3,6 @@
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/defaultMargin"
-    android:layout_marginRight="@dimen/defaultMargin"
     android:background="@drawable/acc_states"
     android:clickable="true"
     android:gravity="start"
