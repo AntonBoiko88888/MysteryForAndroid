@@ -50,7 +50,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/stat_about_title_size"
                 android:textColor="@color/pro_zra_advanced_status"
-
                 android:text="Продвинутый"/>
             <TextView
                 android:id="@+id/advanced_text"
@@ -66,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/defaultMargin_double"
+                android:layout_marginBottom="@dimen/defaultMargin_triple"
                 android:text="Приобрести"
                 android:background="@drawable/btn_states_thin_rect"/>
 

@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.Html;
@@ -82,6 +83,10 @@ public class Account extends Fragment implements View.OnClickListener {
         if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
         else tv_sex.setText(setTextSettings("Пол:", " жен."));
         tv_status.setText(setTextSettings("Статус:<br>", status));
+        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
+            tv_status.setTextColor(ContextCompat.getColor(getContext(), R.color.pro_zra_beginning_status));
+        else
+            tv_status.setTextColor(ContextCompat.getColor(getContext(),R.color.pro_zra_advanced_status));
         if (status.equals("Начинающий")) {
 //            btn_push.setEnabled(false);
             btn_push.setBackgroundResource(R.drawable.acc_push_pressed);

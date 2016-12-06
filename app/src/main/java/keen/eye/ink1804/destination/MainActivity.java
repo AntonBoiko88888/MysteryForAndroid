@@ -17,6 +17,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -187,6 +188,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View header = navigationView.getHeaderView(0);
         nav_headerStatus = (TextView) header.findViewById(R.id.nav_header_textStatus);
         nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
+        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
+            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.pro_zra_beginning_status));
+        else
+            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.pro_zra_advanced_status));
         header.setOnClickListener(this);
     }
     private void clearBackStack() {
@@ -228,6 +233,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         transaction.replace(R.id.fragment_container, fragment, "mainFragment");
         transaction.commit();
+        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
+            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.pro_zra_beginning_status));
+        else
+            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.pro_zra_advanced_status));
 
     }
     public boolean isOnline(Context context) {

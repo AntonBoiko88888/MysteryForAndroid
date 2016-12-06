@@ -4,13 +4,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/background1"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="@dimen/defaultMargin">
 
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <ImageView
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="@dimen/intro_image_size"
+        android:layout_height="@dimen/intro_image_size"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/defaultMargin_triple"
         android:src="@drawable/icon_eye_512" />
@@ -21,11 +25,6 @@
         android:layout_marginBottom="@dimen/defaultMargin_triple"
         android:layout_marginTop="@dimen/defaultMargin_triple">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
         <TextView
             android:id="@+id/application_about_text"
             android:layout_width="match_parent"
@@ -34,19 +33,9 @@
             android:layout_marginLeft="@dimen/defaultMargin_triple"
             android:layout_marginRight="@dimen/defaultMargin_triple"
             android:gravity="center"
-            android:textSize="20sp" />
+            android:textSize="@dimen/intro_tv_size" />
 
-            <Button
-                android:id="@+id/btn_application_evaluation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/defaultMargin_half"
-                android:layout_marginLeft="@dimen/defaultMargin_triple"
-                android:layout_marginRight="@dimen/defaultMargin_triple"
-                android:background="@drawable/btn_states_thin_rect"
-                android:text="Оценить наше приложение" />
-
-        </LinearLayout>
     </ScrollView>
+</LinearLayout>
 
 </LinearLayout>

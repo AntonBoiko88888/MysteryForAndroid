@@ -8,7 +8,6 @@ import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -33,15 +32,9 @@ public class ApplicationAbout extends Fragment{
         pushDateListener listener = (pushDateListener) getActivity();
         listener.toolbarSetTitle("О приложении");
 
-        Button btn_application_evaluation = (Button) rootView.findViewById(R.id.btn_application_evaluation);
         final TextView application_about_text = (TextView) rootView.findViewById(R.id.application_about_text);
         final String[] application_about_db = getResources().getStringArray(R.array.appintr_description_db);
-        btn_application_evaluation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                application_about_text.setText(setTvTextWithHtml(application_about_db[5]));
-            }
-        });
+        application_about_text.setText(setTvTextWithHtml(application_about_db[5]));
     }
 
     private Spanned setTvTextWithHtml(String text){
