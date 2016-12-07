@@ -1,89 +1,89 @@
 <resources>
-    <dimen name="defaultMargin_half">3dp</dimen>
-    <dimen name="defaultMargin">6dp</dimen>
-    <dimen name="defaultMargin_double">12dp</dimen>
-    <dimen name="defaultMargin_triple">18dp</dimen>
+    <dimen name="defaultMargin_half">4dp</dimen>
+    <dimen name="defaultMargin">8dp</dimen>
+    <dimen name="defaultMargin_double">16dp</dimen>
+    <dimen name="defaultMargin_triple">24dp</dimen>
 
-    <dimen name="image_icon">130dp</dimen>
-    <dimen name="btn_com_image_icon">100dp</dimen>
+    <dimen name="image_icon">160dp</dimen>
+    <dimen name="btn_com_image_icon">130dp</dimen>
 
     <!--account_fragment-->
-    <dimen name="btn_size_small">30dp</dimen>
-    <dimen name="btn_description_size">50dp</dimen>
-    <dimen name="btn_push_n_prof">70dp</dimen>
+    <dimen name="btn_size_small">35dp</dimen>
+    <dimen name="btn_description_size">60dp</dimen>
+    <dimen name="btn_push_n_prof">80dp</dimen>
 
-    <dimen name="btn_description_text_size">25dp</dimen>
-    <dimen name="btn_select_img_text_size">10sp</dimen>
-    <dimen name="tv_info">20sp</dimen>
+    <dimen name="btn_description_text_size">30dp</dimen>
+    <dimen name="btn_select_img_text_size">12sp</dimen>
+    <dimen name="tv_info">23sp</dimen>
 
     <!--alert-->
-    <dimen name="alert_edit_name">250dp</dimen>
-    <dimen name="notific_width">200dp</dimen>
+    <dimen name="alert_edit_name">300dp</dimen>
+    <dimen name="notific_width">240dp</dimen>
 
     <!--com_birth_fragment-->
-    <dimen name="birth_image_size">100dp</dimen>
+    <dimen name="birth_image_size">130dp</dimen>
 
-    <dimen name="birth_text">30sp</dimen>
-    <dimen name="birth_text_info">23sp</dimen>
+    <dimen name="birth_text">35sp</dimen>
+    <dimen name="birth_text_info">27sp</dimen>
 
     <!--com_noaccess_fragment-->
-    <dimen name="no_access_text">18sp</dimen>
+    <dimen name="no_access_text">21sp</dimen>
 
     <!--com_socionics_fragment-->
-    <dimen name="sub_spinner_margin">60dp</dimen>
-    <dimen name="soc_text_height">70dp</dimen>
+    <dimen name="sub_spinner_margin">75dp</dimen>
+    <dimen name="soc_text_height">85dp</dimen>
 
-    <dimen name="soc_text_size">18sp</dimen>
+    <dimen name="soc_text_size">21sp</dimen>
 
     <!--virtual_fragment-->
-    <dimen name="tv_vir_height">70dp</dimen>
-    <dimen name="com_text_size">18sp</dimen>
+    <dimen name="tv_vir_height">85dp</dimen>
+    <dimen name="com_text_size">21sp</dimen>
 
     <!--zodiac_fragment-->
-    <dimen name="image_marginTop">50dp</dimen>
+    <dimen name="image_marginTop">60dp</dimen>
 
     <!--datePicker_fragment-->
-    <dimen name="tv_datetime_size">20sp</dimen>
-    <dimen name="tv_select_datetime_size">25sp</dimen>
+    <dimen name="tv_datetime_size">23sp</dimen>
+    <dimen name="tv_select_datetime_size">28sp</dimen>
 
     <!--datePicker_fragment-->
-    <dimen name="et_width">150sp</dimen>
+    <dimen name="et_width">180sp</dimen>
 
-    <dimen name="tv_details_size">20sp</dimen>
+    <dimen name="tv_details_size">23sp</dimen>
 
     <!--datePicker_fragment-->
-    <dimen name="hor_online_tv_size">30sp</dimen>
+    <dimen name="hor_online_tv_size">35sp</dimen>
 
     <!--interesting-->
-    <dimen name="interes_tv_size">16sp</dimen>
+    <dimen name="interes_tv_size">19sp</dimen>
 
     <!--intro-->
-    <dimen name="intro_image_size">140dp</dimen>
+    <dimen name="intro_image_size">170dp</dimen>
 
-    <dimen name="intro_title_size">30sp</dimen>
-    <dimen name="intro_tv_size">20sp</dimen>
+    <dimen name="intro_title_size">35sp</dimen>
+    <dimen name="intro_tv_size">23sp</dimen>
 
     <!--header-->
-    <dimen name="header_image_size">75dp</dimen>
+    <dimen name="header_image_size">100dp</dimen>
 
-    <dimen name="header_tv_size">30sp</dimen>
-    <dimen name="header_status_size">20sp</dimen>
+    <dimen name="header_tv_size">35sp</dimen>
+    <dimen name="header_status_size">23sp</dimen>
 
     <!--profile_descr-->
-    <dimen name="pr_descr_date_size">33sp</dimen>
-    <dimen name="pr_descr_tv_size">23sp</dimen>
+    <dimen name="pr_descr_date_size">39sp</dimen>
+    <dimen name="pr_descr_tv_size">26sp</dimen>
 
     <!--reg-->
-    <dimen name="reg_progress_size">50dp</dimen>
+    <dimen name="reg_progress_size">60dp</dimen>
 
-    <dimen name="reg_forgot_tv_size">20sp</dimen>
+    <dimen name="reg_forgot_tv_size">23sp</dimen>
 
     <!--socionics-->
-    <dimen name="socio_tv_size">20sp</dimen>
+    <dimen name="socio_tv_size">23sp</dimen>
 
     <!--status about-->
-    <dimen name="stat_about_title_size">30sp</dimen>
-    <dimen name="stat_about_text_size">20sp</dimen>
+    <dimen name="stat_about_title_size">35sp</dimen>
+    <dimen name="stat_about_text_size">23sp</dimen>
 
 
 

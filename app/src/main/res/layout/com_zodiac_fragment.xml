@@ -38,6 +38,7 @@
                         android:id="@+id/comp_zod_image_male"
                         android:layout_width="@dimen/btn_com_image_icon"
                         android:layout_height="@dimen/btn_com_image_icon"
+                        android:layout_gravity="center"
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_zod_oven" />
 
@@ -72,6 +73,7 @@
                         android:id="@+id/comp_zod_image_female"
                         android:layout_width="@dimen/btn_com_image_icon"
                         android:layout_height="@dimen/btn_com_image_icon"
+                        android:layout_gravity="center"
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_zod_oven" />
 

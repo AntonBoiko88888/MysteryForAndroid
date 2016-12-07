@@ -5,7 +5,6 @@
     <dimen name="defaultMargin_triple">18dp</dimen>
 
     <dimen name="image_icon">130dp</dimen>
-    <dimen name="com_image_icon">140dp</dimen>
     <dimen name="btn_com_image_icon">100dp</dimen>
 
     <!--account_fragment-->
