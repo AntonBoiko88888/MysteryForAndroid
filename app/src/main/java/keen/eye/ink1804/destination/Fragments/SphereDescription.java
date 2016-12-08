@@ -42,7 +42,9 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = (size.x-2*dpToPx(6,getActivity()))/4;
+        int dp = (int) (getResources().getDimension(R.dimen.defaultMargin) / getResources().getDisplayMetrics().density);
+        int defMargin = dpToPx(dp,getActivity());
+        int width = (size.x-2*defMargin)/4;
         int length = array.length;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
         for(int i=0;i<length;i++){
@@ -51,6 +53,7 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
             btn.setTag(array[(i+3)%length]);
             btn.setTextSize(10);
             btn.setId(500+i);
+            btn.setTextSize(getResources().getDimension(R.dimen.sphere_btn_text_size));
             btn.setBackgroundResource(R.drawable.btn_border_thin_circ);
             btn.setLayoutParams(layoutParams);
             btn.setOnClickListener(this);

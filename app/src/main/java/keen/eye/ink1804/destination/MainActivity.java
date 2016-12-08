@@ -597,7 +597,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPurchaseClick() {
         ArrayList skuList = new ArrayList();
-        String inAppId = "android.test.purchased";
+        String inAppId = "com.android.mystery.advanced.success";
         skuList.add(inAppId);
         Bundle querySkus = new Bundle();
         querySkus.putStringArrayList("ITEM_ID_LIST", skuList);

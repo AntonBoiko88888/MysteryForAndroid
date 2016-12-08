@@ -1,8 +1,8 @@
 <resources>
-    <dimen name="defaultMargin_half">3dp</dimen>
-    <dimen name="defaultMargin">6dp</dimen>
-    <dimen name="defaultMargin_double">12dp</dimen>
-    <dimen name="defaultMargin_triple">18dp</dimen>
+    <dimen name="defaultMargin_half">5dp</dimen>
+    <dimen name="defaultMargin">10dp</dimen>
+    <dimen name="defaultMargin_double">20dp</dimen>
+    <dimen name="defaultMargin_triple">30dp</dimen>
 
     <dimen name="image_icon">190dp</dimen>
     <dimen name="btn_com_image_icon">160dp</dimen>
@@ -87,4 +87,5 @@
     <dimen name="stat_about_title_size">40sp</dimen>
     <dimen name="stat_about_text_size">26sp</dimen>
 
+    <dimen name="sphere_btn_text_size">12sp</dimen>
 </resources>
