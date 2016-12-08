@@ -3,6 +3,88 @@
     <dimen name="defaultMargin">6dp</dimen>
     <dimen name="defaultMargin_double">12dp</dimen>
     <dimen name="defaultMargin_triple">18dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="image_icon">190dp</dimen>
+    <dimen name="btn_com_image_icon">190dp</dimen>
+
+    <dimen name="com_select_sex_text">20sp</dimen>
+
+    <!--account_fragment-->
+    <dimen name="btn_size_small">45dp</dimen>
+    <dimen name="btn_description_size">80dp</dimen>
+    <dimen name="btn_push_n_prof">100dp</dimen>
+
+    <dimen name="btn_description_text_size">40dp</dimen>
+    <dimen name="btn_select_img_text_size">16sp</dimen>
+    <dimen name="tv_info">29sp</dimen>
+
+    <!--alert-->
+    <dimen name="alert_edit_name">400dp</dimen>
+    <dimen name="notific_width">320dp</dimen>
+
+    <!--com_birth_fragment-->
+    <dimen name="birth_image_size">190dp</dimen>
+
+    <dimen name="birth_text">45sp</dimen>
+    <dimen name="birth_text_info">35sp</dimen>
+
+    <!--com_noaccess_fragment-->
+    <dimen name="no_access_text">27sp</dimen>
+
+    <!--com_socionics_fragment-->
+    <dimen name="sub_spinner_margin">105dp</dimen>
+    <dimen name="soc_text_height">115dp</dimen>
+
+    <dimen name="soc_text_size">27sp</dimen>
+
+    <!--virtual_fragment-->
+    <dimen name="tv_vir_height">115dp</dimen>
+    <dimen name="com_text_size">27sp</dimen>
+
+    <!--zodiac_fragment-->
+    <dimen name="image_marginTop">80dp</dimen>
+
+    <!--datePicker_fragment-->
+    <dimen name="tv_datetime_size">29sp</dimen>
+    <dimen name="tv_select_datetime_size">34sp</dimen>
+
+    <!--datePicker_fragment-->
+    <dimen name="et_width">240sp</dimen>
+
+    <dimen name="tv_details_size">29sp</dimen>
+
+    <!--datePicker_fragment-->
+    <dimen name="hor_online_tv_size">45sp</dimen>
+
+    <!--interesting-->
+    <dimen name="interes_tv_size">25sp</dimen>
+
+    <!--intro-->
+    <dimen name="intro_image_size">230dp</dimen>
+
+    <dimen name="intro_title_size">45sp</dimen>
+    <dimen name="intro_tv_size">33sp</dimen>
+
+    <!--header-->
+    <dimen name="header_image_size">140dp</dimen>
+
+    <dimen name="header_tv_size">45sp</dimen>
+    <dimen name="header_status_size">29sp</dimen>
+
+    <!--profile_descr-->
+    <dimen name="pr_descr_date_size">50sp</dimen>
+    <dimen name="pr_descr_tv_size">35sp</dimen>
+
+    <!--reg-->
+    <dimen name="reg_progress_size">80dp</dimen>
+
+    <dimen name="reg_forgot_tv_size">29sp</dimen>
+
+    <!--socionics-->
+    <dimen name="socio_tv_size">29sp</dimen>
+
+    <!--status about-->
+    <dimen name="stat_about_title_size">45sp</dimen>
+    <dimen name="stat_about_text_size">29sp</dimen>
 
 </resources>

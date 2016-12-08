@@ -1,11 +1,13 @@
 <resources>
-    <dimen name="defaultMargin_half">4dp</dimen>
-    <dimen name="defaultMargin">8dp</dimen>
-    <dimen name="defaultMargin_double">16dp</dimen>
-    <dimen name="defaultMargin_triple">24dp</dimen>
+    <dimen name="defaultMargin_half">3dp</dimen>
+    <dimen name="defaultMargin">6dp</dimen>
+    <dimen name="defaultMargin_double">12dp</dimen>
+    <dimen name="defaultMargin_triple">18dp</dimen>
 
-    <dimen name="image_icon">160dp</dimen>
+    <dimen name="image_icon">290dp</dimen>
     <dimen name="btn_com_image_icon">130dp</dimen>
+
+    <dimen name="com_select_sex_text">16sp</dimen>
 
     <!--account_fragment-->
     <dimen name="btn_size_small">35dp</dimen>
@@ -61,7 +63,7 @@
     <dimen name="intro_image_size">170dp</dimen>
 
     <dimen name="intro_title_size">35sp</dimen>
-    <dimen name="intro_tv_size">23sp</dimen>
+    <dimen name="intro_tv_size">26sp</dimen>
 
     <!--header-->
     <dimen name="header_image_size">100dp</dimen>
@@ -71,7 +73,7 @@
 
     <!--profile_descr-->
     <dimen name="pr_descr_date_size">39sp</dimen>
-    <dimen name="pr_descr_tv_size">26sp</dimen>
+    <dimen name="pr_descr_tv_size">29sp</dimen>
 
     <!--reg-->
     <dimen name="reg_progress_size">60dp</dimen>
