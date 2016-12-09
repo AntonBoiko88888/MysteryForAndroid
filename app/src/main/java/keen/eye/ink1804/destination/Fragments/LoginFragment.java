@@ -22,11 +22,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.FbUtills;
+import keen.eye.ink1804.destination.Utills.UsersModel;
 
 /**
  * Created by anton on 15.11.16.

@@ -59,14 +59,16 @@ public class Socionics extends Fragment implements View.OnClickListener{
         Point size = new Point();
         display.getSize(size);
         int dp = (int) (getResources().getDimension(R.dimen.defaultMargin) / getResources().getDisplayMetrics().density);
+        int textSize = (int) (getResources().getDimension(R.dimen.sphere_btn_text_size)/getResources().getDisplayMetrics().density);
         int defMargin = dc.dpToPx(dp,getActivity());
+        int defTextSize = dc.dpToPx(textSize,getActivity());
         int width = (size.x-2*defMargin)/2;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, width/5);
         for(int i=0;i<8;i++){
             Button btn = new Button(getActivity());
             btn.setText(names[i]);
             btn.setTag(""+i%2);
-            btn.setTextSize(14);
+            btn.setTextSize(defTextSize);
             btn.setId(2000+i);
             btn.setBackgroundResource(R.drawable.btn_border_thin_circ);
             btn.setLayoutParams(layoutParams);

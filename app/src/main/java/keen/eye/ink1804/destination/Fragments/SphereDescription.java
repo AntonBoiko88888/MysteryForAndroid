@@ -51,7 +51,7 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
             Button btn = new Button(getActivity());
             btn.setText(array[(i+3)%length]);
             btn.setTag(array[(i+3)%length]);
-            btn.setTextSize(10);
+            btn.setTextSize(R.dimen.sphere_btn_text_size);
             btn.setId(500+i);
             btn.setTextSize(getResources().getDimension(R.dimen.sphere_btn_text_size));
             btn.setBackgroundResource(R.drawable.btn_border_thin_circ);

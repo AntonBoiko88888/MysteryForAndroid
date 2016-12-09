@@ -88,7 +88,7 @@
     <dimen name="stat_about_title_size">25sp</dimen>
     <dimen name="stat_about_text_size">17sp</dimen>
 
-    <dimen name="sphere_btn_text_size">4sp</dimen>
+    <dimen name="sphere_btn_text_size">3sp</dimen>
 
 
 </resources>

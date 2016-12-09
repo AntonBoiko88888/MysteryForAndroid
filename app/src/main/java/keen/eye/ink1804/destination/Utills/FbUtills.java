@@ -23,10 +23,9 @@ import keen.eye.ink1804.destination.Math.Constants;
 public class FbUtills {
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
     final private DatabaseReference mRef = mDatabase.getRef();
+    private List<UsersModel> users = new ArrayList<>();
 
     public void onLogin(final Context context, final String email, final String password) {
-        final List<UsersModel> users = new ArrayList<>();
-
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

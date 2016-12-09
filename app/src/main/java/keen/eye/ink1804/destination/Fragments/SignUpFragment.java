@@ -28,6 +28,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
@@ -47,7 +50,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private Context context;
     FirebaseUser user;
     private String emailBundle, passwordBundle;
-
+    private List<UsersModel> users = new ArrayList<>();
     static long count = 0;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
@@ -110,15 +113,19 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                     Toast.makeText(getContext(), "Аунтефикация не удалась, проверьте соединение с интернетом или попробуйте ввести другой почтовый адресс.",
                                             Toast.LENGTH_SHORT).show();
                                 } else if (task.isSuccessful()) {
+
                                     usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
-                                            UsersModel lastUser = null;
+                                            UsersModel user;
+                                            Toast.makeText(context, dataSnapshot+"", Toast.LENGTH_SHORT).show();
                                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                                lastUser = postSnapshot.getValue(UsersModel.class);
-                                                count = lastUser.Id + 1;
+                                                user = postSnapshot.getValue(UsersModel.class);
+                                                if(user!=null)
+                                                    users.add(user);
                                             }
-                                            Toast.makeText(context, count+"", Toast.LENGTH_SHORT).show();
+                                            count = users.get(users.size()-1).Id+1;
+                                            Toast.makeText(context, count+"", Toast.LENGTH_LONG).show();
 
 
                                         }
