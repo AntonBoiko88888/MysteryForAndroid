@@ -86,7 +86,6 @@ public class FbUtills {
     }
 
     public void setName(String _name) {
-        String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
@@ -95,7 +94,22 @@ public class FbUtills {
         String email = MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL, "");
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
+        String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         UsersModel user = new UsersModel(id, _name, day, month, year, sex, socionics, email, password, status);
+        mRef.child(id + "").setValue(user);
+    }
+
+    public void setSocionics(String _socionics) {
+        long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
+        String name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "");
+        int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
+        int year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
+        boolean sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, true);
+        String email = MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL, "");
+        String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
+        String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
+        UsersModel user = new UsersModel(id, name, day, month, year, sex, _socionics, email, password, status);
         mRef.child(id + "").setValue(user);
     }
 }

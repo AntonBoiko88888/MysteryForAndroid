@@ -63,6 +63,17 @@
                     android:textSize="@dimen/tv_info" />
 
 
+            <TextView
+                android:id="@+id/acc_tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMargin_half"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/btn_select_img_text_size" />
+
+
+
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +83,7 @@
                 android:id="@+id/btn_users_upgrade"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/btn_size_small"
-                android:layout_marginTop="@dimen/defaultMargin_half"
+                android:layout_marginTop="@dimen/defaultMargin"
                 android:padding="@dimen/defaultMargin"
                 android:background="@drawable/btn_states_thin_rect"
                 android:text="@string/account_fragment_btn_users_upgrade_text" />

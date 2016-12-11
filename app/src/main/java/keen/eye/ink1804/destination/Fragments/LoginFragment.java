@@ -65,9 +65,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Вход");
         inputEmail = (EditText)root.findViewById(R.id.email);
-        inputEmail.setText(MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,""));
         inputPassword = (EditText)root.findViewById(R.id.password);
-        inputPassword.setText(MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD,""));
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
         btnSignup = (Button) root.findViewById(R.id.btn_registrate);
         Button btnLogin = (Button) root.findViewById(R.id.btn_login);

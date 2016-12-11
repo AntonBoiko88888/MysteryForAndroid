@@ -118,16 +118,12 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             UsersModel user;
-                                            Toast.makeText(context, dataSnapshot+"", Toast.LENGTH_SHORT).show();
                                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                                 user = postSnapshot.getValue(UsersModel.class);
                                                 if(user!=null)
                                                     users.add(user);
                                             }
                                             count = users.get(users.size()-1).Id+1;
-                                            Toast.makeText(context, count+"", Toast.LENGTH_LONG).show();
-
-
                                         }
                                         @Override
                                         public void onCancelled(DatabaseError databaseError) {

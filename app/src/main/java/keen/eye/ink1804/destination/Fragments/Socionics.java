@@ -19,6 +19,7 @@ import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 28.08.16.
@@ -59,16 +60,14 @@ public class Socionics extends Fragment implements View.OnClickListener{
         Point size = new Point();
         display.getSize(size);
         int dp = (int) (getResources().getDimension(R.dimen.defaultMargin) / getResources().getDisplayMetrics().density);
-        int textSize = (int) (getResources().getDimension(R.dimen.sphere_btn_text_size)/getResources().getDisplayMetrics().density);
         int defMargin = dc.dpToPx(dp,getActivity());
-        int defTextSize = dc.dpToPx(textSize,getActivity());
         int width = (size.x-2*defMargin)/2;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, width/5);
         for(int i=0;i<8;i++){
             Button btn = new Button(getActivity());
             btn.setText(names[i]);
             btn.setTag(""+i%2);
-            btn.setTextSize(defTextSize);
+            btn.setTextSize(getResources().getDimension(R.dimen.sphere_btn_text_size));
             btn.setId(2000+i);
             btn.setBackgroundResource(R.drawable.btn_border_thin_circ);
             btn.setLayoutParams(layoutParams);
@@ -114,6 +113,8 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 editor.putString(Constants.APP_PREF_SOCIONICS, socioType);
                 Toast.makeText(getActivity(), socioType+" - сохранено в профиль", Toast.LENGTH_SHORT).show();
                 editor.apply();
+                FbUtills firebaseUtills = new FbUtills();
+                firebaseUtills.setSocionics(socioType);
                 break;
             default:
                 int btnID = view.getId();

@@ -71,8 +71,15 @@ public class Account extends Fragment implements View.OnClickListener {
         Button desc = (Button) rootView.findViewById(R.id.acc_btn_description);
         desc.setTypeface(tf);
         desc.setOnClickListener(this);
+        TextView tv_email = (TextView) rootView.findViewById(R.id.acc_tv_email);
+        tv_email.setVisibility(View.GONE);
         Button userUpgrage = (Button) rootView.findViewById(R.id.btn_users_upgrade);
         userUpgrage.setOnClickListener(this);
+        if(!MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,"").equals("")){
+            tv_email.setVisibility(View.VISIBLE);
+            tv_email.setText(MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,""));
+            userUpgrage.setText("Сменить");
+        }
         status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
