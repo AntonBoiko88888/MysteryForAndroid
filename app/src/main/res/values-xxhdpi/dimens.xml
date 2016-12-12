@@ -39,7 +39,8 @@
 
     <!--virtual_fragment-->
     <dimen name="tv_vir_height">70dp</dimen>
-    <dimen name="com_text_size">18sp</dimen>
+    <dimen name="com_text_size">20sp</dimen>
+    <dimen name="com_text_size2">14sp</dimen>
 
     <!--zodiac_fragment-->
     <dimen name="image_marginTop">50dp</dimen>
@@ -60,7 +61,7 @@
     <dimen name="interes_tv_size">16sp</dimen>
 
     <!--intro-->
-    <dimen name="intro_image_size">140dp</dimen>
+    <dimen name="intro_image_size">150dp</dimen>
 
     <dimen name="intro_title_size">30sp</dimen>
     <dimen name="intro_tv_size">20sp</dimen>
@@ -84,9 +85,9 @@
     <dimen name="socio_tv_size">20sp</dimen>
 
     <!--status about-->
-    <dimen name="stat_about_title_size">30sp</dimen>
+    <dimen name="stat_about_title_size">32sp</dimen>
     <dimen name="stat_about_text_size">20sp</dimen>
 
-    <dimen name="sphere_btn_text_size">5sp</dimen>
+    <dimen name="sphere_btn_text_size">4sp</dimen>
 
 </resources>

@@ -4,20 +4,20 @@
     <dimen name="defaultMargin_double">12dp</dimen>
     <dimen name="defaultMargin_triple">18dp</dimen>
 
-    <dimen name="image_icon">130dp</dimen>
-    <dimen name="btn_com_image_icon">100dp</dimen>
+    <dimen name="image_icon">140dp</dimen>
+    <dimen name="btn_com_image_icon">110dp</dimen>
 
     <dimen name="com_select_sex_text">14sp</dimen>
 
 
     <!--account_fragment-->
     <dimen name="btn_size_small">30dp</dimen>
-    <dimen name="btn_description_size">50dp</dimen>
-    <dimen name="btn_push_n_prof">70dp</dimen>
+    <dimen name="btn_description_size">60dp</dimen>
+    <dimen name="btn_push_n_prof">80dp</dimen>
 
-    <dimen name="btn_description_text_size">25dp</dimen>
+    <dimen name="btn_description_text_size">30dp</dimen>
     <dimen name="btn_select_img_text_size">10sp</dimen>
-    <dimen name="tv_info">20sp</dimen>
+    <dimen name="tv_info">22sp</dimen>
 
     <!--alert-->
     <dimen name="alert_edit_name">250dp</dimen>
@@ -33,20 +33,21 @@
     <dimen name="no_access_text">18sp</dimen>
 
     <!--com_socionics_fragment-->
-    <dimen name="sub_spinner_margin">65dp</dimen>
+    <dimen name="sub_spinner_margin">75dp</dimen>
     <dimen name="soc_text_height">70dp</dimen>
 
-    <dimen name="soc_text_size">18sp</dimen>
+    <dimen name="soc_text_size">20sp</dimen>
 
     <!--virtual_fragment-->
     <dimen name="tv_vir_height">70dp</dimen>
-    <dimen name="com_text_size">18sp</dimen>
+    <dimen name="com_text_size">20sp</dimen>
+    <dimen name="com_text_size2">14sp</dimen>
 
     <!--zodiac_fragment-->
     <dimen name="image_marginTop">50dp</dimen>
 
     <!--datePicker_fragment-->
-    <dimen name="tv_datetime_size">20sp</dimen>
+    <dimen name="tv_datetime_size">24sp</dimen>
     <dimen name="tv_select_datetime_size">25sp</dimen>
 
     <!--datePicker_fragment-->
@@ -55,13 +56,13 @@
     <dimen name="tv_details_size">20sp</dimen>
 
     <!--datePicker_fragment-->
-    <dimen name="hor_online_tv_size">30sp</dimen>
+    <dimen name="hor_online_tv_size">34sp</dimen>
 
     <!--interesting-->
-    <dimen name="interes_tv_size">16sp</dimen>
+    <dimen name="interes_tv_size">20sp</dimen>
 
     <!--intro-->
-    <dimen name="intro_image_size">140dp</dimen>
+    <dimen name="intro_image_size">160dp</dimen>
 
     <dimen name="intro_title_size">30sp</dimen>
     <dimen name="intro_tv_size">20sp</dimen>
@@ -85,9 +86,9 @@
     <dimen name="socio_tv_size">20sp</dimen>
 
     <!--status about-->
-    <dimen name="stat_about_title_size">30sp</dimen>
-    <dimen name="stat_about_text_size">20sp</dimen>
+    <dimen name="stat_about_title_size">35sp</dimen>
+    <dimen name="stat_about_text_size">25sp</dimen>
 
-    <dimen name="sphere_btn_text_size">3sp</dimen>
+    <dimen name="sphere_btn_text_size">4sp</dimen>
 
 </resources>

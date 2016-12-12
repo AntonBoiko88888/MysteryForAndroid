@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="@dimen/com_text_size2"
         android:background="@drawable/btn_states_thin_rect"
         android:text="@string/com_no_access_up_status_text"
         android:padding="@dimen/defaultMargin_double"/>

@@ -100,7 +100,7 @@
                 android:gravity="center"
                 android:layout_marginTop="@dimen/defaultMargin_triple"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/com_text_size" />
+                android:textSize="@dimen/soc_text_size" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

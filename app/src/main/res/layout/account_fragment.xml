@@ -84,6 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/btn_size_small"
                 android:layout_marginTop="@dimen/defaultMargin"
+                android:textSize="@dimen/com_text_size2"
                 android:padding="@dimen/defaultMargin"
                 android:background="@drawable/btn_states_thin_rect"
                 android:text="@string/account_fragment_btn_users_upgrade_text" />

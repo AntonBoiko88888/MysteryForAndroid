@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void createAlert_setName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
         builder.setTitle("Профиль")
-                .setMessage("У вас еще не создан ваш профиль, перейдите к заполнению формы.")
+                .setView(R.layout.alert_create_acc)
                 .setCancelable(false)
                 .setIcon(R.drawable.icon_eye_512)
                 .setNegativeButton("ОК",

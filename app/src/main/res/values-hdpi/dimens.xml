@@ -4,20 +4,20 @@
     <dimen name="defaultMargin_double">12dp</dimen>
     <dimen name="defaultMargin_triple">18dp</dimen>
 
-    <dimen name="image_icon">20dp</dimen>
+    <dimen name="image_icon">100dp</dimen>
     <dimen name="btn_com_image_icon">100dp</dimen>
 
     <dimen name="com_select_sex_text">14sp</dimen>
 
 
     <!--account_fragment-->
-    <dimen name="btn_size_small">30dp</dimen>
-    <dimen name="btn_description_size">50dp</dimen>
-    <dimen name="btn_push_n_prof">70dp</dimen>
+    <dimen name="btn_size_small">26dp</dimen>
+    <dimen name="btn_description_size">40dp</dimen>
+    <dimen name="btn_push_n_prof">60dp</dimen>
 
-    <dimen name="btn_description_text_size">25dp</dimen>
-    <dimen name="btn_select_img_text_size">10sp</dimen>
-    <dimen name="tv_info">20sp</dimen>
+    <dimen name="btn_description_text_size">22dp</dimen>
+    <dimen name="btn_select_img_text_size">8sp</dimen>
+    <dimen name="tv_info">16sp</dimen>
 
     <!--alert-->
     <dimen name="alert_edit_name">250dp</dimen>
@@ -33,20 +33,21 @@
     <dimen name="no_access_text">18sp</dimen>
 
     <!--com_socionics_fragment-->
-    <dimen name="sub_spinner_margin">60dp</dimen>
+    <dimen name="sub_spinner_margin">30dp</dimen>
     <dimen name="soc_text_height">70dp</dimen>
 
     <dimen name="soc_text_size">18sp</dimen>
 
     <!--virtual_fragment-->
     <dimen name="tv_vir_height">70dp</dimen>
-    <dimen name="com_text_size">18sp</dimen>
+    <dimen name="com_text_size">14sp</dimen>
+    <dimen name="com_text_size2">11sp</dimen>
 
     <!--zodiac_fragment-->
     <dimen name="image_marginTop">50dp</dimen>
 
     <!--datePicker_fragment-->
-    <dimen name="tv_datetime_size">20sp</dimen>
+    <dimen name="tv_datetime_size">18sp</dimen>
     <dimen name="tv_select_datetime_size">25sp</dimen>
 
     <!--datePicker_fragment-->
@@ -74,7 +75,7 @@
 
     <!--profile_descr-->
     <dimen name="pr_descr_date_size">33sp</dimen>
-    <dimen name="pr_descr_tv_size">23sp</dimen>
+    <dimen name="pr_descr_tv_size">20sp</dimen>
 
     <!--reg-->
     <dimen name="reg_progress_size">50dp</dimen>

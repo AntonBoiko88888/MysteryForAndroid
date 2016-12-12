@@ -65,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/defaultMargin_double"
+                android:textSize="@dimen/com_text_size2"
                 android:layout_marginBottom="@dimen/defaultMargin_triple"
                 android:text="Приобрести"
                 android:background="@drawable/btn_states_thin_rect"/>

@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
+                android:textSize="@dimen/com_text_size"
                 android:textColorHint="@color/white"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -48,6 +49,7 @@
                 android:hint="@string/hint_password"
                 android:textColorHint="@color/white"
                 android:imeActionId="@+id/login"
+                android:textSize="@dimen/com_text_size"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -62,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/defaultMargin_double"
+            android:textSize="@dimen/com_text_size2"
             android:background="@color/colorAccent"
             android:text="@string/action_sign_in_short"
             android:textColor="@android:color/black"
@@ -82,6 +85,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:padding="@dimen/defaultMargin_double"
+            android:textSize="@dimen/com_text_size2"
             android:background="@drawable/btn_states_thin_rect"
             android:text="@string/date_picker_onward_text" />
 

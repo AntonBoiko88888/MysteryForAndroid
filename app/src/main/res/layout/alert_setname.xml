@@ -9,6 +9,7 @@
         android:id="@+id/alert_edit_name"
         android:layout_width="@dimen/alert_edit_name"
         android:layout_height="match_parent"
+        android:textSize="@dimen/com_text_size2"
         appCompat:singleLine="true"
         android:layout_gravity="center" />
 

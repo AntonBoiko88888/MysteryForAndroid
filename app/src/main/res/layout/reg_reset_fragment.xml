@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/defaultMargin_double"
+            android:textSize="@dimen/com_text_size2"
             android:gravity="center_horizontal"
             android:text="@string/forgot_password_msg"
             android:textColor="@android:color/white"
@@ -48,6 +49,7 @@
                 android:layout_marginBottom="@dimen/defaultMargin_double"
                 android:layout_marginTop="@dimen/defaultMargin_triple"
                 android:hint="@string/hint_email"
+                android:textSize="@dimen/com_text_size"
                 android:inputType="textEmailAddress"
                 android:textColor="@android:color/white"
                 android:textColorHint="@color/white" />
@@ -58,6 +60,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/defaultMargin_double"
+            android:textSize="@dimen/com_text_size2"
             android:background="@color/colorAccent"
             android:text="@string/btn_reset_password"
             android:textColor="@android:color/black" />

@@ -13,10 +13,10 @@
     <!--account_fragment-->
     <dimen name="btn_size_small">38dp</dimen>
     <dimen name="btn_description_size">60dp</dimen>
-    <dimen name="btn_push_n_prof">80dp</dimen>
+    <dimen name="btn_push_n_prof">120dp</dimen>
 
     <dimen name="btn_description_text_size">35dp</dimen>
-    <dimen name="btn_select_img_text_size">20sp</dimen>
+    <dimen name="btn_select_img_text_size">16sp</dimen>
     <dimen name="tv_info">30sp</dimen>
 
     <!--alert-->
@@ -33,14 +33,15 @@
     <dimen name="no_access_text">22sp</dimen>
 
     <!--com_socionics_fragment-->
-    <dimen name="sub_spinner_margin">80dp</dimen>
+    <dimen name="sub_spinner_margin">100dp</dimen>
     <dimen name="soc_text_height">90dp</dimen>
 
     <dimen name="soc_text_size">24sp</dimen>
 
     <!--virtual_fragment-->
     <dimen name="tv_vir_height">80dp</dimen>
-    <dimen name="com_text_size">22sp</dimen>
+    <dimen name="com_text_size">20sp</dimen>
+    <dimen name="com_text_size2">18sp</dimen>
 
     <!--zodiac_fragment-->
     <dimen name="image_marginTop">60dp</dimen>
@@ -61,7 +62,7 @@
     <dimen name="interes_tv_size">30sp</dimen>
 
     <!--intro-->
-    <dimen name="intro_image_size">160dp</dimen>
+    <dimen name="intro_image_size">180dp</dimen>
 
     <dimen name="intro_title_size">40sp</dimen>
     <dimen name="intro_tv_size">30sp</dimen>
@@ -73,8 +74,8 @@
     <dimen name="header_status_size">25sp</dimen>
 
     <!--profile_descr-->
-    <dimen name="pr_descr_date_size">40sp</dimen>
-    <dimen name="pr_descr_tv_size">28sp</dimen>
+    <dimen name="pr_descr_date_size">45sp</dimen>
+    <dimen name="pr_descr_tv_size">35sp</dimen>
 
     <!--reg-->
     <dimen name="reg_progress_size">60dp</dimen>

@@ -33,7 +33,7 @@
     <dimen name="no_access_text">18sp</dimen>
 
     <!--com_socionics_fragment-->
-    <dimen name="sub_spinner_margin">60dp</dimen>
+    <dimen name="sub_spinner_margin">65dp</dimen>
     <dimen name="soc_text_height">70dp</dimen>
 
     <dimen name="soc_text_size">18sp</dimen>
@@ -41,6 +41,7 @@
     <!--virtual_fragment-->
     <dimen name="tv_vir_height">70dp</dimen>
     <dimen name="com_text_size">18sp</dimen>
+    <dimen name="com_text_size2">14sp</dimen>
 
     <!--zodiac_fragment-->
     <dimen name="image_marginTop">50dp</dimen>
@@ -58,7 +59,7 @@
     <dimen name="hor_online_tv_size">30sp</dimen>
 
     <!--interesting-->
-    <dimen name="interes_tv_size">16sp</dimen>
+    <dimen name="interes_tv_size">18sp</dimen>
 
     <!--intro-->
     <dimen name="intro_image_size">140dp</dimen>

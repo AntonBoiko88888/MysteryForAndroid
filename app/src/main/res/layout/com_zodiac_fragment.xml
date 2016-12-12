@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/comp_zod_btn_result"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/com_text_size" />
+                android:textSize="@dimen/soc_text_size" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

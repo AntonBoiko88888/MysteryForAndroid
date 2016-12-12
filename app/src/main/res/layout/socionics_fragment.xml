@@ -36,6 +36,7 @@
                 android:layout_marginTop="@dimen/defaultMargin_double"
                 android:paddingLeft="@dimen/defaultMargin_double"
                 android:paddingRight="@dimen/defaultMargin_double"
+                android:textSize="@dimen/com_text_size2"
                 android:background="@drawable/btn_states_fat"
                 android:text="@string/com_relationResult_text"
                 android:textColor="@color/blue" />
@@ -52,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textSize="@dimen/com_text_size2"
                 android:layout_marginBottom="@dimen/defaultMargin_triple"
                 android:padding="@dimen/defaultMargin"
                 android:background="@drawable/btn_states_thin_rect"

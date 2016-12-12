@@ -11,14 +11,16 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:typeface="monospace"
-        android:layout_marginTop="@dimen/appIntroDefaultPaddingBottom"
-        android:layout_marginBottom="@dimen/appIntroDefaultPaddingBottom"
+        android:textSize="@dimen/com_text_size2"
+        android:layout_marginTop="@dimen/defaultMargin_triple"
+        android:layout_marginBottom="@dimen/defaultMargin_triple"
         android:text="Гороскоп будет приходить каждый день в назначенное время"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="@dimen/com_text_size2"
         android:typeface="serif"
         android:text="Мой знак"/>
     <fr.ganfra.materialspinner.MaterialSpinner
@@ -27,6 +29,7 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         app:ms_multiline="false"
+        android:textSize="@dimen/com_text_size"
         app:ms_enableFloatingLabel="false"
         app:ms_enableErrorLabel="false"
         app:ms_floatingLabelText="floating label"
@@ -39,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="@dimen/com_text_size2"
         android:typeface="serif"
         android:text="Получать уведомления в "/>
     <fr.ganfra.materialspinner.MaterialSpinner
@@ -50,6 +54,7 @@
         app:ms_enableFloatingLabel="false"
         app:ms_enableErrorLabel="false"
         app:ms_floatingLabelText="floating label"
+        android:textSize="@dimen/com_text_size"
         android:popupBackground="@color/black"
         app:ms_thickness="2dp"
         app:ms_arrowSize="@dimen/defaultMargin_double"
@@ -59,11 +64,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textSize="@dimen/com_text_size2"
         android:typeface="serif"
         android:text="Выкл / Вкл"/>
     <Switch
         android:id="@+id/alert_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/com_text_size"
         android:layout_gravity="center"/>
 </LinearLayout>
