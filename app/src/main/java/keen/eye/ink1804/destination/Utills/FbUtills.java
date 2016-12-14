@@ -111,11 +111,12 @@ public class FbUtills {
         mRef.child(id + "").setValue(user);
     }
     public void getDataFromDB(final Context context,final long id){
+        try{
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UsersModel user;
-                user = dataSnapshot.child(id+"").getValue(UsersModel.class);
+                user = dataSnapshot.child(id + "").getValue(UsersModel.class);
                 SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                 editor.putString(Constants.APP_PREF_NAME, user.Name);
                 editor.putInt(Constants.APP_PREF_DAY, user.Day);
@@ -132,6 +133,7 @@ public class FbUtills {
 //                UsersModel setUser = new UsersModel(user.Id, user.Name, user.Day, user.Month, user.Year
 //                        , user.Sex, user.Socionics, user.Email, user.Password, user.Status);
                 listener.mainFragmentCreate();
+
             }
 
             @Override
@@ -139,5 +141,9 @@ public class FbUtills {
 
             }
         });
+        }catch (Exception e){
+
+        }
     }
+
 }

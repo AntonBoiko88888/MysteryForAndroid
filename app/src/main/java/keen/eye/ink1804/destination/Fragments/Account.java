@@ -131,6 +131,7 @@ public class Account extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_users_upgrade:
 //                listener.onRegEnter();
+                //TODO разлочить тут нахер когда будет работать по человечески
                 Toast.makeText(getActivity(), "Comming soon", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.acc_btn_question:
