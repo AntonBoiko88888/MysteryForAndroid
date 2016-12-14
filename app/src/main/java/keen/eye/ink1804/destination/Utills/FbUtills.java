@@ -129,11 +129,6 @@ public class FbUtills {
                 editor.putString(Constants.APP_PREF_PASSWORD, user.Password);
                 editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
                 editor.apply();
-                pushDateListener listener = (pushDateListener) context;
-//                UsersModel setUser = new UsersModel(user.Id, user.Name, user.Day, user.Month, user.Year
-//                        , user.Sex, user.Socionics, user.Email, user.Password, user.Status);
-                listener.mainFragmentCreate();
-
             }
 
             @Override

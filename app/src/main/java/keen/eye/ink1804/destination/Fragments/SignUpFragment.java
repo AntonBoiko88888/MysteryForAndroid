@@ -50,10 +50,9 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private Context context;
     FirebaseUser user;
     private String emailBundle, passwordBundle;
-    private List<UsersModel> users = new ArrayList<>();
     static long count = 0;
 
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     final private DatabaseReference usersRef = mDatabase.getRef();
     View root;
 
@@ -119,19 +118,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                         usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                                UsersModel user;
-                                                Toast.makeText(context, dataSnapshot + "", Toast.LENGTH_SHORT).show();
-                                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                                    user = postSnapshot.getValue(UsersModel.class);
-                                                    if (user != null)
-                                                        users.add(user);
-                                                }
-                                                count = users.get(users.size() - 1).Id + 1;
-                                                Toast.makeText(context, count + "", Toast.LENGTH_LONG).show();
-
-
+                                                count = Long.parseLong(dataSnapshot.child("index").getValue().toString());
                                             }
-
                                             @Override
                                             public void onCancelled(DatabaseError databaseError) {
                                             }
@@ -176,7 +164,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                     if (user != null) {
                                         if (user.isEmailVerified()) {
                                             UsersModel mUser = createUser(emailBundle, passwordBundle);
-                                            usersRef.child(count + "").setValue(mUser);
+                                            usersRef.child("users").child(count + "").setValue(mUser);
+                                            usersRef.child("index").setValue((count+1) + "");
                                             listener.onLoginClick(emailBundle, passwordBundle);
                                             auth.signOut();
                                         } else
