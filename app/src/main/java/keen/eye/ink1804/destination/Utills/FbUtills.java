@@ -84,7 +84,6 @@ public class FbUtills {
         UsersModel user = new UsersModel(id, name, day, month, year, sex, socionics, email, password, status);
         mRef.child(id + "").setValue(user);
     }
-
     public void setName(String _name) {
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
@@ -98,7 +97,6 @@ public class FbUtills {
         UsersModel user = new UsersModel(id, _name, day, month, year, sex, socionics, email, password, status);
         mRef.child(id + "").setValue(user);
     }
-
     public void setSocionics(String _socionics) {
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
         String name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "");
@@ -111,5 +109,35 @@ public class FbUtills {
         String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         UsersModel user = new UsersModel(id, name, day, month, year, sex, _socionics, email, password, status);
         mRef.child(id + "").setValue(user);
+    }
+    public void getDataFromDB(final Context context,final long id){
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UsersModel user;
+                user = dataSnapshot.child(id+"").getValue(UsersModel.class);
+                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+                editor.putString(Constants.APP_PREF_NAME, user.Name);
+                editor.putInt(Constants.APP_PREF_DAY, user.Day);
+                editor.putInt(Constants.APP_PREF_MONTH, user.Month);
+                editor.putInt(Constants.APP_PREF_YEAR, user.Year);
+                editor.putBoolean(Constants.APP_PREF_SEX, user.Sex);
+                editor.putString(Constants.APP_PREF_SOCIONICS, user.Socionics);
+                editor.putString(Constants.APP_PREF_STATUS, user.Status);
+                editor.putString(Constants.APP_PREF_EMAIL, user.Email);
+                editor.putString(Constants.APP_PREF_PASSWORD, user.Password);
+                editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
+                editor.apply();
+                pushDateListener listener = (pushDateListener) context;
+//                UsersModel setUser = new UsersModel(user.Id, user.Name, user.Day, user.Month, user.Year
+//                        , user.Sex, user.Socionics, user.Email, user.Password, user.Status);
+                listener.mainFragmentCreate();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

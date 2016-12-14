@@ -100,6 +100,7 @@ public class Account extends Fragment implements View.OnClickListener {
 //            btn_new_profile.setEnabled(false);
             btn_new_profile.setBackgroundResource(R.drawable.acc_new_profile_pressed);
         }
+
     }
 
     @Override
@@ -129,7 +130,8 @@ public class Account extends Fragment implements View.OnClickListener {
                     listener.setNotification(getActivity());
                 break;
             case R.id.btn_users_upgrade:
-                listener.onRegEnter();
+//                listener.onRegEnter();
+                Toast.makeText(getActivity(), "Comming soon", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.acc_btn_question:
                 listener.onStatusAbout();

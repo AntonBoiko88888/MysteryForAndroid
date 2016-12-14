@@ -87,72 +87,82 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         final pushDateListener listener = (pushDateListener) getActivity();
         switch (view.getId()) {
             case R.id.sign_up_button:
-                final String email = inputEmail.getText().toString().trim();
-                final String password = inputPassword.getText().toString().trim();
+                MainActivity mainActivity = new MainActivity();
+                if(mainActivity.isOnline(context)) {
+                    final String email = inputEmail.getText().toString().trim();
+                    final String password = inputPassword.getText().toString().trim();
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getContext(), "Введите email!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getContext(), "Введите пароль!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (password.length() < 6) {
-                    Toast.makeText(getContext(), "Пароль короткий, минимум 6 символов!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                progressBar.setVisibility(View.VISIBLE);
-                //create user
-                auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull final Task<AuthResult> task) {
-                                progressBar.setVisibility(View.INVISIBLE);
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "Аунтефикация не удалась, проверьте соединение с интернетом или попробуйте ввести другой почтовый адресс.",
-                                            Toast.LENGTH_SHORT).show();
-                                } else if (task.isSuccessful()) {
+                    if (TextUtils.isEmpty(email)) {
+                        Toast.makeText(getContext(), "Введите email!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (TextUtils.isEmpty(password)) {
+                        Toast.makeText(getContext(), "Введите пароль!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (password.length() < 6) {
+                        Toast.makeText(getContext(), "Пароль короткий, минимум 6 символов!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    progressBar.setVisibility(View.VISIBLE);
+                    //create user
+                    auth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull final Task<AuthResult> task) {
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                    if (!task.isSuccessful()) {
+                                        Toast.makeText(getContext(), "Аунтефикация не удалась, проверьте соединение с интернетом или попробуйте ввести другой почтовый адресс.",
+                                                Toast.LENGTH_SHORT).show();
+                                    } else if (task.isSuccessful()) {
 
-                                    usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            UsersModel user;
-                                            for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                                user = postSnapshot.getValue(UsersModel.class);
-                                                if(user!=null)
-                                                    users.add(user);
-                                            }
-                                            count = users.get(users.size()-1).Id+1;
-                                        }
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-                                        }
-                                    });
-                                    auth.signInWithEmailAndPassword(email, password)
-                                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                                    if (!task.isSuccessful()) {
-                                                        if (password.length() < 6) {
-                                                            inputPassword.setError(getString(R.string.minimum_password));
-                                                        } else {
-                                                            Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
-                                                        }
-                                                    } else {
-                                                        emailBundle = email;
-                                                        passwordBundle = password;
-                                                        user = auth.getCurrentUser();
-                                                        user.sendEmailVerification();
-                                                        dialogVerification();
-                                                        btnSignUp.setEnabled(false);
-                                                        auth.signOut();
-                                                    }
+                                        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                UsersModel user;
+                                                Toast.makeText(context, dataSnapshot + "", Toast.LENGTH_SHORT).show();
+                                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                                    user = postSnapshot.getValue(UsersModel.class);
+                                                    if (user != null)
+                                                        users.add(user);
                                                 }
-                                            });
+                                                count = users.get(users.size() - 1).Id + 1;
+                                                Toast.makeText(context, count + "", Toast.LENGTH_LONG).show();
+
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+                                        auth.signInWithEmailAndPassword(email, password)
+                                                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                                        if (!task.isSuccessful()) {
+                                                            if (password.length() < 6) {
+                                                                inputPassword.setError(getString(R.string.minimum_password));
+                                                            } else {
+                                                                Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
+                                                            }
+                                                        } else {
+                                                            emailBundle = email;
+                                                            passwordBundle = password;
+                                                            user = auth.getCurrentUser();
+                                                            user.sendEmailVerification();
+                                                            dialogVerification();
+                                                            btnSignUp.setEnabled(false);
+                                                            auth.signOut();
+                                                        }
+                                                    }
+                                                });
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
+                else
+                    Toast.makeText(context, "Увы... Интернет соединение отсутствует :(", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_isEmailVerification:
                 auth.signInWithEmailAndPassword(emailBundle, passwordBundle)

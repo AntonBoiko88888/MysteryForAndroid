@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         setBillingConnection();
+        FbUtills fbUtills = new FbUtills();
+        fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,0));
     }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
