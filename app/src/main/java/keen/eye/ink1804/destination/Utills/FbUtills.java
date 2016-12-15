@@ -111,24 +111,27 @@ public class FbUtills {
         mRef.child(id + "").setValue(user);
     }
     public void getDataFromDB(final Context context,final long id){
-        try{
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                UsersModel user;
-                user = dataSnapshot.child(id + "").getValue(UsersModel.class);
-                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
-                editor.putString(Constants.APP_PREF_NAME, user.Name);
-                editor.putInt(Constants.APP_PREF_DAY, user.Day);
-                editor.putInt(Constants.APP_PREF_MONTH, user.Month);
-                editor.putInt(Constants.APP_PREF_YEAR, user.Year);
-                editor.putBoolean(Constants.APP_PREF_SEX, user.Sex);
-                editor.putString(Constants.APP_PREF_SOCIONICS, user.Socionics);
-                editor.putString(Constants.APP_PREF_STATUS, user.Status);
-                editor.putString(Constants.APP_PREF_EMAIL, user.Email);
-                editor.putString(Constants.APP_PREF_PASSWORD, user.Password);
-                editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
-                editor.apply();
+                try {
+                    UsersModel user;
+                    user = dataSnapshot.child(id + "").getValue(UsersModel.class);
+                    SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+                    editor.putString(Constants.APP_PREF_NAME, user.Name);
+                    editor.putInt(Constants.APP_PREF_DAY, user.Day);
+                    editor.putInt(Constants.APP_PREF_MONTH, user.Month);
+                    editor.putInt(Constants.APP_PREF_YEAR, user.Year);
+                    editor.putBoolean(Constants.APP_PREF_SEX, user.Sex);
+                    editor.putString(Constants.APP_PREF_SOCIONICS, user.Socionics);
+                    editor.putString(Constants.APP_PREF_STATUS, user.Status);
+                    editor.putString(Constants.APP_PREF_EMAIL, user.Email);
+                    editor.putString(Constants.APP_PREF_PASSWORD, user.Password);
+                    editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
+                    editor.apply();
+                    pushDateListener listener = (pushDateListener) context;
+                    listener.mainFragmentCreate();
+                }catch (Exception e){}
             }
 
             @Override
@@ -136,9 +139,6 @@ public class FbUtills {
 
             }
         });
-        }catch (Exception e){
-
-        }
     }
 
 }

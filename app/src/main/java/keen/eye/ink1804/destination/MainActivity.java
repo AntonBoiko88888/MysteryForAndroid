@@ -99,11 +99,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             createAlert_setName();
         } else {
-            // TODO Проверку на Id сделать здесь
-//          if() {
-//              FbUtills fbUtills = new FbUtills();
-//              fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,0));
-//          }
             Account fragment = new Account();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.fragment_container, fragment, "account_fragment");
@@ -122,6 +117,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         setBillingConnection();
+          if(mSettings.contains(Constants.APP_PREF_ISREGISTER)&&mSettings.contains(Constants.APP_PREF_USER_ID)) {
+              FbUtills fbUtills = new FbUtills();
+              fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,-1));
+          }
     }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
