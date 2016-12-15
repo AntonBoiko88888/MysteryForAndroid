@@ -104,6 +104,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.fragment_container, fragment, "account_fragment");
             transaction.commit();
             Intent intent = getIntent();
+            if(mSettings.contains(Constants.APP_PREF_ISREGISTER)&&mSettings.contains(Constants.APP_PREF_USER_ID)
+                    &&!intent.getBooleanExtra("isHoroscope", false)) {
+                FbUtills fbUtills = new FbUtills();
+                fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,-1));
+            }
             if (intent.getBooleanExtra("isHoroscope", false)) {
                 FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
                 Bundle args = new Bundle();
@@ -117,10 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         setBillingConnection();
-          if(mSettings.contains(Constants.APP_PREF_ISREGISTER)&&mSettings.contains(Constants.APP_PREF_USER_ID)) {
-              FbUtills fbUtills = new FbUtills();
-              fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,-1));
-          }
+
     }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
