@@ -29,34 +29,33 @@ public class FbUtills {
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                UsersModel user = null;
+                UsersModel user;
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     user = postSnapshot.getValue(UsersModel.class);
-//                    if (user != null)
                     users.add(user);
                 }
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).Email.equals(email)) {
                         user = users.get(i);
                         i = users.size() + 1;
+                        SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+                        editor.putString(Constants.APP_PREF_NAME, user.Name);
+                        editor.putInt(Constants.APP_PREF_DAY, user.Day);
+                        editor.putInt(Constants.APP_PREF_MONTH, user.Month);
+                        editor.putInt(Constants.APP_PREF_YEAR, user.Year);
+                        editor.putBoolean(Constants.APP_PREF_SEX, user.Sex);
+                        editor.putString(Constants.APP_PREF_SOCIONICS, user.Socionics);
+                        editor.putString(Constants.APP_PREF_STATUS, user.Status);
+                        editor.putString(Constants.APP_PREF_EMAIL, email);
+                        editor.putString(Constants.APP_PREF_PASSWORD, password);
+                        editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
+                        editor.apply();
+                        UsersModel setUser = new UsersModel(user.Id, user.Name, user.Day, user.Month, user.Year
+                                , user.Sex, user.Socionics, user.Email, password, user.Status);
+                        mRef.child(user.Id + "").setValue(setUser);
                     }
                 }
-                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
-                editor.putString(Constants.APP_PREF_NAME, user.Name);
-                editor.putInt(Constants.APP_PREF_DAY, user.Day);
-                editor.putInt(Constants.APP_PREF_MONTH, user.Month);
-                editor.putInt(Constants.APP_PREF_YEAR, user.Year);
-                editor.putBoolean(Constants.APP_PREF_SEX, user.Sex);
-                editor.putString(Constants.APP_PREF_SOCIONICS, user.Socionics);
-                editor.putString(Constants.APP_PREF_STATUS, user.Status);
-                editor.putString(Constants.APP_PREF_EMAIL, email);
-                editor.putString(Constants.APP_PREF_PASSWORD, password);
-                editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
-                editor.apply();
                 pushDateListener listener = (pushDateListener) context;
-                UsersModel setUser = new UsersModel(user.Id, user.Name, user.Day, user.Month, user.Year
-                        , user.Sex, user.Socionics, user.Email, password, user.Status);
-                mRef.child(user.Id + "").setValue(setUser);
                 listener.mainFragmentCreate();
             }
 
