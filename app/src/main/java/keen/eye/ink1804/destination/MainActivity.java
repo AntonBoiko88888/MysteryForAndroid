@@ -25,6 +25,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageView iconImage;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
-    private static TextView nav_headerStatus;
+    private TextView nav_headerStatus;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
     public static int backStackID;
@@ -644,11 +645,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-    @Override
+
+        @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.wtf("DESTROY","onDestroy");
         if (connection != null) {
             unbindService(connection);
         }
+        Toast.makeText(this, "Activity.onDestroy()",
+                Toast.LENGTH_LONG).show();
     }
 }

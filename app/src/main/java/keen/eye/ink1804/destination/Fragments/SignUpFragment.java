@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     FirebaseUser user;
     private String emailBundle, passwordBundle;
     static long count = 0;
+    static boolean flag = false;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     final private DatabaseReference usersRef = mDatabase.getRef();
@@ -163,6 +165,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                     user = auth.getCurrentUser();
                                     if (user != null) {
                                         if (user.isEmailVerified()) {
+                                            flag = true;
                                             UsersModel mUser = createUser(emailBundle, passwordBundle);
                                             usersRef.child("users").child(count + "").setValue(mUser);
                                             usersRef.child("index").setValue((count+1) + "");
@@ -182,13 +185,14 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private void dialogVerification() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Верификация")
-                .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации.")
+                .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации. Если вы подтвердите почту - нажмите кнопку ДАЛЕЕ :)")
                 .setIcon(R.drawable.icon_eye_512)
                 .setCancelable(false)
                 .setNegativeButton("Ок",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 btnIsEmailVerification.setEnabled(true);
+                                btnIsEmailVerification.setVisibility(View.VISIBLE);
                             }
                         });
         AlertDialog alert = builder.create();
@@ -213,6 +217,15 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
 
         return new UsersModel(count, name, day, month, year, sex, socionics, _email, _password, status);
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Toast.makeText(getActivity(), "FirstFragment.onDestroyView()",
+                Toast.LENGTH_LONG).show();
+        if(user != null)
+        user.delete();
     }
 }
 
