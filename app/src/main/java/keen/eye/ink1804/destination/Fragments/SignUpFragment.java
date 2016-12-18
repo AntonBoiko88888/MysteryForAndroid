@@ -89,7 +89,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.sign_up_button:
                 MainActivity mainActivity = new MainActivity();
-                if(mainActivity.isOnline(context)) {
+                if (mainActivity.isOnline(context)) {
                     final String email = inputEmail.getText().toString().trim();
                     final String password = inputPassword.getText().toString().trim();
 
@@ -122,6 +122,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 count = Long.parseLong(dataSnapshot.child("index").getValue().toString());
                                             }
+
                                             @Override
                                             public void onCancelled(DatabaseError databaseError) {
                                             }
@@ -150,8 +151,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                     }
                                 }
                             });
-                }
-                else
+                } else
                     Toast.makeText(context, "Увы... Интернет соединение отсутствует :(", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_isEmailVerification:
@@ -168,7 +168,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                             flag = true;
                                             UsersModel mUser = createUser(emailBundle, passwordBundle);
                                             usersRef.child("users").child(count + "").setValue(mUser);
-                                            usersRef.child("index").setValue((count+1) + "");
+                                            usersRef.child("index").setValue((count + 1) + "");
                                             listener.onLoginClick(emailBundle, passwordBundle);
                                             auth.signOut();
                                         } else
@@ -221,11 +221,11 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
-        Toast.makeText(getActivity(), "FirstFragment.onDestroyView()",
-                Toast.LENGTH_LONG).show();
-        if(user != null)
-        user.delete();
+//        Toast.makeText(getActivity(), "FirstFragment.onDestroyView()", Toast.LENGTH_LONG).show();
+        if (user != null) {
+            user.delete();
+            super.onDestroyView();
+        }
     }
 }
 
