@@ -2,6 +2,15 @@ package keen.eye.ink1804.destination.Utills;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.text.Html;
+import android.text.Spanned;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -9,12 +18,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import keen.eye.ink1804.destination.Fragments.Account;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
+import keen.eye.ink1804.destination.R;
 
 /**
  * Created by Ink1804 on 05.12.16.
@@ -109,7 +122,8 @@ public class FbUtills {
         UsersModel user = new UsersModel(id, name, day, month, year, sex, _socionics, email, password, status);
         mRef.child(id + "").setValue(user);
     }
-    public void getDataFromDB(final Context context,final long id){
+    public void getDataFromDB(final Context context, final TextView tv_status,final Button push, final Button new_profile){
+        final long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, -1);
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -128,8 +142,20 @@ public class FbUtills {
                     editor.putString(Constants.APP_PREF_PASSWORD, user.Password);
                     editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
                     editor.apply();
-                    pushDateListener listener = (pushDateListener) context;
-                    listener.mainFragmentCreate();
+                    tv_status.setText(setTextSettings("Статус:<br>", user.Status));
+                    MainActivity.nav_headerStatus.setText(user.Status);
+                    Account.status = user.Status;
+                    if(user.Status.equals("Начинающий")) {
+                        push.setBackgroundResource(R.drawable.acc_push_pressed);
+                        new_profile.setBackgroundResource(R.drawable.acc_new_profile_pressed);
+                        MainActivity.nav_headerStatus.setTextColor(ContextCompat.getColor(context, R.color.pro_zra_beginning_status));
+                    }
+                    else{
+                        push.setBackgroundResource(R.drawable.acc_push_states);
+                        new_profile.setBackgroundResource(R.drawable.acc_new_profile_states);
+                        MainActivity.nav_headerStatus.setTextColor(ContextCompat.getColor(context,R.color.pro_zra_advanced_status));
+                    }
+                    MainActivity.isFirstLaunch = true;
                 }catch (Exception e){}
             }
 
@@ -138,6 +164,13 @@ public class FbUtills {
 
             }
         });
+    }
+    public Spanned setTextSettings(String _text, String _value) {
+        String text = _text;
+        String value = _value;
+        text = String.format("<u><i>%s</i></u>", text);
+        value = String.format("<b>%s</b>", value);
+        return Html.fromHtml(text + " " + value);
     }
 
 }

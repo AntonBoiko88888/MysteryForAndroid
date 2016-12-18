@@ -45,13 +45,20 @@ public class Account extends Fragment implements View.OnClickListener {
     private ImageView imageView;
     private String name;
     private int day, month, year;
-    private String status;
+    public static String status;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.account_fragment, container, false);
         initializeViews();
         return rootView;
+    }
+    @Override
+    public void onDetach() {
+        tv_name = null;
+        imageView = null;
+        rootView = null;
+        super.onDetach();
     }
 
     private void initializeViews() {
@@ -99,6 +106,10 @@ public class Account extends Fragment implements View.OnClickListener {
             btn_push.setBackgroundResource(R.drawable.acc_push_pressed);
 //            btn_new_profile.setEnabled(false);
             btn_new_profile.setBackgroundResource(R.drawable.acc_new_profile_pressed);
+        }
+        if(!MainActivity.isFirstLaunch) {
+            FbUtills fbUtills = new FbUtills();
+            fbUtills.getDataFromDB(getActivity(),tv_status,btn_push,btn_new_profile);
         }
 
     }

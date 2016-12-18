@@ -31,6 +31,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,11 +72,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageView iconImage;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
-    private TextView nav_headerStatus;
+    public static TextView nav_headerStatus;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
     public static int backStackID;
     public static SharedPreferences mSettings;
+    public static boolean isFirstLaunch = false;
     //    0 - мы на главном фрагменте
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента
@@ -105,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.fragment_container, fragment, "account_fragment");
             transaction.commit();
             Intent intent = getIntent();
-            if(mSettings.contains(Constants.APP_PREF_ISREGISTER)&&mSettings.contains(Constants.APP_PREF_USER_ID)
-                    &&!intent.getBooleanExtra("isHoroscope", false)) {
-                FbUtills fbUtills = new FbUtills();
-                fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,-1));
-            }
+//            if(mSettings.contains(Constants.APP_PREF_ISREGISTER)&&mSettings.contains(Constants.APP_PREF_USER_ID)
+//                    &&!intent.getBooleanExtra("isHoroscope", false)) {
+//                FbUtills fbUtills = new FbUtills();
+//                fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,-1));
+//            }
             if (intent.getBooleanExtra("isHoroscope", false)) {
                 FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
                 Bundle args = new Bundle();
@@ -653,7 +655,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (connection != null) {
             unbindService(connection);
         }
-        Toast.makeText(this, "Activity.onDestroy()",
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Activity.onDestroy()",
+//                Toast.LENGTH_LONG).show();
     }
 }

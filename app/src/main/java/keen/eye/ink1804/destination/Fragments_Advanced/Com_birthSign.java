@@ -26,12 +26,20 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
     private ImageView imageView;
     private TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector, tv_text;
     private String D_EqualMarriage, D_RomanticMarriage, D_SpiritualMarriage, D_PatriarchalMarriage, D_VectorMarriage;
+
+
+
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
             R.drawable.com_birth_mouse, R.drawable.com_birth_bull, R.drawable.com_birth_tiger, R.drawable.com_birth_cat,
             R.drawable.com_birth_dragon, R.drawable.com_birth_snake, R.drawable.com_birth_horse,R.drawable.com_birth_goat};
     private String[] birthNames = {"Обезьяна","Петух","Собака","Свинья(Кабан)","Крыса","Бык",
             "Тигр","Кролик(Кот)","Дракон","Змея","Лошадь","Овца(Коза)"};
 
+    @Override
+    public void onDetach() {
+        birthDrawables = null;
+        super.onDetach();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
