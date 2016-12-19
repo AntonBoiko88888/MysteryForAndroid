@@ -202,7 +202,6 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private UsersModel createUser(String _email, String _password) {
         SharedPreferences.Editor editor = MainActivity.mSettings.edit();
         String name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "Default");
-//        long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,count);
 
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
@@ -221,11 +220,10 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onDestroyView() {
-//        Toast.makeText(getActivity(), "FirstFragment.onDestroyView()", Toast.LENGTH_LONG).show();
-        if (user != null) {
+        if (user != null&&!flag) {
             user.delete();
-            super.onDestroyView();
         }
+        super.onDestroyView();
     }
 }
 
