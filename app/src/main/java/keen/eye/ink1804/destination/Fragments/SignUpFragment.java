@@ -114,7 +114,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                     progressBar.setVisibility(View.INVISIBLE);
                                     if (!task.isSuccessful()) {
                                         Toast.makeText(getContext(), "Аунтефикация не удалась, проверьте соединение с интернетом или попробуйте ввести другой почтовый адресс.",
-                                                Toast.LENGTH_SHORT).show();
+                                                Toast.LENGTH_LONG).show();
                                     } else if (task.isSuccessful()) {
 
                                         usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -141,6 +141,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                                             emailBundle = email;
                                                             passwordBundle = password;
                                                             user = auth.getCurrentUser();
+                                                            flag = false;
                                                             user.sendEmailVerification();
                                                             dialogVerification();
                                                             btnSignUp.setEnabled(false);

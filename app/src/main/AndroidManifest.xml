@@ -39,10 +39,6 @@
         <!-- <activity android:name=".Utills.Repeating_activity"/> -->
         <receiver android:name=".Utills.Notification_reciever" />
 
-        <service
-            android:name=".Utills.ServiceNotification"
-            android:enabled="true"
-            android:exported="true"></service>
     </application>
 
 </manifest>
