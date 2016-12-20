@@ -1,11 +1,14 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.icu.util.VersionInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +16,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +25,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import junit.runner.Version;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -92,6 +98,7 @@ public class Account extends Fragment implements View.OnClickListener {
         TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
         TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
         TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
+        TextView tv_version = (TextView) rootView.findViewById(R.id.tv_version);
         tv_date.setText(setTextSettings("Дата рождения:<br>", day + "." + month + "." + year + ""));
         tv_name.setText(setTextSettings("Имя:", " " + name));
         if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
@@ -102,16 +109,12 @@ public class Account extends Fragment implements View.OnClickListener {
         else
             tv_status.setTextColor(ContextCompat.getColor(getContext(),R.color.pro_zra_advanced_status));
         if (status.equals("Начинающий")) {
-//            btn_push.setEnabled(false);
             btn_push.setBackgroundResource(R.drawable.acc_push_pressed);
-//            btn_new_profile.setEnabled(false);
-            btn_new_profile.setBackgroundResource(R.drawable.acc_new_profile_pressed);
         }
         if(!MainActivity.isFirstLaunch) {
             FbUtills fbUtills = new FbUtills();
-            fbUtills.getDataFromDB(getActivity(),tv_status,btn_push,btn_new_profile);
+            fbUtills.getDataFromDB(getActivity(),tv_status, tv_version, btn_push, getResources().getString(R.string.app_version));
         }
-
     }
 
     @Override
@@ -129,14 +132,12 @@ public class Account extends Fragment implements View.OnClickListener {
                 setName();
                 break;
             case R.id.acc_btn_new_profile:
-                if (status.equals("Начинающий"))
-                    Toast.makeText(getActivity(), "Начинающим пользователям сюда нельзя!", Toast.LENGTH_SHORT).show();
-                else
-                    listener.onNewProfile();
+                listener.onNewProfile();
                 break;
             case R.id.acc_btn_pushSettings:
-                if (status.equals("Начинающий"))
-                    Toast.makeText(getActivity(), "Начинающим пользователям сюда нельзя!", Toast.LENGTH_SHORT).show();
+                if (status.equals("Начинающий")) {
+                    Toast.makeText(getActivity(), "Начинающим пользователям уведомления гороскопа недоступны!", Toast.LENGTH_SHORT).show();
+                }
                 else
                     listener.setNotification(getActivity());
                 break;

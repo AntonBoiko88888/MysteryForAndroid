@@ -2,6 +2,7 @@ package keen.eye.ink1804.destination.Utills;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Html;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.api.model.StringList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,16 +36,16 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class FbUtills {
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     final private DatabaseReference mRef = mDatabase.getRef();
     private List<UsersModel> users = new ArrayList<>();
 
     public void onLogin(final Context context, final String email, final String password) {
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        mRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UsersModel user;
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.child("users").getChildren()) {
                     user = postSnapshot.getValue(UsersModel.class);
                     users.add(user);
                 }
@@ -94,7 +96,7 @@ public class FbUtills {
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
         UsersModel user = new UsersModel(id, name, day, month, year, sex, socionics, email, password, status);
-        mRef.child(id + "").setValue(user);
+        mRef.child("users").child(id + "").setValue(user);
     }
     public void setName(String _name) {
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
@@ -107,7 +109,7 @@ public class FbUtills {
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
         String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         UsersModel user = new UsersModel(id, _name, day, month, year, sex, socionics, email, password, status);
-        mRef.child(id + "").setValue(user);
+        mRef.child("users").child(id + "").setValue(user);
     }
     public void setSocionics(String _socionics) {
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
@@ -120,16 +122,16 @@ public class FbUtills {
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         UsersModel user = new UsersModel(id, name, day, month, year, sex, _socionics, email, password, status);
-        mRef.child(id + "").setValue(user);
+        mRef.child("users").child(id + "").setValue(user);
     }
-    public void getDataFromDB(final Context context, final TextView tv_status,final Button push, final Button new_profile){
+    public void getDataFromDB(final Context context, final TextView tv_status, final TextView tv_version,final Button push, final String text_version){
         final long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, -1);
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
                     UsersModel user;
-                    user = dataSnapshot.child(id + "").getValue(UsersModel.class);
+                    user = dataSnapshot.child("users").child(id + "").getValue(UsersModel.class);
                     SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                     editor.putString(Constants.APP_PREF_NAME, user.Name);
                     editor.putInt(Constants.APP_PREF_DAY, user.Day);
@@ -143,16 +145,18 @@ public class FbUtills {
                     editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
                     editor.apply();
                     tv_status.setText(setTextSettings("Статус:<br>", user.Status));
+                    tv_version.setText(setTextSettings("Статус:<br>", user.Status));
+                    if(!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
+                        tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
+                    }
                     MainActivity.nav_headerStatus.setText(user.Status);
                     Account.status = user.Status;
                     if(user.Status.equals("Начинающий")) {
                         push.setBackgroundResource(R.drawable.acc_push_pressed);
-                        new_profile.setBackgroundResource(R.drawable.acc_new_profile_pressed);
                         MainActivity.nav_headerStatus.setTextColor(ContextCompat.getColor(context, R.color.pro_zra_beginning_status));
                     }
                     else{
                         push.setBackgroundResource(R.drawable.acc_push_states);
-                        new_profile.setBackgroundResource(R.drawable.acc_new_profile_states);
                         MainActivity.nav_headerStatus.setTextColor(ContextCompat.getColor(context,R.color.pro_zra_advanced_status));
                     }
                     MainActivity.isFirstLaunch = true;
@@ -165,7 +169,8 @@ public class FbUtills {
             }
         });
     }
-    public Spanned setTextSettings(String _text, String _value) {
+
+    private Spanned setTextSettings(String _text, String _value) {
         String text = _text;
         String value = _value;
         text = String.format("<u><i>%s</i></u>", text);
