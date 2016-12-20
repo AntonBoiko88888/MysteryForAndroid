@@ -149,6 +149,7 @@ public class FbUtills {
                     if(!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
                         tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
                     }
+                    //TODO ничего не менял
                     MainActivity.nav_headerStatus.setText(user.Status);
                     Account.status = user.Status;
                     if(user.Status.equals("Начинающий")) {
