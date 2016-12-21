@@ -45,7 +45,7 @@ public class FbUtills {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UsersModel user;
-                for (DataSnapshot postSnapshot : dataSnapshot.child("users").getChildren()) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     user = postSnapshot.getValue(UsersModel.class);
                     users.add(user);
                 }
