@@ -67,7 +67,7 @@ public class FbUtills {
                         editor.apply();
                         UsersModel setUser = new UsersModel(user.Id, user.Name, user.Day, user.Month, user.Year
                                 , user.Sex, user.Socionics, user.Email, password, user.Status);
-                        mRef.child(user.Id + "").setValue(setUser);
+                        mRef.child("users").child(user.Id + "").setValue(setUser);
                     }
                 }
                 pushDateListener listener = (pushDateListener) context;
@@ -130,6 +130,9 @@ public class FbUtills {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
+                    if(!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
+                        tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
+                    }
                     UsersModel user;
                     user = dataSnapshot.child("users").child(id + "").getValue(UsersModel.class);
                     SharedPreferences.Editor editor = MainActivity.mSettings.edit();
@@ -145,11 +148,6 @@ public class FbUtills {
                     editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
                     editor.apply();
                     tv_status.setText(setTextSettings("Статус:<br>", user.Status));
-                    tv_version.setText(setTextSettings("Статус:<br>", user.Status));
-                    if(!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
-                        tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
-                    }
-                    //TODO ничего не менял
                     MainActivity.nav_headerStatus.setText(user.Status);
                     Account.status = user.Status;
                     if(user.Status.equals("Начинающий")) {
