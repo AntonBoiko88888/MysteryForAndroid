@@ -59,6 +59,14 @@
                 android:textSize="@dimen/pr_descr_tv_size" />
 
             <TextView
+                android:id="@+id/prof_tv_year_number_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMargin"
+                android:background="@drawable/txt_states"
+                android:textSize="@dimen/pr_descr_tv_size" />
+
+            <TextView
                 android:id="@+id/prof_tv_year_period"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

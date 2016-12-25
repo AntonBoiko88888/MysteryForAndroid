@@ -21,7 +21,7 @@ import keen.eye.ink1804.destination.R;
  */
 public class ProfileDescription extends Fragment implements View.OnClickListener{
 
-    private TextView tv_year, tv_zodiac, tv_virtual_type, tv_year_number, tv_year_period, tv_fate_symbol
+    private TextView tv_year, tv_zodiac, tv_virtual_type, tv_year_number, tv_year_number_next , tv_year_period, tv_fate_symbol
             , tv_energy, tv_communicate, tv_psychology, tv_type_of_thinking, tv_vector_host
             , tv_vector_servant, tv_element_structure,tv_date,tv_socionics;
     private View rootView;
@@ -32,6 +32,7 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
     private String D_year;
     private String D_zodiac;
     private String D_year_number;
+    private String D_year_number_next;
     private String D_yearPeriod;
     private String D_fateSymbol;
     private String D_energy;
@@ -69,6 +70,8 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         tv_zodiac.setOnClickListener(this);
         tv_year_number = (TextView) rootView.findViewById(R.id.prof_tv_year_number);
         tv_year_number.setOnClickListener(this);
+        tv_year_number_next = (TextView) rootView.findViewById(R.id.prof_tv_year_number_next);
+        tv_year_number_next.setOnClickListener(this);
         tv_year_period = (TextView) rootView.findViewById(R.id.prof_tv_year_period);
         tv_year_period.setOnClickListener(this);
         tv_fate_symbol = (TextView) rootView.findViewById(R.id.prof_tv_fate_symbol);
@@ -101,6 +104,7 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         D_year = struct_data.getYearName(year);
         D_zodiac = struct_data.getZodiakName(day, month);
         D_year_number = struct_data.getNumberYear(yearNow, month, day);
+        D_year_number_next = struct_data.getNumberYear(yearNow+1, month, day);
         D_yearPeriod = struct_data.getYearPeriod(struct_data.getYearIdTable(yearNow),struct_data.getTypeThinkingId(sex,i));
         D_fateSymbol = struct_data.getSymbolFate(i);
         D_energy = struct_data.getEnergyName(i);
@@ -115,6 +119,7 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         tv_year.setText(                setTextSettings("Год:", D_year));
         tv_zodiac.setText(              setTextSettings("Знак зодиака:", D_zodiac));
         tv_year_number.setText(      Html.fromHtml("&#9824;<u><b>Ваш гороскоп на "+yearNow+" год!</b></u>&#9824;"));
+        tv_year_number_next.setText(      Html.fromHtml("&#9824;<u><b>Ваш гороскоп на "+(yearNow+1)+" год!</b></u>&#9824;"));
         tv_year_period.setText(         setTextSettings("Годовой цикл:", D_yearPeriod));
         tv_fate_symbol.setText(         setTextSettings("По судьбе:", D_fateSymbol));
         tv_energy.setText(              setTextSettings("Энергетика:", D_energy));
@@ -160,6 +165,9 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
                 break;
             case R.id.prof_tv_year_number:
                 key = D_year_number;
+                break;
+            case R.id.prof_tv_year_number_next:
+                key = D_year_number_next;
                 break;
             case R.id.prof_tv_year_period:
                 key = D_yearPeriod;
