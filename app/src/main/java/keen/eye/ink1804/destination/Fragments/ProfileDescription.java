@@ -28,9 +28,18 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
 
     private boolean sex,socioAccess;//true - male, false - female
     private int yearNow, year, month, day;
-    private String D_virtualType, D_year, D_zodiac, D_year_number, D_yearPeriod, D_fateSymbol
-            , D_energy, D_communicate, D_psychology, D_typeOfThinking, D_vectorHost, D_vectorServant
-            , D_elementStructure, D_socionics;
+    private String D_virtualType;
+    private String D_year;
+    private String D_zodiac;
+    private String D_year_number;
+    private String D_yearPeriod;
+    private String D_fateSymbol;
+    private String D_energy;
+    private String D_communicate;
+    private String D_psychology;
+    private String D_typeOfThinking;
+    private String D_elementStructure;
+    private String D_socionics;
 
 
     @Override
@@ -98,8 +107,8 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         D_communicate = struct_data.getMeansCommunicateName(i);
         D_psychology = struct_data.getPsychologyName(i);
         D_typeOfThinking = struct_data.getTypeThinkingNames(sex, i);
-        D_vectorHost = struct_data.getHostName(i);
-        D_vectorServant = struct_data.getServantName(i);
+        String d_vectorHost = struct_data.getHostName(i);
+        String d_vectorServant = struct_data.getServantName(i);
         D_elementStructure = struct_data.getElementName(day, month);
         tv_date.setText(                "Дата: "+day+"."+month+"."+year);
         tv_virtual_type.setText(        setTextSettings("Тип:", D_virtualType));
@@ -112,8 +121,8 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         tv_communicate.setText(         setTextSettings("Способы общения:", D_communicate));
         tv_psychology.setText(          setTextSettings("Психология человека:", D_psychology));
         tv_type_of_thinking.setText(    setTextSettings("Тип мышления:", D_typeOfThinking));
-        tv_vector_host.setText(         setTextSettings("Векторный хозяин:", D_vectorHost));
-        tv_vector_servant.setText(      setTextSettings("Векторный слуга:", D_vectorServant));
+        tv_vector_host.setText(         setTextSettings("Векторный хозяин:", d_vectorHost));
+        tv_vector_servant.setText(      setTextSettings("Векторный слуга:", d_vectorServant));
         tv_element_structure.setText(   setTextSettings("Структура стихии:", D_elementStructure));
         if(socioAccess&& MainActivity.mSettings.contains(Constants.APP_PREF_SOCIONICS)) {
             D_socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");

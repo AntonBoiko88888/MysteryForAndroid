@@ -1,15 +1,12 @@
 package keen.eye.ink1804.destination;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
 import keen.eye.ink1804.destination.Fragments.Intro_fragment;
-import keen.eye.ink1804.destination.Math.Constants;
 
 /**
  * Created by anton on 13.11.16.

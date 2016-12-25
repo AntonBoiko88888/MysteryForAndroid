@@ -8,7 +8,7 @@ import android.util.TypedValue;
  * Created by Ink1804 on 29.07.16.
  */
 public class Data_calculation {
-        public static final String[][] StructureHorADMIN = {
+        private static final String[][] StructureHorADMIN = {
                 {Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN},//обезьяна
                 {Constants.KING, Constants.KING+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING},//петух
                 {Constants.VECTOR, Constants.VECTOR+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.VECTOR},//собака
@@ -22,7 +22,7 @@ public class Data_calculation {
                 {Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT, Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT},//лошадь
                 {Constants.KNIGHT, Constants.KNIGHT+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.LEADER, Constants.LEADER, Constants.LEADER+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.PROFESSOR, Constants.PROFESSOR, Constants.PROFESSOR+"+"+ Constants.ARISTOCRAT, Constants.ARISTOCRAT, Constants.ARISTOCRAT+"+"+ Constants.VECTOR, Constants.VECTOR, Constants.VECTOR+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KING, Constants.KING, Constants.KING+"+"+ Constants.CLOWN, Constants.CLOWN, Constants.CLOWN+"+"+ Constants.KNIGHT},//коза
         };
-        public static final String[][] StructureHor = {
+        private static final String[][] StructureHor = {
                 {Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.VECTOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER, Constants.PROFESSOR, Constants.VECTOR, Constants.KNIGHT, Constants.CLOWN, Constants.KING},//обезьяна
                 {Constants.KING, Constants.VECTOR, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER, Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN},//петух
                 {Constants.VECTOR, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.VECTOR, Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT},//собака
@@ -36,7 +36,7 @@ public class Data_calculation {
                 {Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.KNIGHT,},//лошадь
                 {Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.VECTOR, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.VECTOR, Constants.CLOWN, Constants.KING, Constants.CLOWN},//коза
         };
-        public static final String[][] YearPeriod = {
+        private static final String[][] YearPeriod = {
                 {Constants.P_PRESENTATION, Constants.P_OVERCOMING,   Constants.P_DISCUISE,     Constants.P_EASE},//Логики
                 {Constants.P_EASE,         Constants.P_PRESENTATION, Constants.P_OVERCOMING,   Constants.P_DISCUISE},//Волевики
                 {Constants.P_DISCUISE,     Constants.P_EASE,         Constants.P_PRESENTATION, Constants.P_OVERCOMING},//Реалисты
@@ -442,40 +442,112 @@ public class Data_calculation {
         public String getVirtualPointsName(String vir1, String vir2) {
                 String res = "";
                 String five = "5 (Отлично)", four = "4 (Хорошо)", three = "3 (Нормально)";
-                if(vir1.equals(Constants.KING)) {
-                    if(vir2.equals(Constants.KING) || vir2.equals(Constants.CLOWN)) res = five;
-                    else if(vir2.equals(Constants.LEADER) || vir2.equals(Constants.VECTOR)) res = three;
-                        else res = four;
-                }
-                else if(vir1.equals(Constants.ARISTOCRAT)) {
-                        if(vir2.equals(Constants.KNIGHT) || vir2.equals(Constants.CLOWN)) res = five;
-                        else if(vir2.equals(Constants.PROFESSOR) || vir2.equals(Constants.VECTOR)) res = three;
-                        else res = four;
-                }
-                else if(vir1.equals(Constants.KNIGHT)) {
-                        if(vir2.equals(Constants.ARISTOCRAT) || vir2.equals(Constants.VECTOR)) res = five;
-                        else if(vir2.equals(Constants.KNIGHT) || vir2.equals(Constants.PROFESSOR)) res = three;
-                        else res = four;
-                }
-                else if(vir1.equals(Constants.PROFESSOR)) {
-                        if(vir2.equals(Constants.PROFESSOR) || vir2.equals(Constants.LEADER)) res = five;
-                        else if(vir2.equals(Constants.ARISTOCRAT) || vir2.equals(Constants.KNIGHT)) res = three;
-                        else res = four;
-                }
-                else if(vir1.equals(Constants.CLOWN)) {
-                        if(vir2.equals(Constants.KING) || vir2.equals(Constants.ARISTOCRAT)) res = five;
-                        else if(vir2.equals(Constants.CLOWN) || vir2.equals(Constants.LEADER)) res = three;
-                        else res = four;
-                }
-                else if(vir1.equals(Constants.LEADER)) {
-                        if(vir2.equals(Constants.PROFESSOR) || vir2.equals(Constants.VECTOR)) res = five;
-                        else if(vir2.equals(Constants.KING) || vir2.equals(Constants.CLOWN)) res = three;
-                        else res = four;
-                }
-                else {
-                        if(vir2.equals(Constants.KNIGHT) || vir2.equals(Constants.LEADER)) res = five;
-                        else if(vir2.equals(Constants.KING) || vir2.equals(Constants.ARISTOCRAT)) res = three;
-                        else res = four;
+                switch (vir1) {
+                        case Constants.KING:
+                                switch (vir2) {
+                                        case Constants.KING:
+                                        case Constants.CLOWN:
+                                                res = five;
+                                                break;
+                                        case Constants.LEADER:
+                                        case Constants.VECTOR:
+                                                res = three;
+                                                break;
+                                        default:
+                                                res = four;
+                                                break;
+                                }
+                                break;
+                        case Constants.ARISTOCRAT:
+                                switch (vir2) {
+                                        case Constants.KNIGHT:
+                                        case Constants.CLOWN:
+                                                res = five;
+                                                break;
+                                        case Constants.PROFESSOR:
+                                        case Constants.VECTOR:
+                                                res = three;
+                                                break;
+                                        default:
+                                                res = four;
+                                                break;
+                                }
+                                break;
+                        case Constants.KNIGHT:
+                                switch (vir2) {
+                                        case Constants.ARISTOCRAT:
+                                        case Constants.VECTOR:
+                                                res = five;
+                                                break;
+                                        case Constants.KNIGHT:
+                                        case Constants.PROFESSOR:
+                                                res = three;
+                                                break;
+                                        default:
+                                                res = four;
+                                                break;
+                                }
+                                break;
+                        case Constants.PROFESSOR:
+                                switch (vir2) {
+                                        case Constants.PROFESSOR:
+                                        case Constants.LEADER:
+                                                res = five;
+                                                break;
+                                        case Constants.ARISTOCRAT:
+                                        case Constants.KNIGHT:
+                                                res = three;
+                                                break;
+                                        default:
+                                                res = four;
+                                                break;
+                                }
+                                break;
+                        case Constants.CLOWN:
+                                switch (vir2) {
+                                        case Constants.KING:
+                                        case Constants.ARISTOCRAT:
+                                                res = five;
+                                                break;
+                                        case Constants.CLOWN:
+                                        case Constants.LEADER:
+                                                res = three;
+                                                break;
+                                        default:
+                                                res = four;
+                                                break;
+                                }
+                                break;
+                        case Constants.LEADER:
+                                switch (vir2) {
+                                        case Constants.PROFESSOR:
+                                        case Constants.VECTOR:
+                                                res = five;
+                                                break;
+                                        case Constants.KING:
+                                        case Constants.CLOWN:
+                                                res = three;
+                                                break;
+                                        default:
+                                                res = four;
+                                                break;
+                                }
+                                break;
+                        default:
+                                switch (vir2) {
+                                        case Constants.KNIGHT:
+                                        case Constants.LEADER:
+                                                res = five;
+                                                break;
+                                        case Constants.KING:
+                                        case Constants.ARISTOCRAT:
+                                                res = three;
+                                                break;
+                                        default:
+                                                res = four;
+                                                break;
+                                }
+                                break;
                 }
 
                 return res;

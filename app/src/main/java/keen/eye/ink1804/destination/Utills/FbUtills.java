@@ -2,25 +2,18 @@ package keen.eye.ink1804.destination.Utills;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.Spanned;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.api.model.StringList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +33,7 @@ public class FbUtills {
     final private DatabaseReference mRef = mDatabase.getRef();
     private List<UsersModel> users = new ArrayList<>();
 
+
     public void onLogin(final Context context, final String email, final String password) {
         mRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -52,7 +46,7 @@ public class FbUtills {
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).Email.equals(email)) {
                         user = users.get(i);
-                        i = users.size() + 1;
+                        i = users.size() + 20;
                         SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                         editor.putString(Constants.APP_PREF_NAME, user.Name);
                         editor.putInt(Constants.APP_PREF_DAY, user.Day);
@@ -159,7 +153,7 @@ public class FbUtills {
                         MainActivity.nav_headerStatus.setTextColor(ContextCompat.getColor(context,R.color.pro_zra_advanced_status));
                     }
                     MainActivity.isFirstLaunch = true;
-                }catch (Exception e){}
+                }catch (Exception ignored){}
             }
 
             @Override

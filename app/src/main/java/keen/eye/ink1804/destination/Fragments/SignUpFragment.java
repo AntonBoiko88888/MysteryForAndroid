@@ -170,6 +170,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                             UsersModel mUser = createUser(emailBundle, passwordBundle);
                                             usersRef.child("users").child(count + "").setValue(mUser);
                                             usersRef.child("index").setValue((count + 1) + "");
+                                            Toast.makeText(getContext(), "Регистрация прошла успешно!",
+                                                    Toast.LENGTH_SHORT).show();
                                             listener.onLoginClick(emailBundle, passwordBundle);
                                             auth.signOut();
                                         } else
@@ -186,7 +188,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private void dialogVerification() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Верификация")
-                .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации. Если вы подтвердите почту - нажмите кнопку ДАЛЕЕ :)")
+                .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации. Если вы подтвердили почту - вы можете зарегистрироваться.")
                 .setIcon(R.drawable.icon_eye_512)
                 .setCancelable(false)
                 .setNegativeButton("Ок",

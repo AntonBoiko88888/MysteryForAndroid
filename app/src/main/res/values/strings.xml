@@ -44,7 +44,8 @@
 
 
     <!--Fo Registration-->
-    <string name="action_sign_in_short">Регистрация</string>
+    <string name="action_sign_in_short">Отправить подтверждение на почту</string>
+    <string name="action_sign_in_registration">Регистрация</string>
     <string name="email">Email</string>
     <string name="minimum_password">Слишком короткий пароль, введите минимум 6 символов!</string>
     <string name="auth_failed">Ошибка аутентификации, проверьте свою электронную почту, пароль или соединение с интернетом</string>

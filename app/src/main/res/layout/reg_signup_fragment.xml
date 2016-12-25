@@ -90,7 +90,7 @@
             android:visibility="gone"
             android:textSize="@dimen/com_text_size2"
             android:background="@drawable/btn_states_thin_rect"
-            android:text="@string/date_picker_onward_text" />
+            android:text="@string/action_sign_in_registration" />
 
         </RelativeLayout>
     </LinearLayout>

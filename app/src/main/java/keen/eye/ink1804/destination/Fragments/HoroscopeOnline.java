@@ -65,7 +65,6 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
             Data_calculation dc = new Data_calculation();
             int m1dp = dc.dpToPx(2,getActivity());
             int width = (size.x-17*m1dp)/4;
-            //TODO сделать расчет на ширину в зависимости от разметки
             LinearLayout.LayoutParams gridParams = new LinearLayout.LayoutParams(width, width);
             GridLayout.LayoutParams imageViewParams = new GridLayout.LayoutParams(gridParams);
             imageViewParams.setMargins(m1dp,m1dp,m1dp,m1dp);

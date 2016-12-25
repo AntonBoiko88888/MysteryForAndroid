@@ -66,7 +66,7 @@ public class HtmlParser {
             Toast.makeText(context, "Не удалось загрузить данные, проверьте интернет соединение.", Toast.LENGTH_SHORT).show();
         }
     }
-    public void parseNotificHoroscope(final Context context, final int horCode) {
+    void parseNotificHoroscope(final Context context, final int horCode) {
         try {
             Ion.with(context)
                     .load("https://utro.europaplus.ru/programs/horoscope")
@@ -89,7 +89,7 @@ public class HtmlParser {
 
     }
 
-    void createNotification(Context context, String text, int horCode){
+    private void createNotification(Context context, String text, int horCode){
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context
                 .NOTIFICATION_SERVICE);
 

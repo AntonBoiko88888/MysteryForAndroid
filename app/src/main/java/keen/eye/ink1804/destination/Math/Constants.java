@@ -25,16 +25,16 @@ public class Constants {
 
 
     //Годы по китайскому гороскопу
-    public static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};
-    public static final String[] SYMBOL_FATE_NAMES = {"Пионерский знак","Фатальный знак","Знак Везения","Самодеятельный знак"};
-    public static final String[] ENERGY_STRUCTURE_NAMES = {"Природный оптимист","Драмматизатор","Космический оптимист","Скептик"};
-    public static final String[] MEANS_COMMUNICATE_NAMES = {"Открытый знак","Закрытый знак","Ортодокс"};
-    public static final String[] PSYCHOLOGY_NAMES = {"Приземленный знак","Знак Возмужания","Взлетный знак", "Чувствительный знак"};
-    public static final String[] ELEMENT_NAMES = {"Революционер (Огонь)","Консерватор (Вода)","Небожитель (Воздух)", "Созидатель (Земля)"};
+    static final String[] TYPE_THINKING_NAMES = {"Логик","Волевик","Реалист","Мистик"};
+    static final String[] SYMBOL_FATE_NAMES = {"Пионерский знак","Фатальный знак","Знак Везения","Самодеятельный знак"};
+    static final String[] ENERGY_STRUCTURE_NAMES = {"Природный оптимист","Драмматизатор","Космический оптимист","Скептик"};
+    static final String[] MEANS_COMMUNICATE_NAMES = {"Открытый знак","Закрытый знак","Ортодокс"};
+    static final String[] PSYCHOLOGY_NAMES = {"Приземленный знак","Знак Возмужания","Взлетный знак", "Чувствительный знак"};
+    static final String[] ELEMENT_NAMES = {"Революционер (Огонь)","Консерватор (Вода)","Небожитель (Воздух)", "Созидатель (Земля)"};
 
     public static final String[] YEAR_NAMES =         {"Обезьяна","Петух", "Собака","Кабан",  "Крыса",   "Бык",   "Тигр","Кот",   "Дракон","Змея",    "Лошадь","Коза"};
-    public static final String[] YEAR_HOST_NAMES =    {"Змея",    "Кот",   "Петух", "Лошадь", "Обезьяна","Собака","Бык", "Дракон","Кабан", "Коза",    "Крыса", "Тигр"};
-    public static final String[] YEAR_SERVANT_NAMES = {"Крыса",   "Собака","Бык",   "Дракон", "Лошадь",  "Тигр",  "Коза","Петух", "Кот",   "Обезьяна","Кабан", "Змея"};
+    static final String[] YEAR_HOST_NAMES =    {"Змея",    "Кот",   "Петух", "Лошадь", "Обезьяна","Собака","Бык", "Дракон","Кабан", "Коза",    "Крыса", "Тигр"};
+    static final String[] YEAR_SERVANT_NAMES = {"Крыса",   "Собака","Бык",   "Дракон", "Лошадь",  "Тигр",  "Коза","Петух", "Кот",   "Обезьяна","Кабан", "Змея"};
 //    public static final String Y_SNAKE = "Змея";
 //    public static final String Y_HORSE = "Лошадь";
 //    public static final String Y_GOAT = "Коза";
@@ -50,10 +50,10 @@ public class Constants {
 
     //Годовой период P_
 
-    public static final String P_OVERCOMING= "Преодоление";
-    public static final String P_DISCUISE = "Маскировка";
-    public static final String P_EASE = "Легкость";
-    public static final String P_PRESENTATION = "Презентация";
+    static final String P_OVERCOMING= "Преодоление";
+    static final String P_DISCUISE = "Маскировка";
+    static final String P_EASE = "Легкость";
+    static final String P_PRESENTATION = "Презентация";
 
     //Знаки зодиака Z_
 
@@ -61,13 +61,13 @@ public class Constants {
     public static final String[] ZODIAK_NAMES_normal ={"Овен","Телец","Близнецы","Рак","Лев","Дева","Весы","Скорпион","Стрелец","Козерог","Водолей","Рыбы"};
 
     public static final String[] VIRTUAL_NAMES = {"Рыцарь","Вождь","Король","Шут","Аристократ","Профессор","Вектор"};
-    public static final String KNIGHT = "Рыцарь";
-    public static final String LEADER = "Вождь";
-    public static final String KING = "Король";
-    public static final String CLOWN = "Шут";
-    public static final String ARISTOCRAT = "Аристократ";
-    public static final String PROFESSOR = "Профессор";
-    public static final String VECTOR = "Вектор";
+    static final String KNIGHT = "Рыцарь";
+    static final String LEADER = "Вождь";
+    static final String KING = "Король";
+    static final String CLOWN = "Шут";
+    static final String ARISTOCRAT = "Аристократ";
+    static final String PROFESSOR = "Профессор";
+    static final String VECTOR = "Вектор";
 
     public static final String[][][][] SOCIONICS = {{{{"Джек Лондон","Робеспьер"},{"Штирлиц","Максим Горький"}}
                                                     ,{{"Гамлет","Достоевский"},{"Гюго","Драйзер"}}}
