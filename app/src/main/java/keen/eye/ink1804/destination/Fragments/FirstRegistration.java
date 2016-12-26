@@ -42,8 +42,8 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
 
 
     private void initializeTView() {
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Создание профиля");
+//        pushDateListener listener = (pushDateListener)getActivity();
+        ((pushDateListener)getActivity()).toolbarSetTitle("Создание профиля");
         tv_date = (TextView)rootView.findViewById(R.id.reg_tv_date);
         et_name = (EditText)rootView.findViewById(R.id.reg_et_name);
         Button btn_registrate = (Button)rootView.findViewById(R.id.reg_btn_registrate);
@@ -75,11 +75,11 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.reg_btn_registrate:
-            pushDateListener listener = (pushDateListener) getActivity();
+//            pushDateListener listener = (pushDateListener) getActivity();
             boolean sex = rb_male.isChecked();
             if (!et_name.getText().toString().equals("")) {
                 String name = et_name.getText().toString();
-                listener.onRegistration(day, month, year, sex);
+                ((pushDateListener) getActivity()).onRegistration(day, month, year, sex);
                 SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                 editor.putBoolean(Constants.APP_PREF_ISREGISTER, true);
                 editor.putString(Constants.APP_PREF_NAME, name);

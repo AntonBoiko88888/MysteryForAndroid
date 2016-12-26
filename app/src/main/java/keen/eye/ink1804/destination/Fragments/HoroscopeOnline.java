@@ -28,7 +28,7 @@ import keen.eye.ink1804.destination.R;
 /**
  * Created by Ink1804 on 20.08.16.
  */
-public class HoroscopeOnline extends Fragment implements View.OnClickListener{
+public class HoroscopeOnline extends Fragment implements View.OnClickListener {
 
     private ProgressBar progressBar;
     private View rootView;
@@ -37,13 +37,14 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
     private HtmlParser parser = new HtmlParser();
     private MainActivity mainActivity = new MainActivity();
     public static List<String> descriptions = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.hor_online_fragment,container,false);
+        rootView = inflater.inflate(R.layout.hor_online_fragment, container, false);
         initViews();
-        if(mainActivity.isOnline(getActivity()))
+        if (mainActivity.isOnline(getActivity()))
             onMySignClick();
-        else{
+        else {
             progressBar.setVisibility(View.INVISIBLE);
             tv_sign_name.setVisibility(View.GONE);
             tv_result.setText("Увы... Интернет соединение отсутствует :(");
@@ -53,31 +54,31 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
 
     private void initViews() {
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
-        pushDateListener listener = (pushDateListener)getActivity();
+        pushDateListener listener = (pushDateListener) getActivity();
         listener.toolbarSetTitle("Гороскоп онлайн");
         int[] img_ids = new int[]{R.id.aries, R.id.taurus, R.id.twins, R.id.cancer, R.id.lion, R.id.virgo
                 , R.id.libra, R.id.scorpio, R.id.sagittarius, R.id.capricorn, R.id.aquarius, R.id.fish};
         images = new ImageView[12];
-        for(int i=0;i<12;i++){
+        for (int i = 0; i < 12; i++) {
             Display display = getActivity().getWindowManager().getDefaultDisplay();
             Point size = new Point();
             display.getSize(size);
             Data_calculation dc = new Data_calculation();
-            int m1dp = dc.dpToPx(2,getActivity());
-            int width = (size.x-17*m1dp)/4;
+            int m1dp = dc.dpToPx(2, getActivity());
+            int width = (size.x - 17 * m1dp) / 4;
             LinearLayout.LayoutParams gridParams = new LinearLayout.LayoutParams(width, width);
             GridLayout.LayoutParams imageViewParams = new GridLayout.LayoutParams(gridParams);
-            imageViewParams.setMargins(m1dp,m1dp,m1dp,m1dp);
+            imageViewParams.setMargins(m1dp, m1dp, m1dp, m1dp);
             images[i] = (ImageView) rootView.findViewById(img_ids[i]);
             images[i].setOnClickListener(this);
             images[i].setLayoutParams(imageViewParams);
         }
-        progressBar = (ProgressBar)rootView.findViewById(R.id.progressbar_horoscope);
+        progressBar = (ProgressBar) rootView.findViewById(R.id.progressbar_horoscope);
         progressBar.setVisibility(ProgressBar.VISIBLE);
         setBackgroundBlack();
 
-        tv_result = (TextView)rootView.findViewById(R.id.horOn_tvResult);
-        tv_sign_name = (TextView)rootView.findViewById(R.id.sphere_tv_sign_name);
+        tv_result = (TextView) rootView.findViewById(R.id.horOn_tvResult);
+        tv_sign_name = (TextView) rootView.findViewById(R.id.sphere_tv_sign_name);
         tv_sign_name.setTypeface(tf);
     }
 
@@ -85,38 +86,62 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         int key = 0;
         switch (view.getId()) {
-            case R.id.aries: key = 0; break;
-            case R.id.taurus: key = 1; break;
-            case R.id.twins: key = 2; break;
-            case R.id.cancer: key = 3; break;
-            case R.id.lion: key = 4; break;
-            case R.id.virgo: key = 5; break;
-            case R.id.libra: key = 6; break;
-            case R.id.scorpio: key = 7; break;
-            case R.id.sagittarius: key = 8; break;
-            case R.id.capricorn: key = 9; break;
-            case R.id.aquarius: key = 10; break;
-            case R.id.fish: key = 11; break;
-            default: break;
+            case R.id.aries:
+                key = 0;
+                break;
+            case R.id.taurus:
+                key = 1;
+                break;
+            case R.id.twins:
+                key = 2;
+                break;
+            case R.id.cancer:
+                key = 3;
+                break;
+            case R.id.lion:
+                key = 4;
+                break;
+            case R.id.virgo:
+                key = 5;
+                break;
+            case R.id.libra:
+                key = 6;
+                break;
+            case R.id.scorpio:
+                key = 7;
+                break;
+            case R.id.sagittarius:
+                key = 8;
+                break;
+            case R.id.capricorn:
+                key = 9;
+                break;
+            case R.id.aquarius:
+                key = 10;
+                break;
+            case R.id.fish:
+                key = 11;
+                break;
+            default:
+                break;
         }
-        try{
-        if (mainActivity.isOnline(getActivity()))
-            if (descriptions.size() == 0) {
-                tv_sign_name.setVisibility(View.VISIBLE);
-                tv_result.setText("");
-                progressBar.setVisibility(View.VISIBLE);
-                backgroundPressed(key, images);
-                setZodiacName(key);
-                parser.parseHoroscope(getActivity(), tv_result, key, progressBar);
-                HtmlParser.TTL = 0;
-            }
-            else {
-                backgroundPressed(key, images);
-                setZodiacName(key);
-                tv_result.setText(descriptions.get(key));
-                tv_sign_name.setVisibility(View.VISIBLE);
-            }
-        }catch (Exception e){
+        try {
+            if (mainActivity.isOnline(getActivity()))
+                if (descriptions.size() == 0) {
+                    tv_sign_name.setVisibility(View.VISIBLE);
+                    tv_result.setText("");
+                    progressBar.setVisibility(View.VISIBLE);
+                    backgroundPressed(key, images);
+                    setZodiacName(key);
+                    parser.parseHoroscope(getActivity(), tv_result, key, progressBar);
+                    HtmlParser.TTL = 0;
+                } else {
+                    backgroundPressed(key, images);
+                    setZodiacName(key);
+                    tv_result.setText(descriptions.get(key));
+                    tv_sign_name.setVisibility(View.VISIBLE);
+                }
+        } catch (Exception e) {
             Toast.makeText(getActivity(), "Данные еще не загрузились", Toast.LENGTH_SHORT).show();
         }
     }
@@ -125,10 +150,12 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
         setBackgroundBlack();
         img_m[i].setImageDrawable(getResources().getDrawable(R.drawable.img_proz));
     }
+
     private void setBackgroundBlack() {
         for (ImageView image : images)
             image.setImageDrawable(getResources().getDrawable(R.drawable.img_t));
     }
+
     private void setZodiacName(int zod) {
         tv_sign_name.setText(Constants.ZODIAK_NAMES_normal[zod]);
     }
@@ -139,13 +166,13 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener{
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         Data_calculation struct_data = new Data_calculation();
-        int j = 0;
-        if(args!=null)
-            j= struct_data.getZodiacId(MainActivity.mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION,"Овен"));
+        int j;
+        if (args != null)
+            j = struct_data.getZodiacId(MainActivity.mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION, "Овен"));
         else
             j = (struct_data.getDateId(day, month) + 9) % 12;
         backgroundPressed(j, images);
         setZodiacName(j);
-        parser.parseHoroscope(getActivity(),tv_result, j, progressBar);
+        parser.parseHoroscope(getActivity(), tv_result, j, progressBar);
     }
 }

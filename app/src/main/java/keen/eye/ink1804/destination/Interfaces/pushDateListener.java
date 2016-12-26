@@ -20,6 +20,7 @@ public interface pushDateListener {
     void onStartResetPassword();
     void onStartRegistration();
     void onRegEnter();
+    void setHeaderText(String status, int color);
 
     void onPurchaseClick();
 }

@@ -3,7 +3,7 @@ package keen.eye.ink1804.destination.Math;
 /**
  * Created by Ink1804 on 29.07.16.
  */
-public class Constants {
+public final class Constants {
 
     //настройки аккаунта
     public static final String APP_PREF = "app_settings";

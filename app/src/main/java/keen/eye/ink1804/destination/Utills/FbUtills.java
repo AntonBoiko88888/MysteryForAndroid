@@ -92,6 +92,7 @@ public class FbUtills {
         UsersModel user = new UsersModel(id, name, day, month, year, sex, socionics, email, password, status);
         mRef.child("users").child(id + "").setValue(user);
     }
+
     public void setName(String _name) {
         int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
@@ -105,6 +106,7 @@ public class FbUtills {
         UsersModel user = new UsersModel(id, _name, day, month, year, sex, socionics, email, password, status);
         mRef.child("users").child(id + "").setValue(user);
     }
+
     public void setSocionics(String _socionics) {
         long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, 0);
         String name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "");
@@ -118,13 +120,14 @@ public class FbUtills {
         UsersModel user = new UsersModel(id, name, day, month, year, sex, _socionics, email, password, status);
         mRef.child("users").child(id + "").setValue(user);
     }
-    public void getDataFromDB(final Context context, final TextView tv_status, final TextView tv_version,final Button push, final String text_version){
+
+    public void getDataFromDB(final Context context, final TextView tv_status, final TextView tv_version, final Button push, final String text_version) {
         final long id = MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID, -1);
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
-                    if(!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
+                    if (!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
                         tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
                     }
                     UsersModel user;
@@ -142,23 +145,23 @@ public class FbUtills {
                     editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
                     editor.apply();
                     tv_status.setText(setTextSettings("Статус:<br>", user.Status));
-                    MainActivity.nav_headerStatus.setText(user.Status);
+                    pushDateListener listener = (pushDateListener) context;
+
                     Account.status = user.Status;
-                    if(user.Status.equals("Начинающий")) {
+                    if (user.Status.equals("Начинающий")) {
                         push.setBackgroundResource(R.drawable.acc_push_pressed);
-                        MainActivity.nav_headerStatus.setTextColor(ContextCompat.getColor(context, R.color.pro_zra_beginning_status));
-                    }
-                    else{
+                        listener.setHeaderText(user.Status, R.color.pro_zra_beginning_status);
+                    } else {
                         push.setBackgroundResource(R.drawable.acc_push_states);
-                        MainActivity.nav_headerStatus.setTextColor(ContextCompat.getColor(context,R.color.pro_zra_advanced_status));
+                        listener.setHeaderText(user.Status, R.color.pro_zra_advanced_status);
                     }
                     MainActivity.isFirstLaunch = true;
-                }catch (Exception ignored){}
+                } catch (Exception ignored) {
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

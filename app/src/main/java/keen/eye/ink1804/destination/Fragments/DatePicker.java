@@ -44,17 +44,17 @@ public class DatePicker extends Fragment implements View.OnClickListener {
         pushDateListener listener = (pushDateListener) getActivity();
         listener.toolbarSetTitle("Новый профиль");
         tv_date = (TextView) rootView.findViewById(R.id.picker_tv_date);
-        Button btn_next = (Button) rootView.findViewById(R.id.picker_btn_next);
-        btn_next.setOnClickListener(this);
-        Button btn_showDatePicker = (Button) rootView.findViewById(R.id.picker_btn_pick_date);
-        btn_showDatePicker.setOnClickListener(this);
+//        Button btn_next = (Button) rootView.findViewById(R.id.picker_btn_next);
+        rootView.findViewById(R.id.picker_btn_next).setOnClickListener(this);
+//        Button btn_showDatePicker = (Button) rootView.findViewById(R.id.picker_btn_pick_date);
+        rootView.findViewById(R.id.picker_btn_pick_date).setOnClickListener(this);
         rb_male = (RadioButton) rootView.findViewById(R.id.picker_rb_male);
 
     }
 
     private void createDatePicker() {
-        Calendar calendar = Calendar.getInstance();
-        currentYear = calendar.get(Calendar.YEAR);
+//        Calendar calendar = Calendar.getInstance();
+        currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
         pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
             @Override
@@ -78,10 +78,10 @@ public class DatePicker extends Fragment implements View.OnClickListener {
     public void onClick(View view) {//кнопка "Далее"
         switch (view.getId()) {
             case R.id.picker_btn_next:
-                pushDateListener listener = (pushDateListener) getActivity();
+//                pushDateListener listener = (pushDateListener) getActivity();
                 boolean sex = rb_male.isChecked();
                 rb_male.setChecked(sex);
-                listener.onDatePushed(day, month, year, currentYear, sex, 2, false);
+                ((pushDateListener) getActivity()).onDatePushed(day, month, year, currentYear, sex, 2, false);
                 break;
             case R.id.picker_btn_pick_date:
                 pickerPopWin.showPopWin(getActivity());

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -21,6 +22,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -40,9 +43,9 @@ import keen.eye.ink1804.destination.Utills.FbUtills;
 public class Account extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private TextView tv_name;
+//    private TextView tv_name;
     private boolean sex;
-    private ImageView imageView;
+//    private ImageView imageView;
     private String name;
     private int day, month, year;
     public static String status;
@@ -55,59 +58,65 @@ public class Account extends Fragment implements View.OnClickListener {
     }
     @Override
     public void onDetach() {
-        tv_name = null;
-        imageView = null;
+//        tv_name = null;
+//        imageView = null;
         rootView = null;
         super.onDetach();
     }
 
     private void initializeViews() {
-        pushDateListener listener = (pushDateListener) getActivity();
-        listener.toolbarSetTitle("Профиль");
-        imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
+//        pushDateListener listener = (pushDateListener) getActivity();
+        ((pushDateListener) getActivity()).toolbarSetTitle("Профиль");
+//        imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
         getPreferences();
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_select_img).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_question).setOnClickListener(this);
-        Button btn_push = (Button) rootView.findViewById(R.id.acc_btn_pushSettings);
-        Button btn_new_profile = (Button) rootView.findViewById(R.id.acc_btn_new_profile);
-        btn_push.setOnClickListener(this);
-        btn_new_profile.setOnClickListener(this);
-        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
-        Button desc = (Button) rootView.findViewById(R.id.acc_btn_description);
-        desc.setTypeface(tf);
-        desc.setOnClickListener(this);
-        TextView tv_email = (TextView) rootView.findViewById(R.id.acc_tv_email);
-        tv_email.setVisibility(View.GONE);
-        Button userUpgrage = (Button) rootView.findViewById(R.id.btn_users_upgrade);
-        userUpgrage.setOnClickListener(this);
+//        Button btn_push = (Button) rootView.findViewById(R.id.acc_btn_pushSettings);
+//        Button btn_new_profile = (Button) rootView.findViewById(R.id.acc_btn_new_profile);
+        rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);
+        rootView.findViewById(R.id.acc_btn_new_profile).setOnClickListener(this);
+//        Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
+//        Button desc = (Button) rootView.findViewById(R.id.acc_btn_description);
+        ((Button) rootView.findViewById(R.id.acc_btn_description)).setTypeface(Typeface.createFromAsset(getResources().getAssets(), "space.otf"));
+        rootView.findViewById(R.id.acc_btn_description).setOnClickListener(this);
+//        TextView tv_email = (TextView) rootView.findViewById(R.id.acc_tv_email);
+        rootView.findViewById(R.id.acc_tv_email).setVisibility(View.GONE);
+//        Button userUpgrage = (Button) rootView.findViewById(R.id.btn_users_upgrade);
+        rootView.findViewById(R.id.btn_users_upgrade).setOnClickListener(this);
         if(!MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,"").equals("")){
-            tv_email.setVisibility(View.VISIBLE);
-            tv_email.setText(MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,""));
-            userUpgrage.setText("Сменить");
+            rootView.findViewById(R.id.acc_tv_email).setVisibility(View.VISIBLE);
+            ((TextView) rootView.findViewById(R.id.acc_tv_email)).setText(MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,""));
+            ((Button)rootView.findViewById(R.id.btn_users_upgrade)).setText("Сменить");
         }
         status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
-        tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
-        TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
-        TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
-        TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
-        TextView tv_version = (TextView) rootView.findViewById(R.id.tv_version);
-        tv_date.setText(setTextSettings("Дата рождения:<br>", day + "." + month + "." + year + ""));
-        tv_name.setText(setTextSettings("Имя:", " " + name));
-        if (sex) tv_sex.setText(setTextSettings("Пол:", " муж."));
-        else tv_sex.setText(setTextSettings("Пол:", " жен."));
-        tv_status.setText(setTextSettings("Статус:<br>", status));
-        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
-            tv_status.setTextColor(ContextCompat.getColor(getContext(), R.color.pro_zra_beginning_status));
+//        tv_name = (TextView) rootView.findViewById(R.id.acc_tv_name);
+//        TextView tv_date = (TextView) rootView.findViewById(R.id.acc_tv_date);
+//        TextView tv_sex = (TextView) rootView.findViewById(R.id.acc_tv_sex);
+//        TextView tv_status = (TextView) rootView.findViewById(R.id.acc_tv_status);
+//        TextView tv_version = (TextView) rootView.findViewById(R.id.tv_version);
+        ((TextView) rootView.findViewById(R.id.acc_tv_date)).setText(setTextSettings("Дата рождения:<br>", day + "." + month + "." + year + ""));
+        ((TextView) rootView.findViewById(R.id.acc_tv_date)).setText(setTextSettings("Дата рождения:<br>", day + "." + month + "." + year + ""));
+        ((TextView) rootView.findViewById(R.id.acc_tv_name)).setText(setTextSettings("Имя:", " " + name));
+        if (sex)
+            ((TextView) rootView.findViewById(R.id.acc_tv_sex)).setText(setTextSettings("Пол:", " муж."));
         else
-            tv_status.setTextColor(ContextCompat.getColor(getContext(),R.color.pro_zra_advanced_status));
+            ((TextView) rootView.findViewById(R.id.acc_tv_sex)).setText(setTextSettings("Пол:", " жен."));
+        ((TextView) rootView.findViewById(R.id.acc_tv_status)).setText(setTextSettings("Статус:<br>", status));
+        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
+            ((TextView) rootView.findViewById(R.id.acc_tv_status)).setTextColor(ContextCompat.getColor(getContext(), R.color.pro_zra_beginning_status));
+        else
+            ((TextView) rootView.findViewById(R.id.acc_tv_status)).setTextColor(ContextCompat.getColor(getContext(),R.color.pro_zra_advanced_status));
         if (status.equals("Начинающий")) {
-            btn_push.setBackgroundResource(R.drawable.acc_push_pressed);
+            rootView.findViewById(R.id.acc_btn_pushSettings).setBackgroundResource(R.drawable.acc_push_pressed);
         }
         if(!MainActivity.isFirstLaunch) {
-            FbUtills fbUtills = new FbUtills();
-            fbUtills.getDataFromDB(getActivity(),tv_status, tv_version, btn_push, getResources().getString(R.string.app_version));
+//            FbUtills fbUtills = new FbUtills();
+            new FbUtills().getDataFromDB(getActivity(),
+                    (TextView) rootView.findViewById(R.id.acc_tv_status),
+                    (TextView) rootView.findViewById(R.id.tv_version),
+                    (Button) rootView.findViewById(R.id.acc_btn_pushSettings), getResources().getString(R.string.app_version));
         }
     }
 
@@ -116,7 +125,7 @@ public class Account extends Fragment implements View.OnClickListener {
         pushDateListener listener = (pushDateListener) getActivity();
         switch (view.getId()) {
             case R.id.acc_select_img:
-                listener.pictureDownload(imageView);
+                listener.pictureDownload((ImageView) rootView.findViewById(R.id.acc_image_icon));
                 break;
             case R.id.acc_btn_description:
                 listener.onDatePushed(day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, 1, true);
@@ -159,12 +168,13 @@ public class Account extends Fragment implements View.OnClickListener {
                                 EditText et = (EditText) ((AlertDialog) dialog).findViewById(R.id.alert_edit_name);
                                 String name = et.getText().toString();
                                 if (!name.trim().equals("") && name.length() <= 10) {
-                                    tv_name.setText(setTextSettings("Имя:", " " + name));
+                                    ((TextView) rootView.findViewById(R.id.acc_tv_name)).setText(setTextSettings("Имя:", " " + name));
                                     SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                                     editor.putString(Constants.APP_PREF_NAME, name);
                                     editor.apply();
-                                    FbUtills firebaseUtills = new FbUtills();
-                                    firebaseUtills.setName(name);
+//                                    FbUtills firebaseUtills = new FbUtills();
+//                                    firebaseUtills.setName(name);
+                                    new FbUtills().setName(name);
                                     dialog.cancel();
                                 } else {
                                     Toast.makeText(getActivity(), "Недопустимое имя", Toast.LENGTH_SHORT).show();
@@ -189,20 +199,20 @@ public class Account extends Fragment implements View.OnClickListener {
         month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
         sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, false);
-        String icon = MainActivity.mSettings.getString(Constants.APP_PREF_IMAGE, "");
-        Bitmap bitmap;
-        InputStream is;
-        BufferedInputStream bis;
+//        String icon = MainActivity.mSettings.getString(Constants.APP_PREF_IMAGE, "");
+//        Bitmap bitmap;
+//        InputStream is;
+//        BufferedInputStream bis;
         try {
-            URLConnection conn = new URL(icon).openConnection();
+            URLConnection conn = new URL(MainActivity.mSettings.getString(Constants.APP_PREF_IMAGE, "")).openConnection();
             conn.connect();
-            is = conn.getInputStream();
-            bis = new BufferedInputStream(is);
-            bitmap = BitmapFactory.decodeStream(bis);
-            imageView.setImageBitmap(bitmap);
+//            is = conn.getInputStream();
+//            bis = new BufferedInputStream(conn.getInputStream());
+//            bitmap = BitmapFactory.decodeStream(new BufferedInputStream(conn.getInputStream()));
+            ((ImageView) rootView.findViewById(R.id.acc_image_icon)).setImageBitmap(BitmapFactory.decodeStream(new BufferedInputStream(conn.getInputStream())));
 
         } catch (Exception e) {
-            imageView.setImageResource(R.drawable.account_img);
+            ((ImageView) rootView.findViewById(R.id.acc_image_icon)).setImageResource(R.drawable.account_img);
         }
 
     }
@@ -212,7 +222,12 @@ public class Account extends Fragment implements View.OnClickListener {
         String value = _value;
         text = String.format("<u><i>%s</i></u>", text);
         value = String.format("<b>%s</b>", value);
-        return Html.fromHtml(text + " " + value);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(text+" "+value, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            return Html.fromHtml(text+" "+value);
+        }
+//        return Html.fromHtml(text + " " + value);
     }
 
 }

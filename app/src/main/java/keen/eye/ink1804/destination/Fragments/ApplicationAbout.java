@@ -29,8 +29,8 @@ public class ApplicationAbout extends Fragment{
     }
 
     private void initializeViews() {
-        pushDateListener listener = (pushDateListener) getActivity();
-        listener.toolbarSetTitle("О приложении");
+//        pushDateListener listener = (pushDateListener) getActivity();
+        ((pushDateListener) getActivity()).toolbarSetTitle("О приложении");
 
         final TextView application_about_text = (TextView) rootView.findViewById(R.id.application_about_text);
         final String[] application_about_db = getResources().getStringArray(R.array.appintr_description_db);

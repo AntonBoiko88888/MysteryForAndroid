@@ -67,7 +67,7 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         tv_virtual_type = (TextView) rootView.findViewById(R.id.prof_tv_virtual_type);
         tv_virtual_type.setOnClickListener(this);
         tv_zodiac = (TextView) rootView.findViewById(R.id.prof_tv_zodiak);
-        tv_zodiac.setOnClickListener(this);
+        rootView.findViewById(R.id.prof_tv_zodiak).setOnClickListener(this);
         tv_year_number = (TextView) rootView.findViewById(R.id.prof_tv_year_number);
         tv_year_number.setOnClickListener(this);
         tv_year_number_next = (TextView) rootView.findViewById(R.id.prof_tv_year_number_next);

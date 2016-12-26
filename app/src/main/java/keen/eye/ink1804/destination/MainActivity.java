@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageView iconImage;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
-    public static TextView nav_headerStatus;
+    public TextView nav_headerStatus;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
     public static int backStackID;
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
-        String tag = "default";
+        String tag;
         Bundle args = new Bundle();
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
@@ -192,21 +192,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     private void initViews() {
         toolbarSetTitle("Постижение тайны");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        View header = navigationView.getHeaderView(0);
-        nav_headerStatus = (TextView) header.findViewById(R.id.nav_header_textStatus);
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(this);
+//        View header = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
+        nav_headerStatus = (TextView) ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_header_textStatus);
         nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
         if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
             nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.pro_zra_beginning_status));
         else
             nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.pro_zra_advanced_status));
-        header.setOnClickListener(this);
+        ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).setOnClickListener(this);
     }
     private void clearBackStack() {
-        FragmentManager fm = getSupportFragmentManager();
-        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
-            fm.popBackStack();
+//        FragmentManager fm = getSupportFragmentManager();
+        for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+            getSupportFragmentManager().popBackStack();
         }
     }
     private void createAlert_setName() {
@@ -233,8 +233,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void mainFragmentCreate() {
         nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
+//        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         Account fragment = new Account();
         backStackID = 0;
@@ -571,6 +571,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container, fragment, "resetFragment");
         transaction.commit();
     }
+
+    @Override
+    public void setHeaderText(String status, int color) {
+        nav_headerStatus.setText(status);
+        nav_headerStatus.setTextColor(ContextCompat.getColor(this, color));
+    }
+
     @Override
     public void onStartRegistration() {
         String tag = "start_reg_fragment";

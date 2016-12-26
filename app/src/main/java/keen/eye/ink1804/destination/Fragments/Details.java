@@ -27,8 +27,8 @@ public class Details extends Fragment {
         return rootView;
     }
     private void fillData(){
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Интерпретация");
+//        pushDateListener listener = (pushDateListener)getActivity();
+        ((pushDateListener)getActivity()).toolbarSetTitle("Интерпретация");
         Bundle args = getArguments();
         //null may be
         String key = args.getString("key");
@@ -36,6 +36,7 @@ public class Details extends Fragment {
         TextView tv_details = (TextView) rootView.findViewById(R.id.details_tv);
 
         int id = -1;
+        if(tag!=null)
         switch (tag){
             case "profileDetails":
                 String[] names = getResources().getStringArray(R.array.profDetails_names);
