@@ -59,6 +59,7 @@ public class Account extends Fragment implements View.OnClickListener {
     @Override
     public void onDetach() {
 //        tv_name = null;
+        ((ImageView) rootView.findViewById(R.id.acc_image_icon)).setImageDrawable(null);
 //        imageView = null;
         rootView = null;
         super.onDetach();
@@ -125,7 +126,7 @@ public class Account extends Fragment implements View.OnClickListener {
         pushDateListener listener = (pushDateListener) getActivity();
         switch (view.getId()) {
             case R.id.acc_select_img:
-                listener.pictureDownload((ImageView) rootView.findViewById(R.id.acc_image_icon));
+                listener.pictureDownload((ImageView) rootView.findViewById(R.id.acc_image_icon)/*imageView*/);
                 break;
             case R.id.acc_btn_description:
                 listener.onDatePushed(day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, 1, true);
