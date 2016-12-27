@@ -70,8 +70,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initViews() {
-        pushDateListener listener = (pushDateListener) getActivity();
-        listener.toolbarSetTitle("Регистрация");
+//        pushDateListener listener = (pushDateListener) getActivity();
+        ((pushDateListener) getActivity()).toolbarSetTitle("Регистрация");
         btnSignUp = (Button) root.findViewById(R.id.sign_up_button);
         inputEmail = (EditText) root.findViewById(R.id.email);
         inputPassword = (EditText) root.findViewById(R.id.password);

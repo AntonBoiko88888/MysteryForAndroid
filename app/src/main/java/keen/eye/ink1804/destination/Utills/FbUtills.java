@@ -2,7 +2,6 @@ package keen.eye.ink1804.destination.Utills;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.Spanned;
 import android.widget.Button;

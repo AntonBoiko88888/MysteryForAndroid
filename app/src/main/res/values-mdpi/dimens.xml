@@ -15,7 +15,7 @@
     <dimen name="btn_description_size">46dp</dimen>
     <dimen name="btn_push_n_prof">60dp</dimen>
 
-    <dimen name="btn_description_text_size">20dp</dimen>
+    <dimen name="btn_description_text_size">20sp</dimen>
     <dimen name="btn_select_img_text_size">8sp</dimen>
     <dimen name="tv_info">18sp</dimen>
 

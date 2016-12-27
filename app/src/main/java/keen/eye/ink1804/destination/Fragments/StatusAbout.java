@@ -21,6 +21,7 @@ public class StatusAbout extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ((pushDateListener) getActivity()).toolbarSetTitle("Статус пользователя");
         View rootView = inflater.inflate(R.layout.status_about_fragment, container, false);
         TextView beginning = (TextView) rootView.findViewById(R.id.beginning_text);
         TextView advanced = (TextView) rootView.findViewById(R.id.advanced_text);

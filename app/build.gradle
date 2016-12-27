@@ -8,8 +8,8 @@ android {
         applicationId "keen.eye.ink1804.destination"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 11
-        versionName "1.5.3"
+        versionCode 12
+        versionName "1.5.4"
     }
     buildTypes {
         release {

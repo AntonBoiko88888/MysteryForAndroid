@@ -27,7 +27,6 @@ public class ResetFragment extends Fragment {
     private EditText inputEmail;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
-    pushDateListener listener;
     View root;
 
     public ResetFragment() {
@@ -41,9 +40,7 @@ public class ResetFragment extends Fragment {
     }
 
     private void initViews() {
-
-        listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Новый пароль");
+        ((pushDateListener) getActivity()).toolbarSetTitle("Новый пароль");
         inputEmail = (EditText) root.findViewById(R.id.email);
         final Button btnReset = (Button) root.findViewById(R.id.btn_reset_password);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);

@@ -147,6 +147,7 @@
                 android:gravity="center"
                 android:layout_below="@id/acc_btn_description"
                 android:padding="@dimen/defaultMargin"
+                android:typeface="serif"
                 android:textColor="@color/pro_zra_beginning_status"
                 android:textSize="@dimen/com_text_size2"/>
 

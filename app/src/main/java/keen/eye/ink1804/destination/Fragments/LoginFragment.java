@@ -45,7 +45,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private Context context;
     FirebaseUser user;
     private String email,password;
-    pushDateListener listener;
 
     String emailArgs;
     View root;
@@ -62,8 +61,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initViews() {
-        listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Вход");
+//        listener = (pushDateListener)getActivity();
+        ((pushDateListener) getActivity()).toolbarSetTitle("Вход");
         inputEmail = (EditText)root.findViewById(R.id.email);
         inputPassword = (EditText)root.findViewById(R.id.password);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);

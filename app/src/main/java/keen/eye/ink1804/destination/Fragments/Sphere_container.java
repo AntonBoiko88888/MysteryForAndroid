@@ -42,8 +42,8 @@ public class Sphere_container extends Fragment {
         String[] btnTextArray = args.getStringArray("array");
         int layoutType = args.getInt("type");
 
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle(toolbarText);
+//        pushDateListener listener = (pushDateListener)getActivity();
+        ((pushDateListener) getActivity()).toolbarSetTitle(toolbarText);
 
         Sphere_vp_adapter mPagerAdapter = new Sphere_vp_adapter(getChildFragmentManager(),
                 btnTextArray, layoutType/*, MainActivity.ACCESS*/);

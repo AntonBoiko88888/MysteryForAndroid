@@ -52,8 +52,8 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
     }
 
     private void initializeTView() {
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Характеристика профиля");
+//        pushDateListener listener = (pushDateListener)getActivity();
+        ((pushDateListener)getActivity()).toolbarSetTitle("Характеристика профиля");
         Bundle args = getArguments();
         socioAccess = args.getBoolean("isMyDescription",false);
         yearNow = args.getInt("currentYear");

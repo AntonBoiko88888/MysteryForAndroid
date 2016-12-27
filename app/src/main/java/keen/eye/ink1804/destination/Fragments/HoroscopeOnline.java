@@ -54,8 +54,8 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
 
     private void initViews() {
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
-        pushDateListener listener = (pushDateListener) getActivity();
-        listener.toolbarSetTitle("Гороскоп онлайн");
+//        pushDateListener listener = (pushDateListener) getActivity();
+        ((pushDateListener)getActivity()).toolbarSetTitle("Гороскоп онлайн");
         int[] img_ids = new int[]{R.id.aries, R.id.taurus, R.id.twins, R.id.cancer, R.id.lion, R.id.virgo
                 , R.id.libra, R.id.scorpio, R.id.sagittarius, R.id.capricorn, R.id.aquarius, R.id.fish};
         images = new ImageView[12];
