@@ -201,7 +201,7 @@ public class Account extends Fragment implements View.OnClickListener {
         year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
         sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, false);
 //        String icon = MainActivity.mSettings.getString(Constants.APP_PREF_IMAGE, "");
-//        Bitmap bitmap;
+        Bitmap bitmap;
 //        InputStream is;
 //        BufferedInputStream bis;
         try {
@@ -209,8 +209,9 @@ public class Account extends Fragment implements View.OnClickListener {
             conn.connect();
 //            is = conn.getInputStream();
 //            bis = new BufferedInputStream(conn.getInputStream());
-//            bitmap = BitmapFactory.decodeStream(new BufferedInputStream(conn.getInputStream()));
-            ((ImageView) rootView.findViewById(R.id.acc_image_icon)).setImageBitmap(BitmapFactory.decodeStream(new BufferedInputStream(conn.getInputStream())));
+            bitmap = BitmapFactory.decodeStream(new BufferedInputStream(conn.getInputStream()));
+
+            ((ImageView) rootView.findViewById(R.id.acc_image_icon)).setImageBitmap(bitmap);
 
         } catch (Exception e) {
             ((ImageView) rootView.findViewById(R.id.acc_image_icon)).setImageResource(R.drawable.account_img);
