@@ -45,7 +45,7 @@ public class FbUtills {
                 for (int i = 0; i < users.size(); i++) {
                     if (users.get(i).Email.equals(email)) {
                         user = users.get(i);
-                        i = users.size() + 20;
+                        i = users.size() + 1;
                         SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                         editor.putString(Constants.APP_PREF_NAME, user.Name);
                         editor.putInt(Constants.APP_PREF_DAY, user.Day);
@@ -155,7 +155,7 @@ public class FbUtills {
                         listener.setHeaderText(user.Status, R.color.pro_zra_advanced_status);
                     }
                     MainActivity.isFirstLaunch = true;
-                } catch (Exception ignored) {
+                } catch (Exception e) {
                 }
             }
 

@@ -23,10 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
-import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
