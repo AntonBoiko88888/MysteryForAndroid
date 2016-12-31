@@ -32,8 +32,8 @@ public class Data_calculation {
                 {Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.VECTOR, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.VECTOR, Constants.ARISTOCRAT},//тигр
                 {Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.VECTOR, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER},//кот
                 {Constants.LEADER, Constants.ARISTOCRAT, Constants.VECTOR, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.VECTOR, Constants.KING, Constants.CLOWN, Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR},//дракон
-                {Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR,},//змея
-                {Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.VECTOR, Constants.VECTOR, Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.KNIGHT,},//лошадь
+                {Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.VECTOR, Constants.VECTOR},//змея
+                {Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.VECTOR, Constants.VECTOR, Constants.LEADER, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.KNIGHT, Constants.CLOWN, Constants.KING, Constants.CLOWN, Constants.KNIGHT,},//лошадь
                 {Constants.KNIGHT, Constants.ARISTOCRAT, Constants.PROFESSOR, Constants.LEADER, Constants.ARISTOCRAT, Constants.VECTOR, Constants.PROFESSOR, Constants.ARISTOCRAT, Constants.VECTOR, Constants.CLOWN, Constants.KING, Constants.CLOWN},//коза
         };
         private static final String[][] YearPeriod = {
