@@ -162,7 +162,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     private void dialogVerification() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Верификация")
-                .setMessage("Регистрация прошла успешно. Мы отправили вам письмо с подтверждением на указанный Email при регистрации. Если вы подтвердили почту - вы можете войти.")
+                .setMessage("Регистрация прошла успешно. Мы отправили вам письмо с подтверждением на указанный Email при регистрации. Если письмо не пришло, проверьте папку <<Спам>>. Если вы подтвердили почту - вы можете войти.")
                 .setIcon(R.drawable.icon_eye_512)
                 .setCancelable(false)
                 .setNegativeButton("Ок",
