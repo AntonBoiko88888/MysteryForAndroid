@@ -31,13 +31,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.vending.billing.IInAppBillingService;
-import com.soundcloud.android.crop.Crop;
 
 import org.json.JSONObject;
 
@@ -69,7 +67,6 @@ import keen.eye.ink1804.destination.Utills.Notification_reciever;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         , pushDateListener, View.OnClickListener {
 
-    private ImageView iconImage;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     public TextView nav_headerStatus;
@@ -107,11 +104,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.add(R.id.fragment_container, fragment, "account_fragment");
             transaction.commit();
             Intent intent = getIntent();
-//            if(mSettings.contains(Constants.APP_PREF_ISREGISTER)&&mSettings.contains(Constants.APP_PREF_USER_ID)
-//                    &&!intent.getBooleanExtra("isHoroscope", false)) {
-//                FbUtills fbUtills = new FbUtills();
-//                fbUtills.getDataFromDB(this,MainActivity.mSettings.getLong(Constants.APP_PREF_USER_ID,-1));
-//            }
             if (intent.getBooleanExtra("isHoroscope", false)) {
                 FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
                 Bundle args = new Bundle();
@@ -192,9 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     private void initViews() {
         toolbarSetTitle("Постижение тайны");
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(this);
-//        View header = ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0);
         nav_headerStatus = (TextView) ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_header_textStatus);
         nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
         if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
@@ -204,7 +194,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).setOnClickListener(this);
     }
     private void clearBackStack() {
-//        FragmentManager fm = getSupportFragmentManager();
         for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
             getSupportFragmentManager().popBackStack();
         }
@@ -233,7 +222,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void mainFragmentCreate() {
         nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
-//        FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         Account fragment = new Account();
@@ -355,12 +343,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
     @Override
-    public void pictureDownload(ImageView imageView) {
-        iconImage = imageView;
-        Crop.pickImage(this);
-        iconImage.buildDrawingCache();
-    }
-    @Override
     public void toolbarSetTitle(String title) {
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -374,37 +356,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
-            Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
-            SharedPreferences.Editor editor = mSettings.edit();
-            editor.putString(Constants.APP_PREF_IMAGE, destination.toString());
-            editor.apply();
-            Crop.of(data.getData(), destination).asSquare().start(this);
-        } else if (requestCode == Crop.REQUEST_CROP) {
-            if (resultCode == RESULT_OK) {
-                iconImage.setImageBitmap(null);
-                iconImage.setImageURI(Crop.getOutput(data));
-            } else if (resultCode == Crop.RESULT_ERROR) {
-                Toast.makeText(this, Crop.getError(data).getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
         if (requestCode == 1001) {
-//            int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
-//            String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
-//            String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
             if (resultCode == RESULT_OK) {
-//                try {
-//                    JSONObject jo = new JSONObject(purchaseData);
-//                    String sku = jo.getString("productId");
                 nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
                 FbUtills firebaseUtills = new FbUtills();
                 firebaseUtills.setAccessToAdvanced();
                 Toast.makeText(this, "Вы стали Продвинутым пользователем!", Toast.LENGTH_SHORT).show();
-//                }
-//                catch (JSONException e) {
-//                    Toast.makeText(this, "Failed to parse purchase data.", Toast.LENGTH_SHORT).show();
-//                    e.printStackTrace();
-//                }
             }
         }
     }
@@ -493,8 +450,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 calendar.set(Calendar.SECOND, 00);
 
                                 Intent intent = new Intent(getApplicationContext(), Notification_reciever.class);
-//                                intent.putExtra("zodiac", zodiacNotific);
-//                                intent.putExtra("time", timeNotific);
                                 intent.putExtra("notify", isSelectedNotific);
 
                                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -603,10 +558,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mService = null;
             }
         };
-//        bindService(new Intent("com.android.vending.billing.InAppBillingService.BIND"),
-//                connection, Context.BIND_AUTO_CREATE);
         Intent purchaseIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-// This is the key line that fixed everything for me
         purchaseIntent.setPackage("com.android.vending");
         bindService(purchaseIntent, connection, Context.BIND_AUTO_CREATE);
     }
@@ -658,11 +610,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.wtf("DESTROY","onDestroy");
         if (connection != null) {
             unbindService(connection);
         }
-//        Toast.makeText(this, "Activity.onDestroy()",
-//                Toast.LENGTH_LONG).show();
     }
 }

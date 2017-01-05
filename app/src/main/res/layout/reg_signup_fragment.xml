@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
                 android:textSize="@dimen/com_text_size"
+                android:layout_marginBottom="@dimen/defaultMargin_double"
                 android:textColorHint="@color/white"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -50,6 +51,7 @@
                 android:textColorHint="@color/white"
                 android:imeActionId="@+id/login"
                 android:textSize="@dimen/com_text_size"
+                android:layout_marginBottom="@dimen/defaultMargin_double"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -63,35 +65,19 @@
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/defaultMargin_double"
+            android:layout_marginTop="@dimen/defaultMargin_triple"
             android:textSize="@dimen/com_text_size2"
             android:background="@color/colorAccent"
-            android:text="@string/action_sign_in_short"
+            android:text="@string/action_sign_in_registration"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="@dimen/reg_progress_size"
             android:layout_height="@dimen/reg_progress_size"
-            android:layout_centerInParent="true"
-            android:visibility="invisible" />
-        <Button
-            android:id="@+id/btn_isEmailVerification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="@dimen/defaultMargin_double"
-            android:textColor="@color/yellow"
-            android:textStyle="bold"
-            android:visibility="gone"
-            android:textSize="@dimen/com_text_size2"
-            android:background="@drawable/btn_states_thin_rect"
-            android:text="@string/action_sign_in_registration" />
-
-        </RelativeLayout>
+            android:layout_marginTop="@dimen/defaultMargin_triple"
+            android:layout_marginBottom="@dimen/defaultMargin_triple"
+            android:visibility="invisible"/>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

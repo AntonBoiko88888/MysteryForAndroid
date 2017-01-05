@@ -4,6 +4,8 @@
     <dimen name="defaultMargin_double">8dp</dimen>
     <dimen name="defaultMargin_triple">12dp</dimen>
 
+    <dimen name="acc_image_icon">170dp</dimen>
+
     <dimen name="image_icon">100dp</dimen>
     <dimen name="btn_com_image_icon">80dp</dimen>
 

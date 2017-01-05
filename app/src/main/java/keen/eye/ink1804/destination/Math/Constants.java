@@ -16,7 +16,6 @@ public final class Constants {
     public static final String APP_PREF_EMAIL = "email"; // статус пользователя
     public static final String APP_PREF_PASSWORD = "password"; // статус пользователя
     public static final String APP_PREF_ISREGISTER = "isregister"; // наличие аккаунта
-    public static final String APP_PREF_IMAGE = "icon";
     public static final String APP_PREF_SOCIONICS = "socionics_type";
     public static final String APP_PREF_USER_ID = "user_id";
     public static final String APP_PREF_NOTIFICATIONS = "doNotifications";
@@ -35,18 +34,7 @@ public final class Constants {
     public static final String[] YEAR_NAMES =         {"Обезьяна","Петух", "Собака","Кабан",  "Крыса",   "Бык",   "Тигр","Кот",   "Дракон","Змея",    "Лошадь","Коза"};
     static final String[] YEAR_HOST_NAMES =    {"Змея",    "Кот",   "Петух", "Лошадь", "Обезьяна","Собака","Бык", "Дракон","Кабан", "Коза",    "Крыса", "Тигр"};
     static final String[] YEAR_SERVANT_NAMES = {"Крыса",   "Собака","Бык",   "Дракон", "Лошадь",  "Тигр",  "Коза","Петух", "Кот",   "Обезьяна","Кабан", "Змея"};
-//    public static final String Y_SNAKE = "Змея";
-//    public static final String Y_HORSE = "Лошадь";
-//    public static final String Y_GOAT = "Коза";
-//    public static final String Y_MONKEY = "Обезьяна";//id = 0
-//    public static final String Y_COCK = "Петух";// id = 1
-//    public static final String Y_DOG = "Собака";
-//    public static final String Y_BOAR = "Кабан";
-//    public static final String Y_RAT = "Крыса";
-//    public static final String Y_BULL = "Бык";
-//    public static final String Y_TIGER = "Тигр";
-//    public static final String Y_CAT = "Кот";
-//    public static final String Y_DRAGON = "Дракон";
+
 
     //Годовой период P_
 

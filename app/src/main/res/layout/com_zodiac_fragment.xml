@@ -44,19 +44,19 @@
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_zod_oven" />
 
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/comp_zod_male_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:popupBackground="@color/black"
-                        app:ms_alignLabels="false"
-                        app:ms_arrowSize="@dimen/defaultMargin_double"
-                        app:ms_baseColor="@color/blue"
-                        app:ms_enableErrorLabel="false"
-                        app:ms_enableFloatingLabel="false"
-                        app:ms_floatingLabelText="floating label"
-                        app:ms_multiline="false"
-                        app:ms_thickness="2dp" />
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/comp_zod_male_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="@color/black"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowSize="@dimen/defaultMargin_double"
+                    app:ms_baseColor="@color/blue"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="false"
+                    app:ms_floatingLabelText="floating label"
+                    app:ms_multiline="false"
+                    app:ms_thickness="2dp" />
                 </LinearLayout>
 
                 <LinearLayout

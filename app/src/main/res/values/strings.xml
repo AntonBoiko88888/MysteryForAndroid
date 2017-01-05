@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Mystery</string>
-    <string name="app_version">1.5.4</string>
+    <string name="app_version">1.6.1</string>
 
 
     <!--Interesting_fragment -->
@@ -18,8 +18,6 @@
     <!--account_fragment-->
     <string name="account_fragment_btn_users_upgrade_text">"Войти"</string>
     <string name="account_fragment_btn_my_description">"Моё описание"</string>
-    <string name="account_fragment_btn_selectImg">Выбрать фото</string>
-
 
     <!--com_text-->
     <string name="com_signMan_text">Знак Мужчины:</string>
@@ -44,7 +42,6 @@
 
 
     <!--Fo Registration-->
-    <string name="action_sign_in_short">Отправить подтверждение на почту</string>
     <string name="action_sign_in_registration">Регистрация</string>
     <string name="email">Email</string>
     <string name="minimum_password">Слишком короткий пароль, введите минимум 6 символов!</string>

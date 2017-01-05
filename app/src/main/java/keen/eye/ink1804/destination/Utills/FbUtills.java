@@ -139,11 +139,10 @@ public class FbUtills {
                     editor.putBoolean(Constants.APP_PREF_SEX, user.Sex);
                     editor.putString(Constants.APP_PREF_SOCIONICS, user.Socionics);
                     editor.putString(Constants.APP_PREF_STATUS, user.Status);
-                    editor.putString(Constants.APP_PREF_EMAIL, user.Email);
                     editor.putString(Constants.APP_PREF_PASSWORD, user.Password);
                     editor.putLong(Constants.APP_PREF_USER_ID, user.Id);
                     editor.apply();
-                    tv_status.setText(setTextSettings("Статус:<br>", user.Status));
+                    tv_status.setText(setTextSettings("Статус:"," "+ user.Status));
                     pushDateListener listener = (pushDateListener) context;
 
                     Account.status = user.Status;

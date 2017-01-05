@@ -61,7 +61,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initViews() {
-//        listener = (pushDateListener)getActivity();
         ((pushDateListener) getActivity()).toolbarSetTitle("Вход");
         inputEmail = (EditText)root.findViewById(R.id.email);
         inputPassword = (EditText)root.findViewById(R.id.password);

@@ -45,14 +45,12 @@ import keen.eye.ink1804.destination.Utills.UsersModel;
 public class SignUpFragment extends Fragment implements View.OnClickListener {
     private EditText inputEmail, inputPassword;
     protected Button btnSignUp;
-    protected Button btnIsEmailVerification;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
     private Context context;
     FirebaseUser user;
     private String emailBundle, passwordBundle;
     static long count = 0;
-    static boolean flag = false;
 
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     final private DatabaseReference usersRef = mDatabase.getRef();
@@ -70,22 +68,17 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initViews() {
-//        pushDateListener listener = (pushDateListener) getActivity();
         ((pushDateListener) getActivity()).toolbarSetTitle("Регистрация");
         btnSignUp = (Button) root.findViewById(R.id.sign_up_button);
         inputEmail = (EditText) root.findViewById(R.id.email);
         inputPassword = (EditText) root.findViewById(R.id.password);
         progressBar = (ProgressBar) root.findViewById(R.id.progressBar);
-        btnIsEmailVerification = (Button) root.findViewById(R.id.btn_isEmailVerification);
         btnSignUp.setOnClickListener(this);
-        btnIsEmailVerification.setOnClickListener(this);
-        btnIsEmailVerification.setEnabled(false);
         auth = FirebaseAuth.getInstance();
     }
 
     @Override
     public void onClick(View view) {
-        final pushDateListener listener = (pushDateListener) getActivity();
         switch (view.getId()) {
             case R.id.sign_up_button:
                 MainActivity mainActivity = new MainActivity();
@@ -141,11 +134,19 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                                             emailBundle = email;
                                                             passwordBundle = password;
                                                             user = auth.getCurrentUser();
-                                                            flag = false;
                                                             user.sendEmailVerification();
-                                                            dialogVerification();
-                                                            btnSignUp.setEnabled(false);
-                                                            auth.signOut();
+                                                            if(count==0) {
+                                                                user.delete();
+                                                                Toast.makeText(getContext(), "Регистрация не удалась, видимо плохое соединение с сетью, попробуйте еще раз!",
+                                                                        Toast.LENGTH_SHORT).show();
+                                                            }
+                                                            else {
+                                                                UsersModel mUser = createUser(emailBundle, passwordBundle);
+                                                                usersRef.child("users").child(count + "").setValue(mUser);
+                                                                usersRef.child("index").setValue((count + 1) + "");
+                                                                auth.signOut();
+                                                                dialogVerification();
+                                                            }
                                                         }
                                                     }
                                                 });
@@ -155,47 +156,19 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                 } else
                     Toast.makeText(context, "Увы... Интернет соединение отсутствует :(", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.btn_isEmailVerification:
-                auth.signInWithEmailAndPassword(emailBundle, passwordBundle)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(getContext(), "Аунтефикация не удалась", Toast.LENGTH_LONG).show();
-                                } else {
-                                    user = auth.getCurrentUser();
-                                    if (user != null) {
-                                        if (user.isEmailVerified()) {
-                                            flag = true;
-                                            UsersModel mUser = createUser(emailBundle, passwordBundle);
-                                            usersRef.child("users").child(count + "").setValue(mUser);
-                                            usersRef.child("index").setValue((count + 1) + "");
-                                            Toast.makeText(getContext(), "Регистрация прошла успешно!",
-                                                    Toast.LENGTH_SHORT).show();
-                                            listener.onLoginClick(emailBundle, passwordBundle);
-                                            auth.signOut();
-                                        } else
-                                            Toast.makeText(getContext(), "Вы еще не подтвердили свою почту!",
-                                                    Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });
-                break;
         }
     }
 
     private void dialogVerification() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Верификация")
-                .setMessage("Ваша почта еще не подтверждена. Мы отправили вам письмо с подтверждением на указанный Email при регистрации. Если вы подтвердили почту - вы можете зарегистрироваться.")
+                .setMessage("Регистрация прошла успешно. Мы отправили вам письмо с подтверждением на указанный Email при регистрации. Если вы подтвердили почту - вы можете войти.")
                 .setIcon(R.drawable.icon_eye_512)
                 .setCancelable(false)
                 .setNegativeButton("Ок",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                btnIsEmailVerification.setEnabled(true);
-                                btnIsEmailVerification.setVisibility(View.VISIBLE);
+                                ((pushDateListener) getActivity()).onLoginClick(emailBundle, passwordBundle);
                             }
                         });
         AlertDialog alert = builder.create();
@@ -212,21 +185,11 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         boolean sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, true);
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
         String status = "Начинающий";
-        editor.putString(Constants.APP_PREF_EMAIL, _email);
         editor.putLong(Constants.APP_PREF_USER_ID, count);
-        editor.putString(Constants.APP_PREF_PASSWORD, _password);
         editor.apply();
 
         return new UsersModel(count, name, day, month, year, sex, socionics, _email, _password, status);
 
-    }
-
-    @Override
-    public void onDestroyView() {
-        if (user != null&&!flag) {
-            user.delete();
-        }
-        super.onDestroyView();
     }
 }
 
