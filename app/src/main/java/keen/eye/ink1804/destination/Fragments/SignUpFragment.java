@@ -114,6 +114,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 count = Long.parseLong(dataSnapshot.child("index").getValue().toString());
+                                                count = Long.parseLong(dataSnapshot.child("index").getValue().toString());
                                             }
 
                                             @Override
@@ -134,18 +135,19 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                                                             emailBundle = email;
                                                             passwordBundle = password;
                                                             user = auth.getCurrentUser();
-                                                            user.sendEmailVerification();
-                                                            if(count==0) {
-                                                                user.delete();
-                                                                Toast.makeText(getContext(), "Регистрация не удалась, видимо плохое соединение с сетью, попробуйте еще раз!",
-                                                                        Toast.LENGTH_SHORT).show();
-                                                            }
-                                                            else {
-                                                                UsersModel mUser = createUser(emailBundle, passwordBundle);
-                                                                usersRef.child("users").child(count + "").setValue(mUser);
-                                                                usersRef.child("index").setValue((count + 1) + "");
-                                                                auth.signOut();
-                                                                dialogVerification();
+                                                            if(user!=null) {
+                                                                if (count == 0) {
+                                                                    user.delete();
+                                                                    Toast.makeText(getContext(), "Регистрация не удалась, видимо плохое соединение с сетью, попробуйте еще раз!",
+                                                                            Toast.LENGTH_SHORT).show();
+                                                                } else {
+                                                                    user.sendEmailVerification();
+                                                                    UsersModel mUser = createUser(emailBundle, passwordBundle);
+                                                                    usersRef.child("users").child(count + "").setValue(mUser);
+                                                                    usersRef.child("index").setValue((count + 1) + "");
+                                                                    auth.signOut();
+                                                                    dialogVerification();
+                                                                }
                                                             }
                                                         }
                                                     }

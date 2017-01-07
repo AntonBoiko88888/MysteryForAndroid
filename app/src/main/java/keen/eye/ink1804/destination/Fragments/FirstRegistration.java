@@ -75,7 +75,6 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.reg_btn_registrate:
-//            pushDateListener listener = (pushDateListener) getActivity();
             boolean sex = rb_male.isChecked();
             if (!et_name.getText().toString().equals("")) {
                 String name = et_name.getText().toString();
