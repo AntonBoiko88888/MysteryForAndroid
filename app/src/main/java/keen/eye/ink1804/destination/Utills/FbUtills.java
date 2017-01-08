@@ -88,8 +88,10 @@ public class FbUtills {
         String email = MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL, "");
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
-        UsersModel user = new UsersModel(id, name, day, month, year, sex, socionics, email, password, status);
-        mRef.child("users").child(id + "").setValue(user);
+        if(id!=0) {
+            UsersModel user = new UsersModel(id, name, day, month, year, sex, socionics, email, password, status);
+            mRef.child("users").child(id + "").setValue(user);
+        }
     }
 
     public void setName(String _name) {
@@ -102,8 +104,10 @@ public class FbUtills {
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
         String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
-        UsersModel user = new UsersModel(id, _name, day, month, year, sex, socionics, email, password, status);
-        mRef.child("users").child(id + "").setValue(user);
+        if(id!=0) {
+            UsersModel user = new UsersModel(id, _name, day, month, year, sex, socionics, email, password, status);
+            mRef.child("users").child(id + "").setValue(user);
+        }
     }
 
     public void setSocionics(String _socionics) {
@@ -116,8 +120,10 @@ public class FbUtills {
         String email = MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL, "");
         String password = MainActivity.mSettings.getString(Constants.APP_PREF_PASSWORD, "");
         String status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
-        UsersModel user = new UsersModel(id, name, day, month, year, sex, _socionics, email, password, status);
-        mRef.child("users").child(id + "").setValue(user);
+        if(id!=0) {
+            UsersModel user = new UsersModel(id, name, day, month, year, sex, _socionics, email, password, status);
+            mRef.child("users").child(id + "").setValue(user);
+        }
     }
 
     public void getDataFromDB(final Context context, final TextView tv_status, final TextView tv_version, final Button push, final String text_version) {
@@ -128,6 +134,9 @@ public class FbUtills {
                 try {
                     if (!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
                         tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
+                    }
+                    if (id==0) {
+                        tv_version.setText("Воникли неполадки с почтой, зарегистрируйтесь заново.");
                     }
                     UsersModel user;
                     user = dataSnapshot.child("users").child(id + "").getValue(UsersModel.class);
