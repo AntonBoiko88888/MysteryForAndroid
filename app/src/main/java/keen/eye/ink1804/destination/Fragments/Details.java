@@ -27,16 +27,14 @@ public class Details extends Fragment {
         return rootView;
     }
     private void fillData(){
-//        pushDateListener listener = (pushDateListener)getActivity();
         ((pushDateListener)getActivity()).toolbarSetTitle("Интерпретация");
         Bundle args = getArguments();
-        //null may be
         String key = args.getString("key");
         String tag = args.getString("tag");
         TextView tv_details = (TextView) rootView.findViewById(R.id.details_tv);
 
         int id = -1;
-        if(tag!=null)
+        if(tag!=null&&key!=null)
         switch (tag){
             case "profileDetails":
                 String[] names = getResources().getStringArray(R.array.profDetails_names);
@@ -47,7 +45,10 @@ public class Details extends Fragment {
                         break;
                     }
                 }
-                tv_details.setText(setTvTextWithHtml(details[id]));
+                if(id!=-1)
+                    tv_details.setText(setTvTextWithHtml(details[id]));
+                else
+                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
                 break;
             case "interesting":
                 String[] interesting_db = getResources().getStringArray(R.array.interesting_db);
@@ -58,7 +59,10 @@ public class Details extends Fragment {
                         break;
                     }
                 }
-                tv_details.setText(setTvTextWithHtml(interesting_db[id]));
+                if(id!=-1)
+                    tv_details.setText(setTvTextWithHtml(interesting_db[id]));
+                else
+                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
                 break;
             case "com_birth":
                 String[] com_names = getResources().getStringArray(R.array.com_marriage_names);
@@ -69,7 +73,10 @@ public class Details extends Fragment {
                         break;
                     }
                 }
-                tv_details.setText(setTvTextWithHtml(com_db[id]));
+                if(id!=-1)
+                    tv_details.setText(setTvTextWithHtml(com_db[id]));
+                else
+                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
                 break;
             case "socionics":
                 String[] socioNames = getResources().getStringArray(R.array.socionics_names);
@@ -80,10 +87,15 @@ public class Details extends Fragment {
                         break;
                     }
                 }
+                if(id!=-1)
                     tv_details.setText(setTvTextWithHtml(socioDB[id]));
+                else
+                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
                 break;
             default:break;
         }
+        else
+            tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
     }
     private Spanned setTvTextWithHtml(String text){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

@@ -52,7 +52,6 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
     }
 
     private void initializeTView() {
-//        pushDateListener listener = (pushDateListener)getActivity();
         ((pushDateListener)getActivity()).toolbarSetTitle("Характеристика профиля");
         Bundle args = getArguments();
         socioAccess = args.getBoolean("isMyDescription",false);
@@ -146,7 +145,6 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         } else {
             return Html.fromHtml(text+" "+value);
         }
-//        return Html.fromHtml(text+" "+value);
     }
     @Override
     public void onClick(View view) {
