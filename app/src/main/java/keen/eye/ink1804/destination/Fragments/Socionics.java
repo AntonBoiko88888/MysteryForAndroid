@@ -93,6 +93,7 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 break;
             }
         }
+        if(id!=-1)
         tv_info.setText(Html.fromHtml(details[id]));
     }
     @Override

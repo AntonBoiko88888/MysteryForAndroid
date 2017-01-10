@@ -48,7 +48,7 @@ public class Details extends Fragment {
                 if(id!=-1)
                     tv_details.setText(setTvTextWithHtml(details[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
+                    tv_details.setText("Данные не были успешно загружены(");
                 break;
             case "interesting":
                 String[] interesting_db = getResources().getStringArray(R.array.interesting_db);
@@ -62,7 +62,7 @@ public class Details extends Fragment {
                 if(id!=-1)
                     tv_details.setText(setTvTextWithHtml(interesting_db[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
+                    tv_details.setText("Данные не были успешно загружены(");
                 break;
             case "com_birth":
                 String[] com_names = getResources().getStringArray(R.array.com_marriage_names);
@@ -76,7 +76,7 @@ public class Details extends Fragment {
                 if(id!=-1)
                     tv_details.setText(setTvTextWithHtml(com_db[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
+                    tv_details.setText("Данные не были успешно загружены(");
                 break;
             case "socionics":
                 String[] socioNames = getResources().getStringArray(R.array.socionics_names);
@@ -90,12 +90,10 @@ public class Details extends Fragment {
                 if(id!=-1)
                     tv_details.setText(setTvTextWithHtml(socioDB[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
+                    tv_details.setText("Данные не были успешно загружены(");
                 break;
             default:break;
         }
-        else
-            tv_details.setText("Данные не были успешно загружены! Часто проблема возникает из-за неправильной даты на устройстве.");
     }
     private Spanned setTvTextWithHtml(String text){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
