@@ -11,6 +11,10 @@
     <string name="interesting_time_birth_numerology">Время рождения - Нумерология</string>
     <string name="interesting_zodiac_poems">Знаки зодиака в стихах</string>
     <string name="interesting_distribution_tolerance_signs">Раздача толерантности знакам</string>
+    <string name="interesting_sleep_by_day">Сонник по числам месяца</string>
+    <string name="interesting_types_of_gifts">Какие подарки дарить 16 типам?</string>
+    <string name="interesting_painful_function">Болевая функция 16-ти типов личности</string>
+    <string name="interesting_extroverts_and_introverts">Почему в мире существуют экстраверты и интроверты</string>
 
 
     <string name="nav_header_main_acc_text">Аккаунт</string>
@@ -71,8 +75,5 @@
     <string name="lbl_forgot_password">Забыли пароль?</string>
     <string name="forgot_password_msg">Нам просто нужно зарегистрированный идентификатор электронной почты, чтобы отправить вам инструкции по сбросу пароля.</string>
     <string name="prompt_password">%s</string>
-
-
-
 
 </resources>

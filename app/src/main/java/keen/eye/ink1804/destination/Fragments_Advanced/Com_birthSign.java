@@ -23,11 +23,8 @@ import keen.eye.ink1804.destination.R;
 public class Com_birthSign extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private ImageView imageView;
     private TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector, tv_text;
-    private String D_EqualMarriage, D_RomanticMarriage, D_SpiritualMarriage, D_PatriarchalMarriage, D_VectorMarriage;
-
-
+    int j = 0;
 
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
             R.drawable.com_birth_mouse, R.drawable.com_birth_bull, R.drawable.com_birth_tiger, R.drawable.com_birth_cat,
@@ -51,7 +48,6 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
     private void initViews(){
         pushDateListener listener = (pushDateListener)getActivity();
         listener.toolbarSetTitle("Знаки рождения");
-        imageView = (ImageView)rootView.findViewById(R.id.comp_birth_image);
         MaterialSpinner spinner = (MaterialSpinner) rootView.findViewById(R.id.comp_birth_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
                 birthNames);
@@ -60,13 +56,8 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                imageView.setBackgroundResource(birthDrawables[i]);
-                Data_calculation struct_data = new Data_calculation();
-                D_RomanticMarriage = struct_data.getRomanticMarriage(i);
-                D_PatriarchalMarriage = struct_data.getPatriarchalMarriage(i);
-                D_SpiritualMarriage = struct_data.getSpiritualMarriage(i);
-                D_EqualMarriage = struct_data.getEqualMarriage(i);
-                D_VectorMarriage = struct_data.getVectorMarriage(i);
+                rootView.findViewById(R.id.comp_birth_image).setBackgroundResource(birthDrawables[i]);
+                j = i;
                 tv_text.setText(" ");
                 tv_romantic.setText(" ");
                 tv_romantic.setEnabled(false);
@@ -85,16 +76,15 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
             }
         });
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
-        Button btn_result = (Button)rootView.findViewById(R.id.comp_birth_btn_result);
-        btn_result.setOnClickListener(this);
+        rootView.findViewById(R.id.comp_birth_btn_result).setOnClickListener(this);
         tv_text = (TextView)rootView.findViewById(R.id.birth_text);
         tv_text.setTypeface(tf);
-        tv_romantic = (TextView)rootView.findViewById(R.id.comp_birth_tv_romantic);
-        tv_romantic.setOnClickListener(this);
-        tv_romantic.setTypeface(tf);
         tv_patriarch = (TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch);
         tv_patriarch.setOnClickListener(this);
         tv_patriarch.setTypeface(tf);
+        tv_romantic = (TextView)rootView.findViewById(R.id.comp_birth_tv_romantic);
+        tv_romantic.setOnClickListener(this);
+        tv_romantic.setTypeface(tf);
         tv_soul = (TextView)rootView.findViewById(R.id.comp_birth_tv_soul);
         tv_soul.setOnClickListener(this);
         tv_soul.setTypeface(tf);
@@ -128,12 +118,13 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
                     key = "Векторный брак";
                     break;
                 case R.id.comp_birth_btn_result:
+                    Data_calculation struct_data = new Data_calculation();
                     tv_text.setText("Пять типов брака:");
-                    tv_romantic.setText("Романтический брак: "+D_RomanticMarriage);
-                    tv_patriarch.setText("Патриархальный брак: "+D_PatriarchalMarriage);
-                    tv_soul.setText("Духовный брак: "+D_SpiritualMarriage);
-                    tv_equal.setText("Равный брак: "+D_EqualMarriage);
-                    tv_vector.setText("Векторный брак: "+D_VectorMarriage);
+                    tv_patriarch.setText("Патриархальный брак: "+struct_data.getPatriarchalMarriage(j));
+                    tv_romantic.setText("Романтический брак: "+struct_data.getRomanticMarriage(j));
+                    tv_soul.setText("Духовный брак: "+struct_data.getSpiritualMarriage(j));
+                    tv_equal.setText("Равный брак: "+struct_data.getEqualMarriage(j));
+                    tv_vector.setText("Векторный брак: "+struct_data.getVectorMarriage(j));
                     tv_romantic.setEnabled(true);
                     tv_patriarch.setEnabled(true);
                     tv_soul.setEnabled(true);

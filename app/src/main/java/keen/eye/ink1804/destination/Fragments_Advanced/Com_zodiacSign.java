@@ -26,7 +26,6 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
 
     private View rootView;
     private TextView tv_result;
-    private ImageView imv_male,imv_female;
     private String male,female;
     private int[] zodiacDrawables = {R.drawable.com_zod_oven, R.drawable.com_zod_telec, R.drawable.com_zod_blizneci,
             R.drawable.com_zod_rak, R.drawable.com_zod_lev, R.drawable.com_zod_deva, R.drawable.com_zod_vesi, R.drawable.com_zod_skorpion,
@@ -37,6 +36,12 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
         rootView = inflater.inflate(R.layout.com_zodiac_fragment,container,false);
         initViews();
         return rootView;
+    }
+
+    @Override
+    public void onDetach() {
+        zodiacDrawables = null;
+        super.onDetach();
     }
 
     private void initViews(){
@@ -53,13 +58,10 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
         maleSpinner.setAdapter(adapter);
         tv_result = (TextView)rootView.findViewById(R.id.comp_zod_tv_result);
 
-        imv_male = (ImageView)rootView.findViewById(R.id.comp_zod_image_male);
-        imv_female = (ImageView)rootView.findViewById(R.id.comp_zod_image_female);
-
         maleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                imv_male.setBackgroundResource(zodiacDrawables[i]);
+                rootView.findViewById(R.id.comp_zod_image_male).setBackgroundResource(zodiacDrawables[i]);
                 male = Constants.ZODIAK_NAMES_normal[i];
                 tv_result.setText(" ");
             }
@@ -70,7 +72,7 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
         femaleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                imv_female.setBackgroundResource(zodiacDrawables[i]);
+                rootView.findViewById(R.id.comp_zod_image_female).setBackgroundResource(zodiacDrawables[i]);
                 female = Constants.ZODIAK_NAMES_normal[i];
                 tv_result.setText(" ");
             }

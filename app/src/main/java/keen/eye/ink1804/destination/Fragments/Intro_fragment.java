@@ -22,8 +22,6 @@ public class Intro_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.intro_fragment,container,false);
-        String[] appintr_description = getResources().getStringArray(R.array.appintr_description);
-        String[] appintr_description_db = getResources().getStringArray(R.array.appintr_description_db);
         TextView tv_title = (TextView) root.findViewById(R.id.appintr_title);
         TextView tv_details = (TextView) root.findViewById(R.id.appintr_first);
         ImageView img = (ImageView) root.findViewById(R.id.appintr_img);
@@ -38,8 +36,8 @@ public class Intro_fragment extends Fragment {
         }
         Typeface tf_title = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
         tv_title.setTypeface(tf_title);
-        tv_title.setText(Html.fromHtml(appintr_description[i]));
-        tv_details.setText(Html.fromHtml(appintr_description_db[i]));
+        tv_title.setText(Html.fromHtml(getResources().getStringArray(R.array.appintr_description)[i]));
+        tv_details.setText(Html.fromHtml(getResources().getStringArray(R.array.appintr_description_db)[i]));
 
 
         return root;

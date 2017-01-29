@@ -40,7 +40,7 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_vir_male_spinner"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:popupBackground="@color/black"
                         app:ms_alignLabels="false"
@@ -69,7 +69,7 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/comp_vir_female_spinner"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:popupBackground="@color/black"
                         app:ms_alignLabels="false"

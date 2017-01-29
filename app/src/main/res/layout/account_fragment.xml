@@ -6,38 +6,13 @@
     android:orientation="vertical"
     android:padding="@dimen/defaultMargin">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/acc_image_icon">
-
-            <Button
-                android:id="@+id/acc_btn_new_profile"
-                android:layout_alignParentBottom="true"
-                android:layout_width="@dimen/btn_push_n_prof"
-                android:layout_height="@dimen/btn_push_n_prof"
-                android:layout_alignParentRight="true"
-                android:layout_margin="@dimen/defaultMargin_double"
-                android:background="@drawable/acc_new_profile_states" />
-
-            <Button
-                android:id="@+id/acc_btn_pushSettings"
-                android:layout_alignParentBottom="true"
-                android:layout_width="@dimen/btn_push_n_prof"
-                android:layout_height="@dimen/btn_push_n_prof"
-                android:layout_alignParentLeft="true"
-                android:layout_margin="@dimen/defaultMargin_double"
-                android:background="@drawable/acc_push_states" />
-
-            <ImageView
-                android:id="@+id/acc_image_icon"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/acc_image_icon"
-                android:src="@drawable/acc_icon_border"
-                />
-
-        </RelativeLayout>
-
+    <ImageView
+        android:id="@+id/acc_image_icon"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/acc_image_icon"
+        android:src="@drawable/acc_icon_border"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -146,5 +121,23 @@
                 android:textSize="@dimen/com_text_size2"/>
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/acc_btn_new_profile"
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/btn_push_n_prof"
+            android:layout_height="@dimen/btn_push_n_prof"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/defaultMargin_double"
+            android:background="@drawable/acc_new_profile_states" />
+
+        <Button
+            android:id="@+id/acc_btn_pushSettings"
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/btn_push_n_prof"
+            android:layout_height="@dimen/btn_push_n_prof"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="@dimen/defaultMargin_double"
+            android:background="@drawable/acc_push_states" />
         </RelativeLayout>
 </LinearLayout>

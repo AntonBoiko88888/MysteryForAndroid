@@ -26,37 +26,35 @@ public class Interesting extends Fragment implements View.OnClickListener{
     }
 
     private void initializeTView() {
-//        pushDateListener listener = (pushDateListener)getActivity();
         ((pushDateListener)getActivity()).toolbarSetTitle("Интересное");
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
-//        TextView year_woman = (TextView) rootView.findViewById(R.id.year_woman);
         ((TextView)rootView.findViewById(R.id.year_woman)).setTypeface(tf);
         rootView.findViewById(R.id.year_woman).setOnClickListener(this);
-//        TextView year_man = (TextView) rootView.findViewById(R.id.year_man);
         ((TextView)rootView.findViewById(R.id.year_man)).setTypeface(tf);
         rootView.findViewById(R.id.year_man).setOnClickListener(this);
-//        TextView tactics_forgive = (TextView) rootView.findViewById(R.id.tactics_forgive);
         ((TextView)rootView.findViewById(R.id.tactics_forgive)).setTypeface(tf);
         rootView.findViewById(R.id.tactics_forgive).setOnClickListener(this);
-//        TextView pros_cons_signs = (TextView) rootView.findViewById(R.id.pros_cons_signs);
         ((TextView)rootView.findViewById(R.id.pros_cons_signs)).setTypeface(tf);
         rootView.findViewById(R.id.pros_cons_signs).setOnClickListener(this);
-//        TextView time_birth_numerology = (TextView) rootView.findViewById(R.id.time_birth_numerology);
         ((TextView)rootView.findViewById(R.id.time_birth_numerology)).setTypeface(tf);
         rootView.findViewById(R.id.time_birth_numerology).setOnClickListener(this);
-//        TextView zodiac_poems = (TextView) rootView.findViewById(R.id.zodiac_poems);
         ((TextView)rootView.findViewById(R.id.zodiac_poems)).setTypeface(tf);
         rootView.findViewById(R.id.zodiac_poems).setOnClickListener(this);
-//        TextView distribution_tolerance_signs = (TextView) rootView.findViewById(R.id.distribution_tolerance_signs);
         ((TextView)rootView.findViewById(R.id.distribution_tolerance_signs)).setTypeface(tf);
         rootView.findViewById(R.id.distribution_tolerance_signs).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.sleep_by_day)).setTypeface(tf);
+        rootView.findViewById(R.id.sleep_by_day).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.types_of_gifts)).setTypeface(tf);
+        rootView.findViewById(R.id.types_of_gifts).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.painful_function)).setTypeface(tf);
+        rootView.findViewById(R.id.painful_function).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.extroverts_and_introverts)).setTypeface(tf);
+        rootView.findViewById(R.id.extroverts_and_introverts).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         String key = "default";
-//        String tag = "interesting";
-//        pushDateListener listener = (pushDateListener)getActivity();
         switch (view.getId()){
             case R.id.year_woman:
                 key = "Характер женщины по месяцу рождения";
@@ -78,6 +76,18 @@ public class Interesting extends Fragment implements View.OnClickListener{
                 break;
             case R.id.distribution_tolerance_signs:
                 key = "Раздача толерантности знакам";
+                break;
+            case R.id.sleep_by_day:
+                key = "Сонник по числам месяца";
+                break;
+            case R.id.types_of_gifts:
+                key = "Какие подарки дарить 16 типам?";
+                break;
+            case R.id.painful_function:
+                key = "Болевая функция 16-ти типов личности";
+                break;
+            case R.id.extroverts_and_introverts:
+                key = "Почему в мире существуют экстраверты и интроверты";
                 break;
             default:break;
         }

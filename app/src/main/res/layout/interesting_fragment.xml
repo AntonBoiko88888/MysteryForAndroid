@@ -84,6 +84,46 @@
                 android:gravity="center"
                 android:text="@string/interesting_distribution_tolerance_signs"
                 android:textSize="@dimen/interes_tv_size" />
+
+            <TextView
+                android:id="@+id/sleep_by_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/defaultMargin"
+                android:background="@drawable/txt_states"
+                android:gravity="center"
+                android:text="@string/interesting_sleep_by_day"
+                android:textSize="@dimen/interes_tv_size" />
+
+            <TextView
+                android:id="@+id/types_of_gifts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/defaultMargin"
+                android:background="@drawable/txt_states"
+                android:gravity="center"
+                android:text="@string/interesting_types_of_gifts"
+                android:textSize="@dimen/interes_tv_size" />
+
+            <TextView
+                android:id="@+id/painful_function"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/defaultMargin"
+                android:background="@drawable/txt_states"
+                android:gravity="center"
+                android:text="@string/interesting_painful_function"
+                android:textSize="@dimen/interes_tv_size" />
+
+            <TextView
+                android:id="@+id/extroverts_and_introverts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/defaultMargin"
+                android:background="@drawable/txt_states"
+                android:gravity="center"
+                android:text="@string/interesting_extroverts_and_introverts"
+                android:textSize="@dimen/interes_tv_size" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

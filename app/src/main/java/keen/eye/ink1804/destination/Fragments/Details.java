@@ -38,7 +38,6 @@ public class Details extends Fragment {
         switch (tag){
             case "profileDetails":
                 String[] names = getResources().getStringArray(R.array.profDetails_names);
-                String[] details = getResources().getStringArray(R.array.profDetails_db);
                 for (int i = 0; i < names.length; i++) {
                     if (names[i].equals(key)) {
                         id = i;
@@ -46,12 +45,11 @@ public class Details extends Fragment {
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(details[id]));
+                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.profDetails_db)[id]));
                 else
                     tv_details.setText("Данные не были успешно загружены(");
                 break;
             case "interesting":
-                String[] interesting_db = getResources().getStringArray(R.array.interesting_db);
                 String[] interesting_names = getResources().getStringArray(R.array.interesting_names);
                 for (int i = 0; i < interesting_names.length; i++) {
                     if (interesting_names[i].equals(key)) {
@@ -60,13 +58,12 @@ public class Details extends Fragment {
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(interesting_db[id]));
+                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.interesting_db)[id]));
                 else
                     tv_details.setText("Данные не были успешно загружены(");
                 break;
             case "com_birth":
                 String[] com_names = getResources().getStringArray(R.array.com_marriage_names);
-                String[] com_db = getResources().getStringArray(R.array.com_marriage_db);
                 for (int i = 0; i < com_names.length; i++) {
                     if (com_names[i].equals(key)) {
                         id = i;
@@ -74,13 +71,12 @@ public class Details extends Fragment {
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(com_db[id]));
+                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.com_marriage_db)[id]));
                 else
                     tv_details.setText("Данные не были успешно загружены(");
                 break;
             case "socionics":
                 String[] socioNames = getResources().getStringArray(R.array.socionics_names);
-                String[] socioDB = getResources().getStringArray(R.array.socionics_db);
                 for (int i = 0; i < socioNames.length; i++) {
                     if (socioNames[i].equals(key)) {
                         id = i;
@@ -88,7 +84,7 @@ public class Details extends Fragment {
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(socioDB[id]));
+                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.socionics_db)[id]));
                 else
                     tv_details.setText("Данные не были успешно загружены(");
                 break;

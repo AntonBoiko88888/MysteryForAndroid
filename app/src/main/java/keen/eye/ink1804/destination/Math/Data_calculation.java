@@ -191,7 +191,7 @@ public class Data_calculation {
         public String getMeansCommunicateName(int year) {
                 String res = "";
                 if(year==1||year==4||year==7||year==10) res = Constants.MEANS_COMMUNICATE_NAMES[0];
-                else if(year==0||year==3||year==6||year==9) res = Constants.MEANS_COMMUNICATE_NAMES[1];
+                else if(year%3==0) res = Constants.MEANS_COMMUNICATE_NAMES[1];
                 else if(year==2||year==5||year==8||year==11) res = Constants.MEANS_COMMUNICATE_NAMES[2];
                 return res;
         }

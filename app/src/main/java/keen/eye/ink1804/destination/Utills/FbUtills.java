@@ -136,7 +136,7 @@ public class FbUtills {
                         tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
                     }
                     if (id==0) {
-                        tv_version.setText("Воникли неполадки с почтой, зарегистрируйтесь заново.");
+                        tv_version.setText("Возникли неполадки с почтой, зарегистрируйтесь заново.");
                     }
                     UsersModel user;
                     user = dataSnapshot.child("users").child(id + "").getValue(UsersModel.class);

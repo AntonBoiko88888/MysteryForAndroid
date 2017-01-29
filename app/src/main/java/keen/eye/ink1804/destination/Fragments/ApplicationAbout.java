@@ -29,12 +29,10 @@ public class ApplicationAbout extends Fragment{
     }
 
     private void initializeViews() {
-//        pushDateListener listener = (pushDateListener) getActivity();
         ((pushDateListener) getActivity()).toolbarSetTitle("О приложении");
 
         final TextView application_about_text = (TextView) rootView.findViewById(R.id.application_about_text);
-        final String[] application_about_db = getResources().getStringArray(R.array.appintr_description_db);
-        application_about_text.setText(setTvTextWithHtml(application_about_db[5]));
+        application_about_text.setText(setTvTextWithHtml(getResources().getStringArray(R.array.appintr_description_db)[5]));
     }
 
     private Spanned setTvTextWithHtml(String text){

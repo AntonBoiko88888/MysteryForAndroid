@@ -94,7 +94,7 @@
                     android:textSize="@dimen/birth_text" />
 
                 <TextView
-                    android:id="@+id/comp_birth_tv_romantic"
+                    android:id="@+id/comp_birth_tv_patriarch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/defaultMargin"
@@ -103,13 +103,14 @@
                     android:textSize="@dimen/birth_text_info" />
 
                 <TextView
-                    android:id="@+id/comp_birth_tv_patriarch"
+                    android:id="@+id/comp_birth_tv_romantic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/defaultMargin"
                     android:background="@drawable/txt_states"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/birth_text_info" />
+
 
                 <TextView
                     android:id="@+id/comp_birth_tv_soul"
