@@ -25,7 +25,6 @@ import keen.eye.ink1804.destination.R;
 public class Com_zodiacSign extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private TextView tv_result;
     private String male,female;
     private int[] zodiacDrawables = {R.drawable.com_zod_oven, R.drawable.com_zod_telec, R.drawable.com_zod_blizneci,
             R.drawable.com_zod_rak, R.drawable.com_zod_lev, R.drawable.com_zod_deva, R.drawable.com_zod_vesi, R.drawable.com_zod_skorpion,
@@ -56,14 +55,12 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         femaleSpinner.setAdapter(adapter);
         maleSpinner.setAdapter(adapter);
-        tv_result = (TextView)rootView.findViewById(R.id.comp_zod_tv_result);
-
         maleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 rootView.findViewById(R.id.comp_zod_image_male).setBackgroundResource(zodiacDrawables[i]);
                 male = Constants.ZODIAK_NAMES_normal[i];
-                tv_result.setText(" ");
+                ((TextView)rootView.findViewById(R.id.comp_zod_tv_result)).setText(" ");
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -74,7 +71,7 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 rootView.findViewById(R.id.comp_zod_image_female).setBackgroundResource(zodiacDrawables[i]);
                 female = Constants.ZODIAK_NAMES_normal[i];
-                tv_result.setText(" ");
+                ((TextView)rootView.findViewById(R.id.comp_zod_tv_result)).setText(" ");
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -94,9 +91,9 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
                     }
                 }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            tv_result.setText(Html.fromHtml(details[id], Html.FROM_HTML_MODE_LEGACY));
+            ((TextView)rootView.findViewById(R.id.comp_zod_tv_result)).setText(Html.fromHtml(details[id], Html.FROM_HTML_MODE_LEGACY));
         } else {
-            tv_result.setText(Html.fromHtml(details[id]));
+            ((TextView)rootView.findViewById(R.id.comp_zod_tv_result)).setText(Html.fromHtml(details[id]));
         }
     }
 }

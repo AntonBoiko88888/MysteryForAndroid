@@ -23,7 +23,6 @@ import keen.eye.ink1804.destination.R;
 public class Com_birthSign extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private TextView tv_romantic, tv_patriarch, tv_soul, tv_equal, tv_vector, tv_text;
     int j = 0;
 
     private int[] birthDrawables = {R.drawable.com_birth_monkey, R.drawable.com_birth_cock,R.drawable.com_birth_dog, R.drawable.com_birth_boar,
@@ -58,17 +57,17 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 rootView.findViewById(R.id.comp_birth_image).setBackgroundResource(birthDrawables[i]);
                 j = i;
-                tv_text.setText(" ");
-                tv_romantic.setText(" ");
-                tv_romantic.setEnabled(false);
-                tv_patriarch.setText(" ");
-                tv_patriarch.setEnabled(false);
-                tv_soul.setText(" ");
-                tv_soul.setEnabled(false);
-                tv_equal.setText(" ");
-                tv_equal.setEnabled(false);
-                tv_vector.setText(" ");
-                tv_vector.setEnabled(false);
+                ((TextView)rootView.findViewById(R.id.birth_text)).setText(" ");
+                ((TextView)rootView.findViewById(R.id.comp_birth_tv_romantic)).setText(" ");
+                (rootView.findViewById(R.id.comp_birth_tv_romantic)).setEnabled(false);
+                ((TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch)).setText(" ");
+                (rootView.findViewById(R.id.comp_birth_tv_patriarch)).setEnabled(false);
+                ((TextView)rootView.findViewById(R.id.comp_birth_tv_soul)).setText(" ");
+                (rootView.findViewById(R.id.comp_birth_tv_soul)).setEnabled(false);
+                ((TextView)rootView.findViewById(R.id.comp_birth_tv_equal)).setText(" ");
+                (rootView.findViewById(R.id.comp_birth_tv_equal)).setEnabled(false);
+                ((TextView)rootView.findViewById(R.id.comp_birth_tv_vector)).setText(" ");
+                (rootView.findViewById(R.id.comp_birth_tv_vector)).setEnabled(false);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -77,23 +76,17 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
         });
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         rootView.findViewById(R.id.comp_birth_btn_result).setOnClickListener(this);
-        tv_text = (TextView)rootView.findViewById(R.id.birth_text);
-        tv_text.setTypeface(tf);
-        tv_patriarch = (TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch);
-        tv_patriarch.setOnClickListener(this);
-        tv_patriarch.setTypeface(tf);
-        tv_romantic = (TextView)rootView.findViewById(R.id.comp_birth_tv_romantic);
-        tv_romantic.setOnClickListener(this);
-        tv_romantic.setTypeface(tf);
-        tv_soul = (TextView)rootView.findViewById(R.id.comp_birth_tv_soul);
-        tv_soul.setOnClickListener(this);
-        tv_soul.setTypeface(tf);
-        tv_equal = (TextView)rootView.findViewById(R.id.comp_birth_tv_equal);
-        tv_equal.setOnClickListener(this);
-        tv_equal.setTypeface(tf);
-        tv_vector = (TextView)rootView.findViewById(R.id.comp_birth_tv_vector);
-        tv_vector.setOnClickListener(this);
-        tv_vector.setTypeface(tf);
+        ((TextView)rootView.findViewById(R.id.birth_text)).setTypeface(tf);
+        (rootView.findViewById(R.id.comp_birth_tv_patriarch)).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch)).setTypeface(tf);
+        (rootView.findViewById(R.id.comp_birth_tv_romantic)).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.comp_birth_tv_romantic)).setTypeface(tf);
+        (rootView.findViewById(R.id.comp_birth_tv_soul)).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.comp_birth_tv_soul)).setTypeface(tf);
+        (rootView.findViewById(R.id.comp_birth_tv_equal)).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.comp_birth_tv_equal)).setTypeface(tf);
+        (rootView.findViewById(R.id.comp_birth_tv_vector)).setOnClickListener(this);
+        ((TextView)rootView.findViewById(R.id.comp_birth_tv_vector)).setTypeface(tf);
     }
 
     @Override
@@ -119,17 +112,17 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
                     break;
                 case R.id.comp_birth_btn_result:
                     Data_calculation struct_data = new Data_calculation();
-                    tv_text.setText("Пять типов брака:");
-                    tv_patriarch.setText("Патриархальный брак: "+struct_data.getPatriarchalMarriage(j));
-                    tv_romantic.setText("Романтический брак: "+struct_data.getRomanticMarriage(j));
-                    tv_soul.setText("Духовный брак: "+struct_data.getSpiritualMarriage(j));
-                    tv_equal.setText("Равный брак: "+struct_data.getEqualMarriage(j));
-                    tv_vector.setText("Векторный брак: "+struct_data.getVectorMarriage(j));
-                    tv_romantic.setEnabled(true);
-                    tv_patriarch.setEnabled(true);
-                    tv_soul.setEnabled(true);
-                    tv_equal.setEnabled(true);
-                    tv_vector.setEnabled(true);
+                    ((TextView)rootView.findViewById(R.id.birth_text)).setText("Пять типов брака:");
+                    ((TextView)rootView.findViewById(R.id.comp_birth_tv_patriarch)).setText("Патриархальный брак: "+struct_data.getPatriarchalMarriage(j));
+                    ((TextView)rootView.findViewById(R.id.comp_birth_tv_romantic)).setText("Романтический брак: "+struct_data.getRomanticMarriage(j));
+                    ((TextView)rootView.findViewById(R.id.comp_birth_tv_soul)).setText("Духовный брак: "+struct_data.getSpiritualMarriage(j));
+                    ((TextView)rootView.findViewById(R.id.comp_birth_tv_equal)).setText("Равный брак: "+struct_data.getEqualMarriage(j));
+                    ((TextView)rootView.findViewById(R.id.comp_birth_tv_vector)).setText("Векторный брак: "+struct_data.getVectorMarriage(j));
+                    (rootView.findViewById(R.id.comp_birth_tv_romantic)).setEnabled(true);
+                    (rootView.findViewById(R.id.comp_birth_tv_patriarch)).setEnabled(true);
+                    (rootView.findViewById(R.id.comp_birth_tv_soul)).setEnabled(true);
+                    (rootView.findViewById(R.id.comp_birth_tv_equal)).setEnabled(true);
+                    (rootView.findViewById(R.id.comp_birth_tv_vector)).setEnabled(true);
                     break;
                 default:
                     break;

@@ -25,7 +25,6 @@ import keen.eye.ink1804.destination.R;
 public class SphereDescription extends Fragment implements View.OnClickListener {
     private View rootView;
     private String[] array;
-    private TextView tv_details;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.spheres_fragment, container, false);
@@ -37,8 +36,6 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
     }
     private void createButtonMassive(String[] array){
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.sphere_grid);
-        tv_details = (TextView)rootView.findViewById(R.id.horOn_tvResult);
-
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -79,9 +76,9 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
             }
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            tv_details.setText(Html.fromHtml(details[id], Html.FROM_HTML_MODE_LEGACY));
+            ((TextView)rootView.findViewById(R.id.horOn_tvResult)).setText(Html.fromHtml(details[id], Html.FROM_HTML_MODE_LEGACY));
         } else {
-            tv_details.setText(Html.fromHtml(details[id]));
+            ((TextView)rootView.findViewById(R.id.horOn_tvResult)).setText(Html.fromHtml(details[id]));
         }
     }
     public int dpToPx(int dp, Context context) {

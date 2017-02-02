@@ -2,22 +2,17 @@ package keen.eye.ink1804.destination;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -25,22 +20,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.vending.billing.IInAppBillingService;
-
-import org.json.JSONObject;
-
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
@@ -50,17 +36,12 @@ import keen.eye.ink1804.destination.Fragments.DatePicker;
 import keen.eye.ink1804.destination.Fragments.Sphere_container;
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
 import keen.eye.ink1804.destination.Fragments.Interesting;
-import keen.eye.ink1804.destination.Fragments.LoginFragment;
 import keen.eye.ink1804.destination.Fragments.ProfileDescription;
 import keen.eye.ink1804.destination.Fragments.Details;
 import keen.eye.ink1804.destination.Fragments.FirstRegistration;
-import keen.eye.ink1804.destination.Fragments.ResetFragment;
-import keen.eye.ink1804.destination.Fragments.SignUpFragment;
-import keen.eye.ink1804.destination.Fragments.StatusAbout;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
-import keen.eye.ink1804.destination.Utills.FbUtills;
 import keen.eye.ink1804.destination.Utills.Notification_reciever;
 
 
@@ -69,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
-    public TextView nav_headerStatus;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
     public static int backStackID;
@@ -79,10 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента
     private static long back_pressed;
-
-
-    private IInAppBillingService mService;
-    private ServiceConnection connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +92,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         }
-        setBillingConnection();
-
     }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -185,12 +159,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void initViews() {
         toolbarSetTitle("Постижение тайны");
         ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(this);
-        nav_headerStatus = (TextView) ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).findViewById(R.id.nav_header_textStatus);
-        nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
-        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
-            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.pro_zra_beginning_status));
-        else
-            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.pro_zra_advanced_status));
         ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).setOnClickListener(this);
     }
     private void clearBackStack() {
@@ -221,7 +189,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void mainFragmentCreate() {
-        nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         Account fragment = new Account();
@@ -230,11 +197,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         transaction.replace(R.id.fragment_container, fragment, "mainFragment");
         transaction.commit();
-        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
-            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.pro_zra_beginning_status));
-        else
-            nav_headerStatus.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.pro_zra_advanced_status));
-
     }
     public boolean isOnline(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -354,18 +316,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
     }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1001) {
-            if (resultCode == RESULT_OK) {
-                nav_headerStatus.setText(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий"));
-                FbUtills firebaseUtills = new FbUtills();
-                firebaseUtills.setAccessToAdvanced();
-                Toast.makeText(this, "Вы стали Продвинутым пользователем!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-    @Override
     public void onNewProfile() {
         String tag = "datePicker_fragment";
         DatePicker fragment = new DatePicker();
@@ -469,149 +419,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
         AlertDialog alert = builder.create();
         alert.show();
-    }
-    @Override
-    public void onRegEnter() {
-        String tag = "reg";
-        LoginFragment fragment = new LoginFragment();//в дальнейшем
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
-        backStackID = 1;
-        toggle.setDrawerIndicatorEnabled(false);
-        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-        transaction.replace(R.id.fragment_container, fragment, "login_fragment");
-        transaction.commit();
-    }
-    @Override
-    public void onStatusAbout() {
-        String tag = "status";
-        StatusAbout fragment = new StatusAbout();//в дальнейшем
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
-        backStackID = 1;
-        transaction.replace(R.id.fragment_container, fragment, "status_about_fragment");
-        transaction.commit();
-    }
-    @Override
-    public void onLoginClick(String email, String password) {
-        String tag = "login_fragment";
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        LoginFragment fragment = new LoginFragment();
-        Bundle args = new Bundle();
-        args.putString("email", email);
-        args.putString("password", password);
-        fragment.setArguments(args);
-        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
-        backStackID = 2;
-        transaction.replace(R.id.fragment_container, fragment, "loginFragment");
-        transaction.commit();
-    }
-    @Override
-    public void onStartResetPassword() {
-        String tag = "reset_password_fragment";
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        ResetFragment fragment = new ResetFragment();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
-        backStackID = 2;
-        transaction.replace(R.id.fragment_container, fragment, "resetFragment");
-        transaction.commit();
-    }
-
-    @Override
-    public void setHeaderText(String status, int color) {
-        nav_headerStatus.setText(status);
-        nav_headerStatus.setTextColor(ContextCompat.getColor(this, color));
-    }
-
-    @Override
-    public void onStartRegistration() {
-        String tag = "start_reg_fragment";
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        SignUpFragment fragment = new SignUpFragment();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
-        backStackID = 2;
-        transaction.replace(R.id.fragment_container, fragment, "signUpFragment");
-        transaction.commit();
-    }
-    private void setBillingConnection() {
-        connection = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                mService = IInAppBillingService.Stub.asInterface(iBinder);
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName componentName) {
-                mService = null;
-            }
-        };
-        Intent purchaseIntent = new Intent("com.android.vending.billing.InAppBillingService.BIND");
-        purchaseIntent.setPackage("com.android.vending");
-        bindService(purchaseIntent, connection, Context.BIND_AUTO_CREATE);
-    }
-    @Override
-    public void onPurchaseClick() {
-        ArrayList skuList = new ArrayList();
-        String inAppId = "com.android.mystery.advanced.success";
-        skuList.add(inAppId);
-        Bundle querySkus = new Bundle();
-        querySkus.putStringArrayList("ITEM_ID_LIST", skuList);
-        Bundle skuDetails;
-        try {
-            skuDetails = mService.getSkuDetails(3, getPackageName(),
-                    "inapp", querySkus);
-
-            int response = skuDetails.getInt("RESPONSE_CODE");
-            if (response == 0) {
-
-                ArrayList<String> responseList = skuDetails
-                        .getStringArrayList("DETAILS_LIST");
-
-                for (String thisResponse : responseList) {
-                    JSONObject object = new JSONObject(thisResponse);
-                    String sku = object.getString("productId");
-                    String price = object.getString("price");
-                    if (sku.equals(inAppId)) {
-                        System.out.println("price " + price);
-                        Bundle buyIntentBundle = mService
-                                .getBuyIntent(3, getPackageName(), sku,
-                                        "inapp",
-                                        "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
-                        PendingIntent pendingIntent = buyIntentBundle
-                                .getParcelable("BUY_INTENT");
-//                        if (pendingIntent != null) {
-                        startIntentSenderForResult(pendingIntent.getIntentSender()
-                                , 1001, new Intent()
-                                , Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0));
-//                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Вы уже приобрели доступ", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-        @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (connection != null) {
-            unbindService(connection);
-        }
     }
 }

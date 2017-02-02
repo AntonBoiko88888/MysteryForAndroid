@@ -24,7 +24,6 @@ import keen.eye.ink1804.destination.R;
 public class DatePicker extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private TextView tv_date;
     private DatePickerPopWin pickerPopWin;
     private RadioButton rb_male;
 
@@ -42,23 +41,19 @@ public class DatePicker extends Fragment implements View.OnClickListener {
     private void initializeTView() {
         pushDateListener listener = (pushDateListener) getActivity();
         listener.toolbarSetTitle("Новый профиль");
-        tv_date = (TextView) rootView.findViewById(R.id.picker_tv_date);
-//        Button btn_next = (Button) rootView.findViewById(R.id.picker_btn_next);
         rootView.findViewById(R.id.picker_btn_next).setOnClickListener(this);
-//        Button btn_showDatePicker = (Button) rootView.findViewById(R.id.picker_btn_pick_date);
         rootView.findViewById(R.id.picker_btn_pick_date).setOnClickListener(this);
         rb_male = (RadioButton) rootView.findViewById(R.id.picker_rb_male);
 
     }
 
     private void createDatePicker() {
-//        Calendar calendar = Calendar.getInstance();
         currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
         pickerPopWin = new DatePickerPopWin.Builder(getActivity(), new DatePickerPopWin.OnDatePickedListener() {
             @Override
             public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
-                tv_date.setText("Выбранная дата: " + dd + "." + mm + "." + yyyy);
+                ((TextView) rootView.findViewById(R.id.picker_tv_date)).setText("Выбранная дата: " + dd + "." + mm + "." + yyyy);
                 Toast.makeText(getActivity(), dd + "." + mm + "." + yyyy, Toast.LENGTH_SHORT).show();
                 day = dd;
                 month = mm;
@@ -77,7 +72,6 @@ public class DatePicker extends Fragment implements View.OnClickListener {
     public void onClick(View view) {//кнопка "Далее"
         switch (view.getId()) {
             case R.id.picker_btn_next:
-//                pushDateListener listener = (pushDateListener) getActivity();
                 boolean sex = rb_male.isChecked();
                 rb_male.setChecked(sex);
                 ((pushDateListener) getActivity()).onDatePushed(day, month, year, currentYear, sex, 2, false);
@@ -92,7 +86,7 @@ public class DatePicker extends Fragment implements View.OnClickListener {
 
     @Override
     public void onResume() {
-        tv_date.setText("Выбранная дата: " + day + "." + month + "." + year);
+        ((TextView) rootView.findViewById(R.id.picker_tv_date)).setText("Выбранная дата: " + day + "." + month + "." + year);
         super.onResume();
     }
 }

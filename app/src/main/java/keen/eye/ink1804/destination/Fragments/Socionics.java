@@ -27,8 +27,6 @@ import keen.eye.ink1804.destination.Utills.FbUtills;
 public class Socionics extends Fragment implements View.OnClickListener{
 
     private View rootView;
-    private TextView tv_info;
-    private Button saveProfile;
     private String socioType;
 
     String[] tmp = {"-1","-1","-1","-1"};
@@ -44,13 +42,10 @@ public class Socionics extends Fragment implements View.OnClickListener{
     private void initViews(){
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.relD_grid);
         createGridButtons(grid);
-        tv_info = (TextView)rootView.findViewById(R.id.relD_tv_info);
-        Button btnShowInfo = (Button)rootView.findViewById(R.id.relD_btn_showInfo);
-        btnShowInfo.setOnClickListener(this);
-        saveProfile = (Button)rootView.findViewById(R.id.relD_btn_save_prof);
-        saveProfile.setVisibility(View.INVISIBLE);
-        saveProfile.setOnClickListener(this);
-        saveProfile.setEnabled(false);
+        (rootView.findViewById(R.id.relD_btn_showInfo)).setOnClickListener(this);
+        (rootView.findViewById(R.id.relD_btn_save_prof)).setVisibility(View.INVISIBLE);
+        (rootView.findViewById(R.id.relD_btn_save_prof)).setOnClickListener(this);
+        (rootView.findViewById(R.id.relD_btn_save_prof)).setEnabled(false);
     }
 
 
@@ -94,7 +89,7 @@ public class Socionics extends Fragment implements View.OnClickListener{
             }
         }
         if(id!=-1)
-        tv_info.setText(Html.fromHtml(details[id]));
+            ((TextView)rootView.findViewById(R.id.relD_tv_info)).setText(Html.fromHtml(details[id]));
     }
     @Override
     public void onClick(View view) {
@@ -105,8 +100,8 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 else {
                     socioType = getSocialType(tmp[0], tmp[1], tmp[2], tmp[3]);
                     setTvInfoText(socioType);
-                    saveProfile.setVisibility(View.VISIBLE);
-                    saveProfile.setEnabled(true);
+                    (rootView.findViewById(R.id.relD_btn_save_prof)).setVisibility(View.VISIBLE);
+                    (rootView.findViewById(R.id.relD_btn_save_prof)).setEnabled(true);
                 }
                 break;
             case R.id.relD_btn_save_prof:
@@ -123,7 +118,7 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 setTvInfoText(pressedButton.getText().toString());
                 pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin_circ);
                 tmp[btnID % 2000 / 2] = pressedButton.getTag().toString();
-                saveProfile.setVisibility(View.GONE);
+                (rootView.findViewById(R.id.relD_btn_save_prof)).setVisibility(View.GONE);
                 if (btnID % 2 == 1)
                     rootView.findViewById(btnID - 1).setBackgroundResource(R.drawable.btn_border_thin_circ);
                 else

@@ -34,8 +34,9 @@
             android:id="@+id/nav_header_textStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="☜ Mystery ☞"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/pro_zra_beginning_status"
+            android:textColor="@color/pro_zra_advanced_status"
             android:textSize="@dimen/header_status_size" />
     </LinearLayout>
 </LinearLayout>

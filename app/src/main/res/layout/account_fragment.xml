@@ -8,15 +8,12 @@
 
     <ImageView
         android:id="@+id/acc_image_icon"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/acc_image_icon"
-        android:src="@drawable/acc_icon_border"
-        />
+        android:src="@drawable/acc_icon_border" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:layout_marginTop="@dimen/defaultMargin"
         android:clipToPadding="false"
         android:outlineProvider="bounds">
@@ -25,6 +22,7 @@
             android:id="@+id/acc_lin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -65,50 +63,13 @@
                 android:textColor="@color/blue"
                 android:textSize="@dimen/tv_info" />
 
-
-
-                <TextView
-                    android:id="@+id/acc_tv_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/defaultMargin_half"
-                    android:textColor="@color/pro_zra_beginning_status"
-                    android:textSize="@dimen/tv_info" />
-
-
-            <TextView
-                android:id="@+id/acc_tv_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/defaultMargin_half"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/btn_select_img_text_size" />
-
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_users_upgrade"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/btn_size_small"
-                android:layout_marginTop="@dimen/defaultMargin"
-                android:textSize="@dimen/com_text_size2"
-                android:padding="@dimen/defaultMargin"
-                android:background="@drawable/btn_states_thin_rect"
-                android:text="@string/account_fragment_btn_users_upgrade_text" />
-                <Button
-                    android:id="@+id/acc_btn_question"
-                    android:layout_marginTop="@dimen/defaultMargin"
-                    android:layout_width="@dimen/btn_size_small"
-                    android:layout_height="@dimen/btn_size_small"
-                    android:layout_marginLeft="@dimen/defaultMargin"
-                    android:background="@drawable/question_states" />
-            </LinearLayout>
+        <TextView
+            android:id="@+id/acc_tv_admin_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/defaultMargin_half"
+            android:textColor="@color/pro_zra_beginning_status"
+            android:textSize="@dimen/tv_info" />
 
             <TextView
                 android:id="@+id/tv_version"

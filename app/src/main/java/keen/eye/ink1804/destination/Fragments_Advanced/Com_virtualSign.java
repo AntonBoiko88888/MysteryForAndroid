@@ -22,7 +22,6 @@ import keen.eye.ink1804.destination.R;
  */
 public class Com_virtualSign extends Fragment implements View.OnClickListener {
     private View rootView;
-    private TextView tv_result,tv_male, tv_female;
     private String male,female;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,19 +42,16 @@ public class Com_virtualSign extends Fragment implements View.OnClickListener {
         femaleSpinner.setAdapter(adapter);
         maleSpinner.setAdapter(adapter);
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
-        tv_result = (TextView)rootView.findViewById(R.id.comp_vir_tv_result);
-        tv_result.setTypeface(tf);
-        tv_male = (TextView)rootView.findViewById(R.id.comp_vir_tv_male);
-        tv_male.setTypeface(tf);
-        tv_female = (TextView)rootView.findViewById(R.id.comp_vir_tv_female);
-        tv_female.setTypeface(tf);
+        ((TextView)rootView.findViewById(R.id.comp_vir_tv_result)).setTypeface(tf);
+        ((TextView)rootView.findViewById(R.id.comp_vir_tv_male)).setTypeface(tf);
+        ((TextView)rootView.findViewById(R.id.comp_vir_tv_female)).setTypeface(tf);
 
         maleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 male = Constants.VIRTUAL_NAMES[i];
-                tv_male.setText(male);
-                tv_result.setText(" ");
+                ((TextView)rootView.findViewById(R.id.comp_vir_tv_male)).setText(male);
+                ((TextView)rootView.findViewById(R.id.comp_vir_tv_result)).setText(" ");
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -65,8 +61,8 @@ public class Com_virtualSign extends Fragment implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 female = Constants.VIRTUAL_NAMES[i];
-                tv_female.setText(female);
-                tv_result.setText(" ");
+                ((TextView)rootView.findViewById(R.id.comp_vir_tv_female)).setText(female);
+                ((TextView)rootView.findViewById(R.id.comp_vir_tv_result)).setText(" ");
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -76,6 +72,6 @@ public class Com_virtualSign extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Data_calculation struct_data = new Data_calculation();
-        tv_result.setText("Оценка взаимоотношений = " + struct_data.getVirtualPointsName(male,female));
+        ((TextView)rootView.findViewById(R.id.comp_vir_tv_result)).setText("Оценка взаимоотношений = " + struct_data.getVirtualPointsName(male,female));
     }
 }

@@ -42,7 +42,6 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
 
 
     private void initializeTView() {
-//        pushDateListener listener = (pushDateListener)getActivity();
         ((pushDateListener)getActivity()).toolbarSetTitle("Создание профиля");
         tv_date = (TextView)rootView.findViewById(R.id.reg_tv_date);
         et_name = (EditText)rootView.findViewById(R.id.reg_et_name);
@@ -86,7 +85,6 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
                 editor.putInt(Constants.APP_PREF_MONTH, month);
                 editor.putInt(Constants.APP_PREF_YEAR, year);
                 editor.putBoolean(Constants.APP_PREF_SEX, sex);
-                editor.putString(Constants.APP_PREF_STATUS, "Начинающий");
                 editor.apply();
             } else
                 Toast.makeText(getActivity(), "Недопустимое имя", Toast.LENGTH_SHORT).show();

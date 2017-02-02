@@ -12,14 +12,6 @@ public interface pushDateListener {
     void onDescriptionClicked(String key, String layoutTag);
     void toolbarSetTitle(String title);
     void onNewProfile();
-    void onStatusAbout();
     void mainFragmentCreate();
     void setNotification(Context context);
-    void onLoginClick(String email, String password);
-    void onStartResetPassword();
-    void onStartRegistration();
-    void onRegEnter();
-    void setHeaderText(String status, int color);
-
-    void onPurchaseClick();
 }

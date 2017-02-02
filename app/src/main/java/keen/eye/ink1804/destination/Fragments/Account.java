@@ -48,7 +48,6 @@ public class Account extends Fragment implements View.OnClickListener {
     private boolean sex;
     private String name;
     private int day, month, year;
-    public static String status;
     private AnimationDrawable mAnimationDrawable;
     ImageView imageView;
 
@@ -65,11 +64,8 @@ public class Account extends Fragment implements View.OnClickListener {
         getPreferences();
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
-        rootView.findViewById(R.id.acc_btn_question).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_new_profile).setOnClickListener(this);
-        rootView.findViewById(R.id.acc_tv_email).setVisibility(View.GONE);
-        rootView.findViewById(R.id.btn_users_upgrade).setOnClickListener(this);
         imageView = (ImageView) rootView.findViewById(R.id.acc_image_icon);
         imageView.setOnClickListener(this);
         imageView.setBackgroundResource(R.drawable.acc_animation);
@@ -77,31 +73,15 @@ public class Account extends Fragment implements View.OnClickListener {
         mAnimationDrawable = (AnimationDrawable) imageView.getBackground();
         mAnimationDrawable.start();
 
-        if(!MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,"").equals("")){
-            rootView.findViewById(R.id.acc_tv_email).setVisibility(View.VISIBLE);
-            ((TextView) rootView.findViewById(R.id.acc_tv_email)).setText(MainActivity.mSettings.getString(Constants.APP_PREF_EMAIL,""));
-            ((Button)rootView.findViewById(R.id.btn_users_upgrade)).setText("Сменить");
-        }
-        status = MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий");
         ((TextView) rootView.findViewById(R.id.acc_tv_name)).setText(setTextSettings("Имя:", " " + name));
         ((TextView) rootView.findViewById(R.id.acc_tv_date)).setText(setTextSettings("Дата рождения:", " "+ day + "." + month + "." + year + ""));
         if (sex)
             ((TextView) rootView.findViewById(R.id.acc_tv_sex)).setText(setTextSettings("Пол:", " муж."));
         else
             ((TextView) rootView.findViewById(R.id.acc_tv_sex)).setText(setTextSettings("Пол:", " жен."));
-        ((TextView) rootView.findViewById(R.id.acc_tv_status)).setText(setTextSettings("Статус:"," "+ status));
-        if(MainActivity.mSettings.getString(Constants.APP_PREF_STATUS, "Начинающий").equals("Начинающий"))
-            ((TextView) rootView.findViewById(R.id.acc_tv_status)).setTextColor(ContextCompat.getColor(getContext(), R.color.pro_zra_beginning_status));
-        else
-            ((TextView) rootView.findViewById(R.id.acc_tv_status)).setTextColor(ContextCompat.getColor(getContext(),R.color.pro_zra_advanced_status));
-        if (status.equals("Начинающий")) {
-            rootView.findViewById(R.id.acc_btn_pushSettings).setBackgroundResource(R.drawable.acc_push_pressed);
-        }
         if(!MainActivity.isFirstLaunch) {
-            new FbUtills().getDataFromDB(getActivity(),
-                    (TextView) rootView.findViewById(R.id.acc_tv_status),
-                    (TextView) rootView.findViewById(R.id.tv_version),
-                    (Button) rootView.findViewById(R.id.acc_btn_pushSettings), getResources().getString(R.string.app_version));
+            new FbUtills().getDataFromDB(
+                    (TextView) rootView.findViewById(R.id.tv_version), getResources().getString(R.string.app_version));
         }
     }
 
@@ -121,17 +101,7 @@ public class Account extends Fragment implements View.OnClickListener {
                 listener.onNewProfile();
                 break;
             case R.id.acc_btn_pushSettings:
-                if (status.equals("Начинающий")) {
-                    Toast.makeText(getActivity(), "Начинающим пользователям уведомления гороскопа недоступны!", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    listener.setNotification(getActivity());
-                break;
-            case R.id.btn_users_upgrade:
-                listener.onRegEnter();
-                break;
-            case R.id.acc_btn_question:
-                listener.onStatusAbout();
+                listener.setNotification(getActivity());
                 break;
             default:
                 break;
