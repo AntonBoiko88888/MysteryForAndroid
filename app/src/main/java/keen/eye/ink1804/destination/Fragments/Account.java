@@ -125,7 +125,6 @@ public class Account extends Fragment implements View.OnClickListener {
                                     SharedPreferences.Editor editor = MainActivity.mSettings.edit();
                                     editor.putString(Constants.APP_PREF_NAME, name);
                                     editor.apply();
-                                    new FbUtills().setName(name);
                                     dialog.cancel();
                                 } else {
                                     Toast.makeText(getActivity(), "Недопустимое имя", Toast.LENGTH_SHORT).show();

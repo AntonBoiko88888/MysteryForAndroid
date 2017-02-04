@@ -109,8 +109,6 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 editor.putString(Constants.APP_PREF_SOCIONICS, socioType);
                 Toast.makeText(getActivity(), socioType+" - сохранено в профиль", Toast.LENGTH_SHORT).show();
                 editor.apply();
-                FbUtills firebaseUtills = new FbUtills();
-                firebaseUtills.setSocionics(socioType);
                 break;
             default:
                 int btnID = view.getId();
