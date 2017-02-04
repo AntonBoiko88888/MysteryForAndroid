@@ -36,6 +36,17 @@
             android:textSize="@dimen/intro_tv_size" />
 
     </ScrollView>
+    <Button
+        android:id="@+id/app_estimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/defaultMargin"
+        android:padding="@dimen/defaultMargin_double"
+        android:textSize="@dimen/com_text_size2"
+        android:textColor="@color/blue"
+        android:background="@drawable/btn_states_thin_rect"
+        android:text="@string/application_estimate_text" />
 </LinearLayout>
 
 </LinearLayout>

@@ -33,6 +33,7 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Fragments.Account;
 import keen.eye.ink1804.destination.Fragments.ApplicationAbout;
 import keen.eye.ink1804.destination.Fragments.DatePicker;
+import keen.eye.ink1804.destination.Fragments.Settings;
 import keen.eye.ink1804.destination.Fragments.Sphere_container;
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
 import keen.eye.ink1804.destination.Fragments.Interesting;
@@ -142,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (fragmentManager.findFragmentByTag(tag) == null) {
                     transaction.addToBackStack(tag);
                 }
+                break;
+            case R.id.tab_settings:
+                fragment = new Settings();
                 break;
             case R.id.tab_about:
                 fragment = new ApplicationAbout();

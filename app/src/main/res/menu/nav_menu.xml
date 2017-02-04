@@ -2,10 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <!--<item-->
-            <!--android:id="@+id/tab_account"-->
-            <!--android:icon="@drawable/account"-->
-            <!--android:title="Аккаунт"/>-->
         <item
             android:id="@+id/tab_hor_online"
             android:icon="@drawable/nav_star"
@@ -39,10 +35,10 @@
                         android:id="@+id/tab_interesting"
                         android:icon="@drawable/nav_interesting"
                         android:title="Интересное"/>
-                    <!--<item-->
-                        <!--android:id="@+id/tab_settings"-->
-                        <!--android:icon="@drawable/nav_settings"-->
-                        <!--android:title="Настройки"/>-->
+                    <item
+                        android:id="@+id/tab_settings"
+                        android:icon="@drawable/nav_settings"
+                        android:title="Настройки"/>
                     <item
                         android:id="@+id/tab_about"
                         android:icon="@drawable/nav_about"

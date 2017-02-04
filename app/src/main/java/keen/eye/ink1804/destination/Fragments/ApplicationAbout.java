@@ -8,6 +8,7 @@ import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
@@ -17,7 +18,7 @@ import keen.eye.ink1804.destination.R;
  * Created by anton on 05.12.16.
  */
 
-public class ApplicationAbout extends Fragment{
+public class ApplicationAbout extends Fragment implements View.OnClickListener{
 
     private View rootView;
 
@@ -31,6 +32,8 @@ public class ApplicationAbout extends Fragment{
     private void initializeViews() {
         ((pushDateListener) getActivity()).toolbarSetTitle("О приложении");
         ((TextView) rootView.findViewById(R.id.application_about_text)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.appintr_description_db)[5]));
+        (rootView.findViewById(R.id.app_estimate)).setOnClickListener(this);
+
     }
 
     private Spanned setTvTextWithHtml(String text){
@@ -39,6 +42,11 @@ public class ApplicationAbout extends Fragment{
         } else {
             return Html.fromHtml(text);
         }
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }
