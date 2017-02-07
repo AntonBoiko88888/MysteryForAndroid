@@ -23,6 +23,9 @@ public class Details extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.details_fragment,container,false);
+        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+            ((pushDateListener) getActivity()).offlineMessageBox();
+        }
         fillData();
         return rootView;
     }

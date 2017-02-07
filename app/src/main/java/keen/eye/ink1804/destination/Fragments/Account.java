@@ -50,8 +50,6 @@ public class Account extends Fragment implements View.OnClickListener {
     private int day, month, year;
     private AnimationDrawable mAnimationDrawable;
     ImageView imageView;
-    MainActivity main = new MainActivity();
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,8 +61,8 @@ public class Account extends Fragment implements View.OnClickListener {
     private void initializeViews() {
         ((pushDateListener) getActivity()).toolbarSetTitle("Профиль");
         getPreferences();
-        if (!main.isOnline(getActivity())) {
-            offlineMessageBox();
+        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+            ((pushDateListener) getActivity()).offlineMessageBox();
         }
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
@@ -170,31 +168,5 @@ public class Account extends Fragment implements View.OnClickListener {
     public void onDestroyView() {
         super.onDestroyView();
         mAnimationDrawable.stop();
-    }
-
-    private void offlineMessageBox() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Ошибка сети")
-                .setMessage("Проверьте подключение интернет и повторите попытку снова")
-                .setCancelable(false)
-                .setNegativeButton("Закрыть",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                                getActivity().finish();
-                            }
-                        })
-                .setPositiveButton("Далее", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        if (!main.isOnline(getActivity())) {
-                            Toast.makeText(getActivity(), "Нет подключения к сети", Toast.LENGTH_SHORT).show();
-                            offlineMessageBox();
-                        }
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 }

@@ -34,6 +34,9 @@ public class Settings extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.settings_fragment,container,false);
+        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+            ((pushDateListener) getActivity()).offlineMessageBox();
+        }
         createDatePicker();
         initializeTView();
         return rootView;
@@ -55,15 +58,15 @@ public class Settings extends Fragment implements View.OnClickListener{
                 pickerPopWin.showPopWin(getActivity());
                 break;
             case R.id.no_advertising:
+                //TODO to app no advertising
                 break;
             case R.id.btn_share:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                //TODO change text to share the application
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "there is our MYSTERY, take it and use fully\n" +
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Бесплатный ежедневный гороскоп от ㋛ Mystery ㋛\n\n" +
                         "https://play.google.com/store/apps/details?id=keen.eye.ink1804.destination");
                 sendIntent.setType("text/plain");
-                startActivity(sendIntent);
+                startActivity(Intent.createChooser(sendIntent, "Send Mystery"));
                 break;
             default:break;
         }

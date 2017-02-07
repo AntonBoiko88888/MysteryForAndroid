@@ -22,6 +22,9 @@ public class Interesting extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.interesting_fragment,container,false);
+        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+            ((pushDateListener) getActivity()).offlineMessageBox();
+        }
         initializeTView();
         return rootView;
     }

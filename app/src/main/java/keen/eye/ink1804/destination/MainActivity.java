@@ -201,6 +201,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         transaction.replace(R.id.fragment_container, fragment, "mainFragment");
         transaction.commit();
     }
+
+    @Override
     public boolean isOnline(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -417,6 +419,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setNegativeButton("Отменить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    @Override
+    public void offlineMessageBox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+        builder.setTitle("Ошибка сети")
+                .setMessage("Проверьте подключение к интернету и повторите попытку снова")
+                .setCancelable(false)
+                .setIcon(R.drawable.icon_eye_512)
+                .setNegativeButton("Закрыть приложение",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                finish();
+                            }
+                        })
+                .setPositiveButton("Повторить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        if (!MainActivity.this.isOnline(MainActivity.this)) {
+                            Toast.makeText(MainActivity.this, "Нет подключения к сети", Toast.LENGTH_SHORT).show();
+                            offlineMessageBox();
+                        }
                         dialog.cancel();
                     }
                 });

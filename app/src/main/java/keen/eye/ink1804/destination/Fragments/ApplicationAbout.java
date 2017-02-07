@@ -27,6 +27,9 @@ public class ApplicationAbout extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.application_about_fragment, container, false);
+        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+            ((pushDateListener) getActivity()).offlineMessageBox();
+        }
         initializeViews();
         return rootView;
     }

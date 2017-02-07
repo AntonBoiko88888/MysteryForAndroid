@@ -14,4 +14,6 @@ public interface pushDateListener {
     void onNewProfile();
     void mainFragmentCreate();
     void setNotification(Context context);
+    void offlineMessageBox();
+    boolean isOnline(Context context);
 }

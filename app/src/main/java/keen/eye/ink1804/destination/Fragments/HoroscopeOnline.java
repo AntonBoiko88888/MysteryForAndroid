@@ -36,14 +36,13 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     private ImageView[] images;
     private TextView tv_result, tv_sign_name;
     private HtmlParser parser = new HtmlParser();
-    private MainActivity mainActivity = new MainActivity();
     public static List<String> descriptions = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.hor_online_fragment, container, false);
         initViews();
-        if (mainActivity.isOnline(getActivity()))
+        if (((pushDateListener)getActivity()).isOnline(getActivity()))
             onMySignClick();
         else {
             progressBar.setVisibility(View.INVISIBLE);
@@ -127,7 +126,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
                 break;
         }
         try {
-            if (mainActivity.isOnline(getActivity()))
+            if (((pushDateListener)getActivity()).isOnline(getActivity()))
                 if (descriptions.size() == 0) {
                     tv_sign_name.setVisibility(View.VISIBLE);
                     tv_result.setText("");
