@@ -50,6 +50,7 @@ public class Account extends Fragment implements View.OnClickListener {
     private int day, month, year;
     private AnimationDrawable mAnimationDrawable;
     ImageView imageView;
+    MainActivity main = new MainActivity();
 
 
     @Override
@@ -62,6 +63,9 @@ public class Account extends Fragment implements View.OnClickListener {
     private void initializeViews() {
         ((pushDateListener) getActivity()).toolbarSetTitle("Профиль");
         getPreferences();
+        if (!main.isOnline(getActivity())) {
+            offlineMessageBox();
+        }
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);
@@ -156,9 +160,9 @@ public class Account extends Fragment implements View.OnClickListener {
         text = String.format("<u><i>%s</i></u>", text);
         value = String.format("<b>%s</b>", value);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return Html.fromHtml(text+" "+value, Html.FROM_HTML_MODE_LEGACY);
+            return Html.fromHtml(text + " " + value, Html.FROM_HTML_MODE_LEGACY);
         } else {
-            return Html.fromHtml(text+" "+value);
+            return Html.fromHtml(text + " " + value);
         }
     }
 
@@ -166,5 +170,31 @@ public class Account extends Fragment implements View.OnClickListener {
     public void onDestroyView() {
         super.onDestroyView();
         mAnimationDrawable.stop();
+    }
+
+    private void offlineMessageBox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Ошибка сети")
+                .setMessage("Проверьте подключение интернет и повторите попытку снова")
+                .setCancelable(false)
+                .setNegativeButton("Закрыть",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                getActivity().finish();
+                            }
+                        })
+                .setPositiveButton("Далее", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        if (!main.isOnline(getActivity())) {
+                            Toast.makeText(getActivity(), "Нет подключения к сети", Toast.LENGTH_SHORT).show();
+                            offlineMessageBox();
+                        }
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

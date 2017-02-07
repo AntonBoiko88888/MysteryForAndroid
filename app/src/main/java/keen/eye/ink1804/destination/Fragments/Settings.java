@@ -1,6 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -56,6 +57,13 @@ public class Settings extends Fragment implements View.OnClickListener{
             case R.id.no_advertising:
                 break;
             case R.id.btn_share:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                //TODO change text to share the application
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "there is our MYSTERY, take it and use fully\n" +
+                        "https://play.google.com/store/apps/details?id=keen.eye.ink1804.destination");
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
                 break;
             default:break;
         }
@@ -91,4 +99,5 @@ public class Settings extends Fragment implements View.OnClickListener{
         pickerPopWin.cancelBtn.setText("Отмена");
         pickerPopWin.confirmBtn.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
     }
+
 }

@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -47,6 +49,11 @@ public class ApplicationAbout extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-
+        final String appPackageName = getActivity().getPackageName();
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
     }
 }
