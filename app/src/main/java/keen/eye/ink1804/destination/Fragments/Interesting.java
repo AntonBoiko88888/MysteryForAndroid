@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 20.08.16.
@@ -50,6 +51,8 @@ public class Interesting extends Fragment implements View.OnClickListener{
         rootView.findViewById(R.id.painful_function).setOnClickListener(this);
         ((TextView)rootView.findViewById(R.id.extroverts_and_introverts)).setTypeface(tf);
         rootView.findViewById(R.id.extroverts_and_introverts).setOnClickListener(this);
+
+        new FbUtills().setStatistics(2);
     }
 
     @Override

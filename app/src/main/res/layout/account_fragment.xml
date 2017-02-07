@@ -19,12 +19,13 @@
         android:outlineProvider="bounds">
 
     <LinearLayout
-            android:id="@+id/acc_lin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="vertical">
+        android:id="@+id/acc_lin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:paddingBottom="@dimen/btn_push_n_prof"
+        android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -67,8 +68,11 @@
             android:id="@+id/acc_tv_admin_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
             android:layout_marginTop="@dimen/defaultMargin_half"
-            android:textColor="@color/pro_zra_beginning_status"
+            android:textColor="@color/pro_zra_advanced_status"
             android:textSize="@dimen/tv_info" />
 
             <TextView

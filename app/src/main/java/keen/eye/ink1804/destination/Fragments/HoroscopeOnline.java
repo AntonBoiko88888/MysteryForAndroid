@@ -22,6 +22,7 @@ import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 import keen.eye.ink1804.destination.Utills.HtmlParser;
 import keen.eye.ink1804.destination.R;
 
@@ -58,6 +59,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
         int[] img_ids = new int[]{R.id.aries, R.id.taurus, R.id.twins, R.id.cancer, R.id.lion, R.id.virgo
                 , R.id.libra, R.id.scorpio, R.id.sagittarius, R.id.capricorn, R.id.aquarius, R.id.fish};
         images = new ImageView[12];
+        new FbUtills().setStatistics(1);
         for (int i = 0; i < 12; i++) {
             Display display = getActivity().getWindowManager().getDefaultDisplay();
             Point size = new Point();

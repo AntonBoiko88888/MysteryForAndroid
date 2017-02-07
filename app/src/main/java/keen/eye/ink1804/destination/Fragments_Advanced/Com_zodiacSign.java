@@ -18,6 +18,7 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 28.08.16.
@@ -95,5 +96,6 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
         } else {
             ((TextView)rootView.findViewById(R.id.comp_zod_tv_result)).setText(Html.fromHtml(details[id]));
         }
+        new FbUtills().setStatistics(4);
     }
 }

@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean isSelectedNotific = false;
     public static int backStackID;
     public static SharedPreferences mSettings;
-    public static boolean isFirstLaunch = false;
     //    0 - мы на главном фрагменте
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента

@@ -16,6 +16,7 @@ import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 28.08.16.
@@ -73,5 +74,6 @@ public class Com_virtualSign extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Data_calculation struct_data = new Data_calculation();
         ((TextView)rootView.findViewById(R.id.comp_vir_tv_result)).setText("Оценка взаимоотношений = " + struct_data.getVirtualPointsName(male,female));
+        new FbUtills().setStatistics(4);
     }
 }

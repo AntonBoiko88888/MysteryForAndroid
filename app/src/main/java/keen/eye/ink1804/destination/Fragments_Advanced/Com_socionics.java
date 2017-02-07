@@ -17,6 +17,7 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 09.09.16.
@@ -89,5 +90,6 @@ public class Com_socionics extends Fragment implements View.OnClickListener {
         } else {
             ((TextView)rootView.findViewById(R.id.comp_rel_tv_result)).setText(Html.fromHtml(details[id]));
         }
+        new FbUtills().setStatistics(4);
     }
 }

@@ -16,6 +16,7 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 28.08.16.
@@ -123,6 +124,8 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
                     (rootView.findViewById(R.id.comp_birth_tv_soul)).setEnabled(true);
                     (rootView.findViewById(R.id.comp_birth_tv_equal)).setEnabled(true);
                     (rootView.findViewById(R.id.comp_birth_tv_vector)).setEnabled(true);
+
+                    new FbUtills().setStatistics(4);
                     break;
                 default:
                     break;

@@ -16,6 +16,7 @@ import java.util.Calendar;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 
 /**
@@ -75,6 +76,7 @@ public class DatePicker extends Fragment implements View.OnClickListener {
                 boolean sex = rb_male.isChecked();
                 rb_male.setChecked(sex);
                 ((pushDateListener) getActivity()).onDatePushed(day, month, year, currentYear, sex, 2, false);
+                new FbUtills().setStatistics(3);
                 break;
             case R.id.picker_btn_pick_date:
                 pickerPopWin.showPopWin(getActivity());

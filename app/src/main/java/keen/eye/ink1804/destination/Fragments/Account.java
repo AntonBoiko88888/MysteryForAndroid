@@ -74,15 +74,14 @@ public class Account extends Fragment implements View.OnClickListener {
         mAnimationDrawable.start();
 
         ((TextView) rootView.findViewById(R.id.acc_tv_name)).setText(setTextSettings("Имя:", " " + name));
-        ((TextView) rootView.findViewById(R.id.acc_tv_date)).setText(setTextSettings("Дата рождения:", " "+ day + "." + month + "." + year + ""));
+        ((TextView) rootView.findViewById(R.id.acc_tv_date)).setText(setTextSettings("Дата рождения:", " " + day + "." + month + "." + year + ""));
         if (sex)
             ((TextView) rootView.findViewById(R.id.acc_tv_sex)).setText(setTextSettings("Пол:", " муж."));
         else
             ((TextView) rootView.findViewById(R.id.acc_tv_sex)).setText(setTextSettings("Пол:", " жен."));
-        if(!MainActivity.isFirstLaunch) {
-            new FbUtills().getDataFromDB(
-                    (TextView) rootView.findViewById(R.id.tv_version), getResources().getString(R.string.app_version));
-        }
+        new FbUtills().getDataFromDB(
+                (TextView) rootView.findViewById(R.id.tv_version),
+                (TextView) rootView.findViewById(R.id.acc_tv_admin_text), getResources().getString(R.string.app_version));
     }
 
     @Override
