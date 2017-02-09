@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background1"
     android:orientation="vertical"
+    android:drawingCacheQuality="low"
     android:gravity="center"
     android:padding="@dimen/defaultMargin">
 
@@ -16,6 +17,7 @@
         android:layout_width="@dimen/intro_image_size"
         android:layout_height="@dimen/intro_image_size"
         android:layout_gravity="center"
+        android:drawingCacheQuality="low"
         android:layout_marginTop="@dimen/defaultMargin_triple"
         android:src="@drawable/icon_eye_512" />
 

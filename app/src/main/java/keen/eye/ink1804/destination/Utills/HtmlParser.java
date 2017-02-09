@@ -17,7 +17,8 @@ import com.koushikdutta.ion.Ion;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
+import java.util.List;
+
 import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
@@ -30,7 +31,7 @@ public class HtmlParser {
     private Document doc;
     public static int TTL=0;
 
-    public void parseHoroscope(final Context context, final TextView tvResult,final int horCode, final ProgressBar progressbar) {
+    public void parseHoroscope(final Context context, final List<String> descriptions, final TextView tvResult, final int horCode, final ProgressBar progressbar) {
         try {
             Ion.with(context)
                     .load("https://utro.europaplus.ru/programs/horoscope")
@@ -44,16 +45,16 @@ public class HtmlParser {
                                 doc = Jsoup.parse(result);
                                 for (int i = 0; i < 12; i++) {
                                     text = doc.select("ul.horoscope-list").select("li").get(i).select("div.text").text();
-                                    HoroscopeOnline.descriptions.add(text);
+                                    descriptions.add(text);
                                 }
-                                tvResult.setText(HoroscopeOnline.descriptions.get(horCode));
+                                tvResult.setText(descriptions.get(horCode));
                                 TTL = 0;
                             }
                             else {
                                 TTL++;
                                 if(TTL!=5) {
-                                    parseHoroscope(context, tvResult, horCode, progressbar);
-                                    HoroscopeOnline.descriptions.clear();
+                                    parseHoroscope(context, descriptions, tvResult, horCode, progressbar);
+                                    descriptions.clear();
                                 }
                                 else
                                     tvResult.setText("Не удалось загрузить данные, проверьте интернет соединение.");

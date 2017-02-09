@@ -99,14 +99,4 @@ public class Interesting extends Fragment implements View.OnClickListener{
         }
         ((pushDateListener)getActivity()).onDescriptionClicked(key,"interesting");//key is going to new bundle
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
 }

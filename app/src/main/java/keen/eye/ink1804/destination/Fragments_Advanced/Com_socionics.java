@@ -33,8 +33,7 @@ public class Com_socionics extends Fragment implements View.OnClickListener {
         return rootView;
     }
     private void initViews(){
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Взаимоотношения");
+        ((pushDateListener)getActivity()).toolbarSetTitle("Взаимоотношения");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_rel_btn_result);
         btnGetResult.setOnClickListener(this);
 

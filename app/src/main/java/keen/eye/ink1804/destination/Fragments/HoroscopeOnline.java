@@ -37,7 +37,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     private View rootView;
     private ImageView[] images;
     private TextView tv_result, tv_sign_name;
-    public static List<String> descriptions = new ArrayList<>();
+    public List<String> descriptions = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,7 +134,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
                     progressBar.setVisibility(View.VISIBLE);
                     backgroundPressed(key, images);
                     setZodiacName(key);
-                    new HtmlParser().parseHoroscope(getActivity(), tv_result, key, progressBar);
+                    new HtmlParser().parseHoroscope(getActivity(), descriptions, tv_result, key, progressBar);
                     HtmlParser.TTL = 0;
                 } else {
                     backgroundPressed(key, images);
@@ -176,16 +176,6 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
             j = (struct_data.getDateId(day, month) + 9) % 12;
         backgroundPressed(j, images);
         setZodiacName(j);
-        new HtmlParser().parseHoroscope(getActivity(), tv_result, j, progressBar);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
+        new HtmlParser().parseHoroscope(getActivity(), descriptions, tv_result, j, progressBar);
     }
 }

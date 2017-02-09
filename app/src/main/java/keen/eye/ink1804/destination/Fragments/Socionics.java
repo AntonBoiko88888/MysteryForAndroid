@@ -45,6 +45,7 @@ public class Socionics extends Fragment implements View.OnClickListener{
         return rootView;
     }
     private void initViews(){
+        ((pushDateListener)getActivity()).AdShow();
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.relD_grid);
         createGridButtons(grid);
         (rootView.findViewById(R.id.relD_btn_showInfo)).setOnClickListener(this);
@@ -131,6 +132,4 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 break;
         }
     }
-
-
 }

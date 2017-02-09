@@ -13,7 +13,6 @@ import keen.eye.ink1804.destination.Fragments.Intro_fragment;
  */
 
 public class AppIntr extends AppIntro {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +37,6 @@ public class AppIntr extends AppIntro {
                 startActivity(i);
             }
         });
-
     }
 
     @Override

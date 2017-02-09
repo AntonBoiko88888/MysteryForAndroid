@@ -165,15 +165,4 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         }
         listener.onDescriptionClicked(key,tag);//key is going to new bundle
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        struct_data = null;
-    }
 }

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
+    android:drawingCacheQuality="low"
     android:orientation="vertical"
     android:padding="@dimen/defaultMargin">
 
@@ -43,6 +44,7 @@
                         android:id="@+id/comp_birth_image"
                         android:layout_width="@dimen/birth_image_size"
                         android:layout_height="@dimen/birth_image_size"
+                        android:drawingCacheQuality="low"
                         android:layout_marginTop="@dimen/defaultMargin_double"
                         android:background="@drawable/com_birth_monkey" />
 
@@ -75,6 +77,7 @@
                         android:id="@+id/comp_birth_btn_result"
                         android:layout_width="@dimen/birth_image_size"
                         android:layout_height="@dimen/birth_image_size"
+                        android:drawingCacheQuality="low"
                         android:background="@drawable/answer_states" />
                 </LinearLayout>
             </LinearLayout>

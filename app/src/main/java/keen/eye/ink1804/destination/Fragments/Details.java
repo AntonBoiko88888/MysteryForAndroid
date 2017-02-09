@@ -30,6 +30,7 @@ public class Details extends Fragment {
         return rootView;
     }
     private void fillData(){
+        ((pushDateListener)getActivity()).AdShow();
         ((pushDateListener)getActivity()).toolbarSetTitle("Интерпретация");
         Bundle args = getArguments();
         String key = args.getString("key");
@@ -43,7 +44,6 @@ public class Details extends Fragment {
                 for (int i = 0; i < names.length; i++) {
                     if (names[i].equals(key)) {
                         id = i;
-                        names = null;
                         break;
                     }
                 }
@@ -57,7 +57,6 @@ public class Details extends Fragment {
                 for (int i = 0; i < interesting_names.length; i++) {
                     if (interesting_names[i].equals(key)) {
                         id = i;
-                        names = null;
                         break;
                     }
                 }
@@ -71,7 +70,6 @@ public class Details extends Fragment {
                 for (int i = 0; i < com_names.length; i++) {
                     if (com_names[i].equals(key)) {
                         id = i;
-                        names = null;
                         break;
                     }
                 }
@@ -85,7 +83,6 @@ public class Details extends Fragment {
                 for (int i = 0; i < socioNames.length; i++) {
                     if (socioNames[i].equals(key)) {
                         id = i;
-                        names = null;
                         break;
                     }
                 }
@@ -104,11 +101,5 @@ public class Details extends Fragment {
             return Html.fromHtml(text);
         }
 
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        rootView.findViewById(R.id.details_tv).destroyDrawingCache();
     }
 }

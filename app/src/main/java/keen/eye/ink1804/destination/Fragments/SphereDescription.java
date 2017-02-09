@@ -38,7 +38,9 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
         createButtonMassive(array);
         return rootView;
     }
+
     private void createButtonMassive(String[] array){
+        ((pushDateListener)getActivity()).AdShow();
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.sphere_grid);
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -64,11 +66,10 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         int btnID = view.getId();
-        Button pressedButton = (Button)rootView.findViewById(btnID);
         int length = array.length;
         for(int i=0;i<length;i++)
             rootView.findViewById(500 + i).setBackgroundResource(R.drawable.btn_border_thin_circ);
-        pressedButton.setBackgroundResource(R.drawable.btn_pressed_thin_circ);
+        (rootView.findViewById(btnID)).setBackgroundResource(R.drawable.btn_pressed_thin_circ);
         String key = view.getTag().toString();
         String[] names = getResources().getStringArray(R.array.profDetails_names);
         String[] details = getResources().getStringArray(R.array.profDetails_db);

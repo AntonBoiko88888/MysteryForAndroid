@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import keen.eye.ink1804.destination.Adapters.Sphere_vp_adapter;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
-import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -29,10 +28,6 @@ public class Sphere_container extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 
     private void initViews(){
         PagerTabStrip tabLayout = (PagerTabStrip) rootView.findViewById(R.id.pagerTabStrip);
@@ -42,7 +37,6 @@ public class Sphere_container extends Fragment {
         String[] btnTextArray = args.getStringArray("array");
         int layoutType = args.getInt("type");
 
-//        pushDateListener listener = (pushDateListener)getActivity();
         ((pushDateListener) getActivity()).toolbarSetTitle(toolbarText);
 
         Sphere_vp_adapter mPagerAdapter = new Sphere_vp_adapter(getChildFragmentManager(),

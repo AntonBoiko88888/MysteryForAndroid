@@ -33,12 +33,6 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
             "Тигр","Кролик(Кот)","Дракон","Змея","Лошадь","Овца(Коза)"};
 
     @Override
-    public void onDetach() {
-        birthDrawables = null;
-        super.onDetach();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.com_birth_fragment,container,false);
         initViews();
@@ -46,8 +40,7 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
     }
 
     private void initViews(){
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Знаки рождения");
+        ((pushDateListener)getActivity()).toolbarSetTitle("Знаки рождения");
         MaterialSpinner spinner = (MaterialSpinner) rootView.findViewById(R.id.comp_birth_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
                 birthNames);

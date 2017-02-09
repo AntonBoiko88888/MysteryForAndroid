@@ -20,7 +20,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
-import android.telephony.TelephonyManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -95,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 horTransaction.commit();
                 backStackID = 1;
             }
-
-
         }
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-1797364925719173/9000501646");
@@ -112,10 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
     private void requestNewInterstitial() {
-        TelephonyManager telephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
-        String devicIMEI = telephonyManager.getDeviceId();
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(devicIMEI)
                 .build();
 
         mInterstitialAd.loadAd(adRequest);
@@ -289,6 +283,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = _backStackID;
         transaction.commit();
     }
+
+    @Override
+    public void AdShow() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
+    }
+
     @Override
     public void onDescriptionClicked(String key, String layoutTag) {
         FragmentManager fm = getSupportFragmentManager();
@@ -331,9 +333,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-        }
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
         }
     }
     @Override
@@ -480,15 +479,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
         AlertDialog alert = builder.create();
         alert.show();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 }

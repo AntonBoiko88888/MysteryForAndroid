@@ -91,10 +91,4 @@ public class DatePicker extends Fragment implements View.OnClickListener {
         ((TextView) rootView.findViewById(R.id.picker_tv_date)).setText("Выбранная дата: " + day + "." + month + "." + year);
         super.onResume();
     }
-
-    @Override
-    public void onPause() {
-        pickerPopWin = null;
-        super.onPause();
-    }
 }

@@ -14,18 +14,15 @@ import keen.eye.ink1804.destination.Math.Data_calculation;
  */
 
 public class Notification_reciever extends BroadcastReceiver {
-    private HtmlParser parser = new HtmlParser();
-    private Data_calculation math = new Data_calculation();
-
     @Override
     public void onReceive(Context context, Intent intent) {
         intent.getExtras();
         SharedPreferences mSettings = context.getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         boolean showNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS, false);
         String zodiac = mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION, "Овен");
-        int zodId = math.getZodiacId(zodiac);
+        int zodId = new Data_calculation().getZodiacId(zodiac);
         if(showNotific)
-            parser.parseNotificHoroscope(context, zodId);
+            new HtmlParser().parseNotificHoroscope(context, zodId);
 
 
     }

@@ -38,15 +38,8 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
         return rootView;
     }
 
-    @Override
-    public void onDetach() {
-        zodiacDrawables = null;
-        super.onDetach();
-    }
-
     private void initViews(){
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Знаки зодиака");
+        ((pushDateListener)getActivity()).toolbarSetTitle("Знаки зодиака");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_zod_btn_result);
         btnGetResult.setOnClickListener(this);
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_male_spinner);

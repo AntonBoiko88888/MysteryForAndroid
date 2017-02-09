@@ -104,10 +104,4 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
         tv_date.setText("Выбранная дата: "+day+"."+month+"."+year);
         super.onResume();
     }
-
-    @Override
-    public void onPause() {
-        pickerPopWin = null;
-        super.onPause();
-    }
 }

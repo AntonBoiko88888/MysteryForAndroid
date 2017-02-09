@@ -31,8 +31,7 @@ public class Com_virtualSign extends Fragment implements View.OnClickListener {
         return rootView;
     }
     private void initViews(){
-        pushDateListener listener = (pushDateListener)getActivity();
-        listener.toolbarSetTitle("Виртуальные знаки");
+        ((pushDateListener)getActivity()).toolbarSetTitle("Виртуальные знаки");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_vir_btn_result);
         btnGetResult.setOnClickListener(this);
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_vir_male_spinner);
@@ -72,8 +71,7 @@ public class Com_virtualSign extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Data_calculation struct_data = new Data_calculation();
-        ((TextView)rootView.findViewById(R.id.comp_vir_tv_result)).setText("Оценка взаимоотношений = " + struct_data.getVirtualPointsName(male,female));
+        ((TextView)rootView.findViewById(R.id.comp_vir_tv_result)).setText("Оценка взаимоотношений = " + new Data_calculation().getVirtualPointsName(male,female));
         new FbUtills().setStatistics(4);
     }
 }
