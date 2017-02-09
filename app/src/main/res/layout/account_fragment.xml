@@ -4,12 +4,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/background1"
     android:orientation="vertical"
+    android:drawingCacheQuality="low"
     android:padding="@dimen/defaultMargin">
 
     <ImageView
         android:id="@+id/acc_image_icon"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/acc_image_icon"
+        android:drawingCacheQuality="low"
         android:src="@drawable/acc_icon_border" />
     <RelativeLayout
         android:layout_width="match_parent"
@@ -94,6 +96,7 @@
             android:layout_height="@dimen/btn_push_n_prof"
             android:layout_alignParentRight="true"
             android:layout_margin="@dimen/defaultMargin_double"
+            android:drawingCacheQuality="low"
             android:background="@drawable/acc_new_profile_states" />
 
         <Button
@@ -103,6 +106,7 @@
             android:layout_height="@dimen/btn_push_n_prof"
             android:layout_alignParentLeft="true"
             android:layout_margin="@dimen/defaultMargin_double"
+            android:drawingCacheQuality="low"
             android:background="@drawable/acc_push_states" />
         </RelativeLayout>
 </LinearLayout>

@@ -31,6 +31,7 @@ import keen.eye.ink1804.destination.Utills.FbUtills;
  */
 public class Account extends Fragment implements View.OnClickListener {
 
+
     private View rootView;
     private boolean sex;
     private String name;
@@ -171,5 +172,6 @@ public class Account extends Fragment implements View.OnClickListener {
         super.onPause();
         imageView.destroyDrawingCache();
         mAnimationDrawable.stop();
+
     }
 }

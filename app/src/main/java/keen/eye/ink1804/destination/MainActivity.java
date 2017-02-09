@@ -27,6 +27,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.util.Calendar;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
@@ -49,6 +53,7 @@ import keen.eye.ink1804.destination.Utills.Notification_reciever;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
         , pushDateListener, View.OnClickListener {
 
+    InterstitialAd mInterstitialAd;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private String zodiacNotific, timeNotific;
@@ -90,8 +95,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 backStackID = 1;
             }
 
+
+        }
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+
+        requestNewInterstitial();
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
         }
     }
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+    }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
