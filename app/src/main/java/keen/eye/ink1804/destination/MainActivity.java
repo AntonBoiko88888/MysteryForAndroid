@@ -20,6 +20,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-1797364925719173/9000501646");
 
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
@@ -108,13 +109,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         requestNewInterstitial();
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
+
     }
     private void requestNewInterstitial() {
+        TelephonyManager telephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
+        String devicIMEI = telephonyManager.getDeviceId();
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .addTestDevice(devicIMEI)
                 .build();
 
         mInterstitialAd.loadAd(adRequest);
@@ -330,6 +331,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
+        }
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
         }
     }
     @Override
