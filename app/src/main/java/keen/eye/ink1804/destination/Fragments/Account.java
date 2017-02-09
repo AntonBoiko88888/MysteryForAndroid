@@ -3,14 +3,10 @@ package keen.eye.ink1804.destination.Fragments;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.Html;
@@ -18,23 +14,14 @@ import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import java.io.BufferedInputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimerTask;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
-import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.FbUtills;
@@ -123,7 +110,9 @@ public class Account extends Fragment implements View.OnClickListener {
                                 String name = et.getText().toString();
                                 if (!name.trim().equals("") && name.length() <= 10) {
                                     ((TextView) rootView.findViewById(R.id.acc_tv_name)).setText(setTextSettings("Имя:", " " + name));
-                                    SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+                                    SharedPreferences mSettings;
+                                    mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = mSettings.edit();
                                     editor.putString(Constants.APP_PREF_NAME, name);
                                     editor.apply();
                                     dialog.cancel();
@@ -144,12 +133,13 @@ public class Account extends Fragment implements View.OnClickListener {
     }
 
     private void getPreferences() {
-        MainActivity.mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
-        name = MainActivity.mSettings.getString(Constants.APP_PREF_NAME, "noName");
-        day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
-        month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
-        year = MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
-        sex = MainActivity.mSettings.getBoolean(Constants.APP_PREF_SEX, false);
+        SharedPreferences mSettings;
+        mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+        name = mSettings.getString(Constants.APP_PREF_NAME, "noName");
+        day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
+        year = mSettings.getInt(Constants.APP_PREF_YEAR, 2000);
+        sex = mSettings.getBoolean(Constants.APP_PREF_SEX, false);
     }
 
     public Spanned setTextSettings(String _text, String _value) {
@@ -167,6 +157,19 @@ public class Account extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mAnimationDrawable.stop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAnimationDrawable.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        imageView.destroyDrawingCache();
         mAnimationDrawable.stop();
     }
 }

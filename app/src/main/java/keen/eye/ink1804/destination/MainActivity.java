@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
     public static int backStackID;
-    public static SharedPreferences mSettings;
     //    0 - мы на главном фрагменте
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences mSettings;
         mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         initViews();
         isSelectedNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS, false);
@@ -75,9 +75,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             createAlert_setName();
         } else {
-            Account fragment = new Account();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.fragment_container, fragment, "account_fragment");
+            transaction.add(R.id.fragment_container, new Account(), "account_fragment");
             transaction.commit();
             Intent intent = getIntent();
             if (intent.getBooleanExtra("isHoroscope", false)) {
@@ -194,11 +193,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void mainFragmentCreate() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        Account fragment = new Account();
         backStackID = 0;
         toggle.setDrawerIndicatorEnabled(true);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-        transaction.replace(R.id.fragment_container, fragment, "mainFragment");
+        transaction.replace(R.id.fragment_container, new Account(), "mainFragment");
         transaction.commit();
     }
 
@@ -287,9 +285,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.setDrawerIndicatorEnabled(true);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Account accFragment = new Account();
-
-        transaction.replace(R.id.fragment_container, accFragment, "accFragment");
+        transaction.replace(R.id.fragment_container, new Account(), "accFragment");
         transaction.commit();
     }
     @Override
@@ -299,9 +295,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
                 transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                Account fragment = new Account();
                 String tag = "accFragment";
-                transaction.replace(R.id.fragment_container, fragment, tag);
+                transaction.replace(R.id.fragment_container, new Account(), tag);
                 clearBackStack();
                 backStackID = 0;
                 transaction.commit();
@@ -323,13 +318,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onNewProfile() {
         String tag = "datePicker_fragment";
-        DatePicker fragment = new DatePicker();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
         backStackID = 1;
-        transaction.replace(R.id.fragment_container, fragment, "datePicker_fragment");
+        transaction.replace(R.id.fragment_container, new DatePicker(), "datePicker_fragment");
         transaction.commit();
     }
     @Override
@@ -362,6 +356,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        final SharedPreferences mSettings;
+        mSettings = getSharedPreferences("app_settings", Context.MODE_PRIVATE);
         Data_calculation dc = new Data_calculation();
         int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
         int month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
@@ -452,5 +448,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

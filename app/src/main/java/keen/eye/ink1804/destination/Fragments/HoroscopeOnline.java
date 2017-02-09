@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -35,7 +37,6 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     private View rootView;
     private ImageView[] images;
     private TextView tv_result, tv_sign_name;
-    private HtmlParser parser = new HtmlParser();
     public static List<String> descriptions = new ArrayList<>();
 
     @Override
@@ -133,7 +134,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
                     progressBar.setVisibility(View.VISIBLE);
                     backgroundPressed(key, images);
                     setZodiacName(key);
-                    parser.parseHoroscope(getActivity(), tv_result, key, progressBar);
+                    new HtmlParser().parseHoroscope(getActivity(), tv_result, key, progressBar);
                     HtmlParser.TTL = 0;
                 } else {
                     backgroundPressed(key, images);
@@ -163,16 +164,28 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     private void onMySignClick() {
         Bundle args = getArguments();
 
-        int day = MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1);
-        int month = MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1);
+        SharedPreferences mSettings;
+        mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        int day = mSettings.getInt(Constants.APP_PREF_DAY, 1);
+        int month = mSettings.getInt(Constants.APP_PREF_MONTH, 1);
         Data_calculation struct_data = new Data_calculation();
         int j;
         if (args != null)
-            j = struct_data.getZodiacId(MainActivity.mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION, "Овен"));
+            j = struct_data.getZodiacId(mSettings.getString(Constants.APP_PREF_ZODIAC_NOTIFICATION, "Овен"));
         else
             j = (struct_data.getDateId(day, month) + 9) % 12;
         backgroundPressed(j, images);
         setZodiacName(j);
-        parser.parseHoroscope(getActivity(), tv_result, j, progressBar);
+        new HtmlParser().parseHoroscope(getActivity(), tv_result, j, progressBar);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

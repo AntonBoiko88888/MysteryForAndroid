@@ -34,7 +34,6 @@ public class Details extends Fragment {
         Bundle args = getArguments();
         String key = args.getString("key");
         String tag = args.getString("tag");
-        TextView tv_details = (TextView) rootView.findViewById(R.id.details_tv);
 
         int id = -1;
         if(tag!=null&&key!=null)
@@ -44,52 +43,56 @@ public class Details extends Fragment {
                 for (int i = 0; i < names.length; i++) {
                     if (names[i].equals(key)) {
                         id = i;
+                        names = null;
                         break;
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.profDetails_db)[id]));
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.profDetails_db)[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены(");
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText("Данные не были успешно загружены(");
                 break;
             case "interesting":
                 String[] interesting_names = getResources().getStringArray(R.array.interesting_names);
                 for (int i = 0; i < interesting_names.length; i++) {
                     if (interesting_names[i].equals(key)) {
                         id = i;
+                        names = null;
                         break;
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.interesting_db)[id]));
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.interesting_db)[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены(");
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText("Данные не были успешно загружены(");
                 break;
             case "com_birth":
                 String[] com_names = getResources().getStringArray(R.array.com_marriage_names);
                 for (int i = 0; i < com_names.length; i++) {
                     if (com_names[i].equals(key)) {
                         id = i;
+                        names = null;
                         break;
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.com_marriage_db)[id]));
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.com_marriage_db)[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены(");
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText("Данные не были успешно загружены(");
                 break;
             case "socionics":
                 String[] socioNames = getResources().getStringArray(R.array.socionics_names);
                 for (int i = 0; i < socioNames.length; i++) {
                     if (socioNames[i].equals(key)) {
                         id = i;
+                        names = null;
                         break;
                     }
                 }
                 if(id!=-1)
-                    tv_details.setText(setTvTextWithHtml(getResources().getStringArray(R.array.socionics_db)[id]));
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.socionics_db)[id]));
                 else
-                    tv_details.setText("Данные не были успешно загружены(");
+                    ((TextView) rootView.findViewById(R.id.details_tv)).setText("Данные не были успешно загружены(");
                 break;
             default:break;
         }
@@ -101,5 +104,11 @@ public class Details extends Fragment {
             return Html.fromHtml(text);
         }
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        rootView.findViewById(R.id.details_tv).destroyDrawingCache();
     }
 }

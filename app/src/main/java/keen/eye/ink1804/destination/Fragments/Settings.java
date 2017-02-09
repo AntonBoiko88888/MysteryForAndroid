@@ -44,8 +44,9 @@ public class Settings extends Fragment implements View.OnClickListener{
 
     private void initializeTView() {
         ((pushDateListener)getActivity()).toolbarSetTitle("Настройки");
-        MainActivity.mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
-        ((TextView) rootView.findViewById(R.id.acc_date)).setText(setTextSettings("✯ Дата:"," "+ MainActivity.mSettings.getInt(Constants.APP_PREF_DAY, 1) + "." + MainActivity.mSettings.getInt(Constants.APP_PREF_MONTH, 1) + "." + MainActivity.mSettings.getInt(Constants.APP_PREF_YEAR, 2000), "✯"));
+        SharedPreferences mSettings;
+        mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
+        ((TextView) rootView.findViewById(R.id.acc_date)).setText(setTextSettings("✯ Дата:"," "+ mSettings.getInt(Constants.APP_PREF_DAY, 1) + "." + mSettings.getInt(Constants.APP_PREF_MONTH, 1) + "." + mSettings.getInt(Constants.APP_PREF_YEAR, 2000), "✯"));
         rootView.findViewById(R.id.amend_pick_date).setOnClickListener(this);
         rootView.findViewById(R.id.no_advertising).setOnClickListener(this);
         rootView.findViewById(R.id.btn_share).setOnClickListener(this);
@@ -87,7 +88,9 @@ public class Settings extends Fragment implements View.OnClickListener{
             @Override
             public void onDatePickCompleted(int yyyy, int mm, int dd, String dateDesc) {
                 ((TextView) rootView.findViewById(R.id.acc_date)).setText(setTextSettings("✯ Дата:"," "+ dd + "." + mm + "." + yyyy, "✯"));
-                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+                SharedPreferences mSettings;
+                mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = mSettings.edit();
                 editor.putBoolean(Constants.APP_PREF_ISREGISTER, true);
                 editor.putInt(Constants.APP_PREF_DAY, dd);
                 editor.putInt(Constants.APP_PREF_MONTH, mm);
@@ -101,6 +104,17 @@ public class Settings extends Fragment implements View.OnClickListener{
         pickerPopWin.confirmBtn.setText("Установить   ");
         pickerPopWin.cancelBtn.setText("Отмена");
         pickerPopWin.confirmBtn.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        pickerPopWin = null;
+        super.onPause();
     }
 
 }

@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -78,7 +79,9 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
             if (!et_name.getText().toString().equals("")) {
                 String name = et_name.getText().toString();
                 ((pushDateListener) getActivity()).onRegistration(day, month, year, sex);
-                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+                SharedPreferences mSettings;
+                mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = mSettings.edit();
                 editor.putBoolean(Constants.APP_PREF_ISREGISTER, true);
                 editor.putString(Constants.APP_PREF_NAME, name);
                 editor.putInt(Constants.APP_PREF_DAY, day);
@@ -100,5 +103,11 @@ public class FirstRegistration extends Fragment implements View.OnClickListener 
     public void onResume() {
         tv_date.setText("Выбранная дата: "+day+"."+month+"."+year);
         super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        pickerPopWin = null;
+        super.onPause();
     }
 }

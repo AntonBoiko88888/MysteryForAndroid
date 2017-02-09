@@ -41,4 +41,14 @@ public class Intro_fragment extends Fragment {
     public Intro_fragment() {
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
 }

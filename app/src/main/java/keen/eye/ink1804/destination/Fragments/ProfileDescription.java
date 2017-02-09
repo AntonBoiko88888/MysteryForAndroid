@@ -1,5 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -87,8 +89,10 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
         ((TextView) rootView.findViewById(R.id.prof_tv_vector_host)).setText(         setTextSettings("Векторный хозяин:", struct_data.getHostName(i)));
         ((TextView) rootView.findViewById(R.id.prof_tv_vector_servant)).setText(      setTextSettings("Векторный слуга:", struct_data.getServantName(i)));
         ((TextView) rootView.findViewById(R.id.prof_tv_element_structure)).setText(   setTextSettings("Структура стихии:", struct_data.getElementName(day, month)));
-        if(socioAccess && MainActivity.mSettings.contains(Constants.APP_PREF_SOCIONICS)) {
-            D_socionics = MainActivity.mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
+        SharedPreferences mSettings;
+        mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        if(socioAccess && mSettings.contains(Constants.APP_PREF_SOCIONICS)) {
+            D_socionics = mSettings.getString(Constants.APP_PREF_SOCIONICS, "");
             tv_socionics.setText(setTextSettings("Социотип:", D_socionics));
             tv_socionics.setVisibility(View.VISIBLE);
             tv_socionics.setEnabled(true);
@@ -160,5 +164,16 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
             default:break;
         }
         listener.onDescriptionClicked(key,tag);//key is going to new bundle
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        struct_data = null;
     }
 }

@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -109,7 +110,9 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 }
                 break;
             case R.id.relD_btn_save_prof:
-                SharedPreferences.Editor editor = MainActivity.mSettings.edit();
+                SharedPreferences mSettings;
+                mSettings = getActivity().getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = mSettings.edit();
                 editor.putString(Constants.APP_PREF_SOCIONICS, socioType);
                 Toast.makeText(getActivity(), socioType+" - сохранено в профиль", Toast.LENGTH_SHORT).show();
                 editor.apply();
@@ -128,4 +131,6 @@ public class Socionics extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+
 }
