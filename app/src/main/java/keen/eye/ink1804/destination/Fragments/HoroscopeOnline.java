@@ -37,7 +37,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     private View rootView;
     private ImageView[] images;
     private TextView tv_result, tv_sign_name;
-    public List<String> descriptions = new ArrayList<>();
+    private static List<String> descriptions = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

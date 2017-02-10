@@ -3,6 +3,7 @@ package keen.eye.ink1804.destination.Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -57,7 +58,11 @@ public class Settings extends Fragment implements View.OnClickListener{
                 pickerPopWin.showPopWin(getActivity());
                 break;
             case R.id.no_advertising:
-                //TODO to app no advertising
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=org.keen.mystery")));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=org.keen.mystery")));
+                }
                 break;
             case R.id.btn_share:
                 Intent sendIntent = new Intent();
