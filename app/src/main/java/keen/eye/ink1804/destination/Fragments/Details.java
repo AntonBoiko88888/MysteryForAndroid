@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
+import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 08.08.16.
@@ -26,6 +27,7 @@ public class Details extends Fragment {
         if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
             ((pushDateListener) getActivity()).offlineMessageBox();
         }
+        new FbUtills().setStatistics(5);
         fillData();
         return rootView;
     }

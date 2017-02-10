@@ -76,6 +76,14 @@ public class FbUtills {
                                 mRef.child("statistics").child("sphere_clicks").setValue((count + 1));
                             }
                             break;
+                        case 5:
+                            count = (long) dataSnapshot.child("statistics").child("details").getValue();
+                            if (count==0)
+                                count = (long) dataSnapshot.child("statistics").child("details").getValue();
+                            if (count != 0) {
+                                mRef.child("statistics").child("details").setValue((count + 1));
+                            }
+                            break;
                     }
                 } catch (Exception e) {}
             }
