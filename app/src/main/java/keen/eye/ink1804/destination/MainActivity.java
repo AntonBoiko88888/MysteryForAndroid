@@ -225,9 +225,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean isOnline(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnected();
+        ConnectivityManager connManager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connManager.getActiveNetworkInfo();
+        return info != null && info.isConnected();
     }
     @Override
     public void onBackPressed() {
