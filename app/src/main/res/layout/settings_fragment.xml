@@ -60,6 +60,7 @@
         android:layout_height="@dimen/btn_com_image_icon"
         android:layout_below="@id/comp_rel_linear"
         android:layout_marginTop="@dimen/defaultMargin_double"
+        android:drawingCacheQuality="low"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/share_states" />

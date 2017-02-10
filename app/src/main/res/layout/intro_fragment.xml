@@ -22,6 +22,7 @@
         android:id="@+id/appintr_img"
         android:layout_width="@dimen/intro_image_size"
         android:layout_height="@dimen/intro_image_size"
+        android:drawingCacheQuality="low"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/defaultMargin_triple"
         android:src="@drawable/hor_aries" />

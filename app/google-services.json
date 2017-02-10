@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "731038926112-fql754huplal8m5shtkqe4fuc56s5v4c.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "keen.eye.ink1804.destination",
-            "certificate_hash": "D58543708595464EC5CDAF086506C194DAD06316"
-          }
-        },
-        {
           "client_id": "731038926112-n972853v39cgsl1gmce8uqtl16cbgpl4.apps.googleusercontent.com",
           "client_type": 3
         }

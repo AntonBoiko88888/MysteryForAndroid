@@ -22,6 +22,7 @@
             android:id="@+id/aries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_aries"
             android:scaleType="fitXY" />
 
@@ -29,6 +30,7 @@
             android:id="@+id/taurus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_taurus"
             android:scaleType="fitXY" />
 
@@ -36,6 +38,7 @@
             android:id="@+id/twins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_twins"
             android:scaleType="fitXY" />
 
@@ -43,6 +46,7 @@
             android:id="@+id/cancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_cancer"
             android:scaleType="fitXY" />
 
@@ -50,6 +54,7 @@
             android:id="@+id/lion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_lion"
             android:scaleType="fitXY" />
 
@@ -57,6 +62,7 @@
             android:id="@+id/virgo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_virgo"
             android:scaleType="fitXY" />
 
@@ -64,6 +70,7 @@
             android:id="@+id/libra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_libra"
             android:scaleType="fitXY" />
 
@@ -71,6 +78,7 @@
             android:id="@+id/scorpio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_scorpio"
             android:scaleType="fitXY" />
 
@@ -78,6 +86,7 @@
             android:id="@+id/sagittarius"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_sagittarius"
             android:scaleType="fitXY" />
 
@@ -85,6 +94,7 @@
             android:id="@+id/capricorn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_capricorn"
             android:scaleType="fitXY" />
 
@@ -92,6 +102,7 @@
             android:id="@+id/aquarius"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_aquarius"
             android:scaleType="fitXY" />
 
@@ -99,6 +110,7 @@
             android:id="@+id/fish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
             android:background="@drawable/hor_fish"
             android:scaleType="fitXY" />
     </GridLayout>
