@@ -27,6 +27,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.appodeal.ads.Appodeal;
+import com.appodeal.ads.NonSkippableVideoCallbacks;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -95,6 +97,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 backStackID = 1;
             }
         }
+        Appodeal.disableNetwork(this, "cheetah");
+        Appodeal.disableWriteExternalStoragePermissionCheck();
+        Appodeal.disableLocationPermissionCheck();
+        Appodeal.disableNetwork(this, "startapp", Appodeal.BANNER | Appodeal.SKIPPABLE_VIDEO);
+        String appKey = "591df46a7dd9b714c5da8012b4ff83bcb02d9c510b93408c";
+        Appodeal.setAutoCache(Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.INTERSTITIAL, false);
+        Appodeal.initialize(this, appKey, Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.INTERSTITIAL);
+        Appodeal.cache(this, Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.INTERSTITIAL);
+        Appodeal.setNonSkippableVideoCallbacks(new NonSkippableVideoCallbacks() {
+            @Override
+            public void onNonSkippableVideoLoaded() {
+                Appodeal.show(MainActivity.this, Appodeal.NON_SKIPPABLE_VIDEO);
+            }
+            @Override
+            public void onNonSkippableVideoFailedToLoad() {
+                Appodeal.show(MainActivity.this, Appodeal.INTERSTITIAL);
+            }
+            @Override
+            public void onNonSkippableVideoShown() {}
+            @Override
+            public void onNonSkippableVideoFinished() {}
+            @Override
+            public void onNonSkippableVideoClosed(boolean finished) {}
+        });
+
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-1797364925719173/9000501646");
 
@@ -181,6 +208,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     private void initViews() {
         toolbarSetTitle("Постижение тайны");
         ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(this);
@@ -333,6 +361,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 backStackID = 0;
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
+                if(Appodeal.isLoaded(Appodeal.NON_SKIPPABLE_VIDEO))
+                    Appodeal.show(this, Appodeal.NON_SKIPPABLE_VIDEO);
+                else if(Appodeal.isLoaded(Appodeal.INTERSTITIAL))
+                    Appodeal.show(this, Appodeal.INTERSTITIAL);
                 break;
         }
     }
@@ -357,6 +389,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = 1;
         transaction.replace(R.id.fragment_container, new DatePicker(), "datePicker_fragment");
         transaction.commit();
+        if(Appodeal.isLoaded(Appodeal.NON_SKIPPABLE_VIDEO))
+            Appodeal.show(this, Appodeal.NON_SKIPPABLE_VIDEO);
+        else if(Appodeal.isLoaded(Appodeal.INTERSTITIAL))
+            Appodeal.show(this, Appodeal.INTERSTITIAL);
     }
     @Override
     public void setNotification(Context context) {

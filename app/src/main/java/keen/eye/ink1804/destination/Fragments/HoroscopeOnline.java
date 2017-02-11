@@ -37,7 +37,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     private View rootView;
     private ImageView[] images;
     private TextView tv_result, tv_sign_name;
-    private static List<String> descriptions = new ArrayList<>();
+    private List<String> descriptions;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +54,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     }
 
     private void initViews() {
+        descriptions = new ArrayList<>();
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
         ((pushDateListener)getActivity()).toolbarSetTitle("Гороскоп онлайн");
         int[] img_ids = new int[]{R.id.aries, R.id.taurus, R.id.twins, R.id.cancer, R.id.lion, R.id.virgo
