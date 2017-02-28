@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
 
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
@@ -33,16 +34,16 @@ public class Settings extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.settings_fragment,container,false);
-        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-            ((pushDateListener) getActivity()).offlineMessageBox();
-        }
+//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+//            ((pushDateListener) getActivity()).offlineMessageBox();
+//        }
         createDatePicker();
         initializeTView();
         return rootView;
     }
 
     private void initializeTView() {
-        ((pushDateListener)getActivity()).toolbarSetTitle("Настройки");
+        ((IToolBar)getActivity()).toolbarSetTitle("Настройки");
         SharedPreferences mSettings;
         mSettings = getActivity().getSharedPreferences(Constants.APP_PREF, Context.MODE_PRIVATE);
         ((TextView) rootView.findViewById(R.id.acc_date)).setText(setTextSettings("✯ Дата:"," "+ mSettings.getInt(Constants.APP_PREF_DAY, 1) + "." + mSettings.getInt(Constants.APP_PREF_MONTH, 1) + "." + mSettings.getInt(Constants.APP_PREF_YEAR, 2000), "✯"));

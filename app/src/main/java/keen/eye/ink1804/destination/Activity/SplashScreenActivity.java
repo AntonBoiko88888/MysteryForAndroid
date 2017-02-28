@@ -1,4 +1,4 @@
-package keen.eye.ink1804.destination;
+package keen.eye.ink1804.destination.Activity;
 
 import android.app.Activity;
 import android.content.Context;

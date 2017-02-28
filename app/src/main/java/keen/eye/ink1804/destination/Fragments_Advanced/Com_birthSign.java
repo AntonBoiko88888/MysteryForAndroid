@@ -1,8 +1,11 @@
 package keen.eye.ink1804.destination.Fragments_Advanced;
 
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
@@ -40,7 +44,7 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
     }
 
     private void initViews(){
-        ((pushDateListener)getActivity()).toolbarSetTitle("Знаки рождения");
+        ((IToolBar)getActivity()).toolbarSetTitle("Знаки рождения");
         MaterialSpinner spinner = (MaterialSpinner) rootView.findViewById(R.id.comp_birth_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item,
                 birthNames);
@@ -86,8 +90,6 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         String key = "default";
-        String tag = "com_birth";
-        pushDateListener listener = (pushDateListener)getActivity();
             switch (view.getId()) {
                 case R.id.comp_birth_tv_romantic:
                     key = "Романтический брак";
@@ -118,12 +120,29 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
                     (rootView.findViewById(R.id.comp_birth_tv_equal)).setEnabled(true);
                     (rootView.findViewById(R.id.comp_birth_tv_vector)).setEnabled(true);
 
-                    new FbUtills().setStatistics(4);
+//                    new FbUtills().setStatistics(4);
                     break;
                 default:
                     break;
             }
-        if(!key.equals("default"))
-            listener.onDescriptionClicked(key, tag);//key is going to new bundle
+        int id =-1;
+        String[] com_names = getResources().getStringArray(R.array.com_marriage_names);
+        for (int i = 0; i < com_names.length; i++) {
+            if (com_names[i].equals(key)) {
+                id = i;
+                break;
+            }
+        }
+        if(id!=-1)
+            ((TextView) rootView.findViewById(R.id.com_birth_text)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.com_marriage_db)[id]));
+    }
+
+    private Spanned setTvTextWithHtml(String text){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            return Html.fromHtml(text);
+        }
+
     }
 }

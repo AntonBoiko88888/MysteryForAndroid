@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
@@ -27,15 +28,15 @@ public class ApplicationAbout extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.application_about_fragment, container, false);
-        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-            ((pushDateListener) getActivity()).offlineMessageBox();
-        }
+//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+//            ((pushDateListener) getActivity()).offlineMessageBox();
+//        }
         initializeViews();
         return rootView;
     }
 
     private void initializeViews() {
-        ((pushDateListener) getActivity()).toolbarSetTitle("О приложении");
+        ((IToolBar) getActivity()).toolbarSetTitle("О приложении");
         ((TextView) rootView.findViewById(R.id.application_about_text)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.appintr_description_db)[5]));
         (rootView.findViewById(R.id.app_estimate)).setOnClickListener(this);
 

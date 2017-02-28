@@ -24,10 +24,10 @@ public class Details extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.details_fragment,container,false);
-        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-            ((pushDateListener) getActivity()).offlineMessageBox();
-        }
-        new FbUtills().setStatistics(5);
+//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+//            ((pushDateListener) getActivity()).offlineMessageBox();
+//        }
+//        new FbUtills().setStatistics(5);
         fillData();
         return rootView;
     }
@@ -64,19 +64,6 @@ public class Details extends Fragment {
                 }
                 if(id!=-1)
                     ((TextView) rootView.findViewById(R.id.details_tv)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.interesting_db)[id]));
-                else
-                    ((TextView) rootView.findViewById(R.id.details_tv)).setText("Данные не были успешно загружены(");
-                break;
-            case "com_birth":
-                String[] com_names = getResources().getStringArray(R.array.com_marriage_names);
-                for (int i = 0; i < com_names.length; i++) {
-                    if (com_names[i].equals(key)) {
-                        id = i;
-                        break;
-                    }
-                }
-                if(id!=-1)
-                    ((TextView) rootView.findViewById(R.id.details_tv)).setText(setTvTextWithHtml(getResources().getStringArray(R.array.com_marriage_db)[id]));
                 else
                     ((TextView) rootView.findViewById(R.id.details_tv)).setText("Данные не были успешно загружены(");
                 break;

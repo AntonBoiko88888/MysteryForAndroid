@@ -32,9 +32,9 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
         Bundle args = getArguments();
 
         array = args.getStringArray("btnTextArray");
-        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-            ((pushDateListener) getActivity()).offlineMessageBox();
-        }
+//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+//            ((pushDateListener) getActivity()).offlineMessageBox();
+//        }
         createButtonMassive(array);
         return rootView;
     }

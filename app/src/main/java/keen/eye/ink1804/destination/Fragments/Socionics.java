@@ -17,11 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
-import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
-import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 28.08.16.
@@ -38,14 +36,14 @@ public class Socionics extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.socionics_fragment,container,false);
-        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-            ((pushDateListener) getActivity()).offlineMessageBox();
-        }
+//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+//            ((pushDateListener) getActivity()).offlineMessageBox();
+//        }
         initViews();
         return rootView;
     }
     private void initViews(){
-        ((pushDateListener)getActivity()).AdShow();
+//        ((pushDateListener)getActivity()).AdShow();
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.relD_grid);
         createGridButtons(grid);
         (rootView.findViewById(R.id.relD_btn_showInfo)).setOnClickListener(this);

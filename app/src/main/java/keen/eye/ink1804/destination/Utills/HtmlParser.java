@@ -19,7 +19,7 @@ import org.jsoup.nodes.Document;
 
 import java.util.List;
 
-import keen.eye.ink1804.destination.MainActivity;
+import keen.eye.ink1804.destination.Activity.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 

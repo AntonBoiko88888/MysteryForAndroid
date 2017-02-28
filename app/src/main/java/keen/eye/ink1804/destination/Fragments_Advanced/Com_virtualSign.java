@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
@@ -31,7 +32,7 @@ public class Com_virtualSign extends Fragment implements View.OnClickListener {
         return rootView;
     }
     private void initViews(){
-        ((pushDateListener)getActivity()).toolbarSetTitle("Виртуальные знаки");
+        ((IToolBar)getActivity()).toolbarSetTitle("Виртуальные знаки");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_vir_btn_result);
         btnGetResult.setOnClickListener(this);
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_vir_male_spinner);

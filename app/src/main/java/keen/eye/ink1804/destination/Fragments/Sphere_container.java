@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import keen.eye.ink1804.destination.Adapters.Sphere_vp_adapter;
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
@@ -37,7 +38,7 @@ public class Sphere_container extends Fragment {
         String[] btnTextArray = args.getStringArray("array");
         int layoutType = args.getInt("type");
 
-        ((pushDateListener) getActivity()).toolbarSetTitle(toolbarText);
+        ((IToolBar) getActivity()).toolbarSetTitle(toolbarText);
 
         Sphere_vp_adapter mPagerAdapter = new Sphere_vp_adapter(getChildFragmentManager(),
                 btnTextArray, layoutType/*, MainActivity.ACCESS*/);

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="keen.eye.ink1804.destination.MainActivity">
+    tools:context="keen.eye.ink1804.destination.Activity.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -23,7 +23,7 @@
         android:drawingCacheQuality="low"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="keen.eye.ink1804.destination.MainActivity"
+        tools:context="keen.eye.ink1804.destination.Activity.MainActivity"
         tools:openDrawer="start">
     <FrameLayout
         android:id="@+id/fragment_container"

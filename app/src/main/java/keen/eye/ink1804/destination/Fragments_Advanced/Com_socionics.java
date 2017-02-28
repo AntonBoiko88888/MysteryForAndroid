@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
@@ -33,7 +34,7 @@ public class Com_socionics extends Fragment implements View.OnClickListener {
         return rootView;
     }
     private void initViews(){
-        ((pushDateListener)getActivity()).toolbarSetTitle("Взаимоотношения");
+        ((IToolBar)getActivity()).toolbarSetTitle("Взаимоотношения");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_rel_btn_result);
         btnGetResult.setOnClickListener(this);
 

@@ -2,7 +2,6 @@ package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
-import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 

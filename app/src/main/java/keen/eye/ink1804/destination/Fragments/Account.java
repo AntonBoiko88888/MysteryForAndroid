@@ -47,11 +47,11 @@ public class Account extends Fragment implements View.OnClickListener {
     }
 
     private void initializeViews() {
-        ((pushDateListener) getActivity()).toolbarSetTitle("Профиль");
+//        ((pushDateListener) getActivity()).toolbarSetTitle("Профиль");
         getPreferences();
-        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-            ((pushDateListener) getActivity()).offlineMessageBox();
-        }
+//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+//            ((pushDateListener) getActivity()).offlineMessageBox();
+//        }
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);

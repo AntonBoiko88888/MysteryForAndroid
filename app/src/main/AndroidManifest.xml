@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".Activity.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -29,11 +29,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AppIntr"
+            android:name=".Activity.AppIntr"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.DescriptionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.DetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.HorOnlineActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SphereActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.RestActivity"
+            android:screenOrientation="portrait" />
+
         <receiver android:name=".Utills.Notification_reciever" />
 
         <meta-data

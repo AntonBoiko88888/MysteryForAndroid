@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 
 import fr.ganfra.materialspinner.MaterialSpinner;
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
@@ -39,7 +40,7 @@ public class Com_zodiacSign extends Fragment implements View.OnClickListener {
     }
 
     private void initViews(){
-        ((pushDateListener)getActivity()).toolbarSetTitle("Знаки зодиака");
+        ((IToolBar)getActivity()).toolbarSetTitle("Знаки зодиака");
         Button btnGetResult = (Button)rootView.findViewById(R.id.comp_zod_btn_result);
         btnGetResult.setOnClickListener(this);
         MaterialSpinner maleSpinner = (MaterialSpinner) rootView.findViewById(R.id.comp_zod_male_spinner);

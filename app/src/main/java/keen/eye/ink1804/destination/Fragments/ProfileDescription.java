@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
-import keen.eye.ink1804.destination.MainActivity;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;

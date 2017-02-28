@@ -1,4 +1,4 @@
-package keen.eye.ink1804.destination;
+package keen.eye.ink1804.destination.Activity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -31,11 +31,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Hashtable;
 
-import com.tapjoy.TJActionRequest;
 import com.tapjoy.TJConnectListener;
-import com.tapjoy.TJError;
-import com.tapjoy.TJPlacement;
-import com.tapjoy.TJPlacementListener;
 import com.tapjoy.Tapjoy;
 import com.tapjoy.TapjoyConnectFlag;
 
@@ -53,6 +49,7 @@ import keen.eye.ink1804.destination.Fragments.FirstRegistration;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
+import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.Notification_reciever;
 
 
@@ -63,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
-    public static int backStackID;
     //    0 - мы на главном фрагменте
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента
@@ -79,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initViews();
         isSelectedNotific = mSettings.getBoolean(Constants.APP_PREF_NOTIFICATIONS, false);
 
-        backStackID = 0;
         if (!mSettings.contains(Constants.APP_PREF_ISREGISTER)) {
             toggle.setDrawerIndicatorEnabled(false);
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -97,25 +92,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 horFragment.setArguments(args);
                 horTransaction.replace(R.id.fragment_container, horFragment, "drawer_fragment");
                 horTransaction.commit();
-                backStackID = 1;
             }
         }
-        Tapjoy.setDebugEnabled(true);
-        Hashtable<String, Object> connectFlags = new Hashtable<String, Object>();
-        connectFlags.put(TapjoyConnectFlag.ENABLE_LOGGING, "true");      // remember to turn this off for your production builds!
-
-        Tapjoy.connect(getApplicationContext(), "I64pSOwpR-6kb9ygUGlggQEClSFZWsScnpX6Tj6rvef36ANK9YHvBVdcJ1BG"
-                , connectFlags, new TJConnectListener() {
-            @Override
-            public void onConnectSuccess() {
-                this.onConnectSuccess();
-            }
-
-            @Override
-            public void onConnectFailure() {
-                this.onConnectFailure();
-            }
-        });
+//        Tapjoy.setDebugEnabled(true);
+//        Hashtable<String, Object> connectFlags = new Hashtable<String, Object>();
+//        connectFlags.put(TapjoyConnectFlag.ENABLE_LOGGING, "true");      // remember to turn this off for your production builds!
+//
+//        Tapjoy.connect(getApplicationContext(), "I64pSOwpR-6kb9ygUGlggQEClSFZWsScnpX6Tj6rvef36ANK9YHvBVdcJ1BG"
+//                , connectFlags, new TJConnectListener() {
+//            @Override
+//            public void onConnectSuccess() {
+//                this.onConnectSuccess();
+//            }
+//
+//            @Override
+//            public void onConnectFailure() {
+//                this.onConnectFailure();
+//            }
+//        });
 //         placementListener = (TJPlacementListener) this;
 //        p = Tapjoy.getPlacement("APP_LAUNCH", placementListener);
 //
@@ -133,80 +127,55 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Fragment fragment = null;
-        String tag;
-        Bundle args = new Bundle();
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                fragment = new HoroscopeOnline();
+                startActivity(new Intent(this, HorOnlineActivity.class));
+                finish();
                 break;
             case R.id.tab_zodiaс_sign://done
-                fragment = new Sphere_container();
-                args.putStringArray("array", Constants.ZODIAK_NAMES);
-                args.putString("toolbar", "Знаки зодиака");
-                args.putInt("type", 0);
-                fragment.setArguments(args);
+                startSphereActivity("zodiac");
                 break;
             case R.id.tab_birth_sign://done
-                fragment = new Sphere_container();
-                args.putStringArray("array", Constants.YEAR_NAMES);
-                args.putString("toolbar", "Знаки рождения");
-                args.putInt("type", 1);
-                fragment.setArguments(args);
-                tag = "birth_sign_vp";
-                try {
-                    if (fragmentManager.findFragmentByTag(tag) == null) {
-                        transaction.addToBackStack(tag);
-                    }
-                }catch (Exception e){
-                }
+                startSphereActivity("birth");
                 break;
             case R.id.tab_virtual_sign://done
-                fragment = new Sphere_container();
-                args.putStringArray("array", Constants.VIRTUAL_NAMES);
-                args.putString("toolbar", "Виртуальные знаки");
-                args.putInt("type", 2);
-                fragment.setArguments(args);
+                startSphereActivity("virtual");
                 break;
             case R.id.tab_relations://done
-                fragment = new Sphere_container();
-                args.putString("toolbar", "Взаимоотношения");
-                args.putInt("type", 3);
-                fragment.setArguments(args);
+                startSphereActivity("socionic");
                 break;
-
             case R.id.tab_interesting://done
-                fragment = new Interesting();
-                tag = "interesting";
-                try {
-                    if (fragmentManager.findFragmentByTag(tag) == null) {
-                        transaction.addToBackStack(tag);
-                    }
-                }catch (Exception e){
-                }
+                startRestActivity("interesting");
                 break;
             case R.id.tab_settings:
-                fragment = new Settings();
+                startRestActivity("settings");
                 break;
             case R.id.tab_about:
-                fragment = new ApplicationAbout();
+                startRestActivity("about");
                 break;
             default:
                 break;
         }
-//        if(p.isContentReady()) {
-//            p.showContent();
-//        }
-
-        clearBackStack();
-        transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
-        transaction.commit();
-        backStackID = 1;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    void startRestActivity(String s) {
+        Intent intent = new Intent(this, RestActivity.class);
+        intent.putExtra("key", s);
+        startActivity(intent);
+        finish();
+    }
+
+    void startSphereActivity(String s) {
+        Intent intent = new Intent(this, SphereActivity.class);
+        intent.putExtra("key", s);
+        startActivity(intent);
+        finish();
+    }
+//        if(p.isContentReady()) {
+//            p.showContent();
+//        }
 
     private void initViews() {
         toolbarSetTitle("Постижение тайны");
@@ -246,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void mainFragmentCreate() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        backStackID = 0;
         toggle.setDrawerIndicatorEnabled(true);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         transaction.replace(R.id.fragment_container, new Account(), "mainFragment");
@@ -265,29 +233,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            switch (backStackID) {
-                case 0:
-                    if (back_pressed + 2000 > System.currentTimeMillis()) {
-                        super.onBackPressed();
-                    } else {
-                        Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
-                    }
-                    back_pressed = System.currentTimeMillis();
-                    break;
-                case 1:
-                    clearBackStack();
-                    mainFragmentCreate();
-                    break;
-                case 2:
-                    if (getSupportFragmentManager().getBackStackEntryCount() <= 1) {
-                        clearBackStack();
-                        mainFragmentCreate();
-                    } else
-                        super.onBackPressed();
-                    break;
-                default:
-                    break;
+            if (back_pressed + 2000 > System.currentTimeMillis()) {
+                super.onBackPressed();
+            } else {
+                Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
             }
+            back_pressed = System.currentTimeMillis();
         }
     }
     @Override
@@ -311,7 +262,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
-        backStackID = _backStackID;
         transaction.commit();
     }
 
@@ -336,7 +286,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (fm.findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
-        backStackID = 2;
         transaction.commit();
     }
     @Override
@@ -351,14 +300,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.nav_header:
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-                String tag = "accFragment";
-                transaction.replace(R.id.fragment_container, new Account(), tag);
-                clearBackStack();
-                backStackID = 0;
-                transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
         }
@@ -381,7 +322,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
-        backStackID = 1;
         transaction.replace(R.id.fragment_container, new DatePicker(), "datePicker_fragment");
         transaction.commit();
     }
@@ -511,11 +451,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        Tapjoy.onActivityStart(this);
+//        Tapjoy.onActivityStart(this);
     }
     @Override
     protected void onStop() {
-        Tapjoy.onActivityStop(this);
+//        Tapjoy.onActivityStop(this);
         super.onStop();
     }
 
