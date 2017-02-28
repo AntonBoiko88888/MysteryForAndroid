@@ -27,13 +27,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.appodeal.ads.Appodeal;
-import com.appodeal.ads.NonSkippableVideoCallbacks;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.Calendar;
+import java.util.Hashtable;
+
+import com.tapjoy.TJActionRequest;
+import com.tapjoy.TJConnectListener;
+import com.tapjoy.TJError;
+import com.tapjoy.TJPlacement;
+import com.tapjoy.TJPlacementListener;
+import com.tapjoy.Tapjoy;
+import com.tapjoy.TapjoyConnectFlag;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Fragments.Account;
@@ -53,9 +57,8 @@ import keen.eye.ink1804.destination.Utills.Notification_reciever;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        , pushDateListener, View.OnClickListener {
+        , pushDateListener, View.OnClickListener{
 
-    InterstitialAd mInterstitialAd;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private String zodiacNotific, timeNotific;
@@ -97,50 +100,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 backStackID = 1;
             }
         }
-        Appodeal.disableNetwork(this, "cheetah");
-        Appodeal.disableWriteExternalStoragePermissionCheck();
-        Appodeal.disableLocationPermissionCheck();
-        Appodeal.disableNetwork(this, "startapp", Appodeal.BANNER | Appodeal.SKIPPABLE_VIDEO);
-        String appKey = "591df46a7dd9b714c5da8012b4ff83bcb02d9c510b93408c";
-        Appodeal.setAutoCache(Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.INTERSTITIAL, false);
-        Appodeal.initialize(this, appKey, Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.INTERSTITIAL);
-        Appodeal.cache(this, Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.INTERSTITIAL);
-        Appodeal.setNonSkippableVideoCallbacks(new NonSkippableVideoCallbacks() {
-            @Override
-            public void onNonSkippableVideoLoaded() {
-                Appodeal.show(MainActivity.this, Appodeal.NON_SKIPPABLE_VIDEO);
-            }
-            @Override
-            public void onNonSkippableVideoFailedToLoad() {
-                Appodeal.show(MainActivity.this, Appodeal.INTERSTITIAL);
-            }
-            @Override
-            public void onNonSkippableVideoShown() {}
-            @Override
-            public void onNonSkippableVideoFinished() {}
-            @Override
-            public void onNonSkippableVideoClosed(boolean finished) {}
-        });
+        Tapjoy.setDebugEnabled(true);
+        Hashtable<String, Object> connectFlags = new Hashtable<String, Object>();
+        connectFlags.put(TapjoyConnectFlag.ENABLE_LOGGING, "true");      // remember to turn this off for your production builds!
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-1797364925719173/9000501646");
-
-        mInterstitialAd.setAdListener(new AdListener() {
+        Tapjoy.connect(getApplicationContext(), "I64pSOwpR-6kb9ygUGlggQEClSFZWsScnpX6Tj6rvef36ANK9YHvBVdcJ1BG"
+                , connectFlags, new TJConnectListener() {
             @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
+            public void onConnectSuccess() {
+                this.onConnectSuccess();
+            }
+
+            @Override
+            public void onConnectFailure() {
+                this.onConnectFailure();
             }
         });
-
-        requestNewInterstitial();
+//         placementListener = (TJPlacementListener) this;
+//        p = Tapjoy.getPlacement("APP_LAUNCH", placementListener);
+//
+//        if(Tapjoy.isConnected())
+//            p.requestContent();
+//
+//        if(p.isContentReady()) {
+//            p.showContent();
+//        }
+//
 
     }
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-    }
+//    TJPlacementListener placementListener;
+//    TJPlacement p;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -167,8 +156,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 args.putInt("type", 1);
                 fragment.setArguments(args);
                 tag = "birth_sign_vp";
-                if (fragmentManager.findFragmentByTag(tag) == null) {
-                    transaction.addToBackStack(tag);
+                try {
+                    if (fragmentManager.findFragmentByTag(tag) == null) {
+                        transaction.addToBackStack(tag);
+                    }
+                }catch (Exception e){
                 }
                 break;
             case R.id.tab_virtual_sign://done
@@ -188,8 +180,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.tab_interesting://done
                 fragment = new Interesting();
                 tag = "interesting";
-                if (fragmentManager.findFragmentByTag(tag) == null) {
-                    transaction.addToBackStack(tag);
+                try {
+                    if (fragmentManager.findFragmentByTag(tag) == null) {
+                        transaction.addToBackStack(tag);
+                    }
+                }catch (Exception e){
                 }
                 break;
             case R.id.tab_settings:
@@ -201,6 +196,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             default:
                 break;
         }
+//        if(p.isContentReady()) {
+//            p.showContent();
+//        }
+
         clearBackStack();
         transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
         transaction.commit();
@@ -215,8 +214,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).setOnClickListener(this);
     }
     private void clearBackStack() {
-        for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-            getSupportFragmentManager().popBackStack();
+        try {
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+            }
+        }catch (Exception e){
         }
     }
     private void createAlert_setName() {
@@ -315,9 +317,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void AdShow() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
     }
 
     @Override
@@ -361,10 +360,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 backStackID = 0;
                 transaction.commit();
                 drawer.closeDrawer(GravityCompat.START);
-                if(Appodeal.isLoaded(Appodeal.NON_SKIPPABLE_VIDEO))
-                    Appodeal.show(this, Appodeal.NON_SKIPPABLE_VIDEO);
-                else if(Appodeal.isLoaded(Appodeal.INTERSTITIAL))
-                    Appodeal.show(this, Appodeal.INTERSTITIAL);
                 break;
         }
     }
@@ -389,10 +384,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backStackID = 1;
         transaction.replace(R.id.fragment_container, new DatePicker(), "datePicker_fragment");
         transaction.commit();
-        if(Appodeal.isLoaded(Appodeal.NON_SKIPPABLE_VIDEO))
-            Appodeal.show(this, Appodeal.NON_SKIPPABLE_VIDEO);
-        else if(Appodeal.isLoaded(Appodeal.INTERSTITIAL))
-            Appodeal.show(this, Appodeal.INTERSTITIAL);
     }
     @Override
     public void setNotification(Context context) {
@@ -517,4 +508,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Tapjoy.onActivityStart(this);
+    }
+    @Override
+    protected void onStop() {
+        Tapjoy.onActivityStop(this);
+        super.onStop();
+    }
+
 }

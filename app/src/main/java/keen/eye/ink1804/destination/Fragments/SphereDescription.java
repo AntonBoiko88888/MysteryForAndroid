@@ -40,7 +40,7 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
     }
 
     private void createButtonMassive(String[] array){
-        ((pushDateListener)getActivity()).AdShow();
+//        ((pushDateListener)getActivity()).AdShow();
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.sphere_grid);
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();

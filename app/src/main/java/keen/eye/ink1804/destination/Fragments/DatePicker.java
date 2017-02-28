@@ -77,6 +77,7 @@ public class DatePicker extends Fragment implements View.OnClickListener {
                 rb_male.setChecked(sex);
                 ((pushDateListener) getActivity()).onDatePushed(day, month, year, currentYear, sex, 2, false);
                 new FbUtills().setStatistics(3);
+                ((pushDateListener)getActivity()).AdShow();
                 break;
             case R.id.picker_btn_pick_date:
                 pickerPopWin.showPopWin(getActivity());
