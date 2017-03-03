@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
+import keen.eye.ink1804.destination.Fragments.Details;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -35,10 +35,16 @@ public class DetailsActivity extends AppCompatActivity implements NavigationView
     }
 
     private void initViews() {
-        toolbarSetTitle("Постижение тайны");
+        toolbarSetTitle("Интерпретация");
         ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(this);
         ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).setOnClickListener(this);
 
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        Details profDetFragment = new Details();
+        String tag = "profDetailsFragment";
+        transaction.replace(R.id.fragment_container, profDetFragment, tag);
+        transaction.commit();
     }
 
     public void toolbarSetTitle(String title) {
@@ -58,7 +64,6 @@ public class DetailsActivity extends AppCompatActivity implements NavigationView
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
                 startActivity(new Intent(this, HorOnlineActivity.class));
-                finish();
                 break;
             case R.id.tab_zodiaс_sign://done
                 startSphereActivity("zodiac");
@@ -73,7 +78,11 @@ public class DetailsActivity extends AppCompatActivity implements NavigationView
                 startSphereActivity("socionic");
                 break;
             case R.id.tab_interesting://done
-                startRestActivity("interesting");
+                Intent intent = new Intent(this, DescriptionActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("key", "interesting");
+                startActivity(intent);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -90,22 +99,23 @@ public class DetailsActivity extends AppCompatActivity implements NavigationView
 
     void startRestActivity(String s) {
         Intent intent = new Intent(this, RestActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     void startSphereActivity(String s) {
         Intent intent = new Intent(this, SphereActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        startActivity(new Intent(this, MainActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK));
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -114,9 +124,9 @@ public class DetailsActivity extends AppCompatActivity implements NavigationView
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-            overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
+            super.onBackPressed();
+            overridePendingTransition(R.anim.animation_enter_back,
+                    R.anim.animation_leave_back);
         }
     }
 }

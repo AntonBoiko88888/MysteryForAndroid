@@ -14,6 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import keen.eye.ink1804.destination.Fragments.Interesting;
+import keen.eye.ink1804.destination.Fragments.ProfileDescription;
+import keen.eye.ink1804.destination.Interfaces.IOnDesClick;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -21,7 +24,7 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class DescriptionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        , View.OnClickListener  {
+        ,IOnDesClick, View.OnClickListener  {
 
     private DrawerLayout drawer;
 
@@ -29,6 +32,27 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+
+        String key;
+        key = intent.getStringExtra("key");
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        Fragment fragment = null;
+        switch (key) {
+            case "interesting":
+                fragment = new Interesting();
+                break;
+            case "account":
+                fragment = new ProfileDescription();
+                break;
+        }
+        if(fragment!=null) {
+            transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
+            transaction.commit();
+        }
 
         initViews();
     }
@@ -57,7 +81,6 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
                 startActivity(new Intent(this, HorOnlineActivity.class));
-                finish();
                 break;
             case R.id.tab_zodiaс_sign://done
                 startSphereActivity("zodiac");
@@ -72,7 +95,11 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
                 startSphereActivity("socionic");
                 break;
             case R.id.tab_interesting://done
-                startRestActivity("interesting");
+                Intent intent = new Intent(this, DescriptionActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("key", "interesting");
+                startActivity(intent);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -89,22 +116,23 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
 
     void startRestActivity(String s) {
         Intent intent = new Intent(this, RestActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     void startSphereActivity(String s) {
         Intent intent = new Intent(this, SphereActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        startActivity(new Intent(this, MainActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK));
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -113,9 +141,21 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-            overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
+            super.onBackPressed();
+            overridePendingTransition(R.anim.animation_enter_back,
+                    R.anim.animation_leave_back);
         }
+    }
+
+    @Override
+    public void onDescriptionClicked(String key, String layoutTag) {
+        Intent intent = new Intent(this, DetailsActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("key", key);
+        intent.putExtra("tag", layoutTag);
+        startActivity(intent);
+        overridePendingTransition(R.anim.animation_enter,
+                R.anim.animation_leave);
     }
 }

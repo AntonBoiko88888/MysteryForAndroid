@@ -43,9 +43,6 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
         switch (key) {
-            case "interesting":
-                fragment = new Interesting();
-                break;
             case "settings":
                 fragment = new Settings();
                 break;
@@ -53,17 +50,20 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new ApplicationAbout();
                 break;
         }
-        transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
-        transaction.commit();
+        if(fragment!=null) {
+            transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
+            transaction.commit();
+        }
 
         initViews();
     }
 
     void startSphereActivity(String s) {
-        Intent intent = new Intent(this, SphereActivity.class);
+        Intent intent = new Intent(this, SphereActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     private void initViews() {
@@ -110,7 +110,11 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
                 startSphereActivity("socionic");
                 break;
             case R.id.tab_interesting://done
-                fragment = new Interesting();
+                Intent intent = new Intent(this, DescriptionActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("key", "interesting");
+                startActivity(intent);
                 break;
             case R.id.tab_settings:
                 fragment = new Settings();
@@ -131,8 +135,9 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        startActivity(new Intent(this, MainActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK));
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -141,8 +146,9 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            startActivity(new Intent(this, MainActivity.class).addFlags(
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                    Intent.FLAG_ACTIVITY_NEW_TASK));
             overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
         }
     }

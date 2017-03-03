@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import keen.eye.ink1804.destination.Interfaces.IOnDesClick;
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
@@ -31,7 +32,7 @@ public class Interesting extends Fragment implements View.OnClickListener{
     }
 
     private void initializeTView() {
-        ((IToolBar)getActivity()).toolbarSetTitle("Интересное");
+//        ((IToolBar)getActivity()).toolbarSetTitle("Интересное");
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
         ((TextView)rootView.findViewById(R.id.year_woman)).setTypeface(tf);
         rootView.findViewById(R.id.year_woman).setOnClickListener(this);
@@ -98,6 +99,6 @@ public class Interesting extends Fragment implements View.OnClickListener{
                 break;
             default:break;
         }
-        ((pushDateListener)getActivity()).onDescriptionClicked(key,"interesting");//key is going to new bundle
+        ((IOnDesClick)getActivity()).onDescriptionClicked(key,"interesting");//key is going to new bundle
     }
 }

@@ -1,5 +1,6 @@
 package keen.eye.ink1804.destination.Fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,11 +33,12 @@ public class Details extends Fragment {
         return rootView;
     }
     private void fillData(){
-        ((pushDateListener)getActivity()).AdShow();
-        ((pushDateListener)getActivity()).toolbarSetTitle("Интерпретация");
-        Bundle args = getArguments();
-        String key = args.getString("key");
-        String tag = args.getString("tag");
+//        ((pushDateListener)getActivity()).AdShow();
+        Intent intent = getActivity().getIntent();
+
+//        Bundle args = getArguments();
+        String key = intent.getStringExtra("key");
+        String tag = intent.getStringExtra("tag");
 
         int id = -1;
         if(tag!=null&&key!=null)

@@ -66,6 +66,7 @@ public class Com_birthSign extends Fragment implements View.OnClickListener {
                 (rootView.findViewById(R.id.comp_birth_tv_equal)).setEnabled(false);
                 ((TextView)rootView.findViewById(R.id.comp_birth_tv_vector)).setText(" ");
                 (rootView.findViewById(R.id.comp_birth_tv_vector)).setEnabled(false);
+                ((TextView)rootView.findViewById(R.id.com_birth_text)).setText(" ");
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

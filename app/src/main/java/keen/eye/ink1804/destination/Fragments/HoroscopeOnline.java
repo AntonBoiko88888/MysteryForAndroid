@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
@@ -42,20 +43,20 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.hor_online_fragment, container, false);
         initViews();
-        if (((pushDateListener)getActivity()).isOnline(getActivity()))
+//        if (((pushDateListener)getActivity()).isOnline(getActivity()))
             onMySignClick();
-        else {
-            progressBar.setVisibility(View.INVISIBLE);
-            tv_sign_name.setVisibility(View.GONE);
-            tv_result.setText("Увы... Интернет соединение отсутствует :(");
-        }
+//        else {
+//            progressBar.setVisibility(View.INVISIBLE);
+//            tv_sign_name.setVisibility(View.GONE);
+//            tv_result.setText("Увы... Интернет соединение отсутствует :(");
+//        }
         return rootView;
     }
 
     private void initViews() {
         descriptions = new ArrayList<>();
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
-        ((pushDateListener)getActivity()).toolbarSetTitle("Гороскоп онлайн");
+//        ((IToolBar)getActivity()).toolbarSetTitle("Гороскоп онлайн");
         int[] img_ids = new int[]{R.id.aries, R.id.taurus, R.id.twins, R.id.cancer, R.id.lion, R.id.virgo
                 , R.id.libra, R.id.scorpio, R.id.sagittarius, R.id.capricorn, R.id.aquarius, R.id.fish};
         images = new ImageView[12];

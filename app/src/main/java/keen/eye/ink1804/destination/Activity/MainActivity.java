@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
+    static boolean backID = false;
     //    0 - мы на главном фрагменте
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента
@@ -129,8 +130,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                startActivity(new Intent(this, HorOnlineActivity.class));
-                finish();
+                startActivity(new Intent(MainActivity.this, HorOnlineActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK));
                 break;
             case R.id.tab_zodiaс_sign://done
                 startSphereActivity("zodiac");
@@ -145,7 +147,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startSphereActivity("socionic");
                 break;
             case R.id.tab_interesting://done
-                startRestActivity("interesting");
+                Intent intent = new Intent(this, DescriptionActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("key", "interesting");
+                startActivity(intent);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -164,14 +170,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(this, RestActivity.class);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     void startSphereActivity(String s) {
         Intent intent = new Intent(this, SphereActivity.class);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 //        if(p.isContentReady()) {
 //            p.showContent();
@@ -181,14 +185,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbarSetTitle("Постижение тайны");
         ((NavigationView) findViewById(R.id.nav_view)).setNavigationItemSelectedListener(this);
         ((NavigationView) findViewById(R.id.nav_view)).getHeaderView(0).setOnClickListener(this);
-    }
-    private void clearBackStack() {
-        try {
-            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-                getSupportFragmentManager().popBackStack();
-            }
-        }catch (Exception e){
-        }
     }
     private void createAlert_setName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogCustom));
@@ -211,15 +207,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alert = builder.create();
         alert.show();
     }
-    @Override
-    public void mainFragmentCreate() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        toggle.setDrawerIndicatorEnabled(true);
-        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-        transaction.replace(R.id.fragment_container, new Account(), "mainFragment");
-        transaction.commit();
-    }
 
     @Override
     public boolean isOnline(Context context) {
@@ -232,7 +219,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        if(backID)
+        {
+            backID = false;
+            super.onBackPressed();
+        }
+        else {
             if (back_pressed + 2000 > System.currentTimeMillis()) {
                 super.onBackPressed();
             } else {
@@ -241,53 +234,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             back_pressed = System.currentTimeMillis();
         }
     }
+
     @Override
-    public void onDatePushed(int day, int month, int year, int currentYear, boolean sex, int _backStackID, boolean isMyDescr) {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-        ProfileDescription profDescFragment = new ProfileDescription();
-        String tag = "profDescFragment";
-
-        Bundle args = new Bundle();
-        args.putBoolean("isMyDescription", isMyDescr);
-        args.putInt("day", day);
-        args.putInt("month", month);
-        args.putInt("year", year);
-        args.putInt("currentYear", currentYear);
-        args.putBoolean("sex", sex);
-        profDescFragment.setArguments(args);
-
-        transaction.replace(R.id.fragment_container, profDescFragment, tag);
-        if (fm.findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
-        transaction.commit();
+    public void onDatePushed(String s, int day, int month, int year, int currentYear, boolean sex, boolean isMyDescr) {
+        Intent intent = new Intent(this, DescriptionActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("key", s);
+        intent.putExtra("isMyDescription", isMyDescr);
+        intent.putExtra("day", day);
+        intent.putExtra("month", month);
+        intent.putExtra("year", year);
+        intent.putExtra("currentYear", currentYear);
+        intent.putExtra("sex", sex);
+        startActivity(intent);
+        overridePendingTransition(R.anim.animation_enter,
+                R.anim.animation_leave);
     }
 
     @Override
     public void AdShow() {
     }
 
-    @Override
-    public void onDescriptionClicked(String key, String layoutTag) {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        Details profDetFragment = new Details();
-        String tag = "profDetailsFragment";
-
-        Bundle args = new Bundle();
-        args.putString("key", key);
-        args.putString("tag", layoutTag);
-        profDetFragment.setArguments(args);
-
-        transaction.replace(R.id.fragment_container, profDetFragment, tag);
-        if (fm.findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
-        transaction.commit();
-    }
     @Override
     public void onRegistration(int day, int month, int year, boolean sex) {
         toggle.setDrawerIndicatorEnabled(true);
@@ -319,9 +287,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onNewProfile() {
         String tag = "datePicker_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             transaction.addToBackStack(tag);
         }
+        backID = true;
         transaction.replace(R.id.fragment_container, new DatePicker(), "datePicker_fragment");
         transaction.commit();
     }

@@ -78,7 +78,11 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
                 startSphereActivity("socionic");
                 break;
             case R.id.tab_interesting://done
-                startRestActivity("interesting");
+                Intent intent = new Intent(this, DescriptionActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("key", "interesting");
+                startActivity(intent);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -94,22 +98,27 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
     }
 
     void startRestActivity(String s) {
-        Intent intent = new Intent(this, RestActivity.class);
+        Intent intent = new Intent(this, RestActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     void startSphereActivity(String s) {
-        Intent intent = new Intent(this, SphereActivity.class);
+        Intent intent = new Intent(this, SphereActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     @Override
     public void onClick(View view) {
         drawer.closeDrawer(GravityCompat.START);
+        startActivity(new Intent(this, MainActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
     @Override
@@ -117,8 +126,9 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            startActivity(new Intent(this, MainActivity.class).addFlags(
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                    Intent.FLAG_ACTIVITY_NEW_TASK));
             overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
         }
     }

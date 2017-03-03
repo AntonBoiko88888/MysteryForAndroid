@@ -81,7 +81,7 @@ public class Account extends Fragment implements View.OnClickListener {
             case R.id.acc_image_icon:
                 mAnimationDrawable.stop();
                 imageView.setBackgroundResource(R.drawable.account_img_pressed);
-                listener.onDatePushed(day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, 1, true);
+                listener.onDatePushed("account", day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, true);
                 break;
             case R.id.acc_btn_rename:
                 setName();
@@ -164,6 +164,8 @@ public class Account extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
+        imageView.setBackgroundResource(R.drawable.acc_animation);
+        mAnimationDrawable = (AnimationDrawable) imageView.getBackground();
         mAnimationDrawable.start();
     }
 

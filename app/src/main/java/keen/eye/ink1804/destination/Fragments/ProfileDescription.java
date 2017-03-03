@@ -1,6 +1,7 @@
 package keen.eye.ink1804.destination.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import keen.eye.ink1804.destination.Interfaces.IOnDesClick;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
@@ -34,22 +36,23 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView  = inflater.inflate(R.layout.profile_description_fragment,container,false);
-        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-            ((pushDateListener) getActivity()).offlineMessageBox();
-        }
+//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+//            ((pushDateListener) getActivity()).offlineMessageBox();
+//        }
         initializeTView();
         return rootView;
     }
 
     private void initializeTView() {
-        ((pushDateListener)getActivity()).toolbarSetTitle("Характеристика профиля");
-        Bundle args = getArguments();
-        boolean socioAccess = args.getBoolean("isMyDescription", false);
-        yearNow = args.getInt("currentYear");
-        year = args.getInt("year");
-        month = args.getInt("month");
-        day = args.getInt("day");
-        sex = args.getBoolean("sex");
+//        ((pushDateListener)getActivity()).toolbarSetTitle("Характеристика профиля");
+        Intent intent = getActivity().getIntent();
+
+        boolean socioAccess = intent.getBooleanExtra("isMyDescription", false);
+        yearNow = intent.getIntExtra("currentYear", 2017);
+        year = intent.getIntExtra("year", 2000);
+        month = intent.getIntExtra("month", 1);
+        day = intent.getIntExtra("day", 1);
+        sex = intent.getBooleanExtra("sex", true);
         rootView.findViewById(R.id.prof_tv_year).setOnClickListener(this);
         rootView.findViewById(R.id.prof_tv_virtual_type).setOnClickListener(this);
         rootView.findViewById(R.id.prof_tv_zodiak).setOnClickListener(this);
@@ -112,7 +115,7 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         String key="default";
         String tag = "profileDetails";
-        pushDateListener listener = (pushDateListener)getActivity();
+        IOnDesClick listener = (IOnDesClick)getActivity();
         switch (view.getId()){
             case R.id.prof_tv_virtual_type:
                 key = struct_data.getStructureType(i, j);

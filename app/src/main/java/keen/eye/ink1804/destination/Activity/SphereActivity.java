@@ -71,8 +71,10 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
                 fragment.setArguments(args);
                 break;
         }
-        transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
-        transaction.commit();
+        if(fragment!=null) {
+            transaction.replace(R.id.fragment_container, fragment, "drawer_fragment");
+            transaction.commit();
+        }
 
         initViews();
     }
@@ -106,7 +108,6 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
                 startActivity(new Intent(this, HorOnlineActivity.class));
-                finish();
                 break;
             case R.id.tab_zodiaс_sign://done
                 fragment = new Sphere_container();
@@ -136,7 +137,11 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
                 fragment.setArguments(args);
                 break;
             case R.id.tab_interesting:
-                startRestActivity("interesting");
+                Intent intent = new Intent(this, DescriptionActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("key", "interesting");
+                startActivity(intent);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -157,16 +162,18 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
     }
 
     void startRestActivity(String s) {
-        Intent intent = new Intent(this, RestActivity.class);
+        Intent intent = new Intent(this, RestActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
-        finish();
     }
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        startActivity(new Intent(this, MainActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK));
         drawer.closeDrawer(GravityCompat.START);
     }
 
@@ -175,8 +182,9 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            startActivity(new Intent(this, MainActivity.class).addFlags(
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                    Intent.FLAG_ACTIVITY_NEW_TASK));
             overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
         }
     }
