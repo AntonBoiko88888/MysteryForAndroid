@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, HorOnlineActivity.class).addFlags(
                         Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
                         Intent.FLAG_ACTIVITY_NEW_TASK));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_zodiaс_sign://done
                 startSphereActivity("zodiac");
@@ -152,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("key", "interesting");
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -170,12 +172,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(this, RestActivity.class);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     void startSphereActivity(String s) {
         Intent intent = new Intent(this, SphereActivity.class);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 //        if(p.isContentReady()) {
 //            p.showContent();
@@ -223,7 +227,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(backID)
         {
             backID = false;
-            super.onBackPressed();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+            transaction.replace(R.id.fragment_container, new Account(), "datePicker_fragment");
+            transaction.commit();
         }
         else {
             if (back_pressed + 2000 > System.currentTimeMillis()) {
@@ -248,8 +255,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.putExtra("currentYear", currentYear);
         intent.putExtra("sex", sex);
         startActivity(intent);
-        overridePendingTransition(R.anim.animation_enter,
-                R.anim.animation_leave);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
@@ -285,12 +291,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void onNewProfile() {
-        String tag = "datePicker_fragment";
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
-            transaction.addToBackStack(tag);
-        }
         backID = true;
         transaction.replace(R.id.fragment_container, new DatePicker(), "datePicker_fragment");
         transaction.commit();

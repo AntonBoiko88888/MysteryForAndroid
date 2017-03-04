@@ -107,7 +107,10 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
         Bundle args = new Bundle();
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                startActivity(new Intent(this, HorOnlineActivity.class));
+                startActivity(new Intent(this, HorOnlineActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_zodiaс_sign://done
                 fragment = new Sphere_container();
@@ -142,6 +145,7 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
                         Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("key", "interesting");
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -167,14 +171,16 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
     public void onClick(View view) {
+        drawer.closeDrawer(GravityCompat.START);
         startActivity(new Intent(this, MainActivity.class).addFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
                 Intent.FLAG_ACTIVITY_NEW_TASK));
-        drawer.closeDrawer(GravityCompat.START);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
@@ -185,7 +191,7 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
             startActivity(new Intent(this, MainActivity.class).addFlags(
                     Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
                     Intent.FLAG_ACTIVITY_NEW_TASK));
-            overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
     }
 }

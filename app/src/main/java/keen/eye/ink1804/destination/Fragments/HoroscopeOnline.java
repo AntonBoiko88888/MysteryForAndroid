@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
@@ -43,13 +44,13 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.hor_online_fragment, container, false);
         initViews();
-//        if (((pushDateListener)getActivity()).isOnline(getActivity()))
+        if (((IsOnlaine)getActivity()).isOnline(getActivity()))
             onMySignClick();
-//        else {
-//            progressBar.setVisibility(View.INVISIBLE);
-//            tv_sign_name.setVisibility(View.GONE);
-//            tv_result.setText("Увы... Интернет соединение отсутствует :(");
-//        }
+        else {
+            progressBar.setVisibility(View.INVISIBLE);
+            tv_sign_name.setVisibility(View.GONE);
+            tv_result.setText("Увы... Интернет соединение отсутствует :(");
+        }
         return rootView;
     }
 
@@ -128,7 +129,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
                 break;
         }
         try {
-            if (((pushDateListener)getActivity()).isOnline(getActivity()))
+            if (((IsOnlaine)getActivity()).isOnline(getActivity()))
                 if (descriptions.size() == 0) {
                     tv_sign_name.setVisibility(View.VISIBLE);
                     tv_result.setText("");

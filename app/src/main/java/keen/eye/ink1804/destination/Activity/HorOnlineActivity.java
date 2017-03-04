@@ -1,6 +1,9 @@
 package keen.eye.ink1804.destination.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,6 +20,7 @@ import android.view.View;
 import keen.eye.ink1804.destination.Fragments.Account;
 import keen.eye.ink1804.destination.Fragments.ApplicationAbout;
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -24,7 +28,7 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class HorOnlineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        , View.OnClickListener  {
+        , IsOnlaine, View.OnClickListener  {
 
     private DrawerLayout drawer;
 
@@ -83,6 +87,7 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
                         Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("key", "interesting");
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_settings:
                 startRestActivity("settings");
@@ -103,6 +108,7 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     void startSphereActivity(String s) {
@@ -111,6 +117,7 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
@@ -119,6 +126,7 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
         startActivity(new Intent(this, MainActivity.class).addFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
                 Intent.FLAG_ACTIVITY_NEW_TASK));
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
@@ -129,7 +137,15 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
             startActivity(new Intent(this, MainActivity.class).addFlags(
                     Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
                     Intent.FLAG_ACTIVITY_NEW_TASK));
-            overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
+    }
+
+    @Override
+    public boolean isOnline(Context context) {
+        ConnectivityManager connManager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connManager.getActiveNetworkInfo();
+        return info != null && info.isConnected();
     }
 }

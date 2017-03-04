@@ -80,7 +80,10 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                startActivity(new Intent(this, HorOnlineActivity.class));
+                startActivity(new Intent(this, HorOnlineActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_zodiaс_sign://done
                 startSphereActivity("zodiac");
@@ -119,6 +122,7 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     void startSphereActivity(String s) {
@@ -126,6 +130,7 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
@@ -142,8 +147,7 @@ public class DescriptionActivity extends AppCompatActivity implements Navigation
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            overridePendingTransition(R.anim.animation_enter_back,
-                    R.anim.animation_leave_back);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
     }
 

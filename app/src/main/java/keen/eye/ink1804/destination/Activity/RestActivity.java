@@ -64,6 +64,7 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("key", s);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     private void initViews() {
@@ -94,8 +95,10 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                startActivity(new Intent(this, HorOnlineActivity.class));
-                finish();
+                startActivity(new Intent(this, HorOnlineActivity.class).addFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_zodiaс_sign://done
                 startSphereActivity("zodiac");
@@ -115,6 +118,7 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
                         Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("key", "interesting");
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_settings:
                 fragment = new Settings();
@@ -135,10 +139,11 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onClick(View view) {
+        drawer.closeDrawer(GravityCompat.START);
         startActivity(new Intent(this, MainActivity.class).addFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
                 Intent.FLAG_ACTIVITY_NEW_TASK));
-        drawer.closeDrawer(GravityCompat.START);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 
     @Override
@@ -149,7 +154,7 @@ public class RestActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, MainActivity.class).addFlags(
                     Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
                     Intent.FLAG_ACTIVITY_NEW_TASK));
-            overridePendingTransition(R.anim.activity_down_up_close_enter, R.anim.activity_down_up_close_exit);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
     }
 }
