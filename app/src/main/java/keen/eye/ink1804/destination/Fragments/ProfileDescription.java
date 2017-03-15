@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.IOnDesClick;
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
@@ -36,15 +38,15 @@ public class ProfileDescription extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView  = inflater.inflate(R.layout.profile_description_fragment,container,false);
-//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-//            ((pushDateListener) getActivity()).offlineMessageBox();
-//        }
+        if (!((IsOnlaine) getActivity()).isOnline(getActivity())) {
+            ((IsOnlaine) getActivity()).offlineMessageBox();
+        }
         initializeTView();
         return rootView;
     }
 
     private void initializeTView() {
-//        ((pushDateListener)getActivity()).toolbarSetTitle("Характеристика профиля");
+        ((IToolBar)getActivity()).toolbarSetTitle("Характеристика профиля");
         Intent intent = getActivity().getIntent();
 
         boolean socioAccess = intent.getBooleanExtra("isMyDescription", false);

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import keen.eye.ink1804.destination.Adapters.Sphere_vp_adapter;
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 
 /**

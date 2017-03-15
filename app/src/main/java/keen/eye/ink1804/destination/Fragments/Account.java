@@ -47,11 +47,11 @@ public class Account extends Fragment implements View.OnClickListener {
     }
 
     private void initializeViews() {
-//        ((pushDateListener) getActivity()).toolbarSetTitle("Профиль");
+        ((pushDateListener) getActivity()).toolbarSetTitle("Профиль");
         getPreferences();
-//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-//            ((pushDateListener) getActivity()).offlineMessageBox();
-//        }
+        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
+            ((pushDateListener) getActivity()).offlineMessageBox();
+        }
 
         rootView.findViewById(R.id.acc_btn_rename).setOnClickListener(this);
         rootView.findViewById(R.id.acc_btn_pushSettings).setOnClickListener(this);
@@ -70,7 +70,7 @@ public class Account extends Fragment implements View.OnClickListener {
         else
             ((TextView) rootView.findViewById(R.id.acc_tv_sex)).setText(setTextSettings("Пол:", " жен."));
         new FbUtills().getDataFromDB(
-                (TextView) rootView.findViewById(R.id.tv_version),
+                getContext(),
                 (TextView) rootView.findViewById(R.id.acc_tv_admin_text), getResources().getString(R.string.app_version));
     }
 
@@ -90,7 +90,8 @@ public class Account extends Fragment implements View.OnClickListener {
                 listener.onNewProfile();
                 break;
             case R.id.acc_btn_pushSettings:
-                listener.setNotification(getActivity());
+//                listener.setNotification(getActivity());
+                Toast.makeText(getContext(), "Уведомления находятся в состоянии доработки", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

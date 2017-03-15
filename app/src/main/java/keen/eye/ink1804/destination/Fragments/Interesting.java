@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import keen.eye.ink1804.destination.Interfaces.IOnDesClick;
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.FbUtills;
 
@@ -24,15 +24,15 @@ public class Interesting extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.interesting_fragment,container,false);
-//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-//            ((pushDateListener) getActivity()).offlineMessageBox();
-//        }
+        if (!((IsOnlaine) getActivity()).isOnline(getActivity())) {
+            ((IsOnlaine) getActivity()).offlineMessageBox();
+        }
         initializeTView();
         return rootView;
     }
 
     private void initializeTView() {
-//        ((IToolBar)getActivity()).toolbarSetTitle("Интересное");
+        ((IToolBar)getActivity()).toolbarSetTitle("Интересное");
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "brendtext.otf");
         ((TextView)rootView.findViewById(R.id.year_woman)).setTypeface(tf);
         rootView.findViewById(R.id.year_woman).setOnClickListener(this);
@@ -57,7 +57,7 @@ public class Interesting extends Fragment implements View.OnClickListener{
         ((TextView)rootView.findViewById(R.id.extroverts_and_introverts)).setTypeface(tf);
         rootView.findViewById(R.id.extroverts_and_introverts).setOnClickListener(this);
 
-//        new FbUtills().setStatistics(2);
+        new FbUtills().setStatistics(2);
     }
 
     @Override

@@ -22,7 +22,6 @@ import java.util.List;
 
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.Utills.FbUtills;
@@ -57,7 +56,7 @@ public class HoroscopeOnline extends Fragment implements View.OnClickListener {
     private void initViews() {
         descriptions = new ArrayList<>();
         Typeface tf = Typeface.createFromAsset(getResources().getAssets(), "space.otf");
-//        ((IToolBar)getActivity()).toolbarSetTitle("Гороскоп онлайн");
+        ((IToolBar)getActivity()).toolbarSetTitle("Гороскоп онлайн");
         int[] img_ids = new int[]{R.id.aries, R.id.taurus, R.id.twins, R.id.cancer, R.id.lion, R.id.virgo
                 , R.id.libra, R.id.scorpio, R.id.sagittarius, R.id.capricorn, R.id.aquarius, R.id.fish};
         images = new ImageView[12];

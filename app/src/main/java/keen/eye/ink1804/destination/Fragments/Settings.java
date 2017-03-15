@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.bruce.pickerview.popwindow.DatePickerPopWin;
 
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
@@ -34,9 +34,9 @@ public class Settings extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.settings_fragment,container,false);
-//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-//            ((pushDateListener) getActivity()).offlineMessageBox();
-//        }
+        if (!((IsOnlaine) getActivity()).isOnline(getActivity())) {
+            ((IsOnlaine) getActivity()).offlineMessageBox();
+        }
         createDatePicker();
         initializeTView();
         return rootView;

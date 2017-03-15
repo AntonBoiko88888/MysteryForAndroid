@@ -1,5 +1,9 @@
 package keen.eye.ink1804.destination.Utills;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.TextView;
 
@@ -8,6 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import keen.eye.ink1804.destination.R;
 
 /**
  * Created by Ink1804 on 05.12.16.
@@ -17,17 +22,17 @@ public class FbUtills {
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     final private DatabaseReference mRef = mDatabase.getRef();
 
-    public void getDataFromDB(final TextView tv_version, final TextView admin_text, final String text_version) {
+    public void getDataFromDB(final Context context, final TextView tv_version, final String text_version) {
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try {
                     if (!dataSnapshot.child("app_version").getValue().toString().equals(text_version)) {
-                        tv_version.setText(dataSnapshot.child("app_upgrade_text").getValue().toString());
+                        app_version(context, dataSnapshot.child("app_upgrade_text").getValue().toString());
                     }
                     if (!dataSnapshot.child("app_notification").getValue().toString().equals("")) {
-                        admin_text.setVisibility(View.VISIBLE);
-                        admin_text.setText(dataSnapshot.child("app_notification").getValue().toString());
+                        tv_version.setVisibility(View.VISIBLE);
+                        tv_version.setText(dataSnapshot.child("app_notification").getValue().toString());
                     }
                 } catch (Exception e) {}
             }
@@ -91,5 +96,20 @@ public class FbUtills {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    public void app_version(Context context, String s) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
+        builder.setTitle("Информация")
+                .setMessage(s)
+                .setIcon(R.drawable.icon_eye_512)
+                .setPositiveButton("Понятно", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

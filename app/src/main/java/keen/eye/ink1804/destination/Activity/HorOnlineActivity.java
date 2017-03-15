@@ -6,7 +6,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -16,10 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-
-import keen.eye.ink1804.destination.Fragments.Account;
-import keen.eye.ink1804.destination.Fragments.ApplicationAbout;
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
+import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.R;
 
@@ -28,7 +25,7 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class HorOnlineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        , IsOnlaine, View.OnClickListener  {
+        , IsOnlaine, IToolBar, View.OnClickListener  {
 
     private DrawerLayout drawer;
 
@@ -147,5 +144,9 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connManager.getActiveNetworkInfo();
         return info != null && info.isConnected();
+    }
+
+    @Override
+    public void offlineMessageBox() {
     }
 }

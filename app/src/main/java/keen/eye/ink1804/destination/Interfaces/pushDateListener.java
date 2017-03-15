@@ -14,5 +14,4 @@ public interface pushDateListener {
     void setNotification(Context context);
     void offlineMessageBox();
     boolean isOnline(Context context);
-    void AdShow();
 }

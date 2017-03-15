@@ -8,4 +8,5 @@ import android.content.Context;
 
 public interface IsOnlaine {
     boolean isOnline(Context context);
+    void offlineMessageBox();
 }

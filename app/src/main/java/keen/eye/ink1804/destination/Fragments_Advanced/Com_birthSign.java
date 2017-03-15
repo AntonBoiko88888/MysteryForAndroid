@@ -11,16 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Data_calculation;
 import keen.eye.ink1804.destination.R;
-import keen.eye.ink1804.destination.Utills.FbUtills;
 
 /**
  * Created by Ink1804 on 28.08.16.

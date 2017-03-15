@@ -1,6 +1,10 @@
 package keen.eye.ink1804.destination.Activity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -9,13 +13,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import keen.eye.ink1804.destination.Fragments.Sphere_container;
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 
@@ -24,7 +32,7 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class SphereActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        , IToolBar, View.OnClickListener  {
+        , IToolBar, IsOnlaine, View.OnClickListener  {
 
     private DrawerLayout drawer;
 
@@ -193,5 +201,41 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
                     Intent.FLAG_ACTIVITY_NEW_TASK));
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
+    }
+
+    @Override
+    public boolean isOnline(Context context) {
+        ConnectivityManager connManager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connManager.getActiveNetworkInfo();
+        return info != null && info.isConnected();
+    }
+
+    @Override
+    public void offlineMessageBox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+        builder.setTitle("Ошибка сети")
+                .setMessage("Проверьте подключение к интернету и повторите попытку снова")
+                .setCancelable(false)
+                .setIcon(R.drawable.icon_eye_512)
+                .setNegativeButton("Закрыть приложение",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                finish();
+                            }
+                        })
+                .setPositiveButton("Повторить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        if (!SphereActivity.this.isOnline(SphereActivity.this)) {
+                            Toast.makeText(SphereActivity.this, "Нет подключения к сети", Toast.LENGTH_SHORT).show();
+                            offlineMessageBox();
+                        }
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

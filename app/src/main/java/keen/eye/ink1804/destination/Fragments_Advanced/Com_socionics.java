@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.FbUtills;

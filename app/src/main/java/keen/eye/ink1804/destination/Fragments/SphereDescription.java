@@ -17,7 +17,7 @@ import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.R;
 
 /**
@@ -32,15 +32,14 @@ public class SphereDescription extends Fragment implements View.OnClickListener 
         Bundle args = getArguments();
 
         array = args.getStringArray("btnTextArray");
-//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-//            ((pushDateListener) getActivity()).offlineMessageBox();
-//        }
+        if (!((IsOnlaine) getActivity()).isOnline(getActivity())) {
+            ((IsOnlaine) getActivity()).offlineMessageBox();
+        }
         createButtonMassive(array);
         return rootView;
     }
 
     private void createButtonMassive(String[] array){
-//        ((pushDateListener)getActivity()).AdShow();
         GridLayout grid = (GridLayout)rootView.findViewById(R.id.sphere_grid);
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();

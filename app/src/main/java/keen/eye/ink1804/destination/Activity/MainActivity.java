@@ -10,8 +10,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -29,22 +27,9 @@ import android.widget.Toast;
 
 
 import java.util.Calendar;
-import java.util.Hashtable;
-
-import com.tapjoy.TJConnectListener;
-import com.tapjoy.Tapjoy;
-import com.tapjoy.TapjoyConnectFlag;
-
 import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Fragments.Account;
-import keen.eye.ink1804.destination.Fragments.ApplicationAbout;
 import keen.eye.ink1804.destination.Fragments.DatePicker;
-import keen.eye.ink1804.destination.Fragments.Settings;
-import keen.eye.ink1804.destination.Fragments.Sphere_container;
-import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
-import keen.eye.ink1804.destination.Fragments.Interesting;
-import keen.eye.ink1804.destination.Fragments.ProfileDescription;
-import keen.eye.ink1804.destination.Fragments.Details;
 import keen.eye.ink1804.destination.Fragments.FirstRegistration;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
@@ -84,47 +69,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.fragment_container, new Account(), "account_fragment");
             transaction.commit();
-            Intent intent = getIntent();
-            if (intent.getBooleanExtra("isHoroscope", false)) {
-                FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
-                Bundle args = new Bundle();
-                HoroscopeOnline horFragment = new HoroscopeOnline();//в дальнейшем
-                args.putBoolean("fromNotification", true);
-                horFragment.setArguments(args);
-                horTransaction.replace(R.id.fragment_container, horFragment, "drawer_fragment");
-                horTransaction.commit();
-            }
+            //Todo твои нотификации
+//            Intent intent = getIntent();
+//            if (intent.getBooleanExtra("isHoroscope", false)) {
+//                FragmentTransaction horTransaction = getSupportFragmentManager().beginTransaction();
+//                Bundle args = new Bundle();
+//                HoroscopeOnline horFragment = new HoroscopeOnline();//в дальнейшем
+//                args.putBoolean("fromNotification", true);
+//                horFragment.setArguments(args);
+//                horTransaction.replace(R.id.fragment_container, horFragment, "drawer_fragment");
+//                horTransaction.commit();
+//            }
         }
-//        Tapjoy.setDebugEnabled(true);
-//        Hashtable<String, Object> connectFlags = new Hashtable<String, Object>();
-//        connectFlags.put(TapjoyConnectFlag.ENABLE_LOGGING, "true");      // remember to turn this off for your production builds!
-//
-//        Tapjoy.connect(getApplicationContext(), "I64pSOwpR-6kb9ygUGlggQEClSFZWsScnpX6Tj6rvef36ANK9YHvBVdcJ1BG"
-//                , connectFlags, new TJConnectListener() {
-//            @Override
-//            public void onConnectSuccess() {
-//                this.onConnectSuccess();
-//            }
-//
-//            @Override
-//            public void onConnectFailure() {
-//                this.onConnectFailure();
-//            }
-//        });
-//         placementListener = (TJPlacementListener) this;
-//        p = Tapjoy.getPlacement("APP_LAUNCH", placementListener);
-//
-//        if(Tapjoy.isConnected())
-//            p.requestContent();
-//
-//        if(p.isContentReady()) {
-//            p.showContent();
-//        }
-//
-
     }
-//    TJPlacementListener placementListener;
-//    TJPlacement p;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -181,9 +138,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
-//        if(p.isContentReady()) {
-//            p.showContent();
-//        }
 
     private void initViews() {
         toolbarSetTitle("Постижение тайны");
@@ -212,13 +166,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         alert.show();
     }
 
-    @Override
-    public boolean isOnline(Context context) {
-        ConnectivityManager connManager = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connManager.getActiveNetworkInfo();
-        return info != null && info.isConnected();
-    }
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -256,10 +203,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.putExtra("sex", sex);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-    }
-
-    @Override
-    public void AdShow() {
     }
 
     @Override
@@ -394,6 +337,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean isOnline(Context context) {
+        ConnectivityManager connManager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connManager.getActiveNetworkInfo();
+        return info != null && info.isConnected();
+    }
+
+    @Override
     public void offlineMessageBox() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
         builder.setTitle("Ошибка сети")
@@ -423,11 +374,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-//        Tapjoy.onActivityStart(this);
     }
     @Override
     protected void onStop() {
-//        Tapjoy.onActivityStop(this);
         super.onStop();
     }
 

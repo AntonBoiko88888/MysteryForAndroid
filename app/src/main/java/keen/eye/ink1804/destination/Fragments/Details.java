@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import keen.eye.ink1804.destination.Interfaces.pushDateListener;
+import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.FbUtills;
 
@@ -25,18 +25,16 @@ public class Details extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.details_fragment,container,false);
-//        if (!((pushDateListener) getActivity()).isOnline(getActivity())) {
-//            ((pushDateListener) getActivity()).offlineMessageBox();
-//        }
-//        new FbUtills().setStatistics(5);
+        if (!((IsOnlaine) getActivity()).isOnline(getActivity())) {
+            ((IsOnlaine) getActivity()).offlineMessageBox();
+        }
+        new FbUtills().setStatistics(5);
         fillData();
         return rootView;
     }
     private void fillData(){
-//        ((pushDateListener)getActivity()).AdShow();
         Intent intent = getActivity().getIntent();
 
-//        Bundle args = getArguments();
         String key = intent.getStringExtra("key");
         String tag = intent.getStringExtra("tag");
 
