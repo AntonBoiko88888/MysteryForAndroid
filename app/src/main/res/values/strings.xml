@@ -33,7 +33,7 @@
     <string name="date_picker_selectDate_text">"Выбрать дату"</string>
     <string name="date_picker_amendDate_text">"Сменить дату"</string>
     <string name="date_picker_selectDateBirthday_text">Выберите дату своего рождения</string>
-    <string name="application_no_advertising_text">" ༼ ༽  Приложение без рекламы  ༼ ༽ "</string>
+    <string name="application_no_advertising_text">" ☞  Приложение без рекламы  ☜ "</string>
     <string name="application_estimate_text">" ★★★★☆ "</string>
 
 </resources>

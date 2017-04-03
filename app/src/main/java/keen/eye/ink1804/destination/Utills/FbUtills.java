@@ -2,6 +2,8 @@ package keen.eye.ink1804.destination.Utills;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
@@ -98,7 +100,7 @@ public class FbUtills {
         });
     }
 
-    public void app_version(Context context, String s) {
+    public void app_version(final Context context, String s) {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AlertDialogCustom));
         builder.setTitle("Информация")
                 .setMessage(s)
@@ -107,6 +109,17 @@ public class FbUtills {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         dialog.cancel();
+                    }
+                })
+                .setNegativeButton("Обновить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        final String appPackageName = context.getPackageName();
+                        try {
+                            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+                            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                        }
                     }
                 });
         AlertDialog alert = builder.create();

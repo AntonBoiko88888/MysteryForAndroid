@@ -49,6 +49,9 @@
         <activity
             android:name=".Activity.RestActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.New_ProfileActivity"
+            android:screenOrientation="portrait" />
 
         <receiver android:name=".Utills.Notification_reciever" />
 

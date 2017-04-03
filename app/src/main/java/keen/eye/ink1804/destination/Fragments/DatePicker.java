@@ -14,6 +14,7 @@ import com.bruce.pickerview.popwindow.DatePickerPopWin;
 
 import java.util.Calendar;
 
+import keen.eye.ink1804.destination.Interfaces.IDatePushed;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.R;
 import keen.eye.ink1804.destination.Utills.FbUtills;
@@ -40,8 +41,6 @@ public class DatePicker extends Fragment implements View.OnClickListener {
 
 
     private void initializeTView() {
-        pushDateListener listener = (pushDateListener) getActivity();
-        listener.toolbarSetTitle("Новый профиль");
         rootView.findViewById(R.id.picker_btn_next).setOnClickListener(this);
         rootView.findViewById(R.id.picker_btn_pick_date).setOnClickListener(this);
         rb_male = (RadioButton) rootView.findViewById(R.id.picker_rb_male);
@@ -75,7 +74,7 @@ public class DatePicker extends Fragment implements View.OnClickListener {
             case R.id.picker_btn_next:
                 boolean sex = rb_male.isChecked();
                 rb_male.setChecked(sex);
-                ((pushDateListener) getActivity()).onDatePushed("account", day, month, year, currentYear, sex, false);
+                ((IDatePushed) getActivity()).onDatePushed("account", day, month, year, currentYear, sex, false);
                 new FbUtills().setStatistics(3);
                 break;
             case R.id.picker_btn_pick_date:

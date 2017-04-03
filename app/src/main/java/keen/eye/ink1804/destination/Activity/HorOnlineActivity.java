@@ -15,7 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
+import keen.eye.ink1804.destination.Interfaces.ISetTextView;
 import keen.eye.ink1804.destination.Interfaces.IToolBar;
 import keen.eye.ink1804.destination.Interfaces.IsOnlaine;
 import keen.eye.ink1804.destination.R;
@@ -25,7 +29,7 @@ import keen.eye.ink1804.destination.R;
  */
 
 public class HorOnlineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        , IsOnlaine, IToolBar, View.OnClickListener  {
+        , ISetTextView, IsOnlaine, View.OnClickListener  {
 
     private DrawerLayout drawer;
 
@@ -148,5 +152,15 @@ public class HorOnlineActivity extends AppCompatActivity implements NavigationVi
 
     @Override
     public void offlineMessageBox() {
+    }
+
+    @Override
+    public void setViewText(String s) {
+        ((TextView) findViewById(R.id.horOn_tvResult)).setText(s);
+    }
+
+    @Override
+    public void progressbarVizibility() {
+        ((ProgressBar) findViewById(R.id.progressbar_horoscope)).setVisibility(View.INVISIBLE);
     }
 }

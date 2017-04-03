@@ -115,9 +115,8 @@ public class SphereActivity extends AppCompatActivity implements NavigationView.
         Bundle args = new Bundle();
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                startActivity(new Intent(this, HorOnlineActivity.class).addFlags(
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
-                        Intent.FLAG_ACTIVITY_NEW_TASK));
+                Intent i = new Intent(this, HorOnlineActivity.class);
+                startActivity(i);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_zodiaс_sign://done

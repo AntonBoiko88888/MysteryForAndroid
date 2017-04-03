@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import keen.eye.ink1804.destination.Interfaces.IDatePushed;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.R;
@@ -76,18 +77,17 @@ public class Account extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        pushDateListener listener = (pushDateListener) getActivity();
         switch (view.getId()) {
             case R.id.acc_image_icon:
                 mAnimationDrawable.stop();
                 imageView.setBackgroundResource(R.drawable.account_img_pressed);
-                listener.onDatePushed("account", day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, true);
+                ((IDatePushed) getActivity()).onDatePushed("account", day, month, year, Calendar.getInstance().get(Calendar.YEAR), sex, true);
                 break;
             case R.id.acc_btn_rename:
                 setName();
                 break;
             case R.id.acc_btn_new_profile:
-                listener.onNewProfile();
+                ((pushDateListener) getActivity()).onNewProfile();
                 break;
             case R.id.acc_btn_pushSettings:
 //                listener.setNotification(getActivity());

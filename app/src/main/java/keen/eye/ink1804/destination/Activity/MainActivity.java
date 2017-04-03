@@ -31,6 +31,8 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 import keen.eye.ink1804.destination.Fragments.Account;
 import keen.eye.ink1804.destination.Fragments.DatePicker;
 import keen.eye.ink1804.destination.Fragments.FirstRegistration;
+import keen.eye.ink1804.destination.Fragments.HoroscopeOnline;
+import keen.eye.ink1804.destination.Interfaces.IDatePushed;
 import keen.eye.ink1804.destination.Interfaces.pushDateListener;
 import keen.eye.ink1804.destination.Math.Constants;
 import keen.eye.ink1804.destination.Math.Data_calculation;
@@ -39,13 +41,12 @@ import keen.eye.ink1804.destination.Utills.Notification_reciever;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        , pushDateListener, View.OnClickListener{
+        , pushDateListener, IDatePushed, View.OnClickListener{
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private String zodiacNotific, timeNotific;
     private boolean isSelectedNotific = false;
-    static boolean backID = false;
     //    0 - мы на главном фрагменте
     //    1 - один шаг от главного фрагмента
     //    2 - больше одного шага от главного фрагмента
@@ -87,9 +88,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.tab_hor_online://no
-                startActivity(new Intent(MainActivity.this, HorOnlineActivity.class).addFlags(
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
-                        Intent.FLAG_ACTIVITY_NEW_TASK));
+                Intent i = new Intent(this, HorOnlineActivity.class);
+                i.setFlags(
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.tab_zodiaс_sign://done
@@ -171,22 +174,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
-        if(backID)
-        {
-            backID = false;
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-            transaction.replace(R.id.fragment_container, new Account(), "datePicker_fragment");
-            transaction.commit();
+        if (back_pressed + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
         }
-        else {
-            if (back_pressed + 2000 > System.currentTimeMillis()) {
-                super.onBackPressed();
-            } else {
-                Toast.makeText(getBaseContext(), "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show();
-            }
-            back_pressed = System.currentTimeMillis();
-        }
+        back_pressed = System.currentTimeMillis();
     }
 
     @Override
@@ -234,11 +227,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void onNewProfile() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
-        backID = true;
-        transaction.replace(R.id.fragment_container, new DatePicker(), "datePicker_fragment");
-        transaction.commit();
+        Intent intent = new Intent(this, New_ProfileActivity.class).addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(
+                Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("key", "interesting");
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
     @Override
     public void setNotification(Context context) {
