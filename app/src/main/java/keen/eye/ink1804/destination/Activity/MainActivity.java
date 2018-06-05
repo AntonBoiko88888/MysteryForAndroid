@@ -253,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         zodSpinner.setAdapter(zodAdapter);
         timeSpinner.setAdapter(timeAdapter);
 
+
         zodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

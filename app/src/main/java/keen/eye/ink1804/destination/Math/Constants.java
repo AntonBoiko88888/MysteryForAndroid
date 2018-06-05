@@ -27,7 +27,7 @@ public final class Constants {
     static final String[] PSYCHOLOGY_NAMES = {"Приземленный знак","Знак Возмужания","Взлетный знак", "Чувствительный знак"};
     static final String[] ELEMENT_NAMES = {"Революционер (Огонь)","Консерватор (Вода)","Небожитель (Воздух)", "Созидатель (Земля)"};
 
-    public static final String[] YEAR_NAMES =         {"Обезьяна","Петух", "Собака","Кабан",  "Крыса",   "Бык",   "Тигр","Кот",   "Дракон","Змея",    "Лошадь","Коза"};
+    public static final String[] YEAR_NAMES =  {"Обезьяна","Петух", "Собака","Кабан",  "Крыса",   "Бык",   "Тигр","Кот",   "Дракон","Змея",    "Лошадь","Коза"};
     static final String[] YEAR_HOST_NAMES =    {"Змея",    "Кот",   "Петух", "Лошадь", "Обезьяна","Собака","Бык", "Дракон","Кабан", "Коза",    "Крыса", "Тигр"};
     static final String[] YEAR_SERVANT_NAMES = {"Крыса",   "Собака","Бык",   "Дракон", "Лошадь",  "Тигр",  "Коза","Петух", "Кот",   "Обезьяна","Кабан", "Змея"};
 
@@ -61,3 +61,35 @@ public final class Constants {
     public static final String[] SOCIONICS_NAMES = {"Джек Лондон","Робеспьер","Штирлиц","Максим Горький",
             "Гамлет","Достоевский","Гюго","Драйзер","Дон Кихот","Бальзак","Жуков","Габен","Гексли","Есенин","Наполеон","Дюма"};
 }
+
+
+//TODO Все активности на разные лэйауты
+//TODO Один дравер с handler на активности
+//TODO переименовать все классы и названия сделать человеческие
+//TODO HTML Parser переделать
+//TODO шрифты в либу
+//TODO диалоговое окно в отдельный класс
+//TODO инстансы фрагментов
+//TODO sharedpref mb to realm
+//TODO убрать TTL
+//TODO убрать ion на volley
+//TODO ВСЕЕЕЕЕЕ константы перенести, абсолютно все
+//TODO app localization (перевести приложение)
+//TODO Design to remade - material design
+// TODO watch app :)
+//TODO угнать приложение
+//TODO история гороскопов
+//TODO appIntro переделать
+//TODO temp profile переделать
+//TODO DRAWERLAYOUT переделать сРОЧНАААА
+//TODO callbacks to redo with custom alert box
+//TODO service который постоянно проверяет интернет
+//TODO сервис с нотификациями
+//TODO textviews нормально сделать
+//TODO constants использовать
+// TODO Online horoscope to recyclerview with grid manager (может)
+//TODO intresting activity listView create
+//TODO pagerstrip наверно убрать что ли
+//TODO layout несколько разных размеров  - мб
+
+
